@@ -56,11 +56,11 @@ ClientIDとClientSecretをパラメータとして認証時に付加するのみ
 
 ### ユーザーセルのコレクションにスキーマ認証レベル設定
 
-* ACLを使ってスキーマ認証レベルの設定を行います。
+ACLを使ってスキーマ認証レベルの設定を行います。
 
-* スキーマ認証設定ACLのサンプル
+スキーマ認証設定ACLのサンプル
 
-* ```
+```
 <D:acl xmlns:D="DAV:" xml:base="https://demo.personium.io/cell/__role/box/"
 xmlns:p="urn:x-personium:xmlns"
 p:requireSchemaAuthz="{スキーマ認証レベル}">
