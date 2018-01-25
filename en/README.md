@@ -14,6 +14,7 @@ Register to join the Slack community [here](https://goo.gl/forms/ODgVX6eMkRDtReL
 <li><h3 id="what-is-personium"><a href="./overview/001_Introduction.html">What is Personium?</a></h3></li>
 </ul>
 
+
 ## Overview
 
 <ul class="listStyleTypeNone">
