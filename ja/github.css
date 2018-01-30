@@ -1,11 +1,14 @@
 body {
-  font-family: Helvetica, arial, sans-serif;
+  font-family: "メイリオ",  Helvetica, arial, sans-serif;
+  width: 980px;
+  margin-top: 0;
+  margin-right: auto;
+  margin-left : auto;
   font-size: 14px;
   line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 0px 30px 10px 30px;
   background-color: white;
-  padding: 30px; }
+}
 
 body > *:first-child {
   margin-top: 0 !important; }
@@ -34,13 +37,14 @@ a.anchor {
   bottom: 0; }
 
 h1 {
+  margin: 0 0 20px 0;
   padding: 0;
 }
 h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px 0;
   padding-left: 15px;
 }
 h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
   cursor: text;
@@ -70,16 +74,24 @@ h6 tt, h6 code {
 
 h1 {
   font-size: 28px;
+  border-bottom: 5px solid #339933;
   color: black; }
 
 h2 {
   font-size: 24px;
-  border-left: 5px solid #006600;
-  background-color: #dddddd;
+  border-left: 15px solid lightseagreen;
+  border-bottom: 1px solid #999999;
   color: black; }
 
 h3 {
+  border-left: 4px double green;
+  border-bottom: 1px dotted #999999;  
+  margin-left: 10px;  
   font-size: 18px; }
+
+th {
+  background: lightblue;
+}
 
 h4 {
   font-size: 16px; }
@@ -287,7 +299,7 @@ pre {
   border: 1px solid #cccccc;
   font-size: 13px;
   line-height: 19px;
-  overflow: auto;
+  overflow: visible;
   padding: 6px 10px;
   border-radius: 3px; }
   pre code, pre tt {

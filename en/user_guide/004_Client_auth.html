@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>004_Client_auth</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/en/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1>Client registration &amp; authentication</h1>
+<p>To register client, following steps are required.</p>
+<h3>1. Create a cell used for client registration &amp; authentication (application cell)</h3>
+<ul>
+<li>Create a cell.</li>
+<li>Create an account used for client authentication in the cell.</li>
+<li>If client authentication level is &quot;confidential&quot;, then create a roll which name is &quot;confidentialClient&quot; and box is &quot;__&quot; and link it to the account created.</li>
+</ul>
+<h3>2. Set client information and client authentication requirement level to the resource.</h3>
+<ul>
+<li>Set URL of the application cell as schema to the box which is accessed from the client.</li>
+<li>Set client authentication requirement level to the resource. More details, see client authentication requirement level.</li>
+<li>This cell can be same cell of the application cell or not.</li>
+</ul>
+<h3>3. Deploy HTML File (For Implicit Grant Only)</h3>
+<ul>
+<li>Deploy HTML File with embedded Javascript which returns access token to the application cell.
+<ul>
+<li>URL of the HTML File is the &quot;Redirection URI&quot; which is used in the flow.</li>
+</ul></li>
+</ul>
+<h3>4. Retrieve client authentication information when required.</h3>
+<ul>
+<li>Send authentication requests to the token endpoint of the application cell with created account with following.
+<ul>
+<li>&quot;client secret&quot;, used in Resouce Owner Password Credentials Grant is the token in response body.</li>
+<li>&quot;client id&quot; is the URL of the application cell.</li>
+</ul></li>
+</ul>
+</body>
+</html>

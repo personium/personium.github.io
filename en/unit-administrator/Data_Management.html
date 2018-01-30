@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Data_Management</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/en/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1>Data management</h1>
+<h3>Two types of data management</h3>
+<p>Personium manages user's data with Elasticsearch and file system.<br>Data on Elasticsearch is OData interface, data on file system follows WebDAV interface.</p>
+<ul>
+<li><p>OData (Open Data Protocol)<br>A protocol that standardized data access method in Web application.<br>It returns JSON or XML data as a response in the standard WebAPI HTTP request.<br>OData official : <a href="http://www.odata.org/" class="uri">http://www.odata.org/</a></p></li>
+<li><p>WebDAV (Web-based Distributed Authoring and Versioning)<br>Protocol aimed at managing files on a Web server that extends HTTP 1.1.<br>It can be used without problem even under Proxy environment because of pure HTTP extension.<br>In addition to the HTTP standard, several methods such as PROPFIND have been added.<br>WebDAV official : <a href="http://webdav.org/" class="uri">http://webdav.org/</a></p></li>
+</ul>
+<h3>Management of each object data</h3>
+<p>Indicates management of each object of Personium.</p>
+<table style="width:17%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Object</th>
+<th style="text-align: left;">Interface type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Unit control object</td>
+<td style="text-align: left;">Cell</td>
+<td style="text-align: left;">OData</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cell control object</td>
+<td style="text-align: left;">Role<br>Account<br>Box<br>ExtCell<br>Relation<br>ExtRole<br>SentMessage<br>ReceivedMessage</td>
+<td style="text-align: left;">OData</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Box resource schema</td>
+<td style="text-align: left;">ODataServiceCollection<br>WebDAVServiceCollection<br>EngineServiceCollection</td>
+<td style="text-align: left;">WebDAV</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Box resource<br>File</td>
+<td style="text-align: left;">File<br>ServiceCollectionSource</td>
+<td style="text-align: left;">WebDAV</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Box resource<br>OData</td>
+<td style="text-align: left;">EntityType<br>AssociationEnd<br>ComplexType<br>Property<br>ComplexTypeProperty<br>Entity</td>
+<td style="text-align: left;">OData</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Access control setting</td>
+<td style="text-align: left;">ACL (Cell Level)<br>ACL (Box Level)</td>
+<td style="text-align: left;">WebDAV</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h4>Reference information</h4>
+<p>For example, if you want to acquire the data in the cell for backup purposes etc., it can be done by executing the Personium API.</p>
+<blockquote>
+<p>Account password can not be obtained.<br>We plan to implement an API that can collect data all at once.</p>
+</blockquote>
+<h5>How to get OData's data</h5>
+<p>Execute list acquisition API of each object and obtain data.<br>In the case of a large amount of data, it is good to utilize the query at the time of API execution and acquire it in multiple times.</p>
+<ul>
+<li>$inlinecount : Acquire the number of search results</li>
+<li>$top : Restrict the number of search results</li>
+<li>$skip : Acquire the specified number of skipped search results</li>
+<li>$orderby : Sort search results</li>
+</ul>
+<h5>How to get WebDAV's data</h5>
+<p><strong>ACL (Cell Level)</strong><br>Execute property acquisition API of Cell.<br></p>
+<p><strong>Box resource</strong><br>Execute the collection setting acquisition API with depth = 1.<br>The following information can be acquired with the collection setting acquisition API.</p>
+<ul>
+<li>Resource Path</li>
+<li>Resource Type (ODataServiceCollection, WebDAVServiceCollection, EngineServiceCollection, File)</li>
+<li>ACL</li>
+</ul>
+<p>When the Resource Type is WebDAVServiceCollection or EngineServiceCollection, the collection setting acquisition API is recursively executed for that subordinate to acquire information.<br>If the Resource Type is a file, execute the file acquisition API and acquire the file.</p>
+<h5>How to register acquired data</h5>
+<p>Execute creation / registration API of corresponding object.<br>If there are multiple data, execute it recursively.</p>
+</body>
+</html>

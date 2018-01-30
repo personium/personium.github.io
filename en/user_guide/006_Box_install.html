@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>006_Box_install</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/en/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1>Box installation</h1>
+<h3>Overview</h3>
+<ul>
+<li><p>A Box which is a data storage unit for each application is always created in a cell using an application,<br />
+All the data structures for making applications such as webDAV and OData's Scheme behave should be the same.</p></li>
+<li><p>In order to create Box and resources under it, it can be realized by running individual APIs,<br />
+Since it is inefficient to execute all the existing APIs in order to create resources of the same structure in a plurality of cells,<br />
+To create a new Box which is a data storage unit for each application, use the &quot;box installation&quot; function.</p></li>
+<li><p><img src="image/box_install_en.png" title="Box installation" alt="Box installation" /></p></li>
+</ul>
+<h3>Bar file</h3>
+<ul>
+<li><p>The bar file means &quot;box archive file&quot; and refers to an archive file that organizes the contents of Box.</p></li>
+<li><p>The file format is zip format, the hierarchical structure in the folder represents the hierarchical structure of the webDAV collection,<br />
+By storing the file for each hierarchy, it holds the file to be stored in webDAV.<br />
+For the Scheme information of OData, define the structure with &quot;edmx.xml&quot;.</p></li>
+<li><p>See <a href="../apiref/1.5.2/301_Bar_File.html">Bar file</a> for details.</p></li>
+</ul>
+<h3>Runtime flow</h3>
+<ul>
+<li>Box Running the installation API
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li>Create Box
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li>Confirm that there is already a Box with the same schema or name in the target cell → If it exists 409 Error
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li>Create directory / file under Box
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li>Create OData collection and underlying OData resource
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li>Store user data
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li>Create Role/ExtRole
+<ul>
+<li>    ↓</li>
+</ul></li>
+<li><p>Access right (ACL) setting for each created directory</p></li>
+<li><p><u>Abnormal termination</u><br />
+If an error occurs due to the check of the Bar file before creation of the Box and the process ends abnormally, the Box installation will be terminated as it is.<br />
+For the reasons and causes of abnormal termination, execute the &quot;Box metadata acquisition API&quot; and &quot;Log file acquisition API&quot; described later to check the contents.</p></li>
+</ul>
+<h3>Confirm progress</h3>
+<ul>
+<li><p>Unlike other APIs, installing sometimes creates various resources during processing during installation,<br />
+Processing takes time from receipt of processing to completion of registration.</p></li>
+<li><p>To check the progress of the process, use <a href="../apiref/1.5.2/303_Progress_of_Bar_File_Installation.html">Box metadata acquisition</a>.</p></li>
+<li><h5>Condition check by acquiring Box metadata</h5>
+<ul>
+<li><p>In order to execute the Box metadata acquisition API, you need &quot;box&quot; authority of box level ACLPrivilege.</p></li>
+<li><p>Therefore, in the ACL setting in the bar file, it is necessary to make settings to give &quot;box&quot; of box level ACLPrivilege to the role of the account using the box installation status confirmation API.</p></li>
+</ul></li>
+<li><h5>Response of Box metadata acquisition API</h5>
+<ul>
+<li>There are three ways to execute the Box installation that can be acquired with the Box metadata acquisition API.</li>
+</ul></li>
+<li>1.Completion of Box installation (Including creation completed with normal Box registration API)</li>
+</ul>
+<pre><code>&quot;status&quot;: &quot;ready&quot;</code></pre>
+<ul>
+<li>2.Completion of Box installation (Including creation completed with normal Box registration API)</li>
+</ul>
+<pre><code>&quot;status&quot;: &quot;installation in progress&quot;</code></pre>
+<ul>
+<li>3.Box installation abnormal termination</li>
+</ul>
+<pre><code>&quot;status&quot;: &quot;installation failed&quot;</code></pre>
+<ul>
+<li>3.For Box installation abnormal termination, it is overwritten to 1 72 hours after abnormal termination.<br />
+For details of the reason for failure, please check with the log acquisition API described later.</li>
+</ul>
+<h3>Confirm processing result</h3>
+<ul>
+<li>Box Installation processing contents are output as a log to the EventBus of Cell to which box installation target Box belongs.<br />
+To refer to that log, use <a href="../apiref/1.5.2/285_Retrieve_Log_File.html">Log file acquisition API</a> to refer to it. Also, in order to use the above API, &quot;log - read&quot; authority is required.</li>
+</ul>
+</body>
+</html>

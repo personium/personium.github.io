@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Unit-User</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="/en/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1>Unit user</h1>
+<h2>What is a unit user?</h2>
+<p>A unit user is an entity that operates a unit level API such as CRUD of a cell. <br> The unit user performs API access using a unit user token (Unit User Token (UUT)) or a unit master token (Unit Master Token (UMT))</p>
+<h3>Unit User Token (Unit User Token (UUT))</h3>
+<p>UUT plays a big role when providing Personium as a service, but Personium can operate with only UMT without using UUT. <br> The biggest motivation for service providers to use UUT is to manage billing destinations of cells at once. <br> That is, by having the service provider issue a different UUT to each customer himself and using this to access the cell CRUD API, the following is realized.</p>
+<pre><code> When creating a cell, a cell is created with information that it is owned.
+ When searching for a cell, it is not searched except for the cell it created.
+ When deleting a cell, deletion other than the cell created by itself fails.</code></pre>
+<p>On the other hand, if an individual or organization has its own dedicated unit, all the cells created in that unit will be managed by himself, so the above function is unnecessary. <br> In that case, you can use UMT instead of UUT for operation.</p>
+<p>Unit users have identifiers, which are called unit user names. <br> The unit does not have a unit user name management mechanism, and it assumes the existence of an external management mechanism.</p>
+<p><img src="./images/unituser.png" alt="unituser" /></p>
+<h2>Owner attribute of unit level control entity (cell)</h2>
+<p>A cell has a hidden attribute called an owner. <br> The hidden attribute can not confirm the content from the OData format API, but it is an attribute that exists in all cells. <br> Another example of the hidden attribute is the account of the cell control entity. <br> For account, an attribute that stores a password hash named hashedCredential is defined.</p>
+<p>The owner can not change when setting it at cell creation.</p>
+<h2>Type of unit user</h2>
+<h3>Unit Admin (Unit Admin)</h3>
+<p>Users who can operate all units</p>
+<h3>Unit User (Unit User)</h3>
+<p>A user who can perform all operations on the cell whose owner matches. <br> When searching the cell, only the cell whose owner matches can be searched</p>
+<h2>Type of Unit Token</h2>
+<h3>Unit Master Token (Unit Master Token (UMT))</h3>
+<p>Unique token in the unit, accessing with this token will be treated as Unit Admin. <br> Set arbitrary character string to &quot;io.personium.core.masterToken =&quot; in personium-unit-config.properties. <br> By specifying an arbitrary character string in the X-Personium-Unit-User header, it is also possible to move as a unit user whose unit user name is the character string.</p>
+<p>An example</p>
+<p>Create a cell with the unit user name of {UnitURL}/{UnitUserName} as its owner</p>
+<pre class="sourceCode sh" id="cb2"><code class="sourceCode bash"><div class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">curl</span> <span class="st">&quot;{UnitURL}/__ ctl/Cell&quot;</span> - X POST \</div>
+<div class="sourceLine" id="cb2-2" data-line-number="2">-H <span class="st">&quot;Authorization: Bearer token&quot;</span> \</div>
+<div class="sourceLine" id="cb2-3" data-line-number="3">-H <span class="st">&quot;X-Personium-Unit-User: {UnitURL}/{UnitUserName}&quot;</span> \</div>
+<div class="sourceLine" id="cb2-4" data-line-number="4">-d <span class="st">&#39;{&quot;Name&quot;: &quot;cell1&quot;}&#39;</span></div></code></pre>
+<p>Get cell list with unit user name &quot;{UnitURL}/{UnitUserName}&quot; as its owner</p>
+<pre class="sourceCode sh" id="cb3"><code class="sourceCode bash"><div class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">curl</span> <span class="st">&quot;{UnitURL}/__ ctl/Cell&quot;</span> - X GET \</div>
+<div class="sourceLine" id="cb3-2" data-line-number="2">-H <span class="st">&quot;Authorization: Bearer token&quot;</span> \</div>
+<div class="sourceLine" id="cb3-3" data-line-number="3">-H <span class="st">&quot;X-Personium-Unit-User: {UnitURL}/{UnitUserName}&quot;</span></div></code></pre>
+<h3>Unit User Token (Unit User Token (UUT))</h3>
+<p>UUT is a Bearer token of OAuth 2 based on the SAML Assertion with the following information.</p>
+<table style="width:11%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Element/attribute name</th>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IssueInstant</td>
+<td style="text-align: left;">Authentication time</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">issuer</td>
+<td style="text-align: left;">URL admitted by the unit. <br> describe arbitrary URLs allowed in &quot;io.personium.core.unitUser.issuers =&quot; in personium-unit-config.properties</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Subject \ NameID</td>
+<td style="text-align: left;">unit user name. Any string.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">audience</td>
+<td style="text-align: left;">Unit root URL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">attribute</td>
+<td style="text-align: left;">Unit User Role</td>
+</tr>
+</tbody>
+</table>
+<p>The access agent issuing this token is called a unit user, and the authentication process that issues such SAML assertion is called unit user authentication.</p>
+<p>Also, the transcell token issued by giving the root URL of the unit to p_target in the Account authentication in the cell satisfies the requirements of the UUT, By including the URL of a specific cell in the setting of the unit, the cell can be a UUT issuer.</p>
+<p>An example When issuing a UUT in a cell Set <code>io.personium.core.unitUser.issuers={UnitURL}/{Cell}/</code> in personium-unit-config.properties</p>
+<pre class="sourceCode sh" id="cb4"><code class="sourceCode bash"><div class="sourceLine" id="cb4-1" data-line-number="1"><span class="ex">curl</span> <span class="st">&quot;{UnitURL}/{Cell}/__ token&quot;</span> -X GET \</div>
+<div class="sourceLine" id="cb4-2" data-line-number="2">-d <span class="st">&#39;grant_type = password &amp; username = user &amp; password = pass &amp; p_target = {UnitURL} /&#39;</span></div></code></pre>
+<p>io.personium.core.unitUser.issuers can set multiple URLs</p>
+<h3>Unit User Role</h3>
+<p>personium - core recognizes the following as the role of the unit user. <br> Even if other roles are granted within Token, it is not recognized. (ignore)</p>
+<p>{UnitURL}/{Cell}/\ _ \ _ role/\ _ \ _/unitAdmin: unit manager</p>
+<p>When this role is granted, it is the unit administrator role that all processing on that unit is permitted as well as the master token. <br> In V 0, the master token was abused for various unit management tasks, but such operation is undesirable from the viewpoint of security. <br> For various unit management tasks, API calls should be made using the token of this role.</p>
+</body>
+</html>

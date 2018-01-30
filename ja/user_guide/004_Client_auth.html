@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>004_Client_auth</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/ja/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1>クライアント登録&amp;認証</h1>
+<p>クライアントを登録するには、以下の手順が必要です。</p>
+<h3>1. クライアントの登録と認証に使用するセルを作成する（アプリケーションセル）</h3>
+<ul>
+<li>セルを作成します。</li>
+<li>セル内のクライアント認証に使用するアカウントを作成します。</li>
+<li>クライアントの認証レベルが「confidential」の場合、名前が「confidentialClient」で、ボックスが「__」であるロールを作成し、作成したアカウントにリンクします。</li>
+</ul>
+<h3>2. クライアント情報とクライアント認証要件レベルをリソースに設定します。</h3>
+<ul>
+<li>アプリケーションセルのURLをスキーマとして、クライアントからアクセスするボックスに設定します。</li>
+<li>クライアントの認証要件レベルをリソースに設定します。詳細については、クライアント認証要件レベルを参照してください。</li>
+<li>このセルは、アプリケーションセルと同じセルでも、そうでなくてもかまいません。</li>
+</ul>
+<h3>3. HTMLファイルを展開する（暗黙の付与のみ）</h3>
+<ul>
+<li>アプリケーションセルにアクセストークンを返すJavascriptが組み込まれたHTMLファイルをデプロイします。
+<ul>
+<li>HTMLファイルのURLは、フローで使用される「リダイレクトURI」です。</li>
+</ul></li>
+</ul>
+<h3>4. 必要に応じてクライアント認証情報を取得します。</h3>
+<ul>
+<li>アプリケーションセルのトークンエンドポイントに、認証要求を作成したアカウントで次のように送信します。
+<ul>
+<li>クライアントの秘密鍵所有者で使用されている&quot;client secret&quot;は、応答本体のトークンです。</li>
+<li>&quot;client id&quot;はアプリケーションセルのURLです。</li>
+</ul></li>
+</ul>
+</body>
+</html>

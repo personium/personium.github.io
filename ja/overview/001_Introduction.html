@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>001_Introduction</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/ja/github.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1>Personiumとは何ですか？</h1>
+<p>Personium(ペルソニアム)はオープンソースのPDS (Personal Data Store) サーバソフトウェアです。</p>
+<p><img src="image/Personium.png" title="Personiumとは" alt="Personiumとは" /></p>
+<h2>Personiumの特長</h2>
+<h3>誰でもPDSサーバを立てられる</h3>
+<ul>
+<li>オープンソースソフトウェアであるため、事業者/自治体/政府/個人等誰でもPDSプロバイダになれます。</li>
+</ul>
+<h3>全機能がREST API</h3>
+<ul>
+<li>HTTPはどんなプラットフォーム（OS, 開発言語）でも扱えるため、クライアントのプラットフォームを選びません。</li>
+<li>PDSとしてのGUIはサンプル配布しますが誰でも改造可能です。</li>
+</ul>
+<h3>データ開示・共有設定は相手PDSのURLを指定</h3>
+<ul>
+<li>PersoniumのPDSには皆URLが与えられます。</li>
+<li>他者(例： 妻、かかりつけ医、勤務先 etc.)へのデータ開示・共有は相手PDSのURLを指定して行います。</li>
+<li>他者PDSアクセスには電子署名技術を利用しており、相手は別サーバであっても構いません。</li>
+</ul>
+<p><img src="image/DisclosureData.png" title="データ開示・共有設定" alt="データ開示・共有設定" /></p>
+<h3>Web of PDSを構成可能</h3>
+<ul>
+<li>データ開示・被開示という関係で結ばれたPDS群は、特定の事業者が胴元（⇒ 一人勝ち）になるのではない中心を持たないDecentralizedなネットワークを構成します。 （分散ソーシャルグラフ）</li>
+<li>バラバラに建てられたWebサーバにホストされたWebサイトがリンクしあってwwwができたように、バラバラに立てられたPDSがリンクし合った巨大なWeb of PDSを形成可能です。 オープンなエコシステム形成に必要となるセキュリティも実装しています。</li>
+</ul>
+<h3>受動的データ主体（⇒PDSオーナ）を扱うことができる</h3>
+<ul>
+<li>受動的データ主体：幼児・高齢者などは、親族等に全データの全権限を許可することでPDSの運用移譲が可能となります。 <img src="image/PassiveDataSubject.png" title="受動的データ主体" alt="受動的データ主体" /></li>
+</ul>
+<h3>データ主体を人に限らず、モノ・組織などに拡張可能</h3>
+<ul>
+<li>受動的データ主体を扱う要領でデータ主体をモノや組織などにも拡張可能です。（例、家族/犬のポチのデータストア）</li>
+<li>IoM, IoT, IoE を統合的に扱うモデルを標榜します。（Cyber-Physical）</li>
+</ul>
+<p><img src="image/ExpansionDataSubject.png" title="データ主体の拡張" alt="データ主体の拡張" /></p>
+</body>
+</html>
