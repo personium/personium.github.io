@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Blog · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="An interconnectable open source PDS (Personal Data Store) server envisioning world wide web of protected data APIs."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Blog · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="An interconnectable open source PDS (Personal Data Store) server envisioning world wide web of protected data APIs."/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="blog"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://personium.io/docs/en/overview/001_Introduction.html" target="_self">Introduction</a></li><li class=""><a href="https://personium.io/docs/en" target="_self">User Guide</a></li><li class=""><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html" target="_self">API Reference</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/blog/" target="_self">News</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent News</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent News</h3><ul class=""><li class="navListItem"><a class="navItem" href="/blog/2019/11/15/OSC2019-Tokyo-Fall">Presenting at OSC2019 Tokyo/Fall</a></li><li class="navListItem"><a class="navItem" href="/blog/2019/11/15/MyData-Korea">Presenting at MyData Korea Hub Founding Event</a></li><li class="navListItem"><a class="navItem" href="/blog/2019/11/08/Release-v1.7.20">1.7.20 released</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="posts"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2019/11/15/OSC2019-Tokyo-Fall">Presenting at OSC2019 Tokyo/Fall</a></h1><p class="post-meta">November 15, 2019</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Yasufumi Tochiori</a></p></div></header><article class="post-content"><div><span><p>Personium project will be presenting at Open Source Conference 2019 Tokyo/Fall, held on Nov. 23-24, 2019.<br>
+(Japanese) <a href="https://www.ospn.jp/osc2019-fall/">https://www.ospn.jp/osc2019-fall/</a></p>
+<p>Updated on Nov. 28, 2019. We published the presentation slides. (Only Japanese)</p>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/20lSt7viBD5QMI" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/yasufumitochiori/pdspersonium-196961652" title="パーソナルデータのあり方を変える！オープンソース分散型PDS「Personium」を使ってみよう！" target="_blank">パーソナルデータのあり方を変える！オープンソース分散型PDS「Personium」を使ってみよう！</a> </strong> from <strong><a href="https://www.slideshare.net/yasufumitochiori" target="_blank">Yasufumi Tochiori</a></strong> </div></span></div></article></div><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2019/11/15/MyData-Korea">Presenting at MyData Korea Hub Founding Event</a></h1><p class="post-meta">November 15, 2019</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Yasufumi Tochiori</a></p></div></header><article class="post-content"><div><span><p>Personium project will be presenting at MyData Korea Hub Founding Event, held in Seoul on Nov. 21, 2019.<br>
+<a href="http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=">http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=</a></p>
+<p>Updated on Nov. 28, 2019. We published the presentation slides.</p>
+<iframe src="https://drive.google.com/file/d/1rP2QgC3pE3FsdI8m-A3pFPsClq8ONa6z/preview" width="640" height="480"></iframe>
+</span></div></article></div><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2019/11/08/Release-v1.7.20">1.7.20 released</a></h1><p class="post-meta">November 8, 2019</p><div class="authorBlock"><p class="post-authorName"><a target="_blank" rel="noreferrer noopener">Yasufumi Tochiori</a></p></div></header><article class="post-content"><div><span><p>Personium core 1.7.20 was released.</p>
+<p>Release Note<br>
+<a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p>
+<p>Downlod Binary<br>
+<a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2019 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

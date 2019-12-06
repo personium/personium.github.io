@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title> Blog</title>
+        <link>https://personium.github.io/blog</link>
+        <description>The best place to stay up-to-date with the latest  news and events.</description>
+        <lastBuildDate>Fri, 15 Nov 2019 06:00:00 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>Feed for Node.js</generator>
+        <image>
+            <title> Blog</title>
+            <url>https://personium.github.io/img/logo-quantify-light.png</url>
+            <link>https://personium.github.io/blog</link>
+        </image>
+        <copyright>Copyright © 2019 Personium Project</copyright>
+        <item>
+            <title><![CDATA[Presenting at OSC2019 Tokyo/Fall]]></title>
+            <link>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</link>
+            <guid>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</guid>
+            <pubDate>Fri, 15 Nov 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Personium project will be presenting at Open Source Conference 2019 Tokyo/Fall, held on Nov. 23-24, 2019.<br> (Japanese) <a href="https://www.ospn.jp/osc2019-fall/">https://www.ospn.jp/osc2019-fall/</a></p> <p>Updated on Nov. 28, 2019. We published the presentation slides. (Only Japanese)</p> <iframe src="//www.slideshare.net/slideshow/embed_code/key/20lSt7viBD5QMI" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/yasufumitochiori/pdspersonium-196961652" title="パーソナルデータのあり方を変える！オープンソース分散型PDS「Personium」を使ってみよう！" target="_blank">パーソナルデータのあり方を変え...</a></strong></div>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Presenting at MyData Korea Hub Founding Event]]></title>
+            <link>https://personium.github.io/blog/2019/11/15/MyData-Korea.html</link>
+            <guid>https://personium.github.io/blog/2019/11/15/MyData-Korea.html</guid>
+            <pubDate>Fri, 15 Nov 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Personium project will be presenting at MyData Korea Hub Founding Event, held in Seoul on Nov. 21, 2019.<br> <a href="http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=">http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=</a></p> <p>Updated on Nov. 28, 2019. We published the presentat...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[1.7.20 released]]></title>
+            <link>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</link>
+            <guid>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</guid>
+            <pubDate>Fri, 08 Nov 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Downlod Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></description>
+        </item>
+    </channel>
+</rss>
