@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2019-11-15T06:00:00Z</updated>
+    <updated>2019-12-06T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2019 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Personium Year-end Meetup 2019]]></title>
+        <id>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</id>
+        <link href="https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html">
+        </link>
+        <updated>2019-12-06T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Personium Year-end Meetup 2019 will be held in PLY Tokyo on Dec. 18, 2019.</p> <p>Connpass (Japanese)<br> <a href="https://personium.connpass.com/event/158508/">https://personium.connpass.com/event/158508/</a></p> <p>Join us for our last event of this year! 🎉</p> ]]></summary>
+        <author>
+            <name>Yasufumi Tochiori</name>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Presenting at OSC2019 Tokyo/Fall]]></title>
         <id>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</id>

@@ -4,7 +4,7 @@
         <title> Blog</title>
         <link>https://personium.github.io/blog</link>
         <description>The best place to stay up-to-date with the latest  news and events.</description>
-        <lastBuildDate>Fri, 15 Nov 2019 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Dec 2019 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -13,6 +13,13 @@
             <link>https://personium.github.io/blog</link>
         </image>
         <copyright>Copyright © 2019 Personium Project</copyright>
+        <item>
+            <title><![CDATA[Personium Year-end Meetup 2019]]></title>
+            <link>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</link>
+            <guid>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</guid>
+            <pubDate>Fri, 06 Dec 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Personium Year-end Meetup 2019 will be held in PLY Tokyo on Dec. 18, 2019.</p> <p>Connpass (Japanese)<br> <a href="https://personium.connpass.com/event/158508/">https://personium.connpass.com/event/158508/</a></p> <p>Join us for our last event of this year! 🎉</p> ]]></description>
+        </item>
         <item>
             <title><![CDATA[Presenting at OSC2019 Tokyo/Fall]]></title>
             <link>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</link>
