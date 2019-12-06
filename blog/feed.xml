@@ -6,7 +6,7 @@
         <description>The best place to stay up-to-date with the latest  news and events.</description>
         <lastBuildDate>Fri, 06 Dec 2019 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-        <generator>Feed for Node.js</generator>
+        <generator>https://github.com/jpmonette/feed</generator>
         <image>
             <title> Blog</title>
             <url>https://personium.github.io/img/logo-quantify-light.png</url>

@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2019-12-06T06:00:00Z</updated>
-    <generator>Feed for Node.js</generator>
+    <updated>2019-12-06T06:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
@@ -11,45 +11,49 @@
     <entry>
         <title type="html"><![CDATA[Personium Year-end Meetup 2019]]></title>
         <id>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</id>
-        <link href="https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html">
-        </link>
-        <updated>2019-12-06T06:00:00Z</updated>
+        <link href="https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html"/>
+        <updated>2019-12-06T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Personium Year-end Meetup 2019 will be held in PLY Tokyo on Dec. 18, 2019.</p> <p>Connpass (Japanese)<br> <a href="https://personium.connpass.com/event/158508/">https://personium.connpass.com/event/158508/</a></p> <p>Join us for our last event of this year! 🎉</p> ]]></summary>
         <author>
             <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
         </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[Presenting at OSC2019 Tokyo/Fall]]></title>
         <id>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</id>
-        <link href="https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html">
-        </link>
-        <updated>2019-11-15T06:00:00Z</updated>
+        <link href="https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html"/>
+        <updated>2019-11-15T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Personium project will be presenting at Open Source Conference 2019 Tokyo/Fall, held on Nov. 23-24, 2019.<br> (Japanese) <a href="https://www.ospn.jp/osc2019-fall/">https://www.ospn.jp/osc2019-fall/</a></p> <p>Updated on Nov. 28, 2019. We published the presentation slides. (Only Japanese)</p> <iframe src="//www.slideshare.net/slideshow/embed_code/key/20lSt7viBD5QMI" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/yasufumitochiori/pdspersonium-196961652" title="パーソナルデータのあり方を変える！オープンソース分散型PDS「Personium」を使ってみよう！" target="_blank">パーソナルデータのあり方を変え...</a></strong></div>]]></summary>
         <author>
             <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
         </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[Presenting at MyData Korea Hub Founding Event]]></title>
         <id>https://personium.github.io/blog/2019/11/15/MyData-Korea.html</id>
-        <link href="https://personium.github.io/blog/2019/11/15/MyData-Korea.html">
-        </link>
-        <updated>2019-11-15T06:00:00Z</updated>
+        <link href="https://personium.github.io/blog/2019/11/15/MyData-Korea.html"/>
+        <updated>2019-11-15T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Personium project will be presenting at MyData Korea Hub Founding Event, held in Seoul on Nov. 21, 2019.<br> <a href="http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=">http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=</a></p> <p>Updated on Nov. 28, 2019. We published the presentat...</p>]]></summary>
         <author>
             <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
         </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[1.7.20 released]]></title>
         <id>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</id>
-        <link href="https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html">
-        </link>
-        <updated>2019-11-08T06:00:00Z</updated>
+        <link href="https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html"/>
+        <updated>2019-11-08T06:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Downlod Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></summary>
         <author>
             <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
         </author>
     </entry>
 </feed>
