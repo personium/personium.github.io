@@ -2,12 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2019-12-06T06:00:00.000Z</updated>
+    <updated>2019-12-09T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2019 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Pilot project (Tally Zoo) with OwnYourData]]></title>
+        <id>https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html</id>
+        <link href="https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html"/>
+        <updated>2019-12-09T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium and OwnYourData are proud to announce their partnership in this initiative and look forward to collaborate actively. We expect to showcase results in the upcoming MyData 2020 events.</p>
+<p>As of December 2019, Personium Team had started implementing the endpoint (Personium app) for Tally Zoo.</p>
+<p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/ownyourdata.png" width="150px" >  <br>
+Tally Zoo Documentation (English)<br>
+<a href="http://bit.ly/TallyZoo_with_CEPS">http://bit.ly/TallyZoo_with_CEPS</a></p>
+]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri/>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Personium Year-end Meetup 2019]]></title>
         <id>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</id>
@@ -16,6 +33,18 @@
         <summary type="html"><![CDATA[<p>Personium Year-end Meetup 2019 will be held in PLY Tokyo on Dec. 18, 2019.</p> <p>Connpass (Japanese)<br> <a href="https://personium.connpass.com/event/158508/">https://personium.connpass.com/event/158508/</a></p> <p>Join us for our last event of this year! 🎉</p> ]]></summary>
         <author>
             <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MyData Korea installed Personium Unit successfully]]></title>
+        <id>https://personium.github.io/blog/2019/11/27/MyData-Korea.html</id>
+        <link href="https://personium.github.io/blog/2019/11/27/MyData-Korea.html"/>
+        <updated>2019-11-27T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium Unit was successfully installed and configured by MyData Korea on Nov. 27, 2019.<br> Currently in planning stage to provide PDS services to hub members via Personium.</p> <p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/Shimono_2eConsulting.jpg" width="250px"> <img src="https://dixonsiu.demo-jp.personium.io/MyData/images/MyDataKorea.jpg" width="250px"></p> ]]></summary>
+        <author>
+            <name>Dixon Siu</name>
             <email/>
             <uri/>
         </author>
