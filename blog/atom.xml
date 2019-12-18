@@ -2,12 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2019-12-09T06:00:00.000Z</updated>
+    <updated>2019-12-18T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2019 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Article on making of new Documentation published]]></title>
+        <id>https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</id>
+        <link href="https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html"/>
+        <updated>2019-12-18T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>We are preparing renewal of Personium documentation pages using <a href="https://docusaurus.io/">Docusaurus</a>, a static site generator for Open Source documentation websites. With this renewal, they will get more easy-to-read, easy-to-navigate, easy-to-maintain and above all, beautifu...</p>]]></summary>
+        <author>
+            <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Personium Docker released]]></title>
+        <id>https://personium.github.io/blog/2019/12/17/Release-personium-docker copy.html</id>
+        <link href="https://personium.github.io/blog/2019/12/17/Release-personium-docker copy.html"/>
+        <updated>2019-12-17T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium Docker was released.</p> <p>Repository<br> <a href="https://github.com/personium/personium-docker">https://github.com/personium/personium-docker</a></p> ]]></summary>
+        <author>
+            <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Pilot project (Tally Zoo) with OwnYourData]]></title>
         <id>https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html</id>
@@ -78,7 +102,7 @@ Tally Zoo Documentation (English)<br>
         <id>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</id>
         <link href="https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html"/>
         <updated>2019-11-08T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Downlod Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></summary>
+        <summary type="html"><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Download Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></summary>
         <author>
             <name>Yasufumi Tochiori</name>
             <email/>

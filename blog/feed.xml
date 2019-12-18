@@ -4,7 +4,7 @@
         <title> Blog</title>
         <link>https://personium.github.io/blog</link>
         <description>The best place to stay up-to-date with the latest  news and events.</description>
-        <lastBuildDate>Mon, 09 Dec 2019 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 18 Dec 2019 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,20 @@
             <link>https://personium.github.io/blog</link>
         </image>
         <copyright>Copyright © 2019 Personium Project</copyright>
+        <item>
+            <title><![CDATA[Article on making of new Documentation published]]></title>
+            <link>https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</link>
+            <guid>https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</guid>
+            <pubDate>Wed, 18 Dec 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>We are preparing renewal of Personium documentation pages using <a href="https://docusaurus.io/">Docusaurus</a>, a static site generator for Open Source documentation websites. With this renewal, they will get more easy-to-read, easy-to-navigate, easy-to-maintain and above all, beautifu...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Personium Docker released]]></title>
+            <link>https://personium.github.io/blog/2019/12/17/Release-personium-docker copy.html</link>
+            <guid>https://personium.github.io/blog/2019/12/17/Release-personium-docker copy.html</guid>
+            <pubDate>Tue, 17 Dec 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Personium Docker was released.</p> <p>Repository<br> <a href="https://github.com/personium/personium-docker">https://github.com/personium/personium-docker</a></p> ]]></description>
+        </item>
         <item>
             <title><![CDATA[Pilot project (Tally Zoo) with OwnYourData]]></title>
             <link>https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html</link>
@@ -58,7 +72,7 @@ Tally Zoo Documentation (English)<br>
             <link>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</link>
             <guid>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</guid>
             <pubDate>Fri, 08 Nov 2019 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Downlod Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></description>
+            <description><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Download Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></description>
         </item>
     </channel>
 </rss>
