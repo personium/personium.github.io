@@ -4,7 +4,7 @@
         <title> Blog</title>
         <link>https://personium.github.io/blog</link>
         <description>The best place to stay up-to-date with the latest  news and events.</description>
-        <lastBuildDate>Wed, 18 Dec 2019 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 19 Dec 2019 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,20 @@
             <link>https://personium.github.io/blog</link>
         </image>
         <copyright>Copyright © 2019 Personium Project</copyright>
+        <item>
+            <title><![CDATA[Personium Year-end Meetup 2019 held in Tokyo]]></title>
+            <link>https://personium.github.io/blog/2019/12/19/Year-end-Meetup.html</link>
+            <guid>https://personium.github.io/blog/2019/12/19/Year-end-Meetup.html</guid>
+            <pubDate>Thu, 19 Dec 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Personium Year-end Meetup 2019 was held in PLY Tokyo on Dec. 18, 2019.</p>
+<p><img
+  src="/images/news/year-end-meetup-2019.jpg"
+  width="70%"
+  title="Personium Year-end Meetup 2019"
+/></p>
+<p>The presentations are available here. (Japanese)</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Article on making of new Documentation published]]></title>
             <link>https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</link>
@@ -38,13 +52,6 @@
 Tally Zoo Documentation (English)<br>
 <a href="http://bit.ly/TallyZoo_with_CEPS">http://bit.ly/TallyZoo_with_CEPS</a></p>
 ]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Personium Year-end Meetup 2019]]></title>
-            <link>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</link>
-            <guid>https://personium.github.io/blog/2019/12/06/Year-end-Meetup.html</guid>
-            <pubDate>Fri, 06 Dec 2019 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>Personium Year-end Meetup 2019 will be held in PLY Tokyo on Dec. 18, 2019.</p> <p>Connpass (Japanese)<br> <a href="https://personium.connpass.com/event/158508/">https://personium.connpass.com/event/158508/</a></p> <p>Join us for our last event of this year! 🎉</p> ]]></description>
         </item>
         <item>
             <title><![CDATA[MyData Korea installed Personium Unit successfully]]></title>
