@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2019-12-19T06:00:00.000Z</updated>
+    <updated>2019-12-23T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2019 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Integration of Datafund Consent Receipt Suite into MyData Korea's PDS]]></title>
+        <id>https://personium.github.io/blog/2019/12/23/Datafund-MyData-Korea.html</id>
+        <link href="https://personium.github.io/blog/2019/12/23/Datafund-MyData-Korea.html"/>
+        <updated>2019-12-23T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>A workgroup for integrating <a href="https://github.datafund.io/">Datafund Consent Receipt Suite</a> (Datafund CR Suite) into MyData Korea's PDS has establised. And the first meeting was held on December 23rd, 2019. Implementation will starts in early January 2020. <a href="https://dixonsiu.demo-jp.personium.io/MyData/doc/CRS-and-Fairdrive-self-sovereign-storage.pdf">Brief explanation of CR Su...</a></p>]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Personium Year-end Meetup 2019 held in Tokyo]]></title>
         <id>https://personium.github.io/blog/2019/12/19/Year-end-Meetup.html</id>
@@ -56,16 +68,15 @@
         <id>https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html</id>
         <link href="https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html"/>
         <updated>2019-12-09T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Personium and OwnYourData are proud to announce their partnership in this initiative and look forward to collaborate actively. We expect to showcase results in the upcoming MyData 2020 events.</p>
-<p>As of December 2019, Personium Team had started implementing the endpoint (Personium app) for Tally Zoo.</p>
+        <summary type="html"><![CDATA[<p>Personium and <a href="https://www.ownyourdata.eu/">OwnYourData</a> are proud to announce their partnership in this initiative and look forward to collaborate actively. We expect to showcase results in the upcoming MyData 2020 events.</p>
+<p>As of December 2019, Personium Team had started implementing the endpoint (Personium app) for Tally Zoo <a href="http://bit.ly/TallyZoo_with_CEPS">Documentation</a>.</p>
 <p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/ownyourdata.png" width="150px" >  <br>
-Tally Zoo Documentation (English)<br>
-<a href="http://bit.ly/TallyZoo_with_CEPS">http://bit.ly/TallyZoo_with_CEPS</a></p>
+<a href="https://www.ownyourdata.eu/en/personium-collaboration/">Personium Collaboration</a> (English)</p>
 ]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
-            <uri/>
+            <uri>https://twitter.com/dixon_siu</uri>
         </author>
     </entry>
     <entry>
@@ -77,7 +88,7 @@ Tally Zoo Documentation (English)<br>
         <author>
             <name>Dixon Siu</name>
             <email/>
-            <uri/>
+            <uri>https://twitter.com/dixon_siu</uri>
         </author>
     </entry>
     <entry>
