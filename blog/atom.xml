@@ -2,12 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2019-12-23T06:00:00.000Z</updated>
+    <updated>2020-01-30T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2020 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Update #1 - Pilot project (Tally Zoo) with OwnYourData]]></title>
+        <id>https://personium.github.io/blog/2020/01/30/Own-Your-Data-Pilot.html</id>
+        <link href="https://personium.github.io/blog/2020/01/30/Own-Your-Data-Pilot.html"/>
+        <updated>2020-01-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>During the winter vacation, <a href="https://www.ownyourdata.eu/">OwnYourData</a>'s chief engineer had been working hard understanding Personium APIs and finally Tally Zoo <a href="http://bit.ly/TallyZoo_with_CEPS">Documentation</a> can access Personium user's data store (Box). We achieved the followings in current implementation:</p>
+<ol>
+<li>Personium user authentication from TallyZoo</li>
+<li>Retrieve Personium Cell access token to access the data store</li>
+<li>Store and remove JSON files</li>
+</ol>
+<p>Even though our goal (interoperability of personal data store) is still far away, <a href="https://mydata.org">MyData</a> movement continues to drive collaborations among subject matter experts and passionate participants. Perseverance will finally lead us to our goal.</p>
+<p>We will provide the following improvements for the next stage.</p>
+<ol>
+<li>Add a launcher from Personium's HomeApp</li>
+<li>Retrieve Personium Box access token to access the data store</li>
+<li>Create/Delete OData table</li>
+<li>Add/Delete OData table entry</li>
+</ol>
+<p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/ownyourdata.png" width="150px" >  <br>
+Original news here: <a href="https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot/">https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot/</a></p>
+]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Presenting at OSC2020 Tokyo/Spring]]></title>
+        <id>https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html</id>
+        <link href="https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html"/>
+        <updated>2020-01-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium project will be presenting at Open Source Conference 2020 Tokyo/Spring, held on Feb. 21-22, 2020.<br> (Japanese) <a href="https://www.ospn.jp/osc2020-spring/">https://www.ospn.jp/osc2020-spring/</a></p> <p>Previous presentation available here: <a href="https://personium.io/blog/2019/11/15/OSC2019-Tokyo-Fall/">https://personium.io/blog/2019/11/15/OSC2019-Tokyo-Fall/</a></p> ]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Integration of Datafund Consent Receipt Suite into MyData Korea's PDS]]></title>
         <id>https://personium.github.io/blog/2019/12/23/Datafund-MyData-Korea.html</id>
