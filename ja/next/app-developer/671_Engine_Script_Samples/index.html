@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Engine Script Samples · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 基本形"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Engine Script Samples · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 基本形"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en/next/app-developer/671_Engine_Script_Samples">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>アプリ開発者</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ja/next/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">CellGUI開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ドキュメント開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">インストール<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/installation_guide/001_Readme_before_installation">Readme before installation</a></li><li class="navListItem"><a class="navItem" href="/ja/next/installation_guide/002_Build_from_Source">Build from source</a></li><li class="navListItem"><a class="navItem" href="/ja/next/installation_guide/003_Install_To_LocalMachine">Install to local machine</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">概要<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/overview/001_Introduction">What is Personium?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">プラグイン開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバー運用者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ソフトウェア開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/ja/next/software-developer/personium_tests">Personium Tests</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユニット管理者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/Data_Management">Data management</a></li><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/Unit-User">Unit User</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユーザーガイド<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/005_Model_construction">user_guide/005_Model_construction</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Engine Script Samples</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="基本形"></a><a href="#基本形" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>基本形</h2>
+<p>Engine Script は一つのJavaScript関数として記述します。この関数はリクエストを引数として受け取り、戻り値として返すオブジェクトがレスポンスに使われます。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-string">"Hello World !!"</span>]
+  };
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="リクエストの受取"></a><a href="#リクエストの受取" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストの受取</h2>
+<p>リクエストは関数の引数で与えられます。以下では関数の引数を request と記述したときに、リクエストに関する各種情報をどのように取得するかサンプル提示しながら説明します。</p>
+<h3><a class="anchor" aria-hidden="true" id="リクエストメソッド"></a><a href="#リクエストメソッド" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストメソッド</h3>
+<p>request.method　でメソッドが取得できます。</p>
+<h4><a class="anchor" aria-hidden="true" id="getメソッド以外はエラーとする"></a><a href="#getメソッド以外はエラーとする" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GETメソッド以外はエラーとする</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">if</span> (request.method !== <span class="hljs-string">'GET'</span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-built_in">status</span>: <span class="hljs-number">405</span>,
+      body: [<span class="hljs-string">'Method Not Allowed'</span>]
+    };
+  }
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        body: [<span class="hljs-string">"GET method is fine"</span>]
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="リクエストヘッダ"></a><a href="#リクエストヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストヘッダ</h3>
+<p>request.headers　でリクエストヘッダが取得できます。</p>
+<h4><a class="anchor" aria-hidden="true" id="特定リクエストヘッダの値を返す"></a><a href="#特定リクエストヘッダの値を返す" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>特定リクエストヘッダの値を返す</h4>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var headerVal = request.headers[<span class="hljs-symbol">'X</span>-<span class="hljs-keyword">Some</span>-Header'];
+  <span class="hljs-keyword">if</span> (!headerVal) {
+    <span class="hljs-keyword">return</span> {
+      status: <span class="hljs-number">400</span>,
+      <span class="hljs-keyword">body</span>: [<span class="hljs-symbol">'X</span>-<span class="hljs-keyword">Some</span>-Header required']
+    };
+  }
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        <span class="hljs-keyword">body</span>: [<span class="hljs-string">"X-Some-Header value = "</span> + headerVal]
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="リクエストボディ"></a><a href="#リクエストボディ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストボディ</h3>
+<p>request.input　でリクエストボディにストリームとしてアクセス可能です。</p>
+<h4><a class="anchor" aria-hidden="true" id="リクエストボディのパース"></a><a href="#リクエストボディのパース" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストボディのパース</h4>
+<p>リクエストボディが文字列であり、サイズが比較的小さいときは以下のようにすべて文字列として読み取ってしまうのが便利です。</p>
+<pre><code class="hljs">    <span class="hljs-keyword">var</span> reqString = request.<span class="hljs-keyword">input</span>.readAll();
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="x-www-formurlencodedの場合"></a><a href="#x-www-formurlencodedの場合" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x-www-formurlencodedの場合</h5>
+<p>Personium Engineが提供しているユーティリティ関数を用いてパース可能です。</p>
+<pre><code class="hljs">    var params = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">_p</span>.</span></span>util.query<span class="hljs-constructor">Parse(<span class="hljs-params">reqString</span>)</span>;
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="jsonの場合"></a><a href="#jsonの場合" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSONの場合</h5>
+<p>標準のJSONオブジェクトを使ってパースが可能です。</p>
+<pre><code class="hljs">    <span class="hljs-keyword">var</span> req = <span class="hljs-built_in">JSON</span>.parse(reqString);
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="リクエストボディがバイナリである場合"></a><a href="#リクエストボディがバイナリである場合" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストボディがバイナリである場合</h4>
+<p>リクエストボディがバイナリである場合はストリームのまま処理するのがよいでしょう。</p>
+<pre><code class="hljs">    <span class="hljs-keyword">var</span> stream = request.<span class="hljs-keyword">input</span>;
+</code></pre>
+<p>取得したストリームをファイルに書き出したり、応答で使ったりといったことが可能です。</p>
+<h2><a class="anchor" aria-hidden="true" id="レスポンスの返却"></a><a href="#レスポンスの返却" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスの返却</h2>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスのバリエーション"></a><a href="#レスポンスのバリエーション" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスのバリエーション</h3>
+<h4><a class="anchor" aria-hidden="true" id="htmlでのレスポンス"></a><a href="#htmlでのレスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTMLでのレスポンス</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/html"</span>},
+        body: [<span class="hljs-string">"&lt;html&gt;&lt;body&gt;&lt;h2&gt;Hello World !!&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;"</span>]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="jsonでのレスポンス"></a><a href="#jsonでのレスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSONでのレスポンス</h4>
+<pre><code class="hljs">function(request) {
+  var res = { 
+<span class="hljs-symbol">    key:</span> <span class="hljs-string">"helloWorld"</span>,
+<span class="hljs-symbol">    message:</span> <span class="hljs-string">"Hello World !!"</span>
+  }; 
+  <span class="hljs-class">return </span>{
+<span class="hljs-symbol">        status:</span> <span class="hljs-number">200</span>,
+<span class="hljs-symbol">        headers:</span> {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"application/json"</span>},
+<span class="hljs-symbol">        body:</span> [JSON.stringify(res)]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコードを変えてみる"></a><a href="#ステータスコードを変えてみる" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコードを変えてみる</h4>
+<p>403 Forbidden エラー応答</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-keyword">status</span>: <span class="hljs-number">403</span>,
+        body: []
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="bodyのバリエーション"></a><a href="#bodyのバリエーション" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>bodyのバリエーション</h3>
+<p>bodyとして文字列の配列を返すと、それらをつなげた応答となります。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-string">"Hello"</span>, <span class="hljs-string">"World"</span>]
+  };
+}
+</code></pre>
+<p>bodyとして返す配列要素はinputStreamを取ることができます。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> <span class="hljs-keyword">is</span> = .... (ファイル取得など)
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-keyword">is</span>]
+  };
+}
+</code></pre>
+<p>以下の例では入力されたリクエストボディをそのままレスポンスボディとして返します。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+    var stream = request.<span class="hljs-built_in">input</span>;
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        body: [stream]
+    };    
+}
+</code></pre>
+<p>bodyとして返すオブジェクトはforEachメソッドが実装されていることが要件ですので、以下のようなオブジェクトで返すことも可能です。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> {</span>
+  var bodyObj = {
+     <span class="hljs-built_in">min</span>: <span class="hljs-number">0</span>,
+     <span class="hljs-built_in">max</span>: <span class="hljs-number">2000</span>,
+     forEach: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(f)</span> {</span>
+       var <span class="hljs-built_in">i</span> = <span class="hljs-built_in">min</span>;
+       <span class="hljs-keyword">while</span> (<span class="hljs-built_in">i</span> &lt; <span class="hljs-built_in">max</span>) {
+          f(<span class="hljs-built_in">i</span> + <span class="hljs-string">","</span>);
+          <span class="hljs-built_in">i</span>++;
+       }
+     }
+  };
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: bodyObj
+  };
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="personium-のapi呼出処理"></a><a href="#personium-のapi呼出処理" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Personium のAPI呼出処理</h2>
+<p>Engine Script 内では _pというグローバルオブジェクトを介してPersoniumの様々なAPIを呼び出し可能です。</p>
+<h3><a class="anchor" aria-hidden="true" id="ファイルの操作"></a><a href="#ファイルの操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ファイルの操作</h3>
+<h4><a class="anchor" aria-hidden="true" id="取得"></a><a href="#取得" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>取得</h4>
+<p>以下の例ではクライアントから受け取ったアクセストークンをそのまま使ってアクセスし、
+このScriptが走行するBoxの ルートにあるconf.jsonというファイルを文字列として取得。
+ファイル内容をパースして、modeというキーの値を返しています。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request</span>) </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">var</span> jsonStr = thisBox.getString(<span class="hljs-string">'conf.json'</span>);
+
+  <span class="hljs-keyword">var</span> conf = <span class="hljs-built_in">JSON</span>.parse(jsonStr);
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">status</span>: <span class="hljs-number">204</span>,
+        <span class="hljs-attr">headers</span>: { <span class="hljs-string">'Content-Type'</span> : <span class="hljs-string">'text/plain'</span>},
+        <span class="hljs-attr">body</span>: [conf.mode]
+  };
+}
+</code></pre>
+<p>このScriptが走行するBox内の /img/picture.jpgというファイルに対して クライアントから受け取ったアクセストークンをそのまま使ってアクセスし、取得できた内容をレスポンスボディとして返しています。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">var</span> pictureStream = thisBox.col(<span class="hljs-string">'img'</span>).getStream(<span class="hljs-string">'picture.jpg'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"image/jpeg"</span>},
+        body: [pictureStream]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="ファイル作成・上書き更新"></a><a href="#ファイル作成・上書き更新" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ファイル作成・上書き更新</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> content = request.input.readAll();
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">var</span> pictureStream = thisBox.put(<span class="hljs-string">'conf.json'</span>, <span class="hljs-string">'application/json'</span>, content);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: [content]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="ファイル削除"></a><a href="#ファイル削除" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ファイル削除</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">var</span> pictureStream = thisBox.col(<span class="hljs-string">'img'</span>).del(<span class="hljs-string">'picture.jpg'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">204</span>,
+        body: []
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="衝突検知でファイル更新"></a><a href="#衝突検知でファイル更新" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>衝突検知でファイル更新</h4>
+<p>If-Matchヘッダで送信されたetag情報が合致するときのみファイル更新</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> etag = request.headers[<span class="hljs-string">'If-Match'</span>];
+  <span class="hljs-keyword">var</span> content = request.input.readAll();
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> pictureStream = thisBox.put(<span class="hljs-string">'conf.json'</span>, <span class="hljs-string">'application/json'</span>, content, etag);
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">409</span>,
+        body: [<span class="hljs-string">"conflict"</span>]
+    };  
+  }
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">204</span>,
+        body: []
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="コレクションの操作"></a><a href="#コレクションの操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>コレクションの操作</h3>
+<h4><a class="anchor" aria-hidden="true" id="webdavコレクション作成"></a><a href="#webdavコレクション作成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WebDAVコレクション作成</h4>
+<p>コレクションはWebDAVにおいてディレクトリに相当する用語です。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  thisBox.mkCol(<span class="hljs-string">'folder1'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: []
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="odata-service-collection-作成"></a><a href="#odata-service-collection-作成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Service Collection 作成</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  thisBox.mkOData(<span class="hljs-string">'odata'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: []
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="engine-service-collection-作成"></a><a href="#engine-service-collection-作成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Service Collection 作成</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  thisBox.mkService(<span class="hljs-string">'svc'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: []
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="odata-service-collectionの操作"></a><a href="#odata-service-collectionの操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Service Collectionの操作</h3>
+<h4><a class="anchor" aria-hidden="true" id="entityの作成"></a><a href="#entityの作成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entityの作成</h4>
+<p>テーブルにデータを１件追加します</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request</span>) </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">var</span> entitySet = thisBox.odata(<span class="hljs-string">'odata'</span>).entitySet(<span class="hljs-string">'items'</span>)
+  <span class="hljs-keyword">var</span> item = entitySet.create({<span class="hljs-attr">Name</span>: <span class="hljs-string">'Chocolate'</span>, <span class="hljs-attr">Price</span>: <span class="hljs-number">2.7</span>});
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-attr">body</span>: [<span class="hljs-built_in">JSON</span>.stringify(item)]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="entityの取得"></a><a href="#entityの取得" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Entityの取得</h4>
+<p>テーブルのデータを１件取得します</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request</span>) </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Ver. 1.6.5 以下のユーザは上記のかわりに以下のように書いてください。</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">var</span> item = thisBox.odata(<span class="hljs-string">'odata'</span>).entitySet(<span class="hljs-string">'items'</span>).retrieve(<span class="hljs-string">'key1'</span>);
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-attr">body</span>: [<span class="hljs-built_in">JSON</span>.stringify(item)]
+  };
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ja/next/app-developer/README"><span class="arrow-prev">← </span><span>Application Developer&#x27;s Guide</span></a><a class="docs-next button" href="/ja/next/app-developer/app_authn"><span>App authentication</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#基本形">基本形</a></li><li><a href="#リクエストの受取">リクエストの受取</a><ul class="toc-headings"><li><a href="#リクエストメソッド">リクエストメソッド</a></li><li><a href="#リクエストヘッダ">リクエストヘッダ</a></li><li><a href="#リクエストボディ">リクエストボディ</a></li></ul></li><li><a href="#レスポンスの返却">レスポンスの返却</a><ul class="toc-headings"><li><a href="#レスポンスのバリエーション">レスポンスのバリエーション</a></li><li><a href="#bodyのバリエーション">bodyのバリエーション</a></li></ul></li><li><a href="#personium-のapi呼出処理">Personium のAPI呼出処理</a><ul class="toc-headings"><li><a href="#ファイルの操作">ファイルの操作</a></li><li><a href="#コレクションの操作">コレクションの操作</a></li><li><a href="#odata-service-collectionの操作">OData Service Collectionの操作</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

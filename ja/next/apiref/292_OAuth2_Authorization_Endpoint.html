@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>OAuth 2.0 Authorization Endpoint · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 概要"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="OAuth 2.0 Authorization Endpoint · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 概要"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en/next/apiref/292_OAuth2_Authorization_Endpoint">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Cell Level API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">API Reference<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/apiref/000_Rest_API_Reference">Personium API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Unit Level API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/apiref/100_Create_Cell">Create Cell</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Cell Level API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/ja/next/apiref/292_OAuth2_Authorization_Endpoint">OAuth 2.0 Authorization Endpoint</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Box Level API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/apiref/306_Create_Collection">Create Collection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">共通<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/apiref/005_Variable_of_Request_URL">Variable list of request URL</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">OAuth 2.0 Authorization Endpoint</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="概要"></a><a href="#概要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>概要</h2>
+<p>Cell の OAuth 2.0 認可エンドポイント。通常ブラウザで表示するための HTML を返します。しかし Cookie の状態等によってエンドユーザの認可が自動的になされると判断される場合は、認可コードやアクセストークン・IDトークンなどを返すための指定されたURLに直接リダイレクトすることもあります。</p>
+<h3><a class="anchor" aria-hidden="true" id="制限事項"></a><a href="#制限事項" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>制限事項</h3>
+<p>OpenID Connect の ID token の発行は、以下指定のみサポート</p>
+<ul>
+<li>scope=openid</li>
+<li>response_type=id_token または code</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="リクエスト"></a><a href="#リクエスト" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエスト</h2>
+<h3><a class="anchor" aria-hidden="true" id="リクエストurl"></a><a href="#リクエストurl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストURL</h3>
+<pre><code class="hljs"><span class="hljs-template-variable">{CellURL}</span><span class="xml">/__authz
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="メソッド"></a><a href="#メソッド" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>メソッド</h3>
+<p>GET</p>
+<h3><a class="anchor" aria-hidden="true" id="リクエストクエリ"></a><a href="#リクエストクエリ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストクエリ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">書式</th><th style="text-align:left">必須</th><th style="text-align:left">有効値</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">response_type</td><td style="text-align:left">応答タイプ</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">token, code, id_token(scope=openid必須)</td></tr>
+<tr><td style="text-align:left">client_id</td><td style="text-align:left">アプリセル URL</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">スキーマ認証元のアプリセルURL</td></tr>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">クライアントのリダイレクトエンドポイントURL</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">アプリセルのデフォルトBOX配下に登録されたリダイレクトスクリプトのURL<br>application/x-www-form-urlencodedでフォーマットされたクエリパラメータを含める事ができる<br>フラグメントを含める事はできない<br>有効桁長:512byte</td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">ランダムな値<br>有効桁長:512byte</td></tr>
+<tr><td style="text-align:left">scope</td><td style="text-align:left">要求するアクセス範囲</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">Personiumでは&quot;openid&quot;等の値をスペース区切りで指定</td></tr>
+<tr><td style="text-align:left">expires_in</td><td style="text-align:left">アクセストークンの有効期限（秒）</td><td style="text-align:left">Int<br>1～3600</td><td style="text-align:left">×</td><td style="text-align:left">発行されるアクセストークンの有効期限を指定<br>デフォルトは3600（1時間）<br>※response_typeがtoken以外の場合は、本パラメタの指定は無視する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="リクエストヘッダ"></a><a href="#リクエストヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストヘッダ</h3>
+<p>なし</p>
+<h2><a class="anchor" aria-hidden="true" id="レスポンス"></a><a href="#レスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンス</h2>
+<p>認証フォームまたはパスワード変更フォーム表示のためのHTMLを返却します。<br>
+ただし、リクエストパラメータが不正な場合や、送信Cookieの値によってはリダイレクトエンドポイントにリダイレクトします。</p>
+<h3><a class="anchor" aria-hidden="true" id="htmlレスポンス"></a><a href="#htmlレスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTMLレスポンス</h3>
+<p>セルやユニットに設定された認証フォームまたはパスワード変更フォーム表示のためのHTMLを返却します。 設定がない場合はデフォルトhtmlが返ります。</p>
+<h4><a class="anchor" aria-hidden="true" id="html設定方法"></a><a href="#html設定方法" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTML設定方法</h4>
+<p><a href="../../server-operator/unit_config_list.md">Unitの設定</a>または<a href="/ja/next/apiref/291_Cell_Change_Property">対象Cellのプロパティ設定</a>が必要。2つを同時に設定した場合、対象Cellのプロパティ設定が優先される。</p>
+<p>Unitの設定</p>
+<pre><code class="hljs">io<span class="hljs-selector-class">.personium</span><span class="hljs-selector-class">.core</span><span class="hljs-selector-class">.cell</span><span class="hljs-selector-class">.authorizationhtmlurl</span>.default={htmlが取得可能なURL}
+io<span class="hljs-selector-class">.personium</span><span class="hljs-selector-class">.core</span><span class="hljs-selector-class">.cell</span><span class="hljs-selector-class">.authorizationpasswordchangehtmlurl</span>.default={htmlが取得可能なURL}
+</code></pre>
+<p>対象Cellのプロパティ設定</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p:authorizationhtmlurl</span>&gt;</span>{htmlが取得可能なURL}<span class="hljs-tag">&lt;/<span class="hljs-name">p:authorizationhtmlurl</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p:authorizationpasswordchangehtmlurl</span>&gt;</span>{htmlが取得可能なURL}<span class="hljs-tag">&lt;/<span class="hljs-name">p:authorizationpasswordchangehtmlurl</span>&gt;</span>
+</code></pre>
+<p>URLに指定可能なスキームは&quot;http&quot;,&quot;https&quot;,&quot;personium-localunit&quot;,&quot;personium-localcell&quot;。</p>
+<h4><a class="anchor" aria-hidden="true" id="html-要求仕様"></a><a href="#html-要求仕様" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTML 要求仕様</h4>
+<p>設定するHTMLから送信されるフォームリクエスト電文を受け取るため、本エンドポイントは POST メソッドも受け付けます。HTMLを実装するときは、 <a href="/ja/next/apiref/292p_OAuth2_Authorization_Endpoint">こちら</a> のドキュメントを参照してください。</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード"></a><a href="#ステータスコード" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>200</p>
+<h4><a class="anchor" aria-hidden="true" id="レスポンスヘッダ"></a><a href="#レスポンスヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスヘッダ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">ヘッダ名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Content-Type</td><td style="text-align:left">text/html; charset=UTF-8</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="レスポンスボディ"></a><a href="#レスポンスボディ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスボディ</h4>
+<p>認証フォームまたはパスワード変更フォーム(HTML)を返却する。<br>
+リクエスト時に設定したpassword_change_requiredがtrueの場合、パスワード変更フォームを返却する。<br>
+それ以外の場合、認証フォームを返却する。</p>
+<h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（client_id、redirect_uri）"></a><a href="#パラメータチェックエラー（client_id、redirect_uri）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（client_id、redirect_uri）</h3>
+<p>「client_id、redirect_uriが未指定」「client_id、redirect_uriがURL形式ではない」「client_idとredirect_uriのセルが異なる」の場合</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード-1"></a><a href="#ステータスコード-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>303<br>
+ブラウザはシステムのエラーページにリダイレクトされる。</p>
+<pre><code class="hljs">{error_page_uri}?<span class="hljs-meta">code</span>={<span class="hljs-meta">code</span>}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="urlパラメータ"></a><a href="#urlパラメータ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URLパラメータ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">error_page_uri</td><td style="text-align:left">Redirect URL</td><td style="text-align:left">システムのエラーページ「セルのURL + __html/error」</td></tr>
+<tr><td style="text-align:left">code</td><td style="text-align:left"><a href="/ja/next/apiref/004_Error_Messages">Personiumのメッセージコード</a></td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（上記以外）"></a><a href="#パラメータチェックエラー（上記以外）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（上記以外）</h3>
+<p>client_id、redirect_uri、username、password以外のリクエストパラメータで、必須項目が未設定もしくは設定値が不正な形式の場合<br>
+または、cancel_flgにtrueが設定されている（ユーザによりキャンセルされた）場合</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード-2"></a><a href="#ステータスコード-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>303<br>
+ブラウザはクライアントのリダイレクトエンドポイントURL（リクエストの「redirect_uri」の値）にリダイレクトされる。<br>
+redirect_uriに、「URLパラメータ」で示すフラグメントまたはクエリが格納される。<br>
+（response_type=codeの場合はクエリが格納され、それ以外の場合はフラグメントが格納される）</p>
+<pre><code class="hljs">{redirect_uri}?error={error}&amp;error_description={error_description}&amp;<span class="hljs-keyword">state</span>={<span class="hljs-keyword">state</span>}&amp;code={code}
+{redirect_uri}<span class="hljs-comment">#error={error}&amp;error_description={error_description}&amp;state={state}&amp;code={code}</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="urlパラメータ-1"></a><a href="#urlパラメータ-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URLパラメータ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">Redirect URL</td><td style="text-align:left">リクエストの「redirect_uri」で指定された、<br>クライアントのリダイレクトスプリクトのURL</td></tr>
+<tr><td style="text-align:left">error</td><td style="text-align:left">エラー内容を示すコード</td><td style="text-align:left">「error」を参照</td></tr>
+<tr><td style="text-align:left">error_description</td><td style="text-align:left">エラーの追加情報</td><td style="text-align:left">例外メッセージなどを設定する</td></tr>
+<tr><td style="text-align:left">error_uri</td><td style="text-align:left">エラーの追加情報のWebページのURI</td><td style="text-align:left">空文字を返す<br>※今後のエンハンスに備えて設定</td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">code</td><td style="text-align:left"><a href="/ja/next/apiref/004_Error_Messages">Personiumのメッセージコード</a></td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="error"></a><a href="#error" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>error</h5>
+<table>
+<thead>
+<tr><th style="text-align:left">コード値</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">invalid_request</td><td style="text-align:left">リクエストで必須パラメータが指定されていない<br>リクエストパラメータの形式が不正</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">unauthorized_client</td><td style="text-align:left">ユーザによってキャンセルされた</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">unsupported_response_type</td><td style="text-align:left">response_typeの値が不正</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">server_error</td><td style="text-align:left">サーバエラー</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="認可処理成功レスポンス"></a><a href="#認可処理成功レスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可処理成功レスポンス</h2>
+<p>認可処理を行う。処理結果によってリダイレクト先やURLパラメータが異なる。<br>
+処理結果のパターンは以下の通り。</p>
+<ul>
+<li>認可処理成功（Implicit 認可）</li>
+<li>認可処理成功（認可コード）</li>
+<li>認可処理成功（IDトークン発行）</li>
+<li>認証失敗</li>
+<li>パラメータチェックエラー（client_id、redirect_uri）</li>
+<li>パラメータチェックエラー（上記以外）</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="認可処理成功（implicit-認可）"></a><a href="#認可処理成功（implicit-認可）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可処理成功（Implicit 認可）</h3>
+<p>認可処理に成功 かつ リクエストのresponse_typeにtokenを指定した場合</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード-3"></a><a href="#ステータスコード-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>303<br>
+ブラウザはクライアントのリダイレクトエンドポイントURL（リクエストの「redirect_uri」の値）にリダイレクトされる。<br>
+redirect_uriに、「URLパラメータ」で示すフラグメントが格納される。</p>
+<pre><code class="hljs"><span class="hljs-template-variable">{redirect_uri}</span><span class="xml">#access_token=</span><span class="hljs-template-variable">{access_token}</span><span class="xml">&amp;token_type=Bearer&amp;expires_in=</span><span class="hljs-template-variable">{expires_in}</span><span class="xml">&amp;state=</span><span class="hljs-template-variable">{state}</span><span class="xml">&amp;last_authenticated=</span><span class="hljs-template-variable">{last_authenticated}</span><span class="xml">
+&amp;failed_count=</span><span class="hljs-template-variable">{failed_count}</span><span class="xml">
+※実際には改行されず一行で返却される
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="urlパラメータ-2"></a><a href="#urlパラメータ-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URLパラメータ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">クライアントのリダイレクトエンドポイントURL</td><td style="text-align:left">リクエストの「redirect_uri」の値</td></tr>
+<tr><td style="text-align:left">access_token</td><td style="text-align:left">取得されたアクセストークン</td><td style="text-align:left">セルローカルトークンもしくは、トランスセルトークンを返却する</td></tr>
+<tr><td style="text-align:left">token_type</td><td style="text-align:left">Bearer</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">expires_in</td><td style="text-align:left">アクセストークンの有効期限（秒）</td><td style="text-align:left">リクエスト時に設定した有効期限<br>デフォルトは3600（1時間）</td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td></tr>
+<tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※パスワード認証の場合のみ返却する</td></tr>
+<tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※パスワード認証の場合のみ返却する</td></tr>
+<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリセルURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="認可処理成功（認可コード）"></a><a href="#認可処理成功（認可コード）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可処理成功（認可コード）</h3>
+<p>認可処理に成功 かつ リクエストのresponse_typeにcodeを指定した場合</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード-4"></a><a href="#ステータスコード-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>303<br>
+ブラウザはクライアントのリダイレクトエンドポイント（リクエストの「redirect_uri」の値）にリダイレクトされる。<br>
+redirect_uriに、「URLパラメータ」で示すクエリが格納される。</p>
+<pre><code class="hljs">{redirect_uri}?code={code}&amp;<span class="hljs-keyword">state</span>={<span class="hljs-keyword">state</span>}&amp;last_authenticated={last_authenticated}&amp;failed_count={failed_count}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="urlパラメータ-3"></a><a href="#urlパラメータ-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URLパラメータ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">クライアントのリダイレクトエンドポイントURL</td><td style="text-align:left">リクエストの「redirect_uri」の値</td></tr>
+<tr><td style="text-align:left">code</td><td style="text-align:left">取得されたCode</td><td style="text-align:left">grant_type:authorization_codeで認可可能なCode</td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td></tr>
+<tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※パスワード認証の場合のみ返却する</td></tr>
+<tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※パスワード認証の場合のみ返却する</td></tr>
+<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリセルURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="認可処理成功（idトークン発行）"></a><a href="#認可処理成功（idトークン発行）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可処理成功（IDトークン発行）</h3>
+<p>認可処理に成功 かつ リクエストのresponse_typeにid_tokenを指定した場合</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード-5"></a><a href="#ステータスコード-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>303<br>
+ブラウザはクライアントのリダイレクトエンドポイントURL（リクエストの「redirect_uri」の値）にリダイレクトされる。<br>
+redirect_uriに、「URLパラメータ」で示すフラグメントが格納される。</p>
+<pre><code class="hljs"><span class="hljs-template-variable">{redirect_uri}</span><span class="xml">#id_token=</span><span class="hljs-template-variable">{id_token}</span><span class="xml">&amp;state=</span><span class="hljs-template-variable">{state}</span><span class="xml">&amp;last_authenticated=</span><span class="hljs-template-variable">{last_authenticated}</span><span class="xml">&amp;failed_count=</span><span class="hljs-template-variable">{failed_count}</span><span class="xml">
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="urlパラメータ-4"></a><a href="#urlパラメータ-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URLパラメータ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">クライアントのリダイレクトエンドポイントURL</td><td style="text-align:left">リクエストの「redirect_uri」の値</td></tr>
+<tr><td style="text-align:left">id_token</td><td style="text-align:left">取得されたid_token</td><td style="text-align:left">OpenID Connectで利用可能なid_token</td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td></tr>
+<tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※パスワード認証の場合のみ返却する</td></tr>
+<tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※パスワード認証の場合のみ返却する</td></tr>
+<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリセルURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="認証失敗"></a><a href="#認証失敗" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認証失敗</h3>
+<p>認証に失敗した場合（パスワード不一致、アカウントロック中など）</p>
+<h4><a class="anchor" aria-hidden="true" id="ステータスコード-6"></a><a href="#ステータスコード-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
+<p>303<br>
+ブラウザは認可エンドポイント（セルのURL + __authz）に再度リダイレクトされる。<br>
+認可エンドポイントに、「URLパラメータ」で示すクエリが格納される。</p>
+<pre><code class="hljs"><span class="hljs-template-variable">{authorization_endpoint_url}</span><span class="xml">?response_type=</span><span class="hljs-template-variable">{response_type}</span><span class="xml">&amp;redirect_uri=</span><span class="hljs-template-variable">{redirect_uri}</span><span class="xml">&amp;client_id=</span><span class="hljs-template-variable">{client_id}</span><span class="xml">&amp;state=</span><span class="hljs-template-variable">{state}</span><span class="xml">&amp;scope=</span><span class="hljs-template-variable">{scope}</span><span class="xml">
+&amp;expires_in=</span><span class="hljs-template-variable">{expires_in}</span><span class="xml">&amp;error=</span><span class="hljs-template-variable">{error}</span><span class="xml">&amp;error_description=</span><span class="hljs-template-variable">{error_description}</span><span class="xml">&amp;error_uri=</span><span class="hljs-template-variable">{error_uri}</span><span class="xml">&amp;code=</span><span class="hljs-template-variable">{code}</span><span class="xml">
+&amp;password_change_required=</span><span class="hljs-template-variable">{password_change_required}</span><span class="xml">&amp;access_token=</span><span class="hljs-template-variable">{access_token}</span><span class="xml">
+※実際には改行されず一行で返却される
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="urlパラメータ-5"></a><a href="#urlパラメータ-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URLパラメータ</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">authorization_endpoint_url</td><td style="text-align:left">認可エンドポイントのURL（セルのURL + __authz）</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">response_type</td><td style="text-align:left">リクエスト時に設定したresponse_typeの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">client_id</td><td style="text-align:left">リクエスト時に設定したclient_idの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">リクエスト時に設定したredirect_uriの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">scope</td><td style="text-align:left">リクエスト時に設定したscopeの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">expires_in</td><td style="text-align:left">リクエスト時に設定したexpires_inの値</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">error</td><td style="text-align:left">エラー内容を示すコード</td><td style="text-align:left">「error」を参照</td></tr>
+<tr><td style="text-align:left">error_description</td><td style="text-align:left">エラーの追加情報</td><td style="text-align:left">例外メッセージなどを設定する</td></tr>
+<tr><td style="text-align:left">error_uri</td><td style="text-align:left">エラーの追加情報のWebページのURI</td><td style="text-align:left">空文字を返す<br>※今後のエンハンスに備えて設定</td></tr>
+<tr><td style="text-align:left">code</td><td style="text-align:left"><a href="/ja/next/apiref/004_Error_Messages">Personiumのメッセージコード</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">password_change_required</td><td style="text-align:left">認証したアカウントがパスワード変更必須かを示すフラグ</td><td style="text-align:left">認証できるがパスワード変更が必須の場合にのみtrueを返却する</td></tr>
+<tr><td style="text-align:left">access_token</td><td style="text-align:left">認証したアカウントのアクセストークン</td><td style="text-align:left">password_change_requiredがtrueの場合のみパスワード変更のみ可能なアクセストークンを返却</td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="error-1"></a><a href="#error-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>error</h5>
+<table>
+<thead>
+<tr><th style="text-align:left">コード値</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">invalid_request</td><td style="text-align:left">認証に必須なパラメータ（username、password）が指定されていない</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">invalid_grant</td><td style="text-align:left">認証失敗<br>アカウントロック中</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">unauthorized_client</td><td style="text-align:left">クライアントが認可されていない<br>パスワード変更が必要</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">server_error</td><td style="text-align:left">サーバエラー</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（client_id、redirect_uri）-1"></a><a href="#パラメータチェックエラー（client_id、redirect_uri）-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（client_id、redirect_uri）</h3>
+<p>「client_id、redirect_uriが未指定」「client_id、redirect_uriがURL形式ではない」「client_idとredirect_uriのセルが異なる」の場合<br>
+「レスポンス（認証フォームリクエスト）」の「パラメータチェックエラー（client_id、redirect_uri）」と同様。</p>
+<h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（上記以外）-1"></a><a href="#パラメータチェックエラー（上記以外）-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（上記以外）</h3>
+<p>client_id、redirect_uri、username、password以外のリクエストパラメータで、必須項目が未設定もしくは設定値が不正な形式の場合<br>
+「レスポンス（認証フォームリクエスト）」の「パラメータチェックエラー（上記以外）」と同様。</p>
+<h2><a class="anchor" aria-hidden="true" id="curlサンプル"></a><a href="#curlサンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cURLサンプル</h2>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__authz?\
+response_type=token&amp;\
+client_id=https://app-cell1.unit1.example&amp;
+redirect_uri=https://app-cell1.unit1.example/__/redirect.md&amp;\
+state=0000000111"</span> -X GET -i
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ja/next/apiref/100_Create_Cell"><span class="arrow-prev">← </span><span>Create Cell</span></a><a class="docs-next button" href="/ja/next/apiref/306_Create_Collection"><span>Create Collection</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#概要">概要</a><ul class="toc-headings"><li><a href="#制限事項">制限事項</a></li></ul></li><li><a href="#リクエスト">リクエスト</a><ul class="toc-headings"><li><a href="#リクエストurl">リクエストURL</a></li><li><a href="#メソッド">メソッド</a></li><li><a href="#リクエストクエリ">リクエストクエリ</a></li><li><a href="#リクエストヘッダ">リクエストヘッダ</a></li></ul></li><li><a href="#レスポンス">レスポンス</a><ul class="toc-headings"><li><a href="#htmlレスポンス">HTMLレスポンス</a></li><li><a href="#パラメータチェックエラー（client_id、redirect_uri）">パラメータチェックエラー（client_id、redirect_uri）</a></li><li><a href="#パラメータチェックエラー（上記以外）">パラメータチェックエラー（上記以外）</a></li></ul></li><li><a href="#認可処理成功レスポンス">認可処理成功レスポンス</a><ul class="toc-headings"><li><a href="#認可処理成功（implicit-認可）">認可処理成功（Implicit 認可）</a></li><li><a href="#認可処理成功（認可コード）">認可処理成功（認可コード）</a></li><li><a href="#認可処理成功（idトークン発行）">認可処理成功（IDトークン発行）</a></li><li><a href="#認証失敗">認証失敗</a></li><li><a href="#パラメータチェックエラー（client_id、redirect_uri）-1">パラメータチェックエラー（client_id、redirect_uri）</a></li><li><a href="#パラメータチェックエラー（上記以外）-1">パラメータチェックエラー（上記以外）</a></li></ul></li><li><a href="#curlサンプル">cURLサンプル</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

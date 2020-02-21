@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Security of Unit (setting that recommends change from default) · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 概要"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Security of Unit (setting that recommends change from default) · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 概要"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/en/next/server-operator/unit_security">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>サーバー運用者</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/ja/next/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">CellGUI開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ドキュメント開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">インストール<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/installation_guide/001_Readme_before_installation">Readme before installation</a></li><li class="navListItem"><a class="navItem" href="/ja/next/installation_guide/002_Build_from_Source">Build from source</a></li><li class="navListItem"><a class="navItem" href="/ja/next/installation_guide/003_Install_To_LocalMachine">Install to local machine</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">概要<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/overview/001_Introduction">What is Personium?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">プラグイン開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li><li class="navListItem"><a class="navItem" href="/ja/next/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバー運用者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/ja/next/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/ja/next/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ソフトウェア開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/ja/next/software-developer/personium_tests">Personium Tests</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユニット管理者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/Data_Management">Data management</a></li><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/ja/next/unit-administrator/Unit-User">Unit User</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユーザーガイド<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/005_Model_construction">user_guide/005_Model_construction</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/ja/next/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Security of Unit (setting that recommends change from default)</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="概要"></a><a href="#概要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>概要</h2>
+<p>Ansible を利用してPersonium ユニットを作成した場合、デフォルトで強い権限を持つユニットマスタートークンが有効になっています。本章ではデフォルトからの変更を推奨する設定についてご説明します。</p>
+<p>推奨する設定には以下のようなものがあります。</p>
+<ol>
+<li>ユニットマスタートークンの無効化</li>
+<li>ユニット管理アカウントの管理</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="ユニットマスタートークンの無効化"></a><a href="#ユニットマスタートークンの無効化" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットマスタートークンの無効化</h2>
+<p>ユニットマスタートークンは開発やテストの時に使うことを想定したものであり、特殊なケースを除き多くの場合本番運用ではセキュリティ的観点から無効化すべきものです。
+しかし、新規作成されたPersonium にはユニット管理に使用するセルやアカウントが存在しません。そのためAnsible 実行前に任意のユニットマスタートークンを設定し、有効化した状態で構築しています。</p>
+<h3><a class="anchor" aria-hidden="true" id="ユニットマスタートークンの無効化手順"></a><a href="#ユニットマスタートークンの無効化手順" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットマスタートークンの無効化手順</h3>
+<p>ユニットマスタートークンはAPサーバで以下の手順を行い無効化することが可能です。</p>
+<ol>
+<li><p>'personium-unit-config.properties' の修正</p>
+<pre><code class="hljs css language-sh">vi /personium/personium-core/conf/18888/personium-unit-config.properties
+</code></pre>
+<ul>
+<li>io.personium.core.masterToken パラメータをコメントアウトする事でユニットマスタートークンを無効化できます。</li>
+</ul>
+<p>例：</p>
+<pre><code class="hljs css language-sh">...
+<span class="hljs-comment">##### Major Settings Items #####</span>
+<span class="hljs-comment"># Unit Master Token.</span>
+<span class="hljs-comment"># Blank string should be configured in production use to disable it.</span>
+<span class="hljs-comment"># io.personium.core.masterToken=                                       &lt;- このパラメータをコメントアウトする</span>
+<span class="hljs-comment">#</span>
+...
+</code></pre></li>
+<li><p>Tomcat を再起動します</p>
+<pre><code class="hljs css language-sh">systemctl restart tomcat
+</code></pre></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="ユニット管理アカウントの管理"></a><a href="#ユニット管理アカウントの管理" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニット管理アカウントの管理</h2>
+<p>Ansible でPersonium ユニットを管理するアカウントとしてデフォルトでunitadmin というユニットユーザーを作成しています。unitadmin は全てのセルやボックスといったリソースに対して追加・変更・削除といった操作が可能です。そのため、Ansible で構築した環境では共通的に使用するアカウント名のため、セキュリティレベルは下がってしまいます。</p>
+<p>本番利用にあたっては、以下施策を組み合わせて実施することが必要です。</p>
+<ol>
+<li>unitadmin アカウントのパスワードを定期的に変更する</li>
+<li>unitadmin アカウントをリネームして用いる</li>
+<li>unitadmin Cellをリネームして用いる</li>
+<li>外部にユニットユーザ管理機構を構築して利用する</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="ユニットユーザーのパスワード変更"></a><a href="#ユニットユーザーのパスワード変更" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザーのパスワード変更</h3>
+<ol>
+<li><p>管理者権限としてCellにアクセス可能なユニット管理用のトークン(ユニットユーザトークン)を取得します。
+管理者権限としてのアクセスとは、Cellを作ったり消したりする権限を持つ状態で操作することを指します。
+ユニットユーザトークンは、<a href="/ja/next/server-operator/Confirm_environment_settings">Ansible で構築したユニットの環境情報</a>で取得したユニット管理アカウント情報を用いて取得します。<br>
+OAuth2 Token エンドポイントAPIを使用します。（一旦取得したトークンは、１時間有効です）</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://unitadmin.{Personium_FQDN}/__token"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"grant_type=password&amp;username={unitadmin_account}&amp;password={unitadmin_password}&amp;p_target=https://{Personium_FQDN}/"</span> \
+-H <span class="hljs-string">"Content-Type: application/x-www-form-urlencoded"</span>
+</code></pre>
+<p>成功するとAPIからJSON形式でレスポンスが返ります。
+ここで取得した&quot;access_token&quot;の値が、ユニットユーザトークンとなります。</p>
+<pre><code class="hljs css language-json">{
+<span class="hljs-attr">"access_token"</span>:<span class="hljs-string">"PEFzc........(省略)........W9uPg"</span>,
+<span class="hljs-attr">"refresh_token_expires_in"</span>:<span class="hljs-number">86400</span>,
+<span class="hljs-attr">"refresh_token"</span>:<span class="hljs-string">"RA~tw........(省略)........EeWsQ"</span>,
+<span class="hljs-attr">"token_type"</span>:<span class="hljs-string">"Bearer"</span>,
+<span class="hljs-attr">"expires_in"</span>:<span class="hljs-number">3600</span>,
+<span class="hljs-attr">"p_target"</span>:<span class="hljs-string">"https://{Personium_FQDN}/"</span>
+}
+</code></pre></li>
+<li><p>取得したトークンを利用してパスワード変更を行います。パスワード変更は<a href="../apiref/current/215_Update_Account.md">Account更新API</a>のリクエストヘッダーの'X-Personium-Credential' に任意のパスワードを指定することで変更できます。
+この例では &quot;abcd1234&quot; が 変更後のパスワードです。</p>
+<blockquote>
+<p><strong>（注意）</strong>  <br>
+<strong>ユニット管理アカウントは強い権限を持っているため、変更後のパスワードには推測されにくいものを指定してください。</strong></p>
+</blockquote>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://unitadmin.{Personium_FQDN}/__ctl/Account('{unitadmin_account}')"</span> \
+-X PUT -i -k \
+-H <span class="hljs-string">"X-Personium-Credential:abcd1234"</span> -H <span class="hljs-string">"Content-Type: application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span> \
+-d <span class="hljs-string">"{\"Name\":\"{unitadmin_account}\"}"</span>
+</code></pre>
+<p>このAPIはjson形式のレスポンス(ボディ)を返しません。
+レスポンスコード204が返れば成功です。</p>
+<pre><code class="hljs"><span class="hljs-string">HTTP/1.1</span> <span class="hljs-number">204</span> <span class="hljs-literal">No</span> <span class="hljs-string">Content</span>
+</code></pre>
+<blockquote>
+<p><strong>（注意）</strong>  <br>
+<strong>変更した「ユニット管理パスワード」を忘却したときはマスタートークンを用いユニット管理パスワードを変更する必要があります。</strong></p>
+</blockquote></li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="unitadmin-アカウントをリネームして用いる"></a><a href="#unitadmin-アカウントをリネームして用いる" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>unitadmin アカウントをリネームして用いる</h3>
+<p>デフォルトの設定では強力な権限を持つトークンを取得するためのアカウントが簡単にわかってしまいます。<br>
+unitadmin アカウントをリネームすることで、この状態を解消します。<br>
+この例では &quot;administrator&quot; が 変更後のアカウントです。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://unitadmin.{Personium_FQDN}/__ctl/Account('unitadmin')"</span> \
+-X PUT -i -k \
+-H <span class="hljs-string">"X-Personium-Credential:{unitadmin_password}"</span> -H <span class="hljs-string">"Content-Type: application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {Token}"</span> \
+-d <span class="hljs-string">"{\"Name\":\"administrator\"}"</span>
+</code></pre>
+<blockquote>
+<p><strong>（注意）</strong>  <br>
+<strong>※実施後、unitadminのトークンで作成済の既存のCellには、マスタートークン以外でのアクセスが出来なくなります。</strong></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="unitadmin-cell-のリネーム"></a><a href="#unitadmin-cell-のリネーム" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>unitadmin Cell のリネーム</h3>
+<p>デフォルトの設定では強力な権限を持つトークンを取得するためのエンドポイントURLが簡単にわかってしまいます。
+unitadmin Cellをリネームすることで、この状態を解消します。
+この例では &quot;personium-admin&quot; が 変更後のCell名です。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell(Name='unitadmin')"</span> \
+-X PUT -i -k \
+-H <span class="hljs-string">"Authorization: Bearer {Token}"</span> -H <span class="hljs-string">"Content-Type: application/json"</span> \
+-d <span class="hljs-string">"{\"Name\":\"personium-admin\"}"</span>
+</code></pre>
+<p>unitadmin Cellがユニットユーザトークン発行可能な特別なCellであることは、APサーバ上のunit-config.propertiesファイルにおいて設定されています。
+リネームしたCellに引き続き同様の権限を持たせるためには、unit-config.propertiesファイル上での設定を変更する必要もあります。</p>
+<ol>
+<li><p>'personium-unit-config.properties' の修正</p>
+<pre><code class="hljs css language-sh">vi /personium/personium-core/conf/18888/personium-unit-config.properties
+</code></pre>
+<ul>
+<li>io.personium.core.unitUser.issuers パラメータを修正する事でリネームしたCellに同様の権限を持たせます。</li>
+</ul>
+<p>例：</p>
+<pre><code class="hljs css language-sh">...
+<span class="hljs-comment"># 変更前</span>
+io.personium.core.unitUser.issuers=personium-localunit:/unitadmin/
+<span class="hljs-comment"># 変更後</span>
+io.personium.core.unitUser.issuers=personium-localunit:/personium-admin/
+...
+</code></pre></li>
+<li><p>Tomcat を再起動します</p>
+<pre><code class="hljs css language-sh">systemctl restart tomcat
+</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>（注意）</strong>  <br>
+<strong>※実施後、unitadminのトークンで作成済の既存のCellには、マスタートークン以外でのアクセスが出来なくなります。</strong></p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="外部ユニットユーザ管理機構を構築して利用"></a><a href="#外部ユニットユーザ管理機構を構築して利用" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>外部ユニットユーザ管理機構を構築して利用</h3>
+<p>ユニットユーザトークンの要件を満たすトークンを発行する機構を別途用意すれば、unitadmin Cell自体を使う必要はありません。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/ja/next/server-operator/unit_operation_design"><span class="arrow-prev">← </span><span>Operation design and setting of Unit</span></a><a class="docs-next button" href="/ja/next/software-developer/README"><span>Server Developer&#x27;s Guide</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#概要">概要</a></li><li><a href="#ユニットマスタートークンの無効化">ユニットマスタートークンの無効化</a><ul class="toc-headings"><li><a href="#ユニットマスタートークンの無効化手順">ユニットマスタートークンの無効化手順</a></li></ul></li><li><a href="#ユニット管理アカウントの管理">ユニット管理アカウントの管理</a><ul class="toc-headings"><li><a href="#ユニットユーザーのパスワード変更">ユニットユーザーのパスワード変更</a></li><li><a href="#unitadmin-アカウントをリネームして用いる">unitadmin アカウントをリネームして用いる</a></li><li><a href="#unitadmin-cell-のリネーム">unitadmin Cell のリネーム</a></li><li><a href="#外部ユニットユーザ管理機構を構築して利用">外部ユニットユーザ管理機構を構築して利用</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
