@@ -1,0 +1,575 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Personium Unit management tutorial · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**※この文書はPersonium Version 1.6.15 以降をご利用される方を対象としています。**"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Personium Unit management tutorial · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="**※この文書はPersonium Version 1.6.15 以降をご利用される方を対象としています。**"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/next/unit-administrator/tutorial">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>ユニット管理者</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">CellGUI開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ドキュメント開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">インストール<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/installation_guide/001_Readme_before_installation">Readme before installation</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/installation_guide/002_Build_from_Source">Build from source</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/installation_guide/003_Install_To_LocalMachine">Install to local machine</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">概要<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/overview/001_Introduction">What is Personium?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">プラグイン開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバー運用者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ソフトウェア開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/software-developer/personium_tests">Personium Tests</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユニット管理者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/unit-administrator/Data_Management">Data management</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/next/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/unit-administrator/Unit-User">Unit User</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユーザーガイド<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/005_Model_construction">user_guide/005_Model_construction</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/next/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Personium Unit management tutorial</h1></header><article><div><span><p><strong>※この文書はPersonium Version 1.6.15 以降をご利用される方を対象としています。</strong></p>
+<h5><a class="anchor" aria-hidden="true" id="1-本文書の目的sect1"></a><a href="#1-本文書の目的sect1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect1">1. 本文書の目的</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="2-本文書の読者sect2"></a><a href="#2-本文書の読者sect2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect2">2. 本文書の読者</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="3-unit-cell-boxの概要説明sect3"></a><a href="#3-unit-cell-boxの概要説明sect3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect3">3. Unit, Cell, Boxの概要説明</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="4-トークンについてsect4"></a><a href="#4-トークンについてsect4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect4">4. トークンについて</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-pdsを利用者に払い出すsect5"></a><a href="#5-pdsを利用者に払い出すsect5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5">5. PDSを利用者に払い出す</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-1-cellの作成sect51"></a><a href="#5-1-cellの作成sect51" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.1">5-1. Cellの作成</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-cellの管理者accountの作成sect52"></a><a href="#5-2-cellの管理者accountの作成sect52" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2">5-2. Cellの管理者Accountの作成</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-1-accountの作成sect521"></a><a href="#5-2-1-accountの作成sect521" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.1">5-2-1. Accountの作成</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-2-roleの作成sect522"></a><a href="#5-2-2-roleの作成sect522" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.2">5-2-2. Roleの作成</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-3-accountとroleの紐づけsect523"></a><a href="#5-2-3-accountとroleの紐づけsect523" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.3">5-2-3. AccountとRoleの紐づけ</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-4-aclの設定sect524"></a><a href="#5-2-4-aclの設定sect524" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.4">5-2-4. ACLの設定</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-3-メインboxへの最初のデータ配置sect53"></a><a href="#5-3-メインboxへの最初のデータ配置sect53" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.3">5-3. メインBoxへの最初のデータ配置</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-3-1-profilejson-を置くsect531"></a><a href="#5-3-1-profilejson-を置くsect531" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.3.1">5-3-1. profile.json を置く</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-4-一般ユーザー向けの操作画面を設定するsect54"></a><a href="#5-4-一般ユーザー向けの操作画面を設定するsect54" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.4">5-4. 一般ユーザー向けの操作画面を設定する</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-5-guiから使ってみるsect55"></a><a href="#5-5-guiから使ってみるsect55" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.5">5-5. GUIから使ってみる</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="6-払い出したpdsを削除するsect6"></a><a href="#6-払い出したpdsを削除するsect6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect6">6. 払い出したPDSを削除する</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="7-gui操作のデモ動画を見てみるsect7"></a><a href="#7-gui操作のデモ動画を見てみるsect7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect7">7. GUI操作のデモ動画を見てみる</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="8-pdsの払い出しを自動化するsect8"></a><a href="#8-pdsの払い出しを自動化するsect8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect8">8. PDSの払い出しを自動化する</a></h5>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect11-本文書の目的a"></a><a href="#a-namesect11-本文書の目的a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect1">1. 本文書の目的</a></h2>
+<p>本文書は、Personiumを初めてご利用される方でも、すぐにPersoniumユニットを管理するための基本的な流れをご理解いただけるよう具体的な手順を説明したものです。</p>
+<p>Personiumでは全ての機能をREST APIで提供しておりますので、OSや開発言語を問わずご利用いただけます。
+javascriptを用いたサンプルソースが公開されていますので、是非ご活用ください。</p>
+<ul>
+<li><a href="https://github.com/personium/template-app-cell">MinimalApp</a> … 「Hello world」相当の最小限のアプリ。</li>
+<li><a href="https://github.com/personium/app-myboard">MyBoard</a> … ACL管理・データ開示の操作をdemoするPersoniumアプリ。</li>
+</ul>
+<p>なお、本文書でAPIを呼び出すサンプルについては、すべて<a href="https://curl.haxx.se/">cURL</a>を使用しています。</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect22-本文書の読者a"></a><a href="#a-namesect22-本文書の読者a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect2">2. 本文書の読者</a></h2>
+<p>本文書は、Personiumを初めて使用される方を対象としています。
+本文書を読むためには、以下の知識が必要です。</p>
+<ul>
+<li>インターネットに関する基本的な知識</li>
+<li>Representational State Transfer(REST)に関する基本的な知識</li>
+<li>使用するオペレーティングシステムに関する基本的な知識</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect33-unit-cell-boxの概要説明a"></a><a href="#a-namesect33-unit-cell-boxの概要説明a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect3">3. Unit, Cell, Boxの概要説明</a></h2>
+<p>「Personium」を使用する上で最低限押えてべきキーワードを抜粋しました。
+本チュートリアル内でも何度も出てくるキーワードになります。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">キーワード<br></th><th style="text-align:left">概要<br></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Unit<br></td><td style="text-align:left">「Personium」のサーバ内で、複数のセルから構成されるデータ領域。<br>完全修飾ドメイン名（UnitFQDN）を持ち、絶対ドメイン名として参照される。<br></td></tr>
+<tr><td style="text-align:left">Cell<br></td><td style="text-align:left">データ主体ごとのData Strore。個人で使う場合はPDS(Personal Data Store)となる。<br>「Personium」では、データ主体という概念を人のみでなく組織やモノなどにも拡張したモデル化を行っているため、組織やモノのデータストアとしても使うことが可能。<br>（例、私のCell, あなたのCell, ○○会社のCell, ○○部のCell, 私の車のCell）<br></td></tr>
+<tr><td style="text-align:left">Box<br></td><td style="text-align:left">アプリケーションに用いるデータを格納する領域。<br>自身もWebDAVコレクションの一つである。一意の名前とスキーマURLを持つ。<br>Cellは、Box未作成でも初期状態で1つのBox（メインボックス） を持ち、削除は不可。<br></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect44-トークンについてa"></a><a href="#a-namesect44-トークンについてa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect4">4. トークンについて</a></h2>
+<p>本文書では、Personiumユニットの操作のためユニットマスタートークン、またはユニットユーザートークンを使用します。ユニットマスタートークンやユニットユーザートークンの詳細については<a href="/docs/ja/next/unit-administrator/Unit-User">こちら</a>を参照ください。</p>
+<p>Ansible を使って構築した環境のユニットマスタートークンやユニットユーザーのアカウント名／パスワードの確認方法は<a href="/docs/ja/next/server-operator/Confirm_environment_settings">こちら</a>を参照してください。<br>
+独自に環境を構築された場合はサーバソフトウェア管理者に確認してください。</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect55-pdsを利用者に払い出すa"></a><a href="#a-namesect55-pdsを利用者に払い出すa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5">5. PDSを利用者に払い出す</a></h2>
+<p>実際のPersoniumの運用において、これら一連のAPI操作はプログラムで自動化することになるかと思いますが、本チュートリアルでは一つ一つ手動で実施してみましょう。</p>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect515-1-cellの作成a"></a><a href="#a-namesect515-1-cellの作成a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.1">5-1. Cellの作成</a></h3>
+<p>何も入っていない空のCell(PDS)を作ります。</p>
+<p>新たなCellを追加作成する前に、Cell一覧取得APIで事前の状態を確認してみましょう。
+構築直後のPersoniumユニットには、ユニット管理用のCellのみ登録されている状態です。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>ユニット管理用のCellの情報1件がレスポンスに返ります。
+この状態が Personiumユニット の初期状態です。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https:\/\/jp-west-1-dev-2034289.k5personium.cloud\/__ctl\/Cell('unitadmin')"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1537265056908\""</span>,
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"unitadmin"</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<p>では、実際にCellを作成してみましょう。
+Cell作成APIを呼び出す際に、Cellの名前を任意に指定します。
+この例では &quot;usercell&quot; が Cell名になります。</p>
+<blockquote>
+<p><strong>（注意）</strong>
+<strong>CellのルートURLは公開となります。</strong>
+<strong>Cell名にメールアドレスなどをそのまま使用すると、レスポンスに依って存在の有無が判明してしまいますので注意が必要です。</strong></p>
+</blockquote>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"Name\":\"usercell\"}"</span> \
+-H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>成功すると、今回作成されたCellの情報がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: {
+            <span class="hljs-attr">"__metadata"</span>: {
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell('usercell')"</span>,
+                <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1539241336221\""</span>,
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+            },
+            <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"usercell"</span>,
+            <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>,
+            <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>
+        }
+    }
+}
+</code></pre>
+<p>再度Cell一覧取得APIを呼び出すと&quot;usercell&quot;が追加されている状態がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https:\/\/jp-west-1-dev-2034289.k5personium.cloud\/__ctl\/Cell('unitadmin')"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1537265056908\""</span>,
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"unitadmin"</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>
+            },
+            {
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https:\/\/jp-west-1-dev-2034289.k5personium.cloud\/__ctl\/Cell('usercell')"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1539241336221\""</span>,
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"usercell"</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect525-2-cellの管理者accountの作成a"></a><a href="#a-namesect525-2-cellの管理者accountの作成a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2">5-2. Cellの管理者Accountの作成</a></h3>
+<p>Accountは特定のCellに属するユーザを意味し、アカウント名やパスワードといった情報に依って保持されます。
+1つのCellに対して複数のAccount登録が可能です。</p>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5215-2-1-accountの作成a"></a><a href="#a-namesect5215-2-1-accountの作成a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.1">5-2-1. Accountの作成</a></h4>
+<p>前項で作成したCellにAccountを作成します。</p>
+<p>Accountを追加作成する前に、Account一覧取得APIで事前の状態を確認してみましょう。
+作成したばかりのCellにはAccountが登録されていない状態です。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>Accountの情報が無い様子がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: []
+    }
+}
+</code></pre>
+<p>Accountを作成してみましょう。
+Account作成APIを呼び出す際に、Accountの名前を任意に指定します。
+この例では&quot;me&quot;がAccount名、&quot;password&quot;がパスワードになります。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"Name\":\"me\"}"</span> \
+-H <span class="hljs-string">"X-Personium-Credential:password"</span> -H <span class="hljs-string">"Content-Type: application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>成功すると、今回作成されたAccountの情報がレスポンスとして返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: {
+            <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+            <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+            <span class="hljs-attr">"Cell"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"basic"</span>,
+            <span class="hljs-attr">"LastAuthenticated"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"me"</span>,
+            <span class="hljs-attr">"__metadata"</span>: {
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Account"</span>,
+                <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484724933394\""</span>,
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')"</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>再度Account一覧取得APIを呼び出すと&quot;me&quot;が在る状態がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"_ReceivedMessageRead"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')/_ReceivedMessageRead"</span>
+                    }
+                },
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Account"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484724933394\""</span>,
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"me"</span>,
+                <span class="hljs-attr">"LastAuthenticated"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"basic"</span>,
+                <span class="hljs-attr">"Cell"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+                <span class="hljs-attr">"_Role"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')/_Role"</span>
+                    }
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5225-2-2-roleの作成a"></a><a href="#a-namesect5225-2-2-roleの作成a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.2">5-2-2. Roleの作成</a></h4>
+<p>前項でAccountを作成したCellにRoleを作成します。
+Roleとは、administorator、teacher、studentといった役割を表しており、Cellにアクセスする権限を設定し保持するものです。</p>
+<p>Roleを追加作成する前に、Role一覧取得APIで事前の状態を確認してみましょう。
+作成したばかりのCellにはRoleが登録されていない状態です。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>Roleの情報が無い様子がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: []
+    }
+}
+</code></pre>
+<p>Roleを作成してみましょう。
+Role作成APIを呼び出す際に、Roleの名前を任意に指定します。
+この例では&quot;adminrole&quot;がRole名になります。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"Name\":\"adminrole\"}"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>成功すると、今回作成されたRoleの情報がレスポンスとして返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: {
+            <span class="hljs-attr">"_Box.Name"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+            <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+            <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"adminrole"</span>,
+            <span class="hljs-attr">"__metadata"</span>: {
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Role"</span>,
+                <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484728984079\""</span>,
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)"</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>再度Account一覧取得APIを呼び出すと&quot;adminrole&quot;が在る状態がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"_Relation"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_Relation"</span>
+                    }
+                },
+                <span class="hljs-attr">"_ExtRole"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_ExtRole"</span>
+                    }
+                },
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Role"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484728984079\""</span>,
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"adminrole"</span>,
+                <span class="hljs-attr">"_Box.Name"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+                <span class="hljs-attr">"_Box"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_Box"</span>
+                    }
+                },
+                <span class="hljs-attr">"_Account"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_Account"</span>
+                    }
+                },
+                <span class="hljs-attr">"_ExtCell"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_ExtCell"</span>
+                    }
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5235-2-3-accountとroleの紐づけa"></a><a href="#a-namesect5235-2-3-accountとroleの紐づけa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.3">5-2-3. AccountとRoleの紐づけ</a></h4>
+<p>作成したAccountとRoleを関係付けます。
+これまでに作成したAccountとRoleは同じCellに属する形で存在しますが、それぞれは直接的な関係性を持たず独立している状態です。</p>
+<p>操作を行う前にRole $links一覧取得APIで事前の状態を確認してみましょう。
+Roleは作成直後の状態であり、対Accountに限らず紐付けの設定は無い状態です。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role('adminrole')/\$links/_Account"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>Roleに設定された関係性の情報が無い様子がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: []
+    }
+}
+</code></pre>
+<p>Role_$links登録APIを呼び出してAccountを相手とする紐付けを行ってみましょう。
+(この逆方向の操作としてAccount_$links登録APIをRole相手に呼び出しても同じ結果となります)</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role('adminrole')/\$links/_Account"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"uri\":\"https://{Personium_FQDN}/usercell/__ctl/Account('me')\"}"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>このAPIはjson形式のレスポンス(ボディ)を返しません。
+ステータスが204で返れば成功です。</p>
+<pre><code class="hljs"><span class="hljs-string">HTTP/1.1</span> <span class="hljs-number">204</span> <span class="hljs-literal">No</span> <span class="hljs-string">Content</span>
+</code></pre>
+<p>再度Role $links一覧取得APIを呼び出すと(Roleに対して)紐付いたAccountの情報がレスポンスに返ります。</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')"</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5245-2-4-aclの設定a"></a><a href="#a-namesect5245-2-4-aclの設定a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.4">5-2-4. ACLの設定</a></h4>
+<p>作成したCellに対してアクセス権を設定します。
+すべてのrole(役割)に対して設定('root'指定)することも、細かくRole別にアクセス権を設定する事も可能です。
+前項のRoleとAccountの紐付けに従い、Account(User)のアクセス権限が決定します。</p>
+<p>セルレベルアクセス制御設定APIを使用します。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell"</span> \
+-X ACL -i -k \
+-d <span class="hljs-string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\
+&lt;D:acl xmlns:D=\"DAV:\" xmlns:p=\"urn:x-personium:xmlns\" xml:base=\"https://{Personium_FQDN}/usercell/__role/__/\"&gt;\
+&lt;D:ace&gt;&lt;D:principal&gt;&lt;D:href&gt;adminrole&lt;/D:href&gt;&lt;/D:principal&gt;&lt;D:grant&gt;&lt;D:privilege&gt;\
+&lt;p:root/&gt;&lt;/D:privilege&gt;&lt;/D:grant&gt;&lt;/D:ace&gt;&lt;/D:acl&gt;"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {Token}"</span>
+</code></pre>
+<p>(リクエストボディ部分の展開表示)</p>
+<pre><code class="hljs css language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://{Personium_FQDN}/usercell/__role/__/"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>adminrole<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p:root</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<p>このAPIはjson形式のレスポンス(ボディ)を返しません。
+ステータスが200で返れば成功です。</p>
+<pre><code class="hljs">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect535-3-メインboxへの最初のデータ配置a"></a><a href="#a-namesect535-3-メインboxへの最初のデータ配置a" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.3">5-3. メインBoxへの最初のデータ配置</a></h3>
+<p>メインBoxとは、Cellの作成時にデフォルトで作成される、”__”(アンダーバー2つ)と名づけられた特別なBoxです。
+この特別なBoxは、削除出来ない事を除き通常のBoxと同様です。
+アプリケーションデータを保管したり、そのCellの固有情報（json形式を用いる）を格納したりする目的に使われます。</p>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5315-3-1-profilejson-を置くa"></a><a href="#a-namesect5315-3-1-profilejson-を置くa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.3.1">5-3-1. profile.json を置く</a></h4>
+<p>profile.jsonファイルは、PDSの公開プロフィール情報を配置するために必要なjson形式のファイルです。
+PersoniumのPDS事業者間の相互接続運用のために、profile.jsonファイルをメインBoxの直下に配置することを推奨しています。
+profile.jsonのサンプルは<a href="https://demo.personium.io/app-uc-cell-creator-wizard/__/defaultProfile.json">こちら</a>をご覧ください。</p>
+<blockquote>
+<p>※このファイルを置かないでPDSを運用することもできます。
+APIの振舞いとしてこのファイルを特別に扱うということはありませんが、後述のサンプルGUIを操作する場合も、このファイルの存在と匿名アクセス(Authorizationヘッダなしアクセス)可能性を前提としています。</p>
+</blockquote>
+<p>実際にprofile.jsonを配置してみましょう。
+配置するにはファイル登録更新APIを使用します。
+この例では&quot;John Doe&quot;が表示名、&quot;Senior Director, Personium Project&quot;が説明になります。
+また、Imageの値にはプロフィール画像のURLを指定します。以下の例では画像データのデータURIスキームを指定しています。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__/profile.json"</span> \
+-X PUT -i -k \
+-d <span class="hljs-string">"{\"DisplayName\":\"John Doe\",\"Description\": \"Senior Director, Personium Project\",\
+\"Image\": \"{画像データをBase64エンコードしたもの}\"}"</span> \
+-H <span class="hljs-string">"Authorization:Bearer {Token}"</span>
+</code></pre>
+<p>このAPIはjson形式のレスポンス(ボディ)を返しません。
+ステータスが201で返れば成功です。</p>
+<pre><code class="hljs">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">201</span> Created
+</code></pre>
+<p>profile.jsonを配置後、profile.jsonに対してアクセス権を設定します。
+アクセス制御設定APIを使用します。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__/profile.json"</span> \
+-X ACL -i -k \
+-d <span class="hljs-string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\
+&lt;D:acl xmlns:D=\"DAV:\" xmlns:p=\"urn:x-personium:xmlns\"  p:requireSchemaAuthz=\"none\" \
+xml:base=\"https://{Personium_FQDN}/usercell/__role/__/\"&gt;\
+&lt;D:ace&gt;&lt;D:principal&gt;&lt;D:all&gt;&lt;/D:all&gt;&lt;/D:principal&gt;&lt;D:grant&gt;&lt;D:privilege&gt;&lt;D:read/&gt;&lt;/D:privilege&gt;&lt;/D:grant&gt;&lt;/D:ace&gt;&lt;/D:acl&gt;"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {Token}"</span>
+</code></pre>
+<p>(リクエストボディ部分の展開表示)</p>
+<pre><code class="hljs css language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span> <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://{Personium_FQDN}/usercell/__role/__/"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">D:all</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:all</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<p>このAPIはjson形式のレスポンス(ボディ)を返しません。
+ステータスが200で返れば成功です。</p>
+<pre><code class="hljs">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect545-4-一般ユーザー向けの操作画面を設定するa"></a><a href="#a-namesect545-4-一般ユーザー向けの操作画面を設定するa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.4">5-4. 一般ユーザー向けの操作画面を設定する</a></h3>
+<p>ブラウザでCell URLにアクセスした際、操作画面(Home画面)を表示することが可能です。
+オープンソースプロジェクトで公開されているサンプルGUI(Home画面)を設定してみましょう。</p>
+<p>操作画面(HomeApp画面)を設定するにはCellのプロパティを更新します。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/"</span> \
+-X PROPPATCH -i -k \
+-d <span class="hljs-string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\
+&lt;D:propertyupdate xmlns:D=\"DAV:\" xmlns:p=\"urn:x-personium:xmlns\"&gt;&lt;D:set&gt;&lt;D:prop&gt;\
+&lt;p:relayhtmlurl&gt;https://demo.personium.io/app-cc-home/__/index.html&lt;/p:relayhtmlurl&gt;&lt;/D:prop&gt;&lt;/D:set&gt;&lt;/D:propertyupdate&gt;"</span> \
+-H <span class="hljs-string">"Accept: application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {Token}"</span>
+</code></pre>
+<p>(リクエストボディ部分の展開表示)</p>
+<pre><code class="hljs css language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:propertyupdate</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:set</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p:relayhtmlurl</span>&gt;</span>https://demo.personium.io/app-cc-home/__/index.html<span class="hljs-tag">&lt;/<span class="hljs-name">p:relayhtmlurl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:set</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:propertyupdate</span>&gt;</span>
+</code></pre>
+<p>成功すると、更新されたプロパティの情報がレスポンスとして返ります。</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>https://{Personium_FQDN}/usercell/<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p:relayhtmlurl</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+                https://demo.personium.io/app-cc-home/__/index.html<span class="hljs-tag">&lt;/<span class="hljs-name">p:relayhtmlurl</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>HTTP/1.1 200 OK<span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+<p>また、Cell個別で設定する以外に、ユニット全体でデフォルト値を設定することもできます。<br>
+ユニット設定ファイルの以下の値を更新することで可能です。</p>
+<pre><code class="hljs"><span class="hljs-selector-tag">io</span><span class="hljs-selector-class">.personium</span><span class="hljs-selector-class">.core</span><span class="hljs-selector-class">.cell</span><span class="hljs-selector-class">.relayhtmlurl</span><span class="hljs-selector-class">.default</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect555-5-guiから使ってみるa"></a><a href="#a-namesect555-5-guiから使ってみるa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.5">5-5. GUIから使ってみる</a></h3>
+<p>ここまででCellを払い出す準備ができました。<br></p>
+<ul>
+<li>管理者アカウント名 : me</li>
+<li>管理者アカウントパスワード : password</li>
+</ul>
+<p>上記情報を使ってGUIで動作を確認してみましょう。</p>
+<pre><code class="hljs"><span class="hljs-symbol">https:</span><span class="hljs-comment">//{Personium_FQDN}/usercell</span>
+</code></pre>
+<p>登録した profile.json の情報がログイン画面に表示され、管理アカウントでのログインが確認出来ます。<br>
+オープンソースプロジェクトで公開されているサンプルGUIを使用せず、独自でインストールしたい方は<a href="https://github.com/personium/app-cc-home">こちら</a>をご覧ください。</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect66-払い出したpdsを削除するa"></a><a href="#a-namesect66-払い出したpdsを削除するa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect6">6. 払い出したPDSを削除する</a></h2>
+<p>払い出したCellを削除します。</p>
+<p>Cell再帰的削除APIを使用して、ここまでチュートリアルで作成したCellを削除します。
+このAPIは該当するCellに包含されたデータも含め、すべてを削除します。</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/"</span> \
+-X DELETE -i -k \
+-H <span class="hljs-string">"X-Personium-Recursive: true"</span> -H <span class="hljs-string">"If-Match: *"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {Token}"</span>
+</code></pre>
+<p>このAPIはjson形式のレスポンス(ボディ)を返しません。
+ステータスが204で返れば成功です。</p>
+<pre><code class="hljs"><span class="hljs-string">HTTP/1.1</span> <span class="hljs-number">204</span> <span class="hljs-literal">No</span> <span class="hljs-string">Content</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect77-gui操作のデモ動画を見てみるa"></a><a href="#a-namesect77-gui操作のデモ動画を見てみるa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect7">7. GUI操作のデモ動画を見てみる</a></h2>
+<p>「<a href="#sect5">5. PDSを利用者に払い出す</a>」や「<a href="#sect6">6. 払い出したPDSを削除する</a>」と同様の操作を、「Cell Creator Wizard」や「Unit Manager」と呼ばれるツールを用いてGUIで実施することができます。
+<br></p>
+<p>Cell Creator Wizardについての詳細は<a href="https://github.com/personium/app-uc-cell-creator-wizard">こちら</a>をご覧ください。
+<br></p>
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M4cYLFYRyEk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<p>Unit Managerについての詳細は<a href="https://github.com/personium/app-uc-unit-manager/blob/master/README_ja.%6D%64">こちら</a>をご覧ください。
+<br></p>
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d1_pET0M-YA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<p>「Unit Manager」使用時に必要となるログイン情報は、「<a href="#sec4">4. トークンについて</a>」で取得したユニット管理アカウント情報をご使用ください。</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect88-pdsの払い出しを自動化するa"></a><a href="#a-namesect88-pdsの払い出しを自動化するa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect8">8. PDSの払い出しを自動化する</a></h2>
+<p>PDSを払い出すための流れを理解していただくため、手動手順を掲載しましたが、
+<a href="#sect5.1">5.1</a>～<a href="#sect5.3">5.3</a>の一連のAPI操作を自動化するプログラムのサンプルをご紹介します。
+詳細は<a href="https://github.com/personium/org-admin">こちら</a>をご覧ください。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/next/unit-administrator/Data_Management"><span class="arrow-prev">← </span><span>Data management</span></a><a class="docs-next button" href="/docs/ja/next/unit-administrator/Unit-User"><span>Unit User</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#a-namesect11-本文書の目的a"><a name="sect1">1. 本文書の目的</a></a></li><li><a href="#a-namesect22-本文書の読者a"><a name="sect2">2. 本文書の読者</a></a></li><li><a href="#a-namesect33-unit-cell-boxの概要説明a"><a name="sect3">3. Unit, Cell, Boxの概要説明</a></a></li><li><a href="#a-namesect44-トークンについてa"><a name="sect4">4. トークンについて</a></a></li><li><a href="#a-namesect55-pdsを利用者に払い出すa"><a name="sect5">5. PDSを利用者に払い出す</a></a><ul class="toc-headings"><li><a href="#a-namesect515-1-cellの作成a"><a name="sect5.1">5-1. Cellの作成</a></a></li><li><a href="#a-namesect525-2-cellの管理者accountの作成a"><a name="sect5.2">5-2. Cellの管理者Accountの作成</a></a></li><li><a href="#a-namesect535-3-メインboxへの最初のデータ配置a"><a name="sect5.3">5-3. メインBoxへの最初のデータ配置</a></a></li><li><a href="#a-namesect545-4-一般ユーザー向けの操作画面を設定するa"><a name="sect5.4">5-4. 一般ユーザー向けの操作画面を設定する</a></a></li><li><a href="#a-namesect555-5-guiから使ってみるa"><a name="sect5.5">5-5. GUIから使ってみる</a></a></li></ul></li><li><a href="#a-namesect66-払い出したpdsを削除するa"><a name="sect6">6. 払い出したPDSを削除する</a></a></li><li><a href="#a-namesect77-gui操作のデモ動画を見てみるa"><a name="sect7">7. GUI操作のデモ動画を見てみる</a></a></li><li><a href="#a-namesect88-pdsの払い出しを自動化するa"><a name="sect8">8. PDSの払い出しを自動化する</a></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

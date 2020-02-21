@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>OAuth 2.0 Token Endpoint · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 概要"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="OAuth 2.0 Token Endpoint · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 概要"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/next/apiref/293_OAuth2_Token_Endpoint">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">OAuth 2.0 Token Endpoint</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="概要"></a><a href="#概要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>概要</h2>
+<p>セルの様々なAPIにアクセスするためのアクセストークンを発行するAPIのエンドポイントです。 OAuth 2.0仕様に準拠しており、様々な方法でユーザやアプリを認証してアクセストークンやリフレッシュトークン等を発行します。</p>
+<h3><a class="anchor" aria-hidden="true" id="ユーザ認証のバリエーション"></a><a href="#ユーザ認証のバリエーション" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユーザ認証のバリエーション</h3>
+<h4><a class="anchor" aria-hidden="true" id="パスワードによるアカウント所有者認証"></a><a href="#パスワードによるアカウント所有者認証" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パスワードによるアカウント所有者認証</h4>
+<ul>
+<li>OAuth 2.0 の ROPC (Resource Owner Password Credential) フローです。</li>
+<li>登録したアカウントの名前とパスワードに基づきアカウントの所有者を認証してアクセストークン発行を受けることができます。</li>
+<li>総当たり攻撃に対する防御策として、認証に失敗後1秒間はそのアカウントについてはパスワードが正当であっても認証エラーとなります。</li>
+<li>このフローはセルGUIをはじめとして、セル所有者が高いレベルの信用を置く前提であるセル管理アプリのみが使うべきものです。</li>
+<li>OAuth 2.0の仕様に記述されているとおり、このフローを一般のPersoniumアプリは使うべきではありません。</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="トランスセルアクセストークンによる他セルユーザの認証"></a><a href="#トランスセルアクセストークンによる他セルユーザの認証" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>トランスセルアクセストークンによる他セルユーザの認証</h4>
+<ul>
+<li>OAuth 2.0 拡張の SAML2 assertion フローに対応する認証方法です。</li>
+<li>このセル宛のトランスセルアクセストークンを送信することで、他セルユーザを認証してアクセストークン発行を受けることができます。</li>
+<li>送信するトランスセルアクセストークンの発行を受けたときにアプリ認証を経ていた場合も、ここでアプリの再認証が必要となります。</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="リフレッシュトークン送信によるユーザ認証状態継続"></a><a href="#リフレッシュトークン送信によるユーザ認証状態継続" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リフレッシュトークン送信によるユーザ認証状態継続</h4>
+<ul>
+<li>リフレッシュトークンを送信することでそのリフレッシュトークン発行時にうけたユーザ認証状態を引き継いだ新たなアクセストークン発行を受けることができます。</li>
+<li>送信するリフレッシュトークンの発行を受けたときにアプリ認証を経ていた場合も、ここでアプリの再認証が必要となります。</li>
+<li>トークンリフレッシュ時に別アプリのclient_id, client_secretを送信することで、アプリの切り替えをすることはできません。</li>
+<li>セルアプリから一般アプリへのシングルサインオンなどアプリ間で認証状態を引き継ぎたい場合は、必要に応じてOpenID Connectの IDトークンを使ってください。アクセストークンやリフレッシュトークンをアプリ間で共有・やり取りはすべきではありません。</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="アプリ認証のための情報送信"></a><a href="#アプリ認証のための情報送信" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アプリ認証のための情報送信</h3>
+<ul>
+<li>PersoniumではOAuthのclient認証の枠組を使ってアプリの認証を行います。</li>
+<li>Personiumではclient_idとして、アプリのスキーマURIを用います。多くの場合スキーマURIはアプリセルのURLです。</li>
+<li>Personiumではclient_secretとしてアプリ認証トークンを用います。</li>
+<li>アプリ認証のための情報送信は必須ではありません。</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="発行トークン指定のバリエーション"></a><a href="#発行トークン指定のバリエーション" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>発行トークン指定のバリエーション</h3>
+<h4><a class="anchor" aria-hidden="true" id="アクセストークンの発行"></a><a href="#アクセストークンの発行" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アクセストークンの発行</h4>
+<p>p_target というパラメタの指定がないときはこのセルで有効なアクセストークン（セルローカルアクセストークン）を発行します。</p>
+<h4><a class="anchor" aria-hidden="true" id="トランスセルアクセストークンの発行"></a><a href="#トランスセルアクセストークンの発行" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>トランスセルアクセストークンの発行</h4>
+<p>p_target というパラメタで他のセルのURLを指定することで、他のセルにアクセスするためのトランスセルアクセストークンを発行します。</p>
+<h3><a class="anchor" aria-hidden="true" id="その他のバリエーション"></a><a href="#その他のバリエーション" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>その他のバリエーション</h3>
+<h4><a class="anchor" aria-hidden="true" id="クッキーの発行"></a><a href="#クッキーの発行" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>クッキーの発行</h4>
+<ul>
+<li>p_cookie というパラメタをtrue値で指定することでこのセルでのみ有効なクッキーを発行します。</li>
+<li>このクッキーは単体ではアクセストークンの代わりになりませんが、同時に発行されるcookie_peerという文字列と共に用いることでアクセストークン同等の効果を持ちます。</li>
+<li>このセル上のリソースをGETするさいにURLにcookie_peerというクエリパラメタでこの値をつけてアクセスすることで、同時に送られるクッキーと対応が取れているときのみ、アクセストークン送信と同様の扱います。</li>
+<li>これにより例えばHTMLの img video audio等のタグで非公開のメディアを許可されたユーザにのみ表示することなどが可能です。</li>
+<li>発行されるクッキーはこのセルでのみ有効なものであるため、他セルアクセスのためのトークン取得用パラメタであるp_target と併用することはできません。</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="認証履歴の記録"></a><a href="#認証履歴の記録" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認証履歴の記録</h3>
+<p>パスワード認証（認可タイプにpasswordをリクエスト時に設定した場合）の際、認証履歴として前回の認証日時と認証失敗回数を記録します。<br>
+認証履歴を記録しないアカウントを<a href="/docs/ja/next/apiref/291_Cell_Change_Property">対象Cellのプロパティ設定</a>で設定可能です。</p>
+<p>対象Cellのプロパティ設定</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p:accountsnotrecordingauthhistory</span>&gt;</span>{アカウント名（カンマ区切りで複数指定可）}<span class="hljs-tag">&lt;/<span class="hljs-name">p:accountsnotrecordingauthhistory</span>&gt;</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="リクエスト"></a><a href="#リクエスト" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエスト</h2>
+<h3><a class="anchor" aria-hidden="true" id="リクエストurl"></a><a href="#リクエストurl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストURL</h3>
+<pre><code class="hljs"><span class="hljs-template-variable">{CellURL}</span><span class="xml">/__token
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="メソッド"></a><a href="#メソッド" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>メソッド</h3>
+<p>POST</p>
+<h3><a class="anchor" aria-hidden="true" id="リクエストクエリ"></a><a href="#リクエストクエリ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストクエリ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">クエリ名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">p_cookie_peer</td><td style="text-align:left">クッキー認証値</td><td style="text-align:left">認証時にサーバから返却されたクッキー認証値</td><td style="text-align:left">×</td><td style="text-align:left">Authorizationヘッダの指定が無い場合のみ有効<br>クッキーの認証情報を利用する場合に指定する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="リクエストヘッダ"></a><a href="#リクエストヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストヘッダ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">書式</th><th style="text-align:left">必須</th><th style="text-align:left">有効値</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Authorization</td><td style="text-align:left">OAuth 2.0でClient認証に用いる</td><td style="text-align:left">Basic {String}</td><td style="text-align:left">×</td><td style="text-align:left">OAuth 2.0 に定められたとおり、本ヘッダを使いBasic認証の形式でClient認証を行うことができます。Basic に続いて{{アプリのスキーマURI}:{アプリ認証トークン}}をBase64Encodeした値を送信してください。<br>リクエストボディにclient_assertion_typeやclient_assertionパラメタの指定がある場合それを優先します。client_idとclient_secretの設定があっても本ヘッダの指定を優先します。</td></tr>
+<tr><td style="text-align:left">Content-Type</td><td style="text-align:left">リクエストボディの形式を指定</td><td style="text-align:left">application/x-www-form-urlencodedのみ有効</td><td style="text-align:left">×</td><td style="text-align:left">省略時は[application/x-www-form-urlencoded]として扱う</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="リクエストボディ"></a><a href="#リクエストボディ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストボディ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">書式</th><th style="text-align:left">必須</th><th style="text-align:left">有効値</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">grant_type</td><td style="text-align:left">認可タイプ</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">password<br>urn:x-personium:oidc:google<br>urn:ietf:params:oauth:grant-type:saml2-bearer<br>authorization_code<br>refresh_token</td></tr>
+<tr><td style="text-align:left">username</td><td style="text-align:left">ユーザ名</td><td style="text-align:left">String</td><td style="text-align:left">(grant_type=passwordの場合必須)</td><td style="text-align:left">登録済のユーザ名</td></tr>
+<tr><td style="text-align:left">password</td><td style="text-align:left">パスワード</td><td style="text-align:left">String</td><td style="text-align:left">(grant_type=passwordの場合必須)</td><td style="text-align:left">登録済のパスワード</td></tr>
+<tr><td style="text-align:left">assertion</td><td style="text-align:left">トランスセルアクセストークン</td><td style="text-align:left">String</td><td style="text-align:left">(grant_type=urn:ietf:params:oauth:grant-type:saml2-bearerの場合)</td><td style="text-align:left">有効なトランスセルアクセストークン</td></tr>
+<tr><td style="text-align:left">code</td><td style="text-align:left">認可コード</td><td style="text-align:left">String</td><td style="text-align:left">(grant_type=authorization_codeの場合必須)</td><td style="text-align:left">有効な認可コード</td></tr>
+<tr><td style="text-align:left">refresh_token</td><td style="text-align:left">リフレッシュトークン</td><td style="text-align:left">String</td><td style="text-align:left">(grant_type=refresh_tokenの場合必須)</td><td style="text-align:left">有効なリフレッシュトークン</td></tr>
+<tr><td style="text-align:left">id_token</td><td style="text-align:left">IDトークン</td><td style="text-align:left">JSON Web Token</td><td style="text-align:left">(grant_type=urn:x-personium:oidc:googleの場合必須)</td><td style="text-align:left">有効なIDトークン</td></tr>
+<tr><td style="text-align:left">p_target</td><td style="text-align:left">発行ターゲット</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">任意の他者セルURL<br>指定した場合そのセル宛のトランスセルアクセストークンを発行</td></tr>
+<tr><td style="text-align:left">client_assertion_type</td><td style="text-align:left">client_assertionのタイプ</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">RFC7522の定義値&quot;urn:ietf:params:oauth:grant-type:saml2-bearer&quot;のみ有効。このパラメタやclient_assertionの設定があるときはRFC7522の動作を優先的に行い、Authorizationヘッダの内容やclient_sercretの内容は参照せずにClient認証を行う。</td></tr>
+<tr><td style="text-align:left">client_assertion</td><td style="text-align:left">アプリ認証トークン</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">アプリセル等から発行されるアプリ認証トークン<br>client_assertion_typeとともに指定した場合アプリ認証済トークンを発行<br>このパラメタやclient_assertion_typeの設定があるときはRFC7522の動作を優先的に行う。（Authorizationヘッダの内容やclient_sercretの内容は参照しない。）</td></tr>
+<tr><td style="text-align:left">client_id</td><td style="text-align:left">アプリのスキーマURI</td><td style="text-align:left">String</td><td style="text-align:left">(grant_type=authorization_codeの場合必須)</td><td style="text-align:left">多くの場合アプリセルURL<br>client_assertion, client_secretとともに有効値を指定した場合アプリ認証済トークンを発行。</td></tr>
+<tr><td style="text-align:left">client_secret</td><td style="text-align:left">アプリ認証トークン</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">アプリセル等から発行されるアプリ認証トークン<br>client_idとともに指定した場合アプリ認証済トークンを発行<br>同時にAuthorizationヘッダで同様情報が送信された場合、Authorizationヘッダの設定が優先される</td></tr>
+<tr><td style="text-align:left">scope</td><td style="text-align:left">要求scope</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">アプリが求めるscope情報をスペース区切りで指定</td></tr>
+<tr><td style="text-align:left">p_owner</td><td style="text-align:left">ユニットユーザ昇格指定</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">trueのみ有効</td></tr>
+<tr><td style="text-align:left">p_cookie</td><td style="text-align:left">認証クッキー発行オプション<br>指定された場合は認証クッキーを発行する<br>p_targetが指定された場合は、本パラメタの指定は無視する</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">trueのみ有効</td></tr>
+<tr><td style="text-align:left">expires_in</td><td style="text-align:left">アクセストークンの有効期限（秒）</td><td style="text-align:left">Int<br>1～3600</td><td style="text-align:left">×</td><td style="text-align:left">発行されるアクセストークンの有効期限を指定<br>デフォルトは3600（1時間）</td></tr>
+<tr><td style="text-align:left">refresh_token_expires_in</td><td style="text-align:left">リフレッシュトークンの有効期限（秒）</td><td style="text-align:left">Int<br>1～86400</td><td style="text-align:left">×</td><td style="text-align:left">発行されるリフレッシュトークンの有効期限を指定<br>デフォルトは86400（24時間）<br>p_ownerが指定された場合は、本パラメタの指定は無視する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="リクエストサンプル"></a><a href="#リクエストサンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストサンプル</h3>
+<p>パスワードによるアカウント所有者認証</p>
+<pre><code class="hljs">grant_type=password<span class="hljs-variable">&amp;username</span>=username<span class="hljs-variable">&amp;password</span>=pass
+</code></pre>
+<p>パスワードによるアカウント所有者認証でトランスセルアクセストークン発行</p>
+<pre><code class="hljs">grant_type=password<span class="hljs-variable">&amp;username</span>=username<span class="hljs-variable">&amp;password</span>=pass<span class="hljs-variable">&amp;p_target</span>=https:<span class="hljs-comment">//cell1.unit1.example/</span>
+</code></pre>
+<p>パスワードによるアカウント所有者認証とアプリ認証トークン送付によるアプリ認証済アクセストークン発行</p>
+<pre><code class="hljs">grant_type=password<span class="hljs-variable">&amp;username</span>=username<span class="hljs-variable">&amp;password</span>=pass<span class="hljs-variable">&amp;client_id</span>=https:<span class="hljs-comment">//app-cell1.unit1.example/</span>
+<span class="hljs-variable">&amp;client_secret</span>=WjzDmvJ...(省略)..<span class="hljs-number">.4</span>nHgo
+
+</code></pre>
+<p>Google発行のOpen ID Connect Id Tokenによるアカウント所有者認証</p>
+<pre><code class="hljs">grant_type=<span class="hljs-string">urn:</span>x-<span class="hljs-string">personium:</span><span class="hljs-string">oidc:</span>google&amp;id_token=IDTOKEN
+</code></pre>
+<p>トランスセルアクセストークンによる他セルユーザ認証</p>
+<pre><code class="hljs">grant_type=<span class="hljs-string">urn:</span><span class="hljs-string">ietf:</span><span class="hljs-string">params:</span><span class="hljs-string">oauth:</span>grant-<span class="hljs-string">type:</span>saml2-bearer&amp;assertion=WjzDmvJ...(省略)..<span class="hljs-number">.4</span>nHgo
+</code></pre>
+<p>リフレッシュトークンによるトークンのリフレッシュ</p>
+<pre><code class="hljs">grant_type=<span class="hljs-built_in">ref</span>resh_token&amp;<span class="hljs-built_in">ref</span>resh_token=RA~uELM...(省略)...yWMoQ
+</code></pre>
+<p>パスワードによるアカウント所有者認証でクッキーも発行</p>
+<pre><code class="hljs">grant_type=password<span class="hljs-variable">&amp;username</span>=username<span class="hljs-variable">&amp;password</span>=pass<span class="hljs-variable">&amp;p_cookie</span>=true
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="レスポンス"></a><a href="#レスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンス</h2>
+<h3><a class="anchor" aria-hidden="true" id="ステータスコード"></a><a href="#ステータスコード" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h3>
+<p>200</p>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスヘッダ"></a><a href="#レスポンスヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスヘッダ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Content-Type</td><td style="text-align:left">application/json</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Set-Cookie</td><td style="text-align:left">クッキー認証情報（p_cookie）</td><td style="text-align:left">クッキー発行オプション（p_cookie）をリクエスト時に設定した場合のみ</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスボディ"></a><a href="#レスポンスボディ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスボディ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">access_token</td><td style="text-align:left">アクセストークン</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">refresh_token</td><td style="text-align:left">リフレッシュトークン</td><td style="text-align:left">※p_ownerをリクエスト時に設定した場合、返却されない</td></tr>
+<tr><td style="text-align:left">token_type</td><td style="text-align:left">Bearer</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">scope</td><td style="text-align:left">要求に応じて発行されたトークンに認められたscope</td><td style="text-align:left">複数のスコープが返る場合は、スペース区切り文字列で返却</td></tr>
+<tr><td style="text-align:left">expires_in</td><td style="text-align:left">アクセストークンの有効期限（秒）</td><td style="text-align:left">リクエスト時に設定した有効期限<br>デフォルトは3600（1時間）</td></tr>
+<tr><td style="text-align:left">refresh_token_expires_in</td><td style="text-align:left">リフレッシュトークンの有効期限（秒）</td><td style="text-align:left">リクエスト時に設定した有効期限<br>デフォルトは86400（24時間）<br>※p_ownerをリクエスト時に設定した場合、返却されない</td></tr>
+<tr><td style="text-align:left">id_token</td><td style="text-align:left">OpenID Connectで利用可能なid_token</td><td style="text-align:left">grant_type=authorization_code かつ<br>codeのscopeがopenidである<br>場合のみ返却する</td></tr>
+<tr><td style="text-align:left">p_cookie_peer</td><td style="text-align:left">クッキー認証値</td><td style="text-align:left">クッキー認証時に指定する認証値<br>※クッキー発行オプション（p_cookie）をリクエスト時に設定した場合のみ返却する</td></tr>
+<tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※認可タイプ（grant_type）にpasswordをリクエスト時に設定した場合のみ返却する</td></tr>
+<tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※認可タイプ（grant_type）にpasswordをリクエスト時に設定した場合のみ返却する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスサンプル"></a><a href="#レスポンスサンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスサンプル</h3>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"access_token"</span>: <span class="hljs-string">"AA~PBDc...(省略)...FrTjA"</span>,
+  <span class="hljs-attr">"refresh_token_expires_in"</span>: <span class="hljs-number">86400</span>,
+  <span class="hljs-attr">"refresh_token"</span>: <span class="hljs-string">"RA~uELM...(省略)...yWMoQ"</span>,
+  <span class="hljs-attr">"token_type"</span>: <span class="hljs-string">"Bearer"</span>,
+  <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"root"</span>,
+  <span class="hljs-attr">"expires_in"</span>: <span class="hljs-number">3600</span>,
+  <span class="hljs-attr">"last_authenticated"</span>: <span class="hljs-number">1486462510467</span>,
+  <span class="hljs-attr">"failed_count"</span>: <span class="hljs-number">2</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="認証失敗時"></a><a href="#認証失敗時" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認証失敗時</h3>
+<p>エラーのレスポンスを返す。<a href="/docs/ja/next/apiref/004_Error_Messages">エラーメッセージ一覧</a>の認証系APIを参照<br>
+レスポンスボディは以下の通り。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">error</td><td style="text-align:left">OAUTH エラーコード</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">error_description</td><td style="text-align:left">[{メッセージコード}] - {メッセージ}</td><td style="text-align:left">メッセージコードとメッセージを結合した文字列を返却</td></tr>
+<tr><td style="text-align:left">access_token</td><td style="text-align:left">アクセストークン</td><td style="text-align:left">メッセージコードが&quot;PR401-AN-0001&quot;の場合にのみ返却する<br>パスワード変更のみ可能なアクセストークンを返却</td></tr>
+<tr><td style="text-align:left">url</td><td style="text-align:left">URL</td><td style="text-align:left">メッセージコードが&quot;PR401-AN-0001&quot;の場合にのみ返却する<br>パスワード変更APIのURLを返却</td></tr>
+<tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">メッセージコードが&quot;PR401-AN-0001&quot;の場合にのみ返却する</td></tr>
+<tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">メッセージコードが&quot;PR401-AN-0001&quot;の場合にのみ返却する</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="curlサンプル"></a><a href="#curlサンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cURLサンプル</h2>
+<h4><a class="anchor" aria-hidden="true" id="アカウント所有者認証"></a><a href="#アカウント所有者認証" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アカウント所有者認証</h4>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__token"</span> -X POST -i \
+-d <span class="hljs-string">'grant_type=password&amp;username=user1&amp;password=pass'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="他セルユーザ認証"></a><a href="#他セルユーザ認証" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>他セルユーザ認証</h4>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__token"</span> -X POST -i \
+-d <span class="hljs-string">'grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer&amp;assertion=WjzDmvJ...(省略)...4nHgo'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="トークンリフレッシュ"></a><a href="#トークンリフレッシュ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>トークンリフレッシュ</h4>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__token"</span> -X POST -i \
+-d <span class="hljs-string">'grant_type=refresh_token&amp;refresh_token=RA~uELM...(省略)...yWMoQ'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="アカウント所有者--アプリ認証"></a><a href="#アカウント所有者--アプリ認証" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アカウント所有者 + アプリ認証</h4>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__token"</span> -X POST -i \
+-d <span class="hljs-string">'grant_type=password&amp;username=name1&amp;password=pass&amp;client_id=\
+https://app-cell1.unit1.example/&amp;client_secret=WjzDmvJ...(省略)...4nHgo'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="他セルユーザ認証-による他セル向けトランスセルアクセストークン発行"></a><a href="#他セルユーザ認証-による他セル向けトランスセルアクセストークン発行" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>他セルユーザ認証 による他セル向けトランスセルアクセストークン発行</h4>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__token"</span> -X POST -i \
+-d <span class="hljs-string">'grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer&amp;assertion=\
+WjzDmvJ...(省略)...4nHgo&amp;p_target=https://cell1.unit1.example/'</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#概要">概要</a><ul class="toc-headings"><li><a href="#ユーザ認証のバリエーション">ユーザ認証のバリエーション</a></li><li><a href="#アプリ認証のための情報送信">アプリ認証のための情報送信</a></li><li><a href="#発行トークン指定のバリエーション">発行トークン指定のバリエーション</a></li><li><a href="#その他のバリエーション">その他のバリエーション</a></li><li><a href="#認証履歴の記録">認証履歴の記録</a></li></ul></li><li><a href="#リクエスト">リクエスト</a><ul class="toc-headings"><li><a href="#リクエストurl">リクエストURL</a></li><li><a href="#メソッド">メソッド</a></li><li><a href="#リクエストクエリ">リクエストクエリ</a></li><li><a href="#リクエストヘッダ">リクエストヘッダ</a></li><li><a href="#リクエストボディ">リクエストボディ</a></li><li><a href="#リクエストサンプル">リクエストサンプル</a></li></ul></li><li><a href="#レスポンス">レスポンス</a><ul class="toc-headings"><li><a href="#ステータスコード">ステータスコード</a></li><li><a href="#レスポンスヘッダ">レスポンスヘッダ</a></li><li><a href="#レスポンスボディ">レスポンスボディ</a></li><li><a href="#レスポンスサンプル">レスポンスサンプル</a></li><li><a href="#認証失敗時">認証失敗時</a></li></ul></li><li><a href="#curlサンプル">cURLサンプル</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

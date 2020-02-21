@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Send Message · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Overview"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Send Message · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## Overview"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/en/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/ja/apiref/271_Send_Message">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Send Message</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
+<p>send message</p>
+<h3><a class="anchor" aria-hidden="true" id="required-privileges"></a><a href="#required-privileges" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Required Privileges</h3>
+<p>message</p>
+<h3><a class="anchor" aria-hidden="true" id="restrictions"></a><a href="#restrictions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Restrictions</h3>
+<ul>
+<li>Always handles Content-Type in the request header as application/json</li>
+<li>Only accepts the request body in the JSON format</li>
+<li>Only application/json is supported for Content-Type in the request header and the JSON format for the response body</li>
+<li>Response body data is not ensured if atom or xml is specified in the $format query option, although it does not result in an error</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="request"></a><a href="#request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request</h2>
+<h3><a class="anchor" aria-hidden="true" id="request-url"></a><a href="#request-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request URL</h3>
+<pre><code class="hljs">{CellURL}__message/<span class="hljs-built_in">send</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="request-method"></a><a href="#request-method" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Method</h3>
+<p>POST</p>
+<h3><a class="anchor" aria-hidden="true" id="request-query"></a><a href="#request-query" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Query</h3>
+<p>None</p>
+<h3><a class="anchor" aria-hidden="true" id="request-header"></a><a href="#request-header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Header</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">Header Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">X-HTTP-Method-Override</td><td style="text-align:left">Method override function</td><td style="text-align:left">User-defined</td><td style="text-align:left">No</td><td style="text-align:left">If you specify this value when requesting with the POST method, the specified value will be used as a method.</td></tr>
+<tr><td style="text-align:left">X-Override</td><td style="text-align:left">Header override function</td><td style="text-align:left">${OverwrittenHeaderName}:${Value}</td><td style="text-align:left">No</td><td style="text-align:left">Overwrite normal HTTP header value. To overwrite multiple headers, specify multiple X-Override headers.</td></tr>
+<tr><td style="text-align:left">Authorization</td><td style="text-align:left">Specifies authentication information in the OAuth 2.0 format</td><td style="text-align:left">Bearer {AccessToken}</td><td style="text-align:left">No</td><td style="text-align:left">* Authentication tokens are the tokens acquired using the Authentication Token Acquisition API</td></tr>
+<tr><td style="text-align:left">Content-Type</td><td style="text-align:left">Specifies the request body format</td><td style="text-align:left">application/json</td><td style="text-align:left">No</td><td style="text-align:left">[application/json] by default</td></tr>
+<tr><td style="text-align:left">Accept</td><td style="text-align:left">Specifies the response body format</td><td style="text-align:left">application/json</td><td style="text-align:left">No</td><td style="text-align:left">[application/json] by default</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="request-body"></a><a href="#request-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Body</h3>
+<p>JSON</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">BoxBound</td><td style="text-align:left">Linking with Box, whether possible or not</td><td style="text-align:left">true / false<br>The default value is false</td><td style="text-align:left">No</td><td style="text-align:left">Send a token you have schema authentication is set to true this item when you tie in Box (not implemented)</td></tr>
+<tr><td style="text-align:left">InReplyTo</td><td style="text-align:left">Message ID of the reply message</td><td style="text-align:left">Number of digits: 32<br>null</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">To</td><td style="text-align:left">Destination cell URL</td><td style="text-align:left">URL format<br>null</td><td style="text-align:left">* 1</td><td style="text-align:left">If you want to send message to multiple cells specified in CSV format,<br>*1 required either Relation or To<br>Maximum 1000 cell URL destination can be specified in Relation or To</td></tr>
+<tr><td style="text-align:left">ToRelation</td><td style="text-align:left">Relationship names to be sent</td><td style="text-align:left">Number of digits: 1 - 128<br>Character type: Single-byte alphanumeric characters, hyphens (&quot;-&quot;), and underscores (&quot;_&quot;), plus, :<br>However, the string cannot start with a underscore (&quot;_&quot;) or colon (:)<br>null</td><td style="text-align:left">* 1</td><td style="text-align:left">*1 required either Relation or To<br>Maximum 1000 cell URL destination can be specified in Relation or To</td></tr>
+<tr><td style="text-align:left">Type</td><td style="text-align:left">Message type</td><td style="text-align:left">message<br>req.relation.build<br>req.relation.break<br>req.role.grant<br>req.role.revoke</td><td style="text-align:left">No</td><td style="text-align:left">The message is treated as a default</td></tr>
+<tr><td style="text-align:left">Title</td><td style="text-align:left">Message Title</td><td style="text-align:left">Number of digits: 256 characters or less</td><td style="text-align:left">No</td><td style="text-align:left">The default is treated as an empty string</td></tr>
+<tr><td style="text-align:left">Body</td><td style="text-align:left">Message Body</td><td style="text-align:left">Number of digits: 64Kbyte following</td><td style="text-align:left">No</td><td style="text-align:left">The default is treated as an empty string</td></tr>
+<tr><td style="text-align:left">Priority</td><td style="text-align:left">Priority</td><td style="text-align:left">1~5</td><td style="text-align:left">No</td><td style="text-align:left">The default is treated as 3</td></tr>
+<tr><td style="text-align:left">RequestRelation</td><td style="text-align:left">Information of requested relation to register</td><td style="text-align:left">URL format<br>null</td><td style="text-align:left">* 2</td><td style="text-align:left">*2 Required when message type is other than message<br>Relation name or relation class URL or role name or role class URL, the registration request<br>When only the relation name is specified, it is regarded as a relative URL from the following URL<br>BoxBound is true:[target Box schema URL]__relation/__/<br>BoxBound is false:[destination cell URL]__relation/__/<br>When only the role name is specified, it is regarded as a relative URL from the following URL<br>BoxBound is true:[target Box schema URL]__role/__/<br>BoxBound is false:[destination cell URL]__role/__/</td></tr>
+<tr><td style="text-align:left">RequestRelationTarget</td><td style="text-align:left">Cell URL that connects the relationship</td><td style="text-align:left">URL format<br>null</td><td style="text-align:left">* 2</td><td style="text-align:left">*2 Required when message type is other than message</td></tr>
+<tr><td style="text-align:left">RequestObjects</td><td style="text-align:left">Request details</td><td style="text-align:left">JSON array</td><td style="text-align:left">* 2</td><td style="text-align:left">*2 Required when Type is request<br>For details, refer to RequestObject below</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="requestobject"></a><a href="#requestobject" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RequestObject</h4>
+<p>Describe details of the request.<br>
+The content varies depending on the Type specified in RequestType.</p>
+<h5><a class="anchor" aria-hidden="true" id="relation-addremove"></a><a href="#relation-addremove" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relation add/remove</h5>
+<p>RequestType : relation.add / relation.remove<br>
+Ask Relation specified by Name or ClassUrl and link / unlink of Cell specified by TargetUrl.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">RequestType</td><td style="text-align:left">Request type</td><td style="text-align:left">relation.add<br>relation.remove</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Name</td><td style="text-align:left">Relation name</td><td style="text-align:left">Number of digits: 1 - 128<br>Character type: Single-byte alphanumeric characters, hyphens (&quot;-&quot;), and underscores (&quot;_&quot;), plus, :<br>However, the string cannot start with a underscore (&quot;_&quot;) or colon (:)</td><td style="text-align:left">*1</td><td style="text-align:left">*1 Either Name or ClassUrl is required<br>When Name is specified, it is regarded as a relative URL from the following URL<br>BoxBound is true:[target Box schema URL]__relation/__/<br>BoxBound is false:[destination cell URL]__relation/__/</td></tr>
+<tr><td style="text-align:left">ClassUrl</td><td style="text-align:left">Relation class URL</td><td style="text-align:left">Relation class URL<br>See the <a href="../../user_guide/008_Glossary.md#anc_r">glossary</a> for details</td><td style="text-align:left">*1</td><td style="text-align:left">*1 Either Name or ClassUrl is required</td></tr>
+<tr><td style="text-align:left">TargetUrl</td><td style="text-align:left">Cell URL that connects the relationship</td><td style="text-align:left">URL format</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="role-addremove"></a><a href="#role-addremove" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Role add/remove</h5>
+<p>RequestType : role.add / role.remove<br>
+Ask Role specified by Name or ClassUrl and link / unlink of Cell specified by TargetUrl.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">RequestType</td><td style="text-align:left">Request type</td><td style="text-align:left">role.add<br>role.remove</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Name</td><td style="text-align:left">Role name</td><td style="text-align:left">Number of digits: 1 - 128<br>Character type: Single-byte alphanumeric characters, hyphens (&quot;-&quot;), and underscores (&quot;_&quot;)<br>However, the string cannot start with a single-byte hyphen (&quot;-&quot;) or underscore (&quot;_&quot;)</td><td style="text-align:left">*1</td><td style="text-align:left">*1 Either Name or ClassUrl is required<br>When Name is specified, it is regarded as a relative URL from the following URL<br>BoxBound is true:[target Box schema URL]__role/__/<br>BoxBound is false:[destination cell URL]__role/__/</td></tr>
+<tr><td style="text-align:left">ClassUrl</td><td style="text-align:left">Role class URL</td><td style="text-align:left">Role class URL<br>See the <a href="../../user_guide/008_Glossary.md#anc_r">glossary</a> for details</td><td style="text-align:left">*1</td><td style="text-align:left">*1 Either Name or ClassUrl is required</td></tr>
+<tr><td style="text-align:left">TargetUrl</td><td style="text-align:left">Cell URL that connects the relationship</td><td style="text-align:left">URL format</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="rule-addremove"></a><a href="#rule-addremove" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rule add/remove</h5>
+<p>RequestType : rule.add / rule.remove<br>
+Ask the creation / deletion of the specified Rule.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">RequestType</td><td style="text-align:left">Request type</td><td style="text-align:left">rule.add<br>rule.remove</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Name</td><td style="text-align:left">Arbitrary name to make the rule to be created identifiable</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">EventType</td><td style="text-align:left">Type of the event to trigger the rule</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">EventSubject</td><td style="text-align:left">Event Subject to trigger the rule</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">No</td><td style="text-align:left">On message, not check if this item is able to convert to personium-localunit scheme.</td></tr>
+<tr><td style="text-align:left">EventObject</td><td style="text-align:left">Event Object prefix to trigger the rule</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">EventInfo</td><td style="text-align:left">Event Info prefix to trigger the rule</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Action</td><td style="text-align:left">Action to invoke when the matching event is met</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">TargetUrl</td><td style="text-align:left">Specific target url of the action</td><td style="text-align:left">See the <a href="/docs/en/apiref/2A0_Create_Rule">CreateRule</a> for details</td><td style="text-align:left">No</td><td style="text-align:left">On message, not check if this item is able to convert to personium-localunit scheme.</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="request-sample"></a><a href="#request-sample" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Sample</h3>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"BoxBound"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"InReplyTo"</span>: <span class="hljs-string">"hnKXm44TTZCw-bfSEw4f0A"</span>,
+  <span class="hljs-attr">"To"</span>: <span class="hljs-string">"https://cell2.unit1.example/"</span>,
+  <span class="hljs-attr">"ToRelation"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"request"</span>,
+  <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Friend request"</span>,
+  <span class="hljs-attr">"Body"</span>: <span class="hljs-string">"Thank you for the friend approval"</span>,
+  <span class="hljs-attr">"Priority"</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">"RequestObjects"</span>: [
+    {
+      <span class="hljs-attr">"RequestType"</span>: <span class="hljs-string">"relation.add"</span>,
+      <span class="hljs-attr">"ClassUrl"</span>: <span class="hljs-string">"https://app-cell1.unit1.example/__relation/__/relation1"</span>,
+      <span class="hljs-attr">"TargetUrl"</span>: <span class="hljs-string">"https://cell2.unit1.example/"</span>
+    },
+    {
+      <span class="hljs-attr">"RequestType"</span>: <span class="hljs-string">"role.add"</span>,
+      <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>,
+      <span class="hljs-attr">"TargetUrl"</span>: <span class="hljs-string">"https://cell2.unit1.example/"</span>
+    }
+  ]
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="response"></a><a href="#response" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h2>
+<h3><a class="anchor" aria-hidden="true" id="response-code"></a><a href="#response-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response Code</h3>
+<p>201</p>
+<h3><a class="anchor" aria-hidden="true" id="response-header"></a><a href="#response-header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response Header</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">Header Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Content-Type</td><td style="text-align:left">Format of data to be returned</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Location</td><td style="text-align:left">URL to the resource that was created</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">DataServiceVersion</td><td style="text-align:left">OData version</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">ETag</td><td style="text-align:left">Resource version information</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Access-Control-Allow-Origin</td><td style="text-align:left">Cross domain communication permission header</td><td style="text-align:left">Return value fixed to &quot;*&quot;</td></tr>
+<tr><td style="text-align:left">X-Personium-Version</td><td style="text-align:left">API version that the request is processed</td><td style="text-align:left">Version of the API used to process the request</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="response-body"></a><a href="#response-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response Body</h3>
+<h4><a class="anchor" aria-hidden="true" id="common"></a><a href="#common" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Common</h4>
+<p>The response is a JSON object, the correspondence between the key (name) and type defined in the object (subobject) and the value are as follows</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Object</th><th style="text-align:left">Name (Key)</th><th style="text-align:left">Type</th><th style="text-align:left">Value</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Root</td><td style="text-align:left">d</td><td style="text-align:left">object</td><td style="text-align:left">Object{1}</td></tr>
+<tr><td style="text-align:left">{1}</td><td style="text-align:left">results</td><td style="text-align:left">array</td><td style="text-align:left">Array object {2}</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">__metadata</td><td style="text-align:left">object</td><td style="text-align:left">Object{3}</td></tr>
+<tr><td style="text-align:left">{3}</td><td style="text-align:left">uri</td><td style="text-align:left">string</td><td style="text-align:left">URL to the resource that was created</td></tr>
+<tr><td style="text-align:left">{3}</td><td style="text-align:left">etag</td><td style="text-align:left">string</td><td style="text-align:left">Etag value</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">__published</td><td style="text-align:left">string</td><td style="text-align:left">Creation date (UNIX time)</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">__updated</td><td style="text-align:left">string</td><td style="text-align:left">Update date (UNIX time)</td></tr>
+<tr><td style="text-align:left">{1}</td><td style="text-align:left">__count</td><td style="text-align:left">string</td><td style="text-align:left">Get number of results in $inlinecount query</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="sentmessage-specific-response-body"></a><a href="#sentmessage-specific-response-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SentMessage specific response body</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">Object</th><th style="text-align:left">Name (Key)</th><th style="text-align:left">Type</th><th style="text-align:left">Value</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">{3}</td><td style="text-align:left">type</td><td style="text-align:left">string</td><td style="text-align:left">CellCtl.ReceivedMessage</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">__id</td><td style="text-align:left">string</td><td style="text-align:left">ReceivedMessage ID<br>Return a 32 character string such as &quot;b5d008e9092f489c8d3c574a768afc33&quot; with UUID</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">InReplyTo</td><td style="text-align:left">string</td><td style="text-align:left">ID message you are replying<br>Return a 32 character string such as &quot;b5d008e9092f489c8d3c574a768afc33&quot; with UUID</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">To</td><td style="text-align:left">string</td><td style="text-align:left">Destination cell URL</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">ToRelation</td><td style="text-align:left">string</td><td style="text-align:left">Relationship names to be sent</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">Type</td><td style="text-align:left">string</td><td style="text-align:left">Message type<br>message: message<br>request: request</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">Title</td><td style="text-align:left">string</td><td style="text-align:left">Message Title</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">Body</td><td style="text-align:left">string</td><td style="text-align:left">Message Body</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">Priority</td><td style="text-align:left">string</td><td style="text-align:left">Priority<br>(high)1 - 5(low)</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">RequestObjects</td><td style="text-align:left">array</td><td style="text-align:left">Request details<br>Array object {4}</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">RequestType</td><td style="text-align:left">string</td><td style="text-align:left">Request type</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">Name</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">ClassUrl</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">TargetUrl</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">EventType</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">EventSubject</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">EventObject</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">EventInfo</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{4}</td><td style="text-align:left">Action</td><td style="text-align:left">string</td><td style="text-align:left">Refer to Request Body for details</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">_Box.Name</td><td style="text-align:left">string</td><td style="text-align:left">BoxName for Relation</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">Result</td><td style="text-align:left">array</td><td style="text-align:left">Transmission result of each destination Cell<br>Array object {5}</td></tr>
+<tr><td style="text-align:left">{5}</td><td style="text-align:left">To</td><td style="text-align:left">string</td><td style="text-align:left">Destination cell URL</td></tr>
+<tr><td style="text-align:left">{5}</td><td style="text-align:left">Code</td><td style="text-align:left">string</td><td style="text-align:left">Response Code</td></tr>
+<tr><td style="text-align:left">{5}</td><td style="text-align:left">Reason</td><td style="text-align:left">string</td><td style="text-align:left">Detailed message</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="error-messages"></a><a href="#error-messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Error Messages</h3>
+<p>Refer to <a href="/docs/en/apiref/004_Error_Messages">Error Message List</a></p>
+<h3><a class="anchor" aria-hidden="true" id="response-sample"></a><a href="#response-sample" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response Sample</h3>
+<pre><code class="hljs css language-JSON">{
+  "d": {
+    "results": {
+      "__metadata": {
+        "uri": "https://cell1.unit1.example/__ctl/SentMessage
+('3afcc60e35fc49ee9a4e4f6c1ebee426')",
+        "etag": "W/\"1-1486638759524\"",
+        "type": "CellCtl.SentMessage"
+      },
+      "__id": "3afcc60e35fc49ee9a4e4f6c1ebee426",
+      "InReplyTo": "xnKXmd4TTZCw-bfSEw4f0AxnKXmd4TTZ",
+      "To": "https://cell2.unit1.example/",
+      "ToRelation": null,
+      "Type": "request",
+      "Title": "Message Sample Title",
+      "Body": "Message Sample Body",
+      "Priority": 3,
+      "RequestObjects": [
+        {
+          "RequestType": "relation.add",
+          "Name": null,
+          "ClassUrl": "https://app-cell1.unit1.example/__relation/__/relation1",
+          "TargetUrl": "https://cell2.unit1.example/",
+          "EventType": null,
+          "EventSubject": null,
+          "EventObject": null,
+          "EventInfo": null,
+          "Action": null
+        }
+      ],
+      "_Box.Name": null,
+      "Result": [
+        {
+          "To": "https://cell2.unit1.example/",
+          "Code": "201",
+          "Reason": "Created."
+        }
+      ],
+      "__published": "/Date(1486638759524)/",
+      "__updated": "/Date(1486638759524)/"
+    }
+  }
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="curl-command"></a><a href="#curl-command" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cURL Command</h2>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__message/send"</span> -X POST -i \
+-H <span class="hljs-string">'Authorization: Bearer AA~PBDc...(snip)...FrTjA'</span> -H <span class="hljs-string">'Accept: application/json'</span> \
+-d <span class="hljs-string">'{"BoxBound":false,"InReplyTo":"xnKXmd4TTZCw-bfSEw4f0AxnKXmd4TTZ",\
+"To":"https://cell2.unit1.example/","Type":"message","Title":"Message Sample Title","Body":"Message Sample Body",\
+"Priority":3}'</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a><ul class="toc-headings"><li><a href="#required-privileges">Required Privileges</a></li><li><a href="#restrictions">Restrictions</a></li></ul></li><li><a href="#request">Request</a><ul class="toc-headings"><li><a href="#request-url">Request URL</a></li><li><a href="#request-method">Request Method</a></li><li><a href="#request-query">Request Query</a></li><li><a href="#request-header">Request Header</a></li><li><a href="#request-body">Request Body</a></li><li><a href="#request-sample">Request Sample</a></li></ul></li><li><a href="#response">Response</a><ul class="toc-headings"><li><a href="#response-code">Response Code</a></li><li><a href="#response-header">Response Header</a></li><li><a href="#response-body">Response Body</a></li><li><a href="#error-messages">Error Messages</a></li><li><a href="#response-sample">Response Sample</a></li></ul></li><li><a href="#curl-command">cURL Command</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

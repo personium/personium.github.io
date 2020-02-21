@@ -1,0 +1,499 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>bar File · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="bar is the file format specified as the request body of the box installation API.  "/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="bar File · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="bar is the file format specified as the request body of the box installation API.  "/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/en/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/ja/next/apiref/301_Bar_File">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">bar File</h1></header><article><div><span><p>bar is the file format specified as the request body of the box installation API.<br>
+The bar file stores various data located in Odata/WebDAV/Service defined under the box and is archived in the ZIP format.<br>
+Normally, archived data definitions under the archived box are exported from Personium through the <a href="/docs/en/next/apiref/385_Box_Export">box export API</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="specifications"></a><a href="#specifications" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specifications</h3>
+<p>The file format shall be ZIP, including the ZIP64 format.<br>
+ZIP file encryption is not supported.</p>
+<h4><a class="anchor" aria-hidden="true" id="directory-structure"></a><a href="#directory-structure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Directory Structure</h4>
+<p>The following example shows the directory structure in the bar file.<br>
+If directories and files indicated as &quot;Required&quot; do not exist when the box is installed, an error of no required directory/file (400 Bad Request) is returned.</p>
+<pre><code class="hljs">/
+ |<span class="hljs-string">
+ +-- 00_meta/  *Required
+ </span>|<span class="hljs-string">    </span>|
+ |<span class="hljs-string">    +-- 00_manifest.json  *Required
+ </span>|<span class="hljs-string">    +-- 10_relations.json
+ </span>|<span class="hljs-string">    +-- 20_roles.json
+ </span>|<span class="hljs-string">    +-- 30_extroles.json
+ </span>|<span class="hljs-string">    +-- 50_rules.json
+ </span>|<span class="hljs-string">    +-- 70_$links.json
+ </span>|<span class="hljs-string">    +-- 90_rootprops.xml  *Required
+ </span>|
+ +-- 90_contents/     <span class="hljs-symbol">*</span>The directory name under the same as the collection name
+      |<span class="hljs-string">
+      +-- {OData}/    *Required for OData collection in rootprops.xml
+      </span>|<span class="hljs-string">    </span>|
+      |<span class="hljs-string">    +-- 00_$metadata.xml    *Required
+      </span>|<span class="hljs-string">    +-- 10_odatarelations.json
+      </span>|<span class="hljs-string">    </span>|
+      |<span class="hljs-string">    +-- 90_data/
+      </span>|<span class="hljs-string">         </span>|
+      |<span class="hljs-string">         +-- {EntityType}/
+      </span>|<span class="hljs-string">              </span>|
+      |<span class="hljs-string">              +-- {1.json}
+      </span>|
+      +-- {Service}/
+      |<span class="hljs-string">    </span>|
+      |<span class="hljs-string">    +-- {src.js}
+      </span>|
+      +-- {dir1}/
+           |<span class="hljs-string">
+           +-- {dir1-1}/
+                </span>|
+                +-- {userdata1-2.jpg}
+                |<span class="hljs-string">
+                +-- {dir2}/
+                     </span>|
+                     +-- [userdata1-2.jpg}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="bar-file-version-control"></a><a href="#bar-file-version-control" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar File Version Control</h4>
+<p>The bar file is upgraded if the data structure is changed in response to enhancement etc., and backward compatibility can no longer be ensured.</p>
+<ul>
+<li>Not upgraded at the level of file addition</li>
+<li>Upgraded if the file format or file name is changed or deleted</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="file-list"></a><a href="#file-list" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File List</h3>
+<h4><a class="anchor" aria-hidden="true" id="00_manifestjson"></a><a href="#00_manifestjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>00_manifest.json</h4>
+<p>The file describing the information of the box to be installed</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">bar_version</td><td style="text-align:left">bar file version</td><td style="text-align:left">Valid version<br>Revised every time the bar file format is changed</td><td style="text-align:left">Yes</td><td style="text-align:left">Currently &quot;2&quot;</td></tr>
+<tr><td style="text-align:left">box_version</td><td style="text-align:left">Box version</td><td style="text-align:left">Valid version<br>Revised every time the box format is changed</td><td style="text-align:left">Yes</td><td style="text-align:left">Any string can be specified but &quot;1&quot; is recommended (for the provision of the box revision function)</td></tr>
+<tr><td style="text-align:left">default_path</td><td style="text-align:left">Box name in the bar file</td><td style="text-align:left">Number of digits: 1 to 128<br>Character type: Single-byte alphanumeric characters, hyphens (&quot;-&quot;), and underscores (&quot;_&quot;)<br>However, the string cannot start with a single-byte hyphen (&quot;-&quot;) or underscore (&quot;_&quot;)<br>null is invalid</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">schema</td><td style="text-align:left">Schema name</td><td style="text-align:left">Number of digits: 1 to 1024<br>Conforming to the URI format (schema: http / https / urn)</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="samples"></a><a href="#samples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"bar_version"</span>: <span class="hljs-string">"2"</span>,
+  <span class="hljs-attr">"box_version"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-attr">"default_path"</span>: <span class="hljs-string">"box1"</span>,
+  <span class="hljs-attr">"schema"</span>: <span class="hljs-string">"http://app-cell1.unit1.example"</span>
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="10_relationsjson"></a><a href="#10_relationsjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>10_relations.json</h4>
+<p>The file describing the information of the relations to be installed<br>* For items whose &quot;Effective Value&quot; column shows &quot;-&quot;, refer to the Relation request body</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Relations</td><td style="text-align:left">Relation list</td><td style="text-align:left"></td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Relations/Name</td><td style="text-align:left">Relation name</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="samples-1"></a><a href="#samples-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Relations"</span>: [
+    {
+      <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"relation1"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="20_rolesjson"></a><a href="#20_rolesjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>20_roles.json</h4>
+<p>The file describing the information of the roles to be installed<br>* For items whose &quot;Effective Value&quot; column shows &quot;-&quot;, refer to the Role request body</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Roles</td><td style="text-align:left">Role list</td><td style="text-align:left"></td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Roles/Name</td><td style="text-align:left">Role name</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="samples-2"></a><a href="#samples-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Roles"</span>: [
+    {
+      <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="30_extrolesjson"></a><a href="#30_extrolesjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>30_extroles.json</h4>
+<p>The file describing the information of the ExtRoles to be installed<br>* For items whose &quot;Effective Value&quot; column shows &quot;-&quot;, refer to the ExtRole request body</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">ExtRoles</td><td style="text-align:left">ExtRole list</td><td style="text-align:left"></td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">ExtRoles/ExtRole</td><td style="text-align:left">Reference destination role URI</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid *1</td></tr>
+<tr><td style="text-align:left">ExtRoles/_Relation.Name</td><td style="text-align:left">Relation name</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid</td></tr>
+</tbody>
+</table>
+<p>(*1) Converted to the role class URL during export<br>
+https://{UnitFQDN}/cell1/__role/box/staff → https://{UnitFQDN}/cell1/<strong>role/</strong>/staff</p>
+<h5><a class="anchor" aria-hidden="true" id="samples-3"></a><a href="#samples-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"ExtRoles"</span>: [
+    {
+      <span class="hljs-attr">"ExtRole"</span>: <span class="hljs-string">"https://cell1.unit1.example/__role/__/role2"</span>,
+      <span class="hljs-attr">"_Relation.Name"</span>: <span class="hljs-string">"Relation1"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="50_rulesjson"></a><a href="#50_rulesjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>50_rules.json</h4>
+<p>The file described thr Rule information for install.</p>
+<ul>
+<li>For items whose &quot;valid value&quot; column is &quot;-&quot;, refer to the request body of Rule</li>
+</ul>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Rules</td><td style="text-align:left">Rules list</td><td style="text-align:left"></td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventExternal</td><td style="text-align:left">External event flag of matching event</td><td style="text-align:left">-</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventSubject</td><td style="text-align:left">Subject of matching event</td><td style="text-align:left">-</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventType</td><td style="text-align:left">Type of event to match</td><td style="text-align:left">-</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventObject</td><td style="text-align:left">Object of matching event</td><td style="text-align:left">-</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventInfo</td><td style="text-align:left">Information on matching events</td><td style="text-align:left">-</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/Action</td><td style="text-align:left">Action when matching an event</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/TargetUrl</td><td style="text-align:left">Url to be processed for action</td><td style="text-align:left">-</td><td style="text-align:left">No</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="samples-4"></a><a href="#samples-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Rules"</span>: [
+    {
+      <span class="hljs-attr">"Action"</span>: <span class="hljs-string">"exec"</span>,
+      <span class="hljs-attr">"TargetUrl"</span>: <span class="hljs-string">"personium-localbox:/col/srv"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="70_linksjson"></a><a href="#70_linksjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>70_$links.json</h4>
+<p>The file describing the data relation information of the $links to be installed</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Links</td><td style="text-align:left">$links list</td><td style="text-align:left"></td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Links/FromType</td><td style="text-align:left">Reference source data type</td><td style="text-align:left">&quot;Relation&quot;<br>&quot;Role&quot;<br>&quot;ExtRole&quot;</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid</td></tr>
+<tr><td style="text-align:left">Links/FromName</td><td style="text-align:left">Reference source data name</td><td style="text-align:left">- (Array format *1)</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid<br> (Example: {&quot;Name&quot;:&quot;relation1&quot;}])</td></tr>
+<tr><td style="text-align:left">Links/ToType</td><td style="text-align:left">Reference destination data type</td><td style="text-align:left">&quot;Relation&quot;<br>&quot;Role&quot;<br>&quot;ExtRole&quot;</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid</td></tr>
+<tr><td style="text-align:left">Links/ToName</td><td style="text-align:left">Reference destination data name</td><td style="text-align:left">- (Array format *1)</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid<br> (Example: {&quot;Name&quot;:&quot;role&quot;}])</td></tr>
+</tbody>
+</table>
+<p>*1 The list format is applied for ExtRoles because relation information is also required. However, the key name of the specified JSON data is fixed to &quot;Name&quot;. (Restriction)</p>
+<h5><a class="anchor" aria-hidden="true" id="samples-5"></a><a href="#samples-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Links"</span>: [
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Relation"</span>,
+      <span class="hljs-attr">"FromName"</span>:
+        {
+          <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"relation1"</span>
+        },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"Role"</span>,
+      <span class="hljs-attr">"ToName"</span>:
+        {
+          <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>
+        }
+    },
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Role"</span>,
+      <span class="hljs-attr">"FromName"</span>:
+        {
+          <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>
+        },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"ExtRole"</span>,
+      <span class="hljs-attr">"ToName"</span>: {
+          <span class="hljs-attr">"ExtRole"</span>: <span class="hljs-string">"https://cell1.unit1.example/__role/__/role2"</span>,
+          <span class="hljs-attr">"_Relation.Name"</span>: <span class="hljs-string">"Relation1"</span>
+        }
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="90_rootpropsxml"></a><a href="#90_rootpropsxml" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>90_rootprops.xml</h4>
+<p>Shows the XML data acquired with the PROPFIND method for all hierarchical levels under the box to be export to the bar file. <br>For details on XML data, refer to <a href="/docs/en/next/apiref/307_Get_Property">get file setting API(PROPFIND)</a>. <br>The URL of the box to be installed is described as &quot;personium-localbox:/&quot;. <br>When the bar file is installed, the installation targets include all data excluding creationdate and astmodified under the following sample.</p>
+<ul>
+<li>resourcetype: Sets the collection type</li>
+<li>acl: Sets privileges</li>
+<li>Other: Set in PROPPATCH</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="samples-6"></a><a href="#samples-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>admin<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">all</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/odata<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">write</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read-properties</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/dav<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">write</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read-properties</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/dav/testdavfile.txt<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/plain<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">language</span>=<span class="hljs-string">"JavaScript"</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr.js"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr_connector"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr_connector.js"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p:service</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr_connector.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="contentsodata"></a><a href="#contentsodata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>contents/{OData}/</h4>
+<p>Details not contributed yet for the following files</p>
+<ul>
+<li>90_data / {EntityType}/1.json</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="00_metadataxml"></a><a href="#00_metadataxml" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>00_$metadata.xml</h5>
+<p>Shows user OData schema definitions. This data is the XML data acquired by $metadata for the collection for Odata during the export to the bar file. <br>For details on XML data, refer to <a href="/docs/en/next/apiref/316_User_Defined_Data_Schema">schema acquisition ($metadata)</a>. <br>When the box is installed, the installation targets include the contents under the Schema tag. <br>Even if user OData schema definitions do not exist, the file itself exists.</p>
+<p>Sample in the case of no schema definitions</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Edmx:</span> <span class="hljs-attr">Edmx</span> <span class="hljs-attr">Version</span> = <span class="hljs-string">'1 .0 '</span><span class="hljs-attr">xmlns:</span> <span class="hljs-attr">edmx</span> =<span class="hljs-string">' http://schemas.microsoft.com/ado/2007/06/edmx \
+'</span><span class="hljs-attr">xmlns:</span> <span class="hljs-attr">d</span> =<span class="hljs-string">' http://schemas.microsoft.com/ado/2007 / 08/dataservices'</span> <span class="hljs-attr">xmlns:</span>\
+ <span class="hljs-attr">m</span> = <span class="hljs-string">'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'</span> <span class="hljs-attr">xmlns:</span> <span class="hljs-attr">p</span> = <span class="hljs-string">'urn: x-personium: xmlns'</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:DataServices</span> <span class="hljs-attr">m:DataServiceVersion</span>=<span class="hljs-string">'1.0'</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">Xmlns</span>=<span class="hljs-string">'http://schemas.microsoft.com/ado/2006/04/edm'</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">'UserData'</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">EntityContainer</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">'UserData'</span> <span class="hljs-attr">m:IsDefaultEntityContainer</span>=<span class="hljs-string">'true'</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/ <span class="hljs-attr">Schema</span>&gt;</span>
+  <span class="hljs-tag">&lt;/ <span class="hljs-attr">Edmx:</span> <span class="hljs-attr">DataServices</span>&gt;</span>
+<span class="hljs-tag">&lt;/ <span class="hljs-attr">Edmx:</span> <span class="hljs-attr">Edmx</span>&gt;</span>
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="10_odatarelationsjson"></a><a href="#10_odatarelationsjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>10_odatarelations.json</h5>
+<p>The file describing the data-related information of $links of the user data to be installed<br>At the user OData schema level, AssociationEnd relations are defined in 00_$metadata.xml, and in this file, relations to actual user data are defined.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Item Name</th><th style="text-align:left">Overview</th><th style="text-align:left">Effective Value</th><th style="text-align:left">Required</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Links</td><td style="text-align:left">$links list</td><td style="text-align:left"></td><td style="text-align:left">Yes</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Links/FromType</td><td style="text-align:left">Reference source data type</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid</td></tr>
+<tr><td style="text-align:left">Links/FromId</td><td style="text-align:left">Reference source user data ID</td><td style="text-align:left">- (Array format *1)</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid<br> (Example: {&quot;FromId&quot;:&quot;fujitsu_taro&quot;})</td></tr>
+<tr><td style="text-align:left">Links/ToType</td><td style="text-align:left">Reference destination data type</td><td style="text-align:left">-</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid</td></tr>
+<tr><td style="text-align:left">Links/ToId</td><td style="text-align:left">Reference destination user data ID</td><td style="text-align:left">- (Array format *1)</td><td style="text-align:left">Yes</td><td style="text-align:left">null is invalid<br> (Example: {&quot;ToId&quot;:&quot;fujitsu_hanako&quot;})</td></tr>
+</tbody>
+</table>
+<p>*1 The array format is applied in consideration of the future support for composite primary keys.</p>
+<h5><a class="anchor" aria-hidden="true" id="samples-7"></a><a href="#samples-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Samples</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Links"</span>: [
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Keeper"</span>,
+      <span class="hljs-attr">"FromId"</span>: {
+        <span class="hljs-attr">"usercode"</span>: <span class="hljs-string">"001"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"Peru_Taro"</span>
+      },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"Animal"</span>,
+      <span class="hljs-attr">"ToId"</span>: {
+        <span class="hljs-attr">"shopcode"</span>: <span class="hljs-string">"001"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"pochi"</span>
+      }
+    },
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Keeper"</span>,
+      <span class="hljs-attr">"FromId"</span>: {
+        <span class="hljs-attr">"usercode"</span>: <span class="hljs-string">"002"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"Peru_Hanako"</span>
+      },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"Animal"</span>,
+      <span class="hljs-attr">"ToId"</span>: {
+        <span class="hljs-attr">"shopcode"</span>: <span class="hljs-string">"002"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"tama"</span>
+      }
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="90_data--entitytype--1json"></a><a href="#90_data--entitytype--1json" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>90_data / {EntityType} / {1.json}</h4>
+<p>Stores user data in the JSON format one by one.</p>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"__id"</span>: <span class="hljs-string">"{EntityName}"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"pochi"</span>,
+  <span class="hljs-attr">"address"</span>: {
+    <span class="hljs-attr">"country"</span>: <span class="hljs-string">"japan"</span>,
+    <span class="hljs-attr">"city"</span>: <span class="hljs-string">"tokyo"</span>
+  }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="contents--webdavbcol-"></a><a href="#contents--webdavbcol-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>contents / {webdavbcol} /</h4>
+<p>* Not contributed yet</p>
+<h4><a class="anchor" aria-hidden="true" id="contentsservicesrcjs"></a><a href="#contentsservicesrcjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>contents/Service/{src.js}</h4>
+<p>Registers the source file stored in bar/90_contents/{Service}/{src.js} with {Service}/__src/{src.js} under the installation destination box.</p>
+<ul>
+<li>Unable to be executed as a service if no collection {Service} definitions (PROPPATCH) exist in bar/00_meta/90_rootprops.xml</li>
+<li>{src.js} cannot be registered if no {Service}/__src definitions exist in bar/00_meta/90_rootprops.xml</li>
+<li>Content-Type in {src.js} to be set according to the {Service}/__src/{src.js} definition in bar/00_meta/90_rootprops.xml</li>
+</ul>
+<p>Sample of 90_rootprops.xml for service registration</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">language</span>=<span class="hljs-string">"JavaScript"</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr.js"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr_connector"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr_connector.js"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p:service</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr_connector.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

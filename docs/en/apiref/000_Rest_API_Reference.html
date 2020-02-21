@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Personium API Reference · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Welcome to the Personium API Reference.  This reference describes technical detailed specifications related to all of the APIs provided by Personium."/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Personium API Reference · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="Welcome to the Personium API Reference.  This reference describes technical detailed specifications related to all of the APIs provided by Personium."/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/en/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/ja/README" target="_self">Documentation</a></li><li class=""><a href="/ja/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/ja/apiref/000_Rest_API_Reference">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>API Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">API Reference<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/apiref/000_Rest_API_Reference">Personium API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Unit Level API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/apiref/100_Create_Cell">Create Cell</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Cell Level API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/apiref/292_OAuth2_Authorization_Endpoint">OAuth 2.0 Authorization Endpoint</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Box Level API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/apiref/306_Create_Collection">Create Collection</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Common<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/apiref/005_Variable_of_Request_URL">Variable list of request URL</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Personium API Reference</h1></header><article><div><span><p>Welcome to the Personium API Reference.  This reference describes technical detailed specifications related to all of the APIs provided by Personium.
+Please refer to <a href="/docs/en/apiref/005_Variable_of_Request_URL">Request URL variable list</a> for the variable of the request URL in this reference.</p>
+<h2><a class="anchor" aria-hidden="true" id="unit-level-api"></a><a href="#unit-level-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unit Level API</h2>
+<p>The Unit Level API's belong to the unit that hosts a group of cells and provide functions such as creating cells or managing a group of created cells. In principle, Unit Level API's cannot be accessed using the access tokens issued by normal cells and can only be accessed with Unit User Tokens.</p>
+<h4><a class="anchor" aria-hidden="true" id="unit-root-url"></a><a href="#unit-root-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unit Root URL</h4>
+<pre><code class="hljs"><span class="hljs-symbol">https:</span><span class="hljs-comment">//{UnitFQDN}/</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="unit-control-objects"></a><a href="#unit-control-objects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unit Control Objects</h4>
+<p>Most of the Unit Level API's are implemented in the form of Unit Control Objects.
+Since they conform with the OData standard, their manipulation can be made in
+a RESTful and standardized manner.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Cell</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/100_Create_Cell">Create</a>     <a href="/docs/en/apiref/101_List_Cell">Retrieve List</a>     <a href="/docs/en/apiref/102_Retrieve_Cell">Retrieve</a>     <a href="/docs/en/apiref/103_Update_Cell">Update</a>     <a href="/docs/en/apiref/104_Delete_Cell">Delete</a></td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="other-apis"></a><a href="#other-apis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other API's</h4>
+<ul>
+<li><a href="/docs/en/apiref/107_Get_Unit_Metadata">Get Unit Metadata</a></li>
+<li><a href="/docs/en/apiref/105_Cell_Recursive_Delete">Cell Recursive Deletion</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="cell-level-api"></a><a href="#cell-level-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cell Level API</h2>
+<p>Cell Level API's are deployed under the following root URL.</p>
+<h4><a class="anchor" aria-hidden="true" id="cell-root-url"></a><a href="#cell-root-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cell Root URL</h4>
+<pre><code class="hljs">{CellURL}
+</code></pre>
+<p>Cell Level API's provides the following features:</p>
+<ul>
+<li>User and application Authentication</li>
+<li>Access control</li>
+<li>Networking Cells</li>
+<li>Box creation and management</li>
+<li>Message exchange between Cells</li>
+<li>Event processing</li>
+<li>Other features</li>
+</ul>
+<p>Most of these functions are implemented in the form of Cell Control Objects that can be operated with the OData protocol, which is a standard for performing relational data manipulation based on REST.</p>
+<h3><a class="anchor" aria-hidden="true" id="user-and-application-authentication"></a><a href="#user-and-application-authentication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User and application Authentication</h3>
+<h4><a class="anchor" aria-hidden="true" id="authentication"></a><a href="#authentication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication</h4>
+<ul>
+<li><a href="/docs/en/apiref/292_OAuth2_Authorization_Endpoint">OAuth2.0 Authorization Endpoint</a></li>
+<li><a href="/docs/en/apiref/293_OAuth2_Token_Endpoint">OAuth2.0 Token Endpoint</a></li>
+<li><a href="/docs/en/apiref/294_Password_Change">Change Password</a></li>
+<li><a href="/docs/en/apiref/297_OAtuh2_Token_Introspection_Endpoint">OAuth2.0 Token Introspection</a></li>
+<li><a href="/docs/en/apiref/298_Get_Cell_Certs">Get Cell Certs</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="account-cell-control-object"></a><a href="#account-cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Account (Cell Control Object)</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">Account</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/212_Create_Account">Create</a>     <a href="/docs/en/apiref/213_Retrieve_Account">Retrieve</a>     <a href="/docs/en/apiref/214_List_Account">Retrieve List</a>     <a href="/docs/en/apiref/215_Update_Account">Update</a>     <a href="/docs/en/apiref/2AC_Partial_Update_Account">Partial Update</a>     <a href="/docs/en/apiref/216_Delete_Account">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/217_Link_Account">Link</a>     <a href="/docs/en/apiref/220_Unlink_Account">Unlink</a>     <a href="/docs/en/apiref/218_List_Account_links">List Links</a> <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/221_Create_Obj_Via_Account_NP">Create</a>     <a href="/docs/en/apiref/222_List_Obj_Via_Account_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="access-control"></a><a href="#access-control" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Access control</h3>
+<p>Personium Cells employ Role-Based Access Control. A role can be defined in the form of Cell Control Object &quot;Role&quot;.
+Cell-level ACL can be configured with the following API, where multiple pairs of role and granted privileges can be defined.</p>
+<ul>
+<li><a href="/docs/en/apiref/289_Cell_ACL">Cell-level ACL Configuralion</a></li>
+</ul>
+<p>Configured ACL can be retrieved together with other properties, by sending regular WebDAV PROPFIND request to the root URL of the Cell.</p>
+<ul>
+<li><a href="/docs/en/apiref/290_Cell_Get_Property">Retrieve Properties</a></li>
+<li><a href="/docs/en/apiref/291_Cell_Change_Property">Change Properties</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="cell-control-object"></a><a href="#cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cell Control Object</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">Role</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/201_Create_Role">Create</a>     <a href="/docs/en/apiref/203_Retrieve_Role">Retrieve</a>     <a href="/docs/en/apiref/202_List_Role">Retrieve List</a>     <a href="/docs/en/apiref/204_Update_Role">Update</a>     <a href="/docs/en/apiref/2AB_Partial_Update_Role">Partial Update</a>     <a href="/docs/en/apiref/205_Delete_Role">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/206_Link_Role">Link</a>     <a href="/docs/en/apiref/209_Unlink_Role">Unlink</a>     <a href="/docs/en/apiref/207_List_Role_links">List Links</a> <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/210_Create_Obj_Via_Role_NP">Create</a>     <a href="/docs/en/apiref/211_List_Obj_Via_Role_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="networking-cells"></a><a href="#networking-cells" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Networking Cells</h3>
+<h4><a class="anchor" aria-hidden="true" id="external-cell-cell-control-object"></a><a href="#external-cell-cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>External Cell (Cell Control Object)</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">ExtCell</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/223_Create_External_Cell">Create</a>     <a href="/docs/en/apiref/225_Retrieve_External_Cell">Retrieve</a>     <a href="/docs/en/apiref/224_List_External_Cell">Retrieve List</a>     <a href="/docs/en/apiref/226_Update_External_Cell">Update</a>     <a href="/docs/en/apiref/2AD_Partial_Update_External_Cell">Partial Update</a>     <a href="/docs/en/apiref/227_Delete_External_Cell">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/228_Link_External_Cell">Link</a>     <a href="/docs/en/apiref/231_Unlink_External_Cell">Unlink</a>     <a href="/docs/en/apiref/229_List_External_Cell_links">List Links</a> <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/232_Create_Obj_Via_External_Cell_NP">Create</a>     <a href="/docs/en/apiref/233_List_Obj_Via_External_Cell_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="relation-cell-control-object"></a><a href="#relation-cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relation (Cell Control Object)</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">Relation</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/234_Create_Relation">Create</a>     <a href="/docs/en/apiref/236_Retrieve_Relation">Retrieve</a>     <a href="/docs/en/apiref/235_List_Relation">Retrieve List</a>     <a href="/docs/en/apiref/237_Update_Relation">Update</a>     <a href="/docs/en/apiref/2AE_Partial_Update_Relation">Partial Update</a>     <a href="/docs/en/apiref/238_Delete_Relation">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/239_Link_Relation">Link</a>     <a href="/docs/en/apiref/242_Unlink_Relation">Unlink</a>     <a href="/docs/en/apiref/240_List_Relation_links">List Links</a> <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/243_Create_Obj_Via_Relation_NP">Create</a>     <a href="/docs/en/apiref/244_List_Obj_Via_Relation_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="extrole-cell-control-object"></a><a href="#extrole-cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ExtRole (Cell Control Object)</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">ExtRole</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/245_Create_External_Role">Create</a>     <a href="/docs/en/apiref/247_Retrieve_External_Role">Retrieve</a>     <a href="/docs/en/apiref/246_List_External_Role">Retrieve List</a>     <a href="/docs/en/apiref/248_Update_External_Role">Update</a>     <a href="/docs/en/apiref/2AF_Partial_Update_External_Role">Partial Update</a>     <a href="/docs/en/apiref/249_Delete_External_Role">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/250_Link_External_Role">Link</a>     <a href="/docs/en/apiref/253_Unlink_External_Role">Unlink</a>     <a href="/docs/en/apiref/251_List_External_Role_links">List Links</a> <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/254_Create_Obj_Via_External_Role_NP">Create</a>     <a href="/docs/en/apiref/255_List_Obj_Via_External_Role_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="box-creation-and-management-inside-the-cell"></a><a href="#box-creation-and-management-inside-the-cell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box creation and management inside the Cell</h3>
+<ul>
+<li><a href="/docs/en/apiref/385_Box_Export">Export Box</a></li>
+<li><a href="/docs/en/apiref/302_Box_Installation">Install Box</a></li>
+<li><a href="/docs/en/apiref/303_Progress_of_Bar_File_Installation">Retrieve Box Meta Data</a></li>
+<li><a href="/docs/en/apiref/304_Get_Box_URL">Retrieve URL</a></li>
+<li><a href="/docs/en/apiref/295_Box_Recursive_Delete">Recursive Delete</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="box-cell-control-object"></a><a href="#box-cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box (Cell Control Object)</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">Box</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/256_Create_Box">Create</a>     <a href="/docs/en/apiref/258_Retrieve_Box">Retrieve</a>     <a href="/docs/en/apiref/257_List_Box">Retrieve List</a>     <a href="/docs/en/apiref/259_Update_Box">Update</a>     <a href="/docs/en/apiref/2B0_Partial_Update_Box">Partial Update</a>     <a href="/docs/en/apiref/260_Delete_Box">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/261_Link_Box">Link</a>     <a href="/docs/en/apiref/264_Unlink_Box">Unlink</a>     <a href="/docs/en/apiref/262_List_Box_links">List Links</a> <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/265_Create_Obj_Via_Box_NP">Create</a>     <a href="/docs/en/apiref/266_List_Obj_Via_Box_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="message-exchange-between-cells"></a><a href="#message-exchange-between-cells" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Message Exchange between Cells</h3>
+<h4><a class="anchor" aria-hidden="true" id="message-manipulation"></a><a href="#message-manipulation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Message Manipulation</h4>
+<ul>
+<li><a href="/docs/en/apiref/271_Send_Message">Send Message</a></li>
+<li><a href="/docs/en/apiref/267_Received_Message_Approval">Change Status</a> (Approve / Decline, etc.)</li>
+</ul>
+<table>
+<thead>
+<tr><th style="text-align:left">Cell Control Object</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>Sent Message</strong></td><td style="text-align:left"><a href="/docs/en/apiref/272_Retrieve_Sent_Message">Retrieve</a>     <a href="/docs/en/apiref/273_List_Sent_Messages">Retrieve List</a>     <a href="/docs/en/apiref/274_Delete_Sent_Message">Delete</a></td></tr>
+<tr><td style="text-align:left"><strong>Received Message</strong></td><td style="text-align:left"><a href="/docs/en/apiref/269_Retrieve_Received_Message">Retrieve</a>     <a href="/docs/en/apiref/268_List_Received_Messages">Retrieve List</a>     <a href="/docs/en/apiref/270_Delete_Received_Message">Delete</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="event-processing"></a><a href="#event-processing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event processing</h3>
+<ul>
+<li><a href="/docs/en/apiref/277_Event_Summary">Events Overview</a></li>
+<li><a href="/docs/en/apiref/278_Event_Reception">Accept External Events</a></li>
+<li><a href="/docs/en/apiref/279_Event_Bus_Connect">Web Socket connection to Event Bus</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="event-processing-rule-cell-control-object"></a><a href="#event-processing-rule-cell-control-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event Processing Rule (Cell Control Object)</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">Rule</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/2A0_Create_Rule">Create</a>     <a href="/docs/en/apiref/2A1_Retrieve_Rule">Retrieve</a>     <a href="/docs/en/apiref/2A2_List_Rule">Retrieve List</a>     <a href="/docs/en/apiref/2A3_Update_Rule">Update</a>     <a href="/docs/en/apiref/2A4_Delete_Rule">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/2A5_Link_Rule">Link</a>     <a href="/docs/en/apiref/2A7_Unlink_Rule">Unlink</a>     <a href="/docs/en/apiref/2A6_List_Rule_links">List Links</a>     <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/2A8_Create_Obj_Via_Rule_NP">Create</a>     <a href="/docs/en/apiref/2A9_List_Obj_Via_Rule_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<ul>
+<li><a href="/docs/en/apiref/2AA_List_Internal_Rule">Retrieve List of Internal Rule information</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="event-log"></a><a href="#event-log" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event Log</h4>
+<ul>
+<li><a href="/docs/en/apiref/285_Retrieve_Log_File">Retrieve Log File</a></li>
+<li><a href="/docs/en/apiref/284_Retrieve_Log_File_list">List of Log Files</a></li>
+<li><a href="/docs/en/apiref/283_Log_File_Information_Acquisition">Retrieve Log File Information</a></li>
+<li><a href="/docs/en/apiref/286_Delete_Log_File">Delete Log File</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="other-functions"></a><a href="#other-functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other functions</h3>
+<h4><a class="anchor" aria-hidden="true" id="cell-root-access"></a><a href="#cell-root-access" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cell root access</h4>
+<ul>
+<li><a href="/docs/en/apiref/200_Cell_Root">Retrieve Cell Root</a></li>
+<li><a href="/docs/en/apiref/296_Get_Cell_Metadata">Retrieve Cell Metadata</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="exporting--importing-the-contents-inside-the-cell"></a><a href="#exporting--importing-the-contents-inside-the-cell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exporting / Importing the contents inside the Cell</h4>
+<p>Snapshot file of Cell is created by export execution.<br>
+Import imports the contents of the snapshot file into Cell.<br>
+Snapshot file can be operated with WebDAV interface.</p>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>Export</strong></td><td style="text-align:left"><a href="/docs/en/apiref/501_Export_Cell">Execute</a>     <a href="/docs/en/apiref/502_Progress_of_Export_Cell">Retrieve progress</a></td></tr>
+<tr><td style="text-align:left"><strong>Import</strong></td><td style="text-align:left"><a href="/docs/en/apiref/507_Import_Cell">Execute</a>     <a href="/docs/en/apiref/508_Progress_of_Import_Cell">Retrieve progress</a></td></tr>
+<tr><td style="text-align:left"><strong>Snapshot</strong></td><td style="text-align:left"><a href="/docs/en/apiref/503_Register_and_Update_Snapshot_Cell">Create/Update</a>     <a href="/docs/en/apiref/504_Get_Snapshot_Cell">Retrieve</a>     <a href="/docs/en/apiref/505_Get_Property_Snapshot_Cell">Retrieve Properties</a>     <a href="/docs/en/apiref/506_Delete_Snapshot_Cell">Delete</a></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="box-level-api"></a><a href="#box-level-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box Level API</h2>
+<p>The Box Level API is a group of API's that reside on the following Box Root URL and serve for applications and others to manipulate their data.</p>
+<h4><a class="anchor" aria-hidden="true" id="box-root-url"></a><a href="#box-root-url" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box Root URL</h4>
+<pre><code class="hljs"><span class="hljs-template-variable">{CellURL}</span><span class="hljs-template-variable">{BoxName}</span><span class="xml">/
+</span></code></pre>
+<p>Box Level API's are based on an idea of WebDAV file system.  Like ordinary file systems, it is possible to arrange / retrieve files, create / manage folders (collection), get list of files and folders, set / refer to access control, etc.</p>
+<p>Also, because it supports the following special collections, it can handle not only file-like data but also various forms of data.<br>
+These special collections can be created in any path on the WebDAV space provided by Box.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Special collection</th><th style="text-align:left">Use</th><th style="text-align:left">Notes</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">OData Service Collection</td><td style="text-align:left">Relational data</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Engine Service Collection</td><td style="text-align:left">Run customized logic</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">CALDAV Collection</td><td style="text-align:left">Calendar data</td><td style="text-align:left">Unimplemented</td></tr>
+<tr><td style="text-align:left">Link Collection</td><td style="text-align:left">Aliases to specific areas of other cells or other Box</td><td style="text-align:left">Unimplemented</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="basic-webdav-operations"></a><a href="#basic-webdav-operations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basic WebDAV Operations</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">Target</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Collection</td><td style="text-align:left"><a href="/docs/en/apiref/306_Create_Collection">Create</a>     <a href="/docs/en/apiref/305_Get_Property">Retrieve Settings</a>     <a href="/docs/en/apiref/308_Change_Property">Change Settings</a>     <a href="/docs/en/apiref/309_Update_Move_Collection">Move/Rename</a>     <a href="/docs/en/apiref/310_Delete_Collection">Delete</a></td></tr>
+<tr><td style="text-align:left">File</td><td style="text-align:left"><a href="/docs/en/apiref/312_Register_and_Update_WebDAV">Create/Update</a>     <a href="/docs/en/apiref/311_Get_WebDav">Retrieve</a>     <a href="/docs/en/apiref/307_Get_Property">Retrieve Settings</a>     <a href="/docs/en/apiref/313_Change_Property">Change Settings</a>     <a href="/docs/en/apiref/314_Delete_WebDAV">Delete</a></td></tr>
+<tr><td style="text-align:left">Common</td><td style="text-align:left"><a href="/docs/en/apiref/315_Configure_Access_Control">Configure Access Control</a></td></tr>
+</tbody>
+</table>
+<p>* ACL setting (access control setting) is possible for all files and collections (including special collections).<br>
+* ACL setting can be acquired with the PROPFIND method.</p>
+<h3><a class="anchor" aria-hidden="true" id="odata-service-collection"></a><a href="#odata-service-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Service Collection</h3>
+<h4><a class="anchor" aria-hidden="true" id="viewing-schema"></a><a href="#viewing-schema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Viewing Schema</h4>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Schema Retrieval</td><td style="text-align:left"><a href="/docs/en/apiref/317_Document_Acquisition_Service">ATOM Service Document</a>     <a href="/docs/en/apiref/316_User_Defined_Data_Schema">EDMX Schema</a></td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="schema-definition"></a><a href="#schema-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Schema Definition</h4>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">Create</th><th style="text-align:left">Retrieve</th><th style="text-align:left">Update</th><th style="text-align:left">Delete</th><th style="text-align:left">Other</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><strong>EntityType</strong></td><td style="text-align:left"><a href="/docs/en/apiref/345_Create_EntityType">Create</a></td><td style="text-align:left"><a href="/docs/en/apiref/347_Retrieve_EntityType">Retrieve</a><br><a href="/docs/en/apiref/346_List_EntityType">Retrieve List</a></td><td style="text-align:left"><a href="/docs/en/apiref/348_Update_EntityType">Update</a></td><td style="text-align:left"><a href="/docs/en/apiref/349_Delete_EntityType">Delete</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_$links</td><td style="text-align:left">Create</td><td style="text-align:left">List</td><td style="text-align:left">Update</td><td style="text-align:left">Delete</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_via NavProp</td><td style="text-align:left"></td><td style="text-align:left">List</td><td style="text-align:left"></td><td style="text-align:left"></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>Property</strong></td><td style="text-align:left"><a href="/docs/en/apiref/355_Create_Property">Create</a></td><td style="text-align:left"><a href="/docs/en/apiref/357_Retrieve_Property">Retrieve</a><br><a href="/docs/en/apiref/356_List_Property">Retrieve List</a></td><td style="text-align:left">Update</td><td style="text-align:left"><a href="/docs/en/apiref/359_Delete_Property">Delete</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_$links</td><td style="text-align:left">Create</td><td style="text-align:left">List</td><td style="text-align:left">Update</td><td style="text-align:left">Delete</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>AssociationEnd</strong></td><td style="text-align:left"><a href="/docs/en/apiref/318_Create_AssociationEnd">Create</a></td><td style="text-align:left"><a href="/docs/en/apiref/320_Retrieve_AssociationEnd">Retrieve</a><br><a href="/docs/en/apiref/319_List_AssociationEnd">Retrieve List</a></td><td style="text-align:left"><a href="/docs/en/apiref/321_Update_AssociationEnd">Update</a></td><td style="text-align:left"><a href="/docs/en/apiref/322_Delete_AssociationEnd">Delete</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_$links</td><td style="text-align:left"><a href="/docs/en/apiref/323_Link_AssociationEnd">Create</a></td><td style="text-align:left"><a href="/docs/en/apiref/324_List_AssociationEnd_links">List Links</a></td><td style="text-align:left"></td><td style="text-align:left"><a href="/docs/en/apiref/325_Unlink_AssociationEnd">Delete</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_via NavProp</td><td style="text-align:left"></td><td style="text-align:left">List</td><td style="text-align:left"></td><td style="text-align:left"></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>ComplexType</strong></td><td style="text-align:left"><a href="/docs/en/apiref/327_Create_ComplexType">Create</a></td><td style="text-align:left"><a href="/docs/en/apiref/329_Retrieve_ComplexType">Retrieve</a><br><a href="/docs/en/apiref/328_List_ComplexType">Retrieve List</a></td><td style="text-align:left">Update</td><td style="text-align:left"><a href="/docs/en/apiref/331_Delete_ComplexType">Delete</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_$links</td><td style="text-align:left">Create</td><td style="text-align:left">List</td><td style="text-align:left">Update</td><td style="text-align:left">Delete</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left"><strong>ComplexTypeProperty</strong></td><td style="text-align:left"><a href="/docs/en/apiref/336_Create_ComplexTypeProperty">Create</a></td><td style="text-align:left"><a href="/docs/en/apiref/338_Retrieve_ComplexTypeProperty">Retrieve</a><br><a href="/docs/en/apiref/337_List_ComplexTypeProperty">Retrieve List</a></td><td style="text-align:left"><a href="/docs/en/apiref/339_Update_ComplexTypeProperty">Update</a></td><td style="text-align:left"><a href="/docs/en/apiref/340_Delete_ComplexTypeProperty">Delete</a></td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">_$links</td><td style="text-align:left">Create</td><td style="text-align:left">List</td><td style="text-align:left">Update</td><td style="text-align:left">Delete</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="data-manipulation"></a><a href="#data-manipulation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data Manipulation</h4>
+<table>
+<thead>
+<tr><th style="text-align:left">User-defined Entity Set</th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Basic Operations</td><td style="text-align:left"><a href="/docs/en/apiref/364_Create_Entity">Create</a>     <a href="/docs/en/apiref/366_Retrieve_Entity">Retrieve</a>     <a href="/docs/en/apiref/365_List_Entity">Retrieve List</a>     <a href="/docs/en/apiref/367_Update_Entity">Update</a>     <a href="/docs/en/apiref/369_Partial_Update_Entity">Partial Update</a>     <a href="/docs/en/apiref/370_Delete_Entity">Delete</a></td></tr>
+<tr><td style="text-align:left">    Linking with other objects</td><td style="text-align:left"><a href="/docs/en/apiref/373_Link_User_Data">Link</a>     <a href="/docs/en/apiref/376_Unlink_User_Data">Unlink</a>     <a href="/docs/en/apiref/374_List_User_Data_links">List Links</a>     <br> There is no link update. If you want to update, delete it and recreate it.</td></tr>
+<tr><td style="text-align:left">    Bound Object Manipulation</td><td style="text-align:left"><a href="/docs/en/apiref/377_Create_Entity_Via_NP">Create</a>     <a href="/docs/en/apiref/378_List_Entity_Via_NP">Retrieve List</a></td></tr>
+</tbody>
+</table>
+<ul>
+<li><a href="/docs/en/apiref/368_Entity_Bulk_Operations">Batch Operation</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="engine-service-collection"></a><a href="#engine-service-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Service Collection</h3>
+<p>Personium applications and Cell users can create server-side logics and run them on each Cell. It is enabled with a special collection called Engine Service Collection (ESC). Each ESC has its source directory where user logic can be registered as script files. After script files are registered in the directory and the routing from any paths under ESC to the registered script files can be configured, HTTP request to the configured path will be handled with the registered script.</p>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">Operations</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Script files</td><td style="text-align:left"><a href="/docs/en/apiref/381_Create_Service_Collection_Source">Create</a>     <a href="/docs/en/apiref/382_List_Service_Collection_Source">Retrieve</a>      <a href="/docs/en/apiref/383_Delete_Service_Collection_Source">Delete</a></td></tr>
+<tr><td style="text-align:left">Configure / Execute</td><td style="text-align:left"><a href="/docs/en/apiref/380_Configure_Service_Collection">Apply Settings</a>      <a href="/docs/en/apiref/384_Service_Execution">Execute Service</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="stream-collection"></a><a href="#stream-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stream Collection</h3>
+<p>A collection that allows you to send and receive messages. By setting the queue and topic used for sending and receiving message queues, It is possible to send and receive for the set queue and send for the topic. Reception of topic is possible by WebSocket connection.</p>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">Operation</th><th style="text-align:left">Send/Receive</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Stream Collection</td><td style="text-align:left"><a href="/docs/en/apiref/386_Configure_Stream_Collection">Change settings</a>     <a href="/docs/en/apiref/390_Options_Stream_Collection">OPTIONS</a></td><td style="text-align:left"><a href="/docs/en/apiref/387_Stream_Collection_Send">Send</a>     <a href="/docs/en/apiref/388_Stream_Collection_Receive">Receive</a>     <a href="/docs/en/apiref/389_Stream_Collection_Connect">WebSocket connection</a></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="common-information"></a><a href="#common-information" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Common Information</h2>
+<h3><a class="anchor" aria-hidden="true" id="odata-acquisition-common-queries"></a><a href="#odata-acquisition-common-queries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Acquisition Common Queries</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">Query</th><th style="text-align:left">Single Acquisition</th><th style="text-align:left">List Acquisition</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/404_Format_Query">$format Query</a></td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/405_Expand_Query">$expand Query</a></td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/406_Select_Query">$select Query</a></td><td style="text-align:left">Yes</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/400_Orderby_Query">$orderby Query</a></td><td style="text-align:left">No</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/401_Top_Query">$top Query</a></td><td style="text-align:left">No</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/402_Skip_Query">$skip Query</a></td><td style="text-align:left">No</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/403_Filter_Query">$filter Query</a></td><td style="text-align:left">No</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/407_Inlinecount_Query">$inlinecount</a></td><td style="text-align:left">No</td><td style="text-align:left">Yes</td></tr>
+<tr><td style="text-align:left"><a href="/docs/en/apiref/408_Full_Text_Search_Query">Full-text Search (q) Query</a></td><td style="text-align:left">No</td><td style="text-align:left">Yes</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="error-messagesdocsenapiref004_error_messages"></a><a href="#error-messagesdocsenapiref004_error_messages" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="/docs/en/apiref/004_Error_Messages">Error Messages</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="restrictions-on-personium-http-implementationdocsenapiref003_common_limitations_on_http_implementation"></a><a href="#restrictions-on-personium-http-implementationdocsenapiref003_common_limitations_on_http_implementation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="/docs/en/apiref/003_Common_Limitations_on_HTTP_Implementation">Restrictions on Personium HTTP Implementation</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="cors-supportdocsenapiref002_cors_support"></a><a href="#cors-supportdocsenapiref002_cors_support" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="/docs/en/apiref/002_CORS_Support">CORS Support</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="retrieve-cross-domain-policy-filedocsenapiref001_cross_domain_policy_file"></a><a href="#retrieve-cross-domain-policy-filedocsenapiref001_cross_domain_policy_file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="/docs/en/apiref/001_Cross_Domain_Policy_File">Retrieve Cross Domain Policy File</a></h4>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/en/apiref/100_Create_Cell"><span>Create Cell</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#unit-level-api">Unit Level API</a></li><li><a href="#cell-level-api">Cell Level API</a><ul class="toc-headings"><li><a href="#user-and-application-authentication">User and application Authentication</a></li><li><a href="#access-control">Access control</a></li><li><a href="#networking-cells">Networking Cells</a></li><li><a href="#box-creation-and-management-inside-the-cell">Box creation and management inside the Cell</a></li><li><a href="#message-exchange-between-cells">Message Exchange between Cells</a></li><li><a href="#event-processing">Event processing</a></li><li><a href="#other-functions">Other functions</a></li></ul></li><li><a href="#box-level-api">Box Level API</a><ul class="toc-headings"><li><a href="#basic-webdav-operations">Basic WebDAV Operations</a></li><li><a href="#odata-service-collection">OData Service Collection</a></li><li><a href="#engine-service-collection">Engine Service Collection</a></li><li><a href="#stream-collection">Stream Collection</a></li></ul></li><li><a href="#common-information">Common Information</a><ul class="toc-headings"><li><a href="#odata-acquisition-common-queries">OData Acquisition Common Queries</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
