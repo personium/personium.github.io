@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Launch application from Home application · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Personiumアプリには様々な形態がありますが、ここでは最も標準的なHomeアプリから起動されるアプリについて以下を説明します。"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Launch application from Home application · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="Personiumアプリには様々な形態がありますが、ここでは最も標準的なHomeアプリから起動されるアプリについて以下を説明します。"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/app-developer/launch_from_homeapp">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>アプリ開発者</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/app_authn">App authentication</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">CellGUI開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ドキュメント開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">インストール<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/001_Readme_before_installation">Readme before installation</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/002_Build_from_Source">Build from source</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/003_Install_To_LocalMachine">Install to local machine</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">概要<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/overview/001_Introduction">What is Personium?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">プラグイン開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバー運用者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ソフトウェア開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/personium_tests">Personium Tests</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユニット管理者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Data_Management">Data management</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Unit-User">Unit User</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユーザーガイド<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Launch application from Home application</h1></header><article><div><span><p>Personiumアプリには様々な形態がありますが、ここでは最も標準的なHomeアプリから起動されるアプリについて以下を説明します。</p>
+<ul>
+<li>アプリ起動時に渡されるパラメタ</li>
+<li>アプリ起動後に行うべき処理</li>
+</ul>
+<p>注）Personium coreのバージョン1.6.9以降のみが対応しています。</p>
+<h2><a class="anchor" aria-hidden="true" id="アプリ起動時に渡されるパラメタ"></a><a href="#アプリ起動時に渡されるパラメタ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アプリ起動時に渡されるパラメタ</h2>
+<p>ホームアプリのアプリランチャは以下のURLを呼び出すことでアプリ起動を行います。</p>
+<pre><code class="hljs">{AppUrl}#cell={cellUrl}
+</code></pre>
+<p>例</p>
+<pre><code class="hljs">myapp-custom-scheme://#cell=https://demo.personium.io/john.doe/
+https://some.svr.example/my-app/index.html#cell=https://pds.personium.example/john.doe/
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="アプリ起動後に行うべき処理"></a><a href="#アプリ起動後に行うべき処理" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アプリ起動後に行うべき処理</h2>
+<p>アプリケーション開発の実際のプロセスはアプリケーションの実装手段(Androidアプリ、HTML5アプリ、iOSアプリ, etc.)や実装言語によって異なりますが、
+アプリ起動後に行うべき流れは共通です。</p>
+<ol>
+<li>起動URLからCellのURLを受け取る</li>
+<li>OAuth2のcodeフローに準じた手順でアプリ認証を行う</li>
+<li>アクセストークンを受け取る</li>
+<li>BoxのURLを取得する</li>
+<li>Box配下の各種リソースにアクセスする</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="起動urlからcellのurlを受け取る"></a><a href="#起動urlからcellのurlを受け取る" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>起動URLからCellのURLを受け取る</h3>
+<p>Home Appのランチャから起動されるPersnium Appは、何らかの起動URLにより起動します。
+起動URLはhttpsから始まるものかもしれませんし、何等かのカスタムスキームから始まるものかもしれません。
+一般的にカスタムスキームURLで起動されたアプリは自分がどのようなURLで起動されたかを取得可能です。
+またhttpsから始まるURLであればブラウザが起動するでしょうが、ブラウザアプリであっても自身がどのようなURLで起動されたかを取得可能です。
+まず、それぞれの実装において起動URLを取得してください。</p>
+<p>次に取得できた起動URLから#以下をパースして、cellパラメタを取得してください。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目</th><th style="text-align:left">概要</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">cell</td><td style="text-align:left">ターゲットとすべきユーザのCell URL</td></tr>
+</tbody>
+</table>
+<p>このパラメタはこの先のプロセスで必要になります。</p>
+<h3><a class="anchor" aria-hidden="true" id="oauth2のcodeフローに準じた手順でアプリ認証を行う"></a><a href="#oauth2のcodeフローに準じた手順でアプリ認証を行う" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OAuth2のcodeフローに準じた手順でアプリ認証を行う</h3>
+<p><code>こちらの章は記載の途中です。もう少々お待ちください。</code></p>
+<p>あなたのアプリの正当性をユーザCellに対して証明するために、アプリ認証トークンを取得します。これはフィッシングアプリなど、
+悪意のあるアプリケーションからの攻撃からあなたのアプリや、ユーザCellを守るためのセキュリティです。</p>
+<p>アプリ認証トークンは、アプリCellのTokenエンドポイントに対してアプリのID/パスワードを送ることで取得できます。具体的には以下のような情報をPOSTします。</p>
+<pre><code class="hljs">grant_type=password&amp;p_target={ユーザCell URL}&amp;username={アプリID}&amp;password={アプリパスワード}
+</code></pre>
+<p>アプリID, アプリパスワードはあなたのアプリしか知らないものです。これをあなたのアプリからアプリCellのエンドポイントに投げるためには、
+コード中に難読化して埋め込んでもよいですし、どこかのサーバにおいて、サーバから上記リクエストを出してもらってもよいでしょう。
+アプリCell上にEngineスクリプトを置いて、これを実現するのもよいアイディアです。難読化して埋め込みを行った場合は、
+攻撃者のリバースエンジニアリングによってアプリID, アプリパスワードが漏洩することは難読化による一定の抑止力はあるものの、完全には防ぐことができません。</p>
+<p>いずれにせよ、このリクエストに対する認証成功応答JSONの&quot;access_token&quot;項目が「アプリ認証トークン」となります。JSONをパースして取得してください。</p>
+<p>参考： <a href="http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html</a></p>
+<h3><a class="anchor" aria-hidden="true" id="アクセストークンを受け取る"></a><a href="#アクセストークンを受け取る" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アクセストークンを受け取る</h3>
+<p>ユーザCellに対するあなたのAppとしてのアクセストークンを受け取ります。</p>
+<ol>
+<li>アプリ認証トークン</li>
+</ol>
+<p>今度はユーザCellのTokenエンドポイントに対して、以下の情報をPOSTします。</p>
+<pre><code class="hljs">grant_type=authorization_code&amp;code={grantCode}&amp;client_id={アプリCellURL}&amp;client_secret={アプリ認証トークン}
+</code></pre>
+<p>ここで返ってくるレスポンスJSONの中の&quot;access_token&quot;項目が、対象ユーザCellに対するあなたのアプリのためのアクセストークンです。
+この処理はアプリセル上のengineスクリプトで実装することをお勧めします。</p>
+<p>参考： <a href="http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html</a></p>
+<h3><a class="anchor" aria-hidden="true" id="boxのurlを取得する"></a><a href="#boxのurlを取得する" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BoxのURLを取得する</h3>
+<p>以下のAPIを使って、対象ユーザCell上のあなたのアプリのための領域であるBoxのURLを取得します。</p>
+<p>参考: <a href="http://personium.io/docs/ja/apiref/current/304_Get_Box_URL.html">http://personium.io/docs/ja/apiref/current/304_Get_Box_URL.html</a></p>
+<p>この際、Authorizationヘッダで取得したアクセストークンを指定するようにしてください。</p>
+<pre><code class="hljs">Authorization: Bearer {access_token}
+</code></pre>
+<p>これにより、どこのURLをルートとしてデータアクセスすればよいかがわかります。</p>
+<h3><a class="anchor" aria-hidden="true" id="box配下の各種リソースにアクセスする"></a><a href="#box配下の各種リソースにアクセスする" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box配下の各種リソースにアクセスする</h3>
+<p>アプリ開発者である貴方は、対象ユーザCell上のあなたのアプリのためのBox配下の構造については知っているはずです。
+データアクセスのためのBoxレベルAPI (WebDAV, OData)を用いて、Box配下の各種リソースにアクセスしてください。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/app-developer/app_authn"><span class="arrow-prev">← </span><span>App authentication</span></a><a class="docs-next button" href="/docs/ja/app-developer/Personium-Engine"><span>Personium Engine</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#アプリ起動時に渡されるパラメタ">アプリ起動時に渡されるパラメタ</a></li><li><a href="#アプリ起動後に行うべき処理">アプリ起動後に行うべき処理</a><ul class="toc-headings"><li><a href="#起動urlからcellのurlを受け取る">起動URLからCellのURLを受け取る</a></li><li><a href="#oauth2のcodeフローに準じた手順でアプリ認証を行う">OAuth2のcodeフローに準じた手順でアプリ認証を行う</a></li><li><a href="#アクセストークンを受け取る">アクセストークンを受け取る</a></li><li><a href="#boxのurlを取得する">BoxのURLを取得する</a></li><li><a href="#box配下の各種リソースにアクセスする">Box配下の各種リソースにアクセスする</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Personium Architecture · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 基本となる3階層のオブジェクト"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Personium Architecture · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 基本となる3階層のオブジェクト"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/user_guide/001_Personium_Architecture">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>ユーザーガイド</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">CellGUI開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ドキュメント開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">インストール<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/001_Readme_before_installation">Readme before installation</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/002_Build_from_Source">Build from source</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/003_Install_To_LocalMachine">Install to local machine</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">概要<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/overview/001_Introduction">What is Personium?</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">プラグイン開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバー運用者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ソフトウェア開発者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/personium_tests">Personium Tests</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユニット管理者<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Data_Management">Data management</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Unit-User">Unit User</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユーザーガイド<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Personium Architecture</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="基本となる3階層のオブジェクト"></a><a href="#基本となる3階層のオブジェクト" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>基本となる3階層のオブジェクト</h2>
+<p>Personiumはデータ主体中心のICT実現のため以下3階層の基本オブジェクトを定義しています。</p>
+<p><img src="image/3LayerStructure.png" alt="3階層オブジェクト" title="3階層オブジェクト"></p>
+<table>
+<thead>
+<tr><th style="text-align:left">名称</th><th style="text-align:left">概要</th><th style="text-align:left">URL例</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Unit</td><td style="text-align:left">多数のCellをホストするサーバ</td><td style="text-align:left"><a href="https://personium.example/">https://personium.example/</a></td></tr>
+<tr><td style="text-align:left">Cell</td><td style="text-align:left">データ主体ごとのデータストア</td><td style="text-align:left"><a href="https://personium.example/john.doe/">https://personium.example/john.doe/</a></td></tr>
+<tr><td style="text-align:left">Box</td><td style="text-align:left">アプリケーション毎のデータ領域</td><td style="text-align:left"><a href="https://personium.example/john.doe/schedule/">https://personium.example/john.doe/schedule/</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="unit"></a><a href="#unit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unit</h3>
+<ul>
+<li>Unitは、一意のFQDNを持つPersoniumを実行するシステムインフラストラクチャです。</li>
+<li>Personiumは独自の分散アーキテクチャを採用しているため、Unit間の関係を作成し、それに基づいて特権を与えることが可能です。</li>
+<li>Unitでは、複数のCellを作成することができます。</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="cell"></a><a href="#cell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cell</h3>
+<ul>
+<li><p>Cellは、Personiumの基本的な概念です。</p></li>
+<li><p>各Cellは、マルチテナント・モデルで異なるテナントであるかのように独立しています。</p></li>
+<li><p>Cellは以下の機能を提供します。</p>
+<ul>
+<li>認証と承認</li>
+<li>アクセス制御</li>
+<li>アプリケーション用データストア（Box）</li>
+<li>イベント処理、メッセージング、スクリプト実行</li>
+</ul></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="box"></a><a href="#box" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box</h3>
+<ul>
+<li><p>Boxは、アプリケーション用のデータストアです。</p></li>
+<li><p>Boxには、以下のデータを格納できます。</p>
+<ul>
+<li>ディレクトリ</li>
+<li>ファイルオブジェクト</li>
+<li>ODataデータサービス</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="国際標準に基づく設計"></a><a href="#国際標準に基づく設計" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>国際標準に基づく設計</h2>
+<p>Personiumは様々な国際標準をベースにこれを拡張したり組み合わせて構築されています。</p>
+<ul>
+<li>認可のためのOAuth2.0</li>
+<li>ファイル操作のためのWebDAV</li>
+<li>リレーショナルデータのOData</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/unit-administrator/Unit-User"><span class="arrow-prev">← </span><span>Unit User</span></a><a class="docs-next button" href="/docs/ja/user_guide/003_Auth"><span>Authentication model</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#基本となる3階層のオブジェクト">基本となる3階層のオブジェクト</a><ul class="toc-headings"><li><a href="#unit">Unit</a></li><li><a href="#cell">Cell</a></li><li><a href="#box">Box</a></li></ul></li><li><a href="#国際標準に基づく設計">国際標準に基づく設計</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
