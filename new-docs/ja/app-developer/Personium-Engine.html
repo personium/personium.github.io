@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Personium · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 概要"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Personium · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 概要"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/new-docs/en/app-developer/Personium-Engine">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>app-developer</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">README<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">app-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/README">アプリ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/671_Engine_Script_Samples">Engine</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/app_authn">アプリ認証</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/launch_from_homeapp">Homeアプリからのアプリ起動</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/new-docs/ja/app-developer/Personium-Engine">Personium</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/Personium_Apps">Personiumアプリ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/Roles">Personiumにおけるロール</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/app-developer/using_odata">OData</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">cell-gui-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/cell-gui-developer/README">Cell</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">document-writer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/document-writer/README">Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">installation_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/installation_guide/001_Readme_before_installation">インストール前の注意事項</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/installation_guide/002_Build_from_Source">ソースからのビルド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/installation_guide/003_Install_To_LocalMachine">ローカルマシンへのインストール</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/overview/001_Introduction">Personiumとは何ですか？</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">plugin-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/plugin-developer/README">サーバプラグイン開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/plugin-developer/Extension_Send_Mail">Extension:</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium認証Plugin開発ガイド</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">server-operator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/README">サーバソフトウェア運用者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/Confirm_environment_settings">Ansible</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/proxy_exclusion_setting">プロキシ除外設定</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/setup">Ansibleを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/setup_engine_extensions">Engine</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/setup_virtual_image">仮想イメージを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/unit_config_list">Unitの設定一覧</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/unit_coordination">Unit間連携の設定方法</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/unit_operation_design">Unitの運用設計と設定</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/server-operator/unit_security">Unit</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">software-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/software-developer/README">サーバ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/software-developer/build_development_environment">開発用環境の構築手順</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/software-developer/personium_tests">Personiumのテスト</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">unit-administrator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/unit-administrator/README">ユニット管理者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/unit-administrator/Data_Management">データの管理</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/unit-administrator/tutorial">Personiumユニット管理</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/unit-administrator/Unit-User">ユニットユーザ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">user_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/user_guide/001_Personium_Architecture">Personiumのアーキテクチャ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/user_guide/003_Auth">認証モデル</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/user_guide/004_Client_auth">クライアント登録&amp;認証</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/user_guide/007_WebDAV_model">WebDAV</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/user_guide/008_Glossary">用語集</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/user_guide/990_Old_Version_API_Ref">古いバージョンのAPIリファレンス</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Personium</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="概要"></a><a href="#概要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>概要</h2>
+<p>Personium Engine は、簡単なサーバサイドロジック（Engine Script）を登録しこれを走行させるための仕組みです。
+EngineへのアクセスはBox内に作成した Engine Service Collection (ESC)を介して行います。</p>
+<ol>
+<li>ESC内に Engine Script ファイル配置</li>
+<li>ESCへのPROPPATCHメソッド発行でルーティング設定（どのパスでどのロジックを走行させるかという設定）を実施</li>
+<li>ESCや親ディレクトリへのACLメソッド発行でexec権限を付与</li>
+</ol>
+<p>上記3ステップの準備をすることで、指定パスの呼出でサーバサイドロジックが走行するようになります。</p>
+<p>多くの場合 Engine Script はアプリ開発者がbarファイルの中に含めて配布を行い、セルのオーナが box インストールを行うことで実行可能となります。またセルのオーナはアプリを操作する中でそれがどれだけUnitに負荷をかけるのかをイメージすることなくアプリを操作しますし、そういった操作を契機にEngine Scriptは実行されることとなります。</p>
+<p>そのため EngineはUnit に過度な負荷をかけたり、Unit を内部から攻撃するようなコードが記述できないようなサンドボックス環境として設計されています。</p>
+<p>一方で、その制約がきつすぎる場合には行えることが限定的になりすぎることもあるため、
+ユニットの管理者が設定をすれば機能拡張を行えるような枠組みとして Engine Extension を用意しています。</p>
+<h2><a class="anchor" aria-hidden="true" id="engine-service-collection-esc"></a><a href="#engine-service-collection-esc" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Service Collection (ESC)</h2>
+<p>ESC (Engine Service Collection) はBox内WebDAV空間の任意の場所に作成できる特殊Collectionで以下二つの役割を持っています。</p>
+<ul>
+<li>Engine Scriptの格納・管理</li>
+<li>実行のためのエンドポイント提供</li>
+</ul>
+<p>Engine Scriptの格納・管理は、ESC内に自動で作られるScript Source Collectionが担います。
+またESCへのWebDAV PROPPATCH操作で p:service という要素を設定することで、配下のどのようなパスに対するリクエストに対してどの Engine Scriptが処理を受け持つべきかといったいわゆる処理の routing 設定を行うことができます。これによりESC配下の任意のパスに処理実行のためのエンドポイントを作成することができます。</p>
+<h3><a class="anchor" aria-hidden="true" id="escの作成・設定・削除"></a><a href="#escの作成・設定・削除" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ESCの作成・設定・削除</h3>
+<p>ESCの作成はMKCOLメソッドを使って行います。作成したESCパスへのDELETEメソッド発行でESCの削除が可能です。</p>
+<ul>
+<li><a href="../apiref/current/381_Create_Service_Collection_Source.html">ESCの作成</a></li>
+<li><a href="../apiref/current/383_Delete_Service_Collection_Source.html">ESCの削除</a></li>
+</ul>
+<p>また、ESCはMOVEメソッドでのリネームや移動が可能です。ACLメソッドを使ってのアクセス権設定においては、exec権限の付与が重要となります。</p>
+<h3><a class="anchor" aria-hidden="true" id="engine-scriptの格納・管理"></a><a href="#engine-scriptの格納・管理" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Scriptの格納・管理</h3>
+<p>ESCを作成すると内部に自動的に__src/ というソース格納用のCollectionディレクトリが作成されます。これをScript Source Collectionと呼んでいます。ここにJavaScriptで記述したEngine Scriptを格納します。このディレクトリには子ディレクトリを作成することはできずMOVEやDELETEができませんが、それらの点をのぞき通常のWebDAV Collectionと同じであり、WebDAV操作によってEngine Scriptの登録・削除・更新を行います。</p>
+<h3><a class="anchor" aria-hidden="true" id="実行エンドポイントの設定"></a><a href="#実行エンドポイントの設定" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>実行エンドポイントの設定</h3>
+<p>ESCにPROPPATCHメソッドを発行しプロパティを設定することによりロジック実行エンドポイントを設定できます。</p>
+<ul>
+<li><a href="../apiref/current/380_Configure_Service_Collection.html">ESCの実行設定</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="engine-script"></a><a href="#engine-script" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Script</h2>
+<p>Engine ScriptはESCの中に登録する以下のようなスクリプトです。現在JavaScriptのみをサポートしています。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-string">"Hello World !!"</span>]
+  };
+}
+</code></pre>
+<p>Engine ScriptはJSGI仕様に従った関数として定義します。リクエストの情報は定義する関数の引数として引き渡されます。また関数の戻り値として定義するオブジェクトをもとにレスポンスが生成されます。</p>
+<h3><a class="anchor" aria-hidden="true" id="リクエスト"></a><a href="#リクエスト" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエスト</h3>
+<p>エンドポイントへのアクセスがあると以下仕様でリクエスト情報の入ったオブジェクトが引数として渡されるかたちで関数が実行されます。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">キー</th><th style="text-align:left">型</th><th style="text-align:left">値</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">method</td><td style="text-align:left">文字列</td><td style="text-align:left">HTTP のリクエストメソッド</td></tr>
+<tr><td style="text-align:left">headers</td><td style="text-align:left">Object</td><td style="text-align:left">HTTP リクエストヘッダ</td></tr>
+<tr><td style="text-align:left">input</td><td style="text-align:left">Object</td><td style="text-align:left">HTTP リクエストボディ</td></tr>
+<tr><td style="text-align:left">queryString</td><td style="text-align:left">文字列</td><td style="text-align:left">HTTP リクエストURLのqueryString部</td></tr>
+<tr><td style="text-align:left">pathInfo</td><td style="text-align:left">文字列</td><td style="text-align:left">HTTP リクエストURLのpathInfo部</td></tr>
+<tr><td style="text-align:left">scheme</td><td style="text-align:left">文字列</td><td style="text-align:left">HTTP リクエストURLのscheme部</td></tr>
+<tr><td style="text-align:left">host</td><td style="text-align:left">文字列</td><td style="text-align:left">HTTP リクエストURLのhost部</td></tr>
+<tr><td style="text-align:left">port</td><td style="text-align:left">文字列</td><td style="text-align:left">HTTP リクエストURLのport部</td></tr>
+<tr><td style="text-align:left">scriptName</td><td style="text-align:left">文字列</td><td style="text-align:left">スクリプト名</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="レスポンス"></a><a href="#レスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンス</h3>
+<p>以下仕様のオブジェクトを関数の戻り値として返すようにしてください。それにより適切なHTTP応答をします。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">キー</th><th style="text-align:left">型</th><th style="text-align:left">値</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">status</td><td style="text-align:left">Number</td><td style="text-align:left">HTTP のステータスコード</td></tr>
+<tr><td style="text-align:left">headers</td><td style="text-align:left">Object</td><td style="text-align:left">HTTP レスポンスヘッダ</td></tr>
+<tr><td style="text-align:left">body</td><td style="text-align:left">forEach関数が定義されたオブジェクト</td><td style="text-align:left">HTTP レスポンスボディ</td></tr>
+</tbody>
+</table>
+<ul>
+<li><a href="/new-docs/ja/app-developer/671_Engine_Script_Samples">Engine Scriptのサンプル</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="使用可能なグローバルオブジェクト"></a><a href="#使用可能なグローバルオブジェクト" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用可能なグローバルオブジェクト</h3>
+<p>関数内では一般的なJavaScriptロジック記述に加えて、PersoniumのAPI呼出を行うための関数群であるPersonium Engine Library をはじめとするいくつかのグローバルオブジェクトが使用可能です。</p>
+<ul>
+<li>JSON</li>
+<li>String</li>
+<li>RegExp</li>
+<li>Object</li>
+<li>Array</li>
+<li>Math</li>
+<li>等</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="engine-library"></a><a href="#engine-library" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Library</h2>
+<p>Engine LibrayはEngine Scriptの中で使うことのできるライブラリで_pというグローバルオブジェクトからアクセスします。自Cellの自Boxはもちろん、他Cellや他Boxへのアクセスもアクセスが許されていれば可能です。</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-string">"Hello World !!"</span>]
+  };
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="engine-extension"></a><a href="#engine-extension" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Extension</h2>
+<p>Engine ExtensionはEngine Libraryの機能を拡張するための機構です。具体的にはJava言語で特定の方法で書かれたクラスを含んだjarファイルを
+ユニットに設定することにより、 Engine Script内で _p.extension. パッケージ以下に新たな機能を提供するオブジェクトが現れ、利用可能となります。</p>
+<p>Engine Extension は、概要で記載のとおりサンドボックス環境として設計されているengineの制約を緩和するための機構です。
+そのため Engine Extensionの導入はユニット管理者でないと行うことができません。</p>
+<h3><a class="anchor" aria-hidden="true" id="engine-extension-のセットアップ"></a><a href="#engine-extension-のセットアップ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Extension のセットアップ</h3>
+<p>Engine Extensionを使用したい方は、<a href="/new-docs/ja/server-operator/setup_engine_extensions">Engine Extensionのセットアップ</a>をご覧ください。</p>
+<h3><a class="anchor" aria-hidden="true" id="engine-extension-の開発"></a><a href="#engine-extension-の開発" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Engine Extension の開発</h3>
+<p>Engine Extensionを開発したい方は、<a href="../plugin-developer/">プラグイン開発者向けガイド</a>をご覧ください。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/new-docs/ja/app-developer/launch_from_homeapp"><span class="arrow-prev">← </span><span>Homeアプリからのアプリ起動</span></a><a class="docs-next button" href="/new-docs/ja/app-developer/Personium_Apps"><span>Personiumアプリ</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#概要">概要</a></li><li><a href="#engine-service-collection-esc">Engine Service Collection (ESC)</a><ul class="toc-headings"><li><a href="#escの作成・設定・削除">ESCの作成・設定・削除</a></li><li><a href="#engine-scriptの格納・管理">Engine Scriptの格納・管理</a></li><li><a href="#実行エンドポイントの設定">実行エンドポイントの設定</a></li></ul></li><li><a href="#engine-script">Engine Script</a><ul class="toc-headings"><li><a href="#リクエスト">リクエスト</a></li><li><a href="#レスポンス">レスポンス</a></li><li><a href="#使用可能なグローバルオブジェクト">使用可能なグローバルオブジェクト</a></li></ul></li><li><a href="#engine-library">Engine Library</a></li><li><a href="#engine-extension">Engine Extension</a><ul class="toc-headings"><li><a href="#engine-extension-のセットアップ">Engine Extension のセットアップ</a></li><li><a href="#engine-extension-の開発">Engine Extension の開発</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

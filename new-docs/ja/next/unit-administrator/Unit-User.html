@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>ユニットユーザ · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## ユニットユーザとは"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="ユニットユーザ · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## ユニットユーザとは"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/new-docs/en/next/unit-administrator/Unit-User">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>ユニット管理</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/README">Personium ドキュメント</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/overview/001_Introduction">Personiumとは何ですか？</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/001_Personium_Architecture">Personiumのアーキテクチャ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/005_Model_construction">Cellモデル</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/003_Auth">認証モデル</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/007_WebDAV_model">WebDAVモデル</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/008_Glossary">用語集</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/990_Old_Version_API_Ref">古いバージョンのAPIリファレンス</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバ運用<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/README">サーバソフトウェア運用者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/setup">Ansibleを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/Confirm_environment_settings">Ansible で構築したユニットの環境情報</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/setup_virtual_image">仮想イメージを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/proxy_exclusion_setting">プロキシ除外設定</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/setup_engine_extensions">Engine Extensionのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/unit_operation_design">Unitの運用設計と設定</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/unit_config_list">Unitの設定一覧</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/unit_coordination">Unit間連携の設定方法</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/server-operator/unit_security">Unitのセキュリティ（デフォルトからの変更を推奨する設定）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ユニット管理<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/unit-administrator/README">ユニット管理者向けガイド</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/new-docs/ja/next/unit-administrator/Unit-User">ユニットユーザ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/unit-administrator/tutorial">Personiumユニット管理</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/unit-administrator/Data_Management">データの管理</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/README">アプリ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/using_odata">OData Service Collection (OSC)の使い方</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/Personium_Apps">Personiumアプリ</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/user_guide/004_Client_auth">クライアント登録&amp;認証</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/app_authn">アプリ認証</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/Roles">Personiumにおけるロール</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/launch_from_homeapp">Homeアプリからのアプリ起動</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/app-developer/671_Engine_Script_Samples">Engine Script のサンプル</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/cell-gui-developer/README">Cell GUI開発</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">ドキュメント開発<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/document-writer/README">Personium ドキュメント整備・改善への参加方法</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">サーバ開発<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/software-developer/README">サーバ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/software-developer/build_development_environment">開発用環境の構築手順</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/software-developer/personium_tests">Personiumのテスト</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/plugin-developer/README">サーバプラグイン開発</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium認証Plugin開発</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extensionの実装及び配備仕様</a></li><li class="navListItem"><a class="navItem" href="/new-docs/ja/next/plugin-developer/Extension_Send_Mail">Extension: メール送信機能</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">ユニットユーザ</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="ユニットユーザとは"></a><a href="#ユニットユーザとは" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザとは</h2>
+<p>セルのCRUD等ユニットレベルのAPIを操作する主体のことをユニットユーザと呼びます</p>
+<p>Personiumユニットは外部のユニットユーザ管理機構の存在を前提としており、
+特段ユニットユーザの管理機構を持っていません。一方で、一つまたは複数のセルを特別なユニット管理セルとして使ってユニットユーザの管理機構に充てることも可能となっています。</p>
+<h2><a class="anchor" aria-hidden="true" id="ユニットレベルのアクセス制御モデル"></a><a href="#ユニットレベルのアクセス制御モデル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットレベルのアクセス制御モデル</h2>
+<p>セルの生成・削除にかかわるユニットレベルのAPIもアクセス主体を識別するためにOAuth 2.0のBearerトークン送信を使って保護されたAPIにアクセスするという点は全く同じです。つまりアクセス主体は取得したトークンを以下のようにHTTPのAuthorizationヘッダで送信することで、自身を証明し識別させます。</p>
+<pre><code class="hljs"><span class="hljs-symbol">Authorization</span>: <span class="hljs-keyword">Bearer </span>unitLevelAccessToken
+</code></pre>
+<p>一方でユニットレベルのAPIとそれを操作するユニットユーザのアクセス制御のモデルは、一般のセルで認証されたユーザの自セルや他セルへのアクセス制御のモデルとは全く異なります。</p>
+<p>ユニットレベルのAPIが認識するトークンは以下の2種類です。</p>
+<ul>
+<li>ユニットユーザトークン（Unit User Token (UUT)）</li>
+<li>ユニットマスタートークン（Unit Master Token (UMT)）</li>
+</ul>
+<p>これらトークンでのアクセス時にはセルレベルのACLは全く考慮されません。またセルレベルのAPIアクセスでのトランスセルトークンのように他のユニットにまたがったようなアクセスもできません。</p>
+<h3><a class="anchor" aria-hidden="true" id="ユニットマスタートークン（unit-master-token-umt）"></a><a href="#ユニットマスタートークン（unit-master-token-umt）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットマスタートークン（Unit Master Token (UMT)）</h3>
+<p>ユニットマスタートークンはユニットに設定したそのままの値がトークンになるというシンプルな使い方で設定でき、そのトークンでユニットに関するあらゆる操作ができるというきわめて強い権限を持ったトークンです。</p>
+<p>このトークンは開発やテストの時に使うことを想定したものであり、特殊なケースを除き多くの場合本番運用ではセキュリティ的観点から無効化すべきものです。</p>
+<h4><a class="anchor" aria-hidden="true" id="設定の方法"></a><a href="#設定の方法" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定の方法</h4>
+<p>personium-unit-config.propertiesの「io.personium.core.masterToken=」に任意の文字列を設定することでそれがマスタートークンとして認識されます。デフォルトの設定では無効となっていますが、空文字列を設定することでも設定の無効化となります。</p>
+<h3><a class="anchor" aria-hidden="true" id="ユニットユーザトークン（unit-user-token-uut）"></a><a href="#ユニットユーザトークン（unit-user-token-uut）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザトークン（Unit User Token (UUT)）</h3>
+<p>UUTは以下の情報をつめたSAML Assertionに基づくOAuth2のBearerトークンです。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">要素・属性名</th><th style="text-align:left">内容</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">IssueInstant</td><td style="text-align:left">認証した時刻</td></tr>
+<tr><td style="text-align:left">issuer</td><td style="text-align:left">ユニットが認めたURL。<br>personium-unit-config.propertiesの「io.personium.core.unitUser.issuers=」に認める任意のURLを記述</td></tr>
+<tr><td style="text-align:left">Subject\NameID</td><td style="text-align:left">ユニットユーザ名。任意の文字列。</td></tr>
+<tr><td style="text-align:left">audience</td><td style="text-align:left">ユニットルートURL</td></tr>
+<tr><td style="text-align:left">attribute</td><td style="text-align:left">Unit User Role</td></tr>
+</tbody>
+</table>
+<p>このトークンを発行されたアクセス主体をユニットユーザとよび、このようなSAMLアサーションを発行する認証プロセスをユニットユーザ認証と呼びます。</p>
+<p>また、セルでのAccount認証でp_targetにユニットのルートURLを与えることで発行されるトランスセルトークンは、UUTの要件を満たしており、
+ユニットの設定に特定のセルのURLを含めることでそのセルはUUT発行者となりうる。</p>
+<p>例<br>
+セルでUUTを発行する場合<br>
+personium-unit-config.propertiesの<code>io.personium.core.unitUser.issuers={UnitURL}/{Cell}/</code>を設定</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"{UnitURL}/{Cell}/__token"</span> -X POST \
+-d <span class="hljs-string">'grant_type=password&amp;username=user&amp;password=pass&amp;p_target={UnitURL}/'</span>
+</code></pre>
+<ul>
+<li>io.personium.core.unitUser.issuers は複数URL設定可能です。</li>
+<li>UUTは通常、CellのCRUD以外のアクセス権限を持っていません。</li>
+<li>Cellの内容を操作したい場合、後述のユニットユーザロール(CellContentsReader, CellContentsAdmin)を付与する必要があります。
+<ul>
+<li>注意）<a href="#ref163">v1.6.3以前は仕様が異なります</a></li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ユニットユーザの種類"></a><a href="#ユニットユーザの種類" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザの種類</h2>
+<h3><a class="anchor" aria-hidden="true" id="ユニットアドミン（unit-admin）"></a><a href="#ユニットアドミン（unit-admin）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットアドミン（Unit Admin）</h3>
+<p>ユニット全体に対して操作が可能なユニットユーザを特にユニットアドミンと呼びます。ユニットマスタートークンでのアクセスや、後述するUnitAdminロールのついたUUTでのアクセスはユニットアドミンとなります。</p>
+<ul>
+<li>セル検索時、そのユニット上のすべてのセルが対象になる</li>
+<li>そのユニット上のすべてのセルに対して削除が可能。</li>
+<li>X-Personium-Unit-Userヘッダに任意の文字列を指定することで、その文字列をユニットユーザ名とするユニットユーザとして動くことも可能です。
+<ul>
+<li>注意）<a href="#ref163">v1.6.3以前は仕様が異なります</a></li>
+</ul></li>
+</ul>
+<p>例</p>
+<p>{UnitURL}/{UnitUserName} というユニットユーザ名をオーナーとするセル作成</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"{UnitURL}/__ctl/Cell"</span> -X POST \
+-H <span class="hljs-string">"Authorization: Bearer token"</span> \
+-H <span class="hljs-string">"X-Personium-Unit-User: {UnitURL}/{UnitUserName}"</span> \
+-d <span class="hljs-string">'{"Name":"cell1"}'</span>
+</code></pre>
+<p>{UnitURL}/{UnitUserName} というユニットユーザ名をオーナーとするセル一覧を取得</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"{UnitURL}/__ctl/Cell"</span> -X GET \
+-H <span class="hljs-string">"Authorization: Bearer token"</span> \
+-H <span class="hljs-string">"X-Personium-Unit-User: {UnitURL}/{UnitUserName}"</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="ユニットユーザ（unit-user）"></a><a href="#ユニットユーザ（unit-user）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザ（Unit User）</h3>
+<p>オーナーが一致するセルに対して操作が可能なユーザ。 セルの検索を実施するとオーナーが一致するセルのみが検索されます。</p>
+<pre><code class="hljs">・セル作成時、自身が持ち主であるという情報とともにセルが作成される。
+・セル検索時、自身が作成したセル以外は検索されない。
+・セル削除時、自身が作成したセル以外の削除は失敗する。
+</code></pre>
+<p><img src="/new-docs/assets/unituser.png" alt="unituser"></p>
+<h3><a class="anchor" aria-hidden="true" id="ユニットレベル制御エンティティ（セル）のオーナー属性"></a><a href="#ユニットレベル制御エンティティ（セル）のオーナー属性" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットレベル制御エンティティ（セル）のオーナー属性</h3>
+<p>セルにはオーナー（owner）という隠し属性が存在します。 オーナーはセル作成時に設定したら変更は行えない。</p>
+<h2><a class="anchor" aria-hidden="true" id="ユニットユーザロール（unit-user-role）"></a><a href="#ユニットユーザロール（unit-user-role）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザロール（Unit User Role）</h2>
+<p>Personiumのユニットはユニットユーザトークン内のattribute要素の値として特定の文字列が設定されていたとき、これをユニットユーザのロールとして認識します。これをユニットユーザロールと呼びます。（その他の文字列が設定されていたとしてもこれを認識はせず無視します。）</p>
+<p>なお、ユニット管理用のセルを作成してこれをユニットユーザトークン発行元として登録して用いたときは、Boxに紐づけないロールとしてこれらロールを作成してアカウントと紐づけることで、ユニットユーザロールのついたユニットユーザトークンを発行可能です。</p>
+<p>ユニットユーザロールには以下のものがあります。</p>
+<h3><a class="anchor" aria-hidden="true" id="unitadminロール"></a><a href="#unitadminロール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UnitAdminロール</h3>
+<pre><code class="hljs">{UnitUserName}/__role/__/UnitAdmin
+</code></pre>
+<p>UnitAdminロールが付与されている場合、そのユーザはユニットアドミンとなります。<br>
+各種ユニット管理業務は、このロールのトークンを用いてAPI呼び出しを行うべきです。</p>
+<ul>
+<li>注意）<a href="#ref163">v1.6.3以前は仕様が異なります</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="cellcontentsreaderロール"></a><a href="#cellcontentsreaderロール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CellContentsReaderロール</h3>
+<pre><code class="hljs">{UnitUserName}/__role/__/CellContentsReader
+</code></pre>
+<p>CellContentsReaderロールが付与されている場合、そのユーザのユニットユーザトークンはCellの内容のRead権限を持ちます。内容参照しか行わずデータの登録や書き換えにつながる処理を実行することはできません。</p>
+<ul>
+<li>注意）<a href="#ref163">v1.6.3以前は仕様が異なります</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="cellcontentsadminロール"></a><a href="#cellcontentsadminロール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CellContentsAdminロール</h3>
+<pre><code class="hljs">{UnitUserName}/__role/__/CellContentsAdmin
+</code></pre>
+<p>CellContentsAdminロールが付与されている場合、そのユーザのユニットユーザトークンはCellの内容の全権限を持ちます。  ユニットユーザに&quot;UnitAdminロール&quot;、及び&quot;CellContentsAdminロール&quot;を付与することで、そのユーザのユニットユーザトークンはユニットマスタートークンと同等の権限を持つこととなります。</p>
+<ul>
+<li>注意）<a href="#ref163">v1.6.3以前は仕様が異なります</a></li>
+</ul>
+<p><a name="ref163"></a></p>
+<h2><a class="anchor" aria-hidden="true" id="version-163-以前の仕様"></a><a href="#version-163-以前の仕様" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Version 1.6.3 以前の仕様</h2>
+<h3><a class="anchor" aria-hidden="true" id="ユニットユーザロールについて"></a><a href="#ユニットユーザロールについて" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ユニットユーザロールについて</h3>
+<ul>
+<li><p>Version 1.6.3 以前で唯一存在したunitAdminロールの先頭文字は小文字です。以下文字列が有効となります。</p>
+<p>{UnitUserName}/__role/__/unitAdmin</p></li>
+<li><p>CellContentsReaderロール、CellContentsAdminロールは存在しません。</p></li>
+<li><p>ユニットユーザは特に何もユニットユーザロールがなくても自身の作成したセルに対してはすべての権限を持ちます。（CellContentsAdminロール相当）</p></li>
+<li><p>ユニットアドミンはユニット上のすべてのセルに対してすべての権限を持ちます。</p></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="x-personium-unit-userヘッダの制限"></a><a href="#x-personium-unit-userヘッダの制限" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>X-Personium-Unit-Userヘッダの制限</h3>
+<ul>
+<li>ユニットマスタートークン使用時以外はX-Personium-Unit-Userヘッダは有効ではありません。</li>
+<li>unitAdminロールが付与されたトークンでのアクセス時もX-Personium-Unit-Userヘッダは有効ではありません。</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/new-docs/ja/next/unit-administrator/README"><span class="arrow-prev">← </span><span>ユニット管理者向けガイド</span></a><a class="docs-next button" href="/new-docs/ja/next/unit-administrator/tutorial"><span>Personiumユニット管理</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#ユニットユーザとは">ユニットユーザとは</a></li><li><a href="#ユニットレベルのアクセス制御モデル">ユニットレベルのアクセス制御モデル</a><ul class="toc-headings"><li><a href="#ユニットマスタートークン（unit-master-token-umt）">ユニットマスタートークン（Unit Master Token (UMT)）</a></li><li><a href="#ユニットユーザトークン（unit-user-token-uut）">ユニットユーザトークン（Unit User Token (UUT)）</a></li></ul></li><li><a href="#ユニットユーザの種類">ユニットユーザの種類</a><ul class="toc-headings"><li><a href="#ユニットアドミン（unit-admin）">ユニットアドミン（Unit Admin）</a></li><li><a href="#ユニットユーザ（unit-user）">ユニットユーザ（Unit User）</a></li><li><a href="#ユニットレベル制御エンティティ（セル）のオーナー属性">ユニットレベル制御エンティティ（セル）のオーナー属性</a></li></ul></li><li><a href="#ユニットユーザロール（unit-user-role）">ユニットユーザロール（Unit User Role）</a><ul class="toc-headings"><li><a href="#unitadminロール">UnitAdminロール</a></li><li><a href="#cellcontentsreaderロール">CellContentsReaderロール</a></li><li><a href="#cellcontentsadminロール">CellContentsAdminロール</a></li></ul></li><li><a href="#version-163-以前の仕様">Version 1.6.3 以前の仕様</a><ul class="toc-headings"><li><a href="#ユニットユーザロールについて">ユニットユーザロールについて</a></li><li><a href="#x-personium-unit-userヘッダの制限">X-Personium-Unit-Userヘッダの制限</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

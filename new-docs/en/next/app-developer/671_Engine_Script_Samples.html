@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Engine Script Samples · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Basic Form"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Engine Script Samples · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## Basic Form"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/en/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/new-docs/ja/next/app-developer/671_Engine_Script_Samples">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>For App Developer</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/en/next/README">Documentation for Personium</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/overview/001_Introduction">What is Personium?</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/005_Model_construction">user_guide/005_Model_construction</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Server Operator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Unit Administrator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/en/next/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/unit-administrator/Unit-User">Unit User</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/unit-administrator/Data_Management">Data management</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For App Developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/new-docs/en/next/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Document Writer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/en/next/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Server Developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/new-docs/en/next/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/software-developer/personium_tests">Personium Tests</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/new-docs/en/next/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Engine Script Samples</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="basic-form"></a><a href="#basic-form" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Basic Form</h2>
+<p>Engine Script is a JavaScript function that receives request as a parameter and returns response.</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-string">"Hello World !!"</span>]
+  };
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="receiving-request"></a><a href="#receiving-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Receiving Request</h2>
+<p>Requests are given as function arguments. In the following, when the function argument is described as request,
+I will explain how to obtain various information on request while presenting sample.</p>
+<h3><a class="anchor" aria-hidden="true" id="request-method"></a><a href="#request-method" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Method</h3>
+<p>HTTP Method can be retrieved from &quot;request.method&quot;</p>
+<h4><a class="anchor" aria-hidden="true" id="only-accepting-get-method"></a><a href="#only-accepting-get-method" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>only accepting GET method</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">if</span> (request.method !== <span class="hljs-string">'GET'</span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-built_in">status</span>: <span class="hljs-number">405</span>,
+      body: [<span class="hljs-string">'Method Not Allowed'</span>]
+    };
+  }
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        body: [<span class="hljs-string">"GET method is fine"</span>]
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="request-header"></a><a href="#request-header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Header</h3>
+<p>request.headers gives request headers</p>
+<h4><a class="anchor" aria-hidden="true" id="returning-a-specific-request-header-value"></a><a href="#returning-a-specific-request-header-value" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>returning a specific request header value</h4>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var headerVal = request.headers[<span class="hljs-symbol">'X</span>-<span class="hljs-keyword">Some</span>-Header'];
+  <span class="hljs-keyword">if</span> (!headerVal) {
+    <span class="hljs-keyword">return</span> {
+      status: <span class="hljs-number">400</span>,
+      <span class="hljs-keyword">body</span>: [<span class="hljs-symbol">'X</span>-<span class="hljs-keyword">Some</span>-Header required']
+    };
+  }
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        <span class="hljs-keyword">body</span>: [<span class="hljs-string">"X-Some-Header value = "</span> + headerVal]
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="request-body"></a><a href="#request-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request Body</h3>
+<p>Request body can be accessed with the following property.</p>
+<pre><code class="hljs">  <span class="hljs-selector-tag">request</span><span class="hljs-selector-class">.input</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="parsing-request-body"></a><a href="#parsing-request-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parsing request body</h4>
+<p>When the request body is a relatively small character sequence, just read all the stream as a string.</p>
+<pre><code class="hljs">    <span class="hljs-keyword">var</span> reqString = request.<span class="hljs-keyword">input</span>.readAll();
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="x-www-formurlencoded-content-type"></a><a href="#x-www-formurlencoded-content-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>x-www-formurlencoded content type</h5>
+<p>can be parsed using a utility function provided by Personium Engine</p>
+<pre><code class="hljs">    var params = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">_p</span>.</span></span>util.query<span class="hljs-constructor">Parse(<span class="hljs-params">reqString</span>)</span>;
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="json-content-type"></a><a href="#json-content-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON content type</h5>
+<p>can be parsed using standard JSON object.</p>
+<pre><code class="hljs">    <span class="hljs-keyword">var</span> req = <span class="hljs-built_in">JSON</span>.parse(reqString);
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="binary-body"></a><a href="#binary-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>binary body</h4>
+<p>If the request body is binary, it is a good idea to process the stream as it is.</p>
+<pre><code class="hljs">    <span class="hljs-keyword">var</span> stream = request.<span class="hljs-keyword">input</span>;
+</code></pre>
+<p>It is possible to write the acquired stream to a file or use it in response.</p>
+<h2><a class="anchor" aria-hidden="true" id="returning-response"></a><a href="#returning-response" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returning Response</h2>
+<h3><a class="anchor" aria-hidden="true" id="response-variations"></a><a href="#response-variations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response variations</h3>
+<h4><a class="anchor" aria-hidden="true" id="response-in-html"></a><a href="#response-in-html" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response in HTML</h4>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/html"</span>},
+        body: [<span class="hljs-string">"&lt;html&gt;&lt;body&gt;&lt;h2&gt;Hello World !!&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;"</span>]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="json-response"></a><a href="#json-response" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON Response</h4>
+<pre><code class="hljs">function(request) {
+  var res = { 
+<span class="hljs-symbol">    key:</span> <span class="hljs-string">"helloWorld"</span>,
+<span class="hljs-symbol">    message:</span> <span class="hljs-string">"Hello World !!"</span>
+  }; 
+  <span class="hljs-class">return </span>{
+<span class="hljs-symbol">        status:</span> <span class="hljs-number">200</span>,
+<span class="hljs-symbol">        headers:</span> {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"application/json"</span>},
+<span class="hljs-symbol">        body:</span> [JSON.stringify(res)]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="changing-the-status-code"></a><a href="#changing-the-status-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Changing the status code</h4>
+<p>403 Forbidden Error response</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-keyword">status</span>: <span class="hljs-number">403</span>,
+        body: []
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="variation-of-body"></a><a href="#variation-of-body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variation of body</h3>
+<p>If you return an array of strings as body, it will be a response connecting them.</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+  <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-string">"Hello"</span>, <span class="hljs-string">"World"</span>]
+  };
+}
+</code></pre>
+<p>The array element returned as body can take an inputStream.</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> <span class="hljs-keyword">is</span> = .... (File acquisition etc)
+
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: [<span class="hljs-keyword">is</span>]
+  };
+}
+</code></pre>
+<p>In the following example, the input request body is returned as it is as a response body.</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span></span> {
+    var stream = request.<span class="hljs-built_in">input</span>;
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-built_in">status</span>: <span class="hljs-number">200</span>,
+        body: [stream]
+    };    
+}
+</code></pre>
+<p>The object to be returned as body must implement the forEach method, therefore, it is possible to return it with the following object.</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> {</span>
+  var bodyObj = {
+     <span class="hljs-built_in">min</span>: <span class="hljs-number">0</span>,
+     <span class="hljs-built_in">max</span>: <span class="hljs-number">2000</span>,
+     forEach: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(f)</span> {</span>
+       var <span class="hljs-built_in">i</span> = <span class="hljs-built_in">min</span>;
+       <span class="hljs-keyword">while</span> (<span class="hljs-built_in">i</span> &lt; <span class="hljs-built_in">max</span>) {
+          f(<span class="hljs-built_in">i</span> + <span class="hljs-string">","</span>);
+          <span class="hljs-built_in">i</span>++;
+       }
+     }
+  };
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {<span class="hljs-string">"Content-Type"</span>:<span class="hljs-string">"text/plain"</span>},
+        body: bodyObj
+  };
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="calling-personium-api"></a><a href="#calling-personium-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Calling Personium API</h2>
+<p>In Engine Scripts, Personium API's can be accessed via a global object named _p.</p>
+<h3><a class="anchor" aria-hidden="true" id="file-manipulation"></a><a href="#file-manipulation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File manipulation</h3>
+<h4><a class="anchor" aria-hidden="true" id="retrieval"></a><a href="#retrieval" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Retrieval</h4>
+<p>In the following example, the access token received from the client is accessed as it is, and a file called conf.json in the root of the Box where this script runs is acquired as a character string.
+I parse the file contents and return the value of the mode key.</p>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  var jsonStr = thisBox.getString(<span class="hljs-string">'conf.json'</span>);
+
+  var conf = <span class="hljs-type">JSON</span>.parse(jsonStr);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">204</span>,
+        headers: { <span class="hljs-string">'Content-Type'</span> : <span class="hljs-string">'text/plain'</span>},
+        body: [conf.mode]
+  };
+}
+</code></pre>
+<p>I access the file /img/picture.jpg in the Box where this script runs using the access token received from the client as it is.
+I got the contents that I got there so that it is returned as a response body.</p>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  var pictureStream = thisBox.col(<span class="hljs-string">'img'</span>).getStream(<span class="hljs-string">'picture.jpg'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        headers: {"Content-Type":"image/jpeg"},
+        body: [pictureStream]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="file-creation--overwrite-update"></a><a href="#file-creation--overwrite-update" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File creation / overwrite update</h4>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var content = request.<span class="hljs-keyword">input</span>.readAll();
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  var pictureStream = thisBox.put(<span class="hljs-string">'conf.json'</span>, <span class="hljs-string">'application/json'</span>, content);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: [content]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="delete-file"></a><a href="#delete-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Delete file</h4>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  var pictureStream = thisBox.col(<span class="hljs-string">'img'</span>).del(<span class="hljs-string">'picture.jpg'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">204</span>,
+        body: []
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="file-update-with-collision-detection"></a><a href="#file-update-with-collision-detection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File update with collision detection</h4>
+<p>File update only when the etag information sent by the If-Match header matches</p>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(request)</span> </span>{
+  <span class="hljs-keyword">var</span> etag = request.headers[<span class="hljs-string">'If-Match'</span>];
+  <span class="hljs-keyword">var</span> content = request.input.readAll();
+  <span class="hljs-keyword">var</span> thisBox = _p.localbox();
+<span class="hljs-comment">// Please use the following format to get local Box for Ver. before 1.6.5</span>
+<span class="hljs-comment">// var thisBox = _p.as('client').cell().box();</span>
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> pictureStream = thisBox.put(<span class="hljs-string">'conf.json'</span>, <span class="hljs-string">'application/json'</span>, content, etag);
+  } <span class="hljs-keyword">catch</span> (e) {
+    <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">409</span>,
+        body: [<span class="hljs-string">"conflict"</span>]
+    };  
+  }
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">204</span>,
+        body: []
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="operation-of-collections"></a><a href="#operation-of-collections" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Operation of Collections</h3>
+<h4><a class="anchor" aria-hidden="true" id="create-webdav-collection"></a><a href="#create-webdav-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create WebDAV collection</h4>
+<p>A collection is a term equivalent to a directory in WebDAV.</p>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  thisBox.mkCol(<span class="hljs-string">'folder1'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: []
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="create-odata-service-collection"></a><a href="#create-odata-service-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create OData Service Collection</h4>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  thisBox.mkOData(<span class="hljs-string">'odata'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: []
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="create-engine-service-collection"></a><a href="#create-engine-service-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create Engine Service Collection</h4>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  thisBox.mkService(<span class="hljs-string">'svc'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">201</span>,
+        body: []
+  };
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="operation-of-odata-service-collection"></a><a href="#operation-of-odata-service-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Operation of OData Service Collection</h3>
+<h4><a class="anchor" aria-hidden="true" id="create-entity"></a><a href="#create-entity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create Entity</h4>
+<p>Add 1 data to the table.</p>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  var entitySet = thisBox.odata(<span class="hljs-string">'odata'</span>).entitySet(<span class="hljs-string">'items'</span>)
+  var item = entitySet.<span class="hljs-keyword">create</span>({<span class="hljs-type">Name</span>: <span class="hljs-string">'Chocolate'</span>, Price: <span class="hljs-number">2.7</span>});
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        body: [<span class="hljs-type">JSON</span>.stringify(item)]
+  };
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="acquisition-of-entity"></a><a href="#acquisition-of-entity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Acquisition of Entity</h4>
+<p>Acquire 1 table of data</p>
+<pre><code class="hljs"><span class="hljs-keyword">function</span>(request) {
+  var thisBox = _p.localbox();
+// Please use the <span class="hljs-keyword">following</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">local</span> <span class="hljs-type">Box</span> <span class="hljs-keyword">for</span> Ver. <span class="hljs-keyword">before</span> <span class="hljs-number">1.6</span><span class="hljs-number">.5</span>
+// var thisBox = _p.<span class="hljs-keyword">as</span>(<span class="hljs-string">'client'</span>).cell().box();
+  var item = thisBox.odata(<span class="hljs-string">'odata'</span>).entitySet(<span class="hljs-string">'items'</span>).retrieve(<span class="hljs-string">'key1'</span>);
+  <span class="hljs-keyword">return</span> {
+        status: <span class="hljs-number">200</span>,
+        body: [<span class="hljs-type">JSON</span>.stringify(item)]
+  };
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/new-docs/en/next/app-developer/Personium-Engine"><span class="arrow-prev">← </span><span>Personium Engine</span></a><a class="docs-next button" href="/new-docs/en/next/cell-gui-developer/README"><span>Cell GUI developer&#x27;s Guide</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#basic-form">Basic Form</a></li><li><a href="#receiving-request">Receiving Request</a><ul class="toc-headings"><li><a href="#request-method">Request Method</a></li><li><a href="#request-header">Request Header</a></li><li><a href="#request-body">Request Body</a></li></ul></li><li><a href="#returning-response">Returning Response</a><ul class="toc-headings"><li><a href="#response-variations">Response variations</a></li><li><a href="#variation-of-body">Variation of body</a></li></ul></li><li><a href="#calling-personium-api">Calling Personium API</a><ul class="toc-headings"><li><a href="#file-manipulation">File manipulation</a></li><li><a href="#operation-of-collections">Operation of Collections</a></li><li><a href="#operation-of-odata-service-collection">Operation of OData Service Collection</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

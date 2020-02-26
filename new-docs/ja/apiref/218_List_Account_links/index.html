@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Accountと他オブジェクトとのリンク一覧取得 · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 概要"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Accountと他オブジェクトとのリンク一覧取得 · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 概要"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/new-docs/en/apiref/218_List_Account_links">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Accountと他オブジェクトとのリンク一覧取得</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="概要"></a><a href="#概要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>概要</h2>
+<p>Accountに紐付いたODataリソースを一覧取得する<br>
+以下のODataリソースを指定することができる</p>
+<ul>
+<li>Role</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="必要な権限"></a><a href="#必要な権限" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>必要な権限</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">紐付け先</th><th style="text-align:left">必要な権限</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Role</td><td style="text-align:left">auth-read</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="制限事項"></a><a href="#制限事項" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>制限事項</h3>
+<ul>
+<li>OData 制限
+<ul>
+<li>リクエストヘッダのContent-Typeは全てapplication/jsonとして扱う</li>
+<li>リクエストボディはJSON形式のみ受け付ける</li>
+<li>レスポンスヘッダのContent-Typeはapplication/jsonのみをサポートし、レスポンスボディはJSON形式とする</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="リクエスト"></a><a href="#リクエスト" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエスト</h2>
+<h3><a class="anchor" aria-hidden="true" id="リクエストurl"></a><a href="#リクエストurl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストURL</h3>
+<p>Roleと紐付いている場合</p>
+<pre><code class="hljs">{CellURL}<span class="hljs-variable">__ctl</span>/Account(<span class="hljs-built_in">Name</span>=<span class="hljs-string">'{AccountName}'</span>)/$links/<span class="hljs-variable">_Role</span>
+</code></pre>
+<p>または、</p>
+<pre><code class="hljs">{CellURL}<span class="hljs-variable">__ctl</span>/Account(<span class="hljs-string">'{AccountName}'</span>)/$links/<span class="hljs-variable">_Role</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="メソッド"></a><a href="#メソッド" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>メソッド</h3>
+<p>GET</p>
+<h3><a class="anchor" aria-hidden="true" id="リクエストクエリ"></a><a href="#リクエストクエリ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストクエリ</h3>
+<p>以下のクエリパラメタが利用可能です。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">クエリ名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">p_cookie_peer</td><td style="text-align:left">クッキー認証値</td><td style="text-align:left">認証時にサーバから返却されたクッキー認証値</td><td style="text-align:left">×</td><td style="text-align:left">Authorizationヘッダの指定が無い場合のみ有効<br>クッキーの認証情報を利用する場合に指定する</td></tr>
+</tbody>
+</table>
+<!---
+[$select クエリ](/new-docs/ja/apiref/406_Select_Query)
+<p><a href="/new-docs/ja/apiref/405_Expand_Query">$expand クエリ</a></p>
+<p><a href="/new-docs/ja/apiref/404_Format_Query">$format クエリ</a></p>
+<p><a href="/new-docs/ja/apiref/403_Filter_Query">$filter クエリ</a></p>
+<p><a href="/new-docs/ja/apiref/407_Inlinecount_Query">$inlinecount クエリ</a></p>
+<p><a href="/new-docs/ja/apiref/400_Orderby_Query">$orderby クエリ</a>
+--&gt;</p>
+<p><a href="/new-docs/ja/apiref/401_Top_Query">$top クエリ</a></p>
+<p><a href="/new-docs/ja/apiref/402_Skip_Query">$skip クエリ</a></p>
+<!---
+[全文検索(q)クエリ](/new-docs/ja/apiref/408_Full_Text_Search_Query)
+-->
+<h3><a class="anchor" aria-hidden="true" id="リクエストヘッダ"></a><a href="#リクエストヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストヘッダ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">ヘッダ名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">X-HTTP-Method-Override</td><td style="text-align:left">メソッドオーバーライド機能</td><td style="text-align:left">任意</td><td style="text-align:left">×</td><td style="text-align:left">POSTメソッドでリクエスト時にこの値を指定すると、指定した値がメソッドとして使用されます。</td></tr>
+<tr><td style="text-align:left">X-Override</td><td style="text-align:left">ヘッダオーバライド機能</td><td style="text-align:left">${上書きするヘッダ名}:${値}</td><td style="text-align:left">×</td><td style="text-align:left">通常のHTTPヘッダの値を上書きします。複数のヘッダを上書きする場合はX-Overrideヘッダを複数指定します。</td></tr>
+<tr><td style="text-align:left">X-Personium-RequestKey</td><td style="text-align:left">イベントログに出力するRequestKeyフィールドの値</td><td style="text-align:left">半角英数、-(半角ハイフン)と_(半角アンダーバー)<br>最大128文字</td><td style="text-align:left">×</td><td style="text-align:left">指定がない場合、PCS-${UUIDで32文字の文字列}を設定する</td></tr>
+<tr><td style="text-align:left">Authorization</td><td style="text-align:left">OAuth2.0形式で、認証情報を指定する</td><td style="text-align:left">Bearer {AccessToken}</td><td style="text-align:left">×</td><td style="text-align:left">※認証トークンは認証トークン取得APIで取得したトークン</td></tr>
+<tr><td style="text-align:left">Accept</td><td style="text-align:left">レスポンスボディの形式を指定する</td><td style="text-align:left">application/json</td><td style="text-align:left">×</td><td style="text-align:left">省略時は[application/json]として扱う</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="リクエストボディ"></a><a href="#リクエストボディ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>リクエストボディ</h3>
+<p>なし</p>
+<h2><a class="anchor" aria-hidden="true" id="レスポンス"></a><a href="#レスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンス</h2>
+<h3><a class="anchor" aria-hidden="true" id="ステータスコード"></a><a href="#ステータスコード" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h3>
+<p>200</p>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスヘッダ"></a><a href="#レスポンスヘッダ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスヘッダ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">ヘッダ名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Content-Type</td><td style="text-align:left">返却されるデータの形式</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">DataServiceVersion</td><td style="text-align:left">ODataのバージョン</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Access-Control-Allow-Origin</td><td style="text-align:left">クロスドメイン通信許可ヘッダ</td><td style="text-align:left">返却値は&quot;*&quot;固定</td></tr>
+<tr><td style="text-align:left">X-Personium-Version</td><td style="text-align:left">APIの実行バージョン</td><td style="text-align:left">リクエストが処理されたAPIバージョン</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスボディ"></a><a href="#レスポンスボディ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスボディ</h3>
+<table>
+<thead>
+<tr><th style="text-align:left">オブジェクト</th><th style="text-align:left">項目名</th><th style="text-align:left">Data Type</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">ルート</td><td style="text-align:left">d</td><td style="text-align:left">object</td><td style="text-align:left">オブジェクト{1}</td></tr>
+<tr><td style="text-align:left">{1}</td><td style="text-align:left">results</td><td style="text-align:left">array</td><td style="text-align:left">オブジェクト{2}の配列</td></tr>
+<tr><td style="text-align:left">{2}</td><td style="text-align:left">uri</td><td style="text-align:left">string</td><td style="text-align:left">紐付いているODataリソースへのURL</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="エラーメッセージ一覧"></a><a href="#エラーメッセージ一覧" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>エラーメッセージ一覧</h3>
+<p><a href="/new-docs/ja/apiref/004_Error_Messages">エラーメッセージ一覧</a>を参照</p>
+<h3><a class="anchor" aria-hidden="true" id="レスポンスサンプル"></a><a href="#レスポンスサンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>レスポンスサンプル</h3>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"d"</span>: {
+    <span class="hljs-attr">"results"</span>: [
+      {
+        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://cell1.unit1.example/__ctl/Role(Name='role1',_Box.Name='box1')"</span>
+      },
+      {
+        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://cell1.unit1.example/__ctl/Role(Name='role2',_Box.Name=null)"</span>
+      }
+    ]
+  }
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="curlサンプル"></a><a href="#curlサンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cURLサンプル</h2>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://cell1.unit1.example/__ctl/Account(Name='account1')/\$links/_Role"</span> -X GET -i \
+-H <span class="hljs-string">'Authorization: Bearer AA~PBDc...(省略)...FrTjA'</span> -H <span class="hljs-string">'Accept: application/json'</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#概要">概要</a><ul class="toc-headings"><li><a href="#必要な権限">必要な権限</a></li><li><a href="#制限事項">制限事項</a></li></ul></li><li><a href="#リクエスト">リクエスト</a><ul class="toc-headings"><li><a href="#リクエストurl">リクエストURL</a></li><li><a href="#メソッド">メソッド</a></li><li><a href="#リクエストクエリ">リクエストクエリ</a></li><li><a href="#リクエストヘッダ">リクエストヘッダ</a></li><li><a href="#リクエストボディ">リクエストボディ</a></li></ul></li><li><a href="#レスポンス">レスポンス</a><ul class="toc-headings"><li><a href="#ステータスコード">ステータスコード</a></li><li><a href="#レスポンスヘッダ">レスポンスヘッダ</a></li><li><a href="#レスポンスボディ">レスポンスボディ</a></li><li><a href="#エラーメッセージ一覧">エラーメッセージ一覧</a></li><li><a href="#レスポンスサンプル">レスポンスサンプル</a></li></ul></li><li><a href="#curlサンプル">cURLサンプル</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

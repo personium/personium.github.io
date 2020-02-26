@@ -1,116 +1,116 @@
-<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Personium認証Plugin開発ガイド · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="この文書はPersonium認証Pluginの開発マニュアルです。"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="Personium認証Plugin開発ガイド · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="この文書はPersonium認証Pluginの開発マニュアルです。"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/plugin-developer/Personium_AuthenticationPluginDeveloperManual">English</a></li></ul></div></li><script>
-        const languagesMenuItem = document.getElementById("languages-menu");
-        const languagesDropDown = document.getElementById("languages-dropdown");
-        languagesMenuItem.addEventListener("click", function(event) {
-          event.preventDefault();
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <!-- default template -->
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <title>Personium_AuthenticationPluginDeveloperManual</title>
+  <script type="text/javascript">
+      var path = location.pathname.split('/');
+      var pathRoot = [ path[0], path[1], '' ].join('/');
+      var pathLang = [ path[0], path[1], path[2] , ''].join('/');
 
-          if (languagesDropDown.className == "hide") {
-            languagesDropDown.className = "visible";
-          } else {
-            languagesDropDown.className = "hide";
-          }
-        });
-      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>plugin-developer</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">README<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">app-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/README">アプリ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/671_Engine_Script_Samples">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/app_authn">アプリ認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/launch_from_homeapp">Homeアプリからのアプリ起動</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium-Engine">Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium_Apps">Personiumアプリ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Roles">Personiumにおけるロール</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/using_odata">OData</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">cell-gui-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/cell-gui-developer/README">Cell</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">document-writer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/document-writer/README">Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">installation_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/001_Readme_before_installation">インストール前の注意事項</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/002_Build_from_Source">ソースからのビルド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/003_Install_To_LocalMachine">ローカルマシンへのインストール</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/overview/001_Introduction">Personiumとは何ですか？</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">plugin-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/README">サーバプラグイン開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Extension_Send_Mail">Extension:</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium認証Plugin開発ガイド</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">server-operator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/README">サーバソフトウェア運用者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/Confirm_environment_settings">Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/proxy_exclusion_setting">プロキシ除外設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup">Ansibleを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_engine_extensions">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_virtual_image">仮想イメージを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_config_list">Unitの設定一覧</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_coordination">Unit間連携の設定方法</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_operation_design">Unitの運用設計と設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_security">Unit</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">software-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/README">サーバ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/build_development_environment">開発用環境の構築手順</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/personium_tests">Personiumのテスト</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">unit-administrator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/README">ユニット管理者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Data_Management">データの管理</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/tutorial">Personiumユニット管理</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Unit-User">ユニットユーザ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">user_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/001_Personium_Architecture">Personiumのアーキテクチャ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/003_Auth">認証モデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/004_Client_auth">クライアント登録&amp;認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/007_WebDAV_model">WebDAV</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/008_Glossary">用語集</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/990_Old_Version_API_Ref">古いバージョンのAPIリファレンス</a></li></ul></div></div></section></div><script>
-            var coll = document.getElementsByClassName('collapsible');
-            var checkActiveCategory = true;
-            for (var i = 0; i < coll.length; i++) {
-              var links = coll[i].nextElementSibling.getElementsByTagName('*');
-              if (checkActiveCategory){
-                for (var j = 0; j < links.length; j++) {
-                  if (links[j].classList.contains('navListItemActive')){
-                    coll[i].nextElementSibling.classList.toggle('hide');
-                    coll[i].childNodes[1].classList.toggle('rotate');
-                    checkActiveCategory = false;
-                    break;
-                  }
-                }
-              }
+      document.write('<link rel="stylesheet" href="' + pathRoot + 'personium.css" type="text/css" />');
+      document.write('<link rel="stylesheet" href="' + pathLang + 'locale.css" type="text/css" />');
+      var ps = document.createElement('script');
+      ps.src = pathRoot + 'personium_docs.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ps, s);
+    
+      ps2 = document.createElement('script');
+      ps2.src = pathRoot + 'apiref_versions.js';
+      s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ps2, s);
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <header>
+    <nav>
+    <div id="logo"><a href="/"><img src="https://personium.io/images/logo-quantify-dark.png"></a></div>
+    <ul>
+      <li class="submenu">
+        <a href="#" >Introduction</a>
+        <ul>
+            <li><a href="javascript:p.toPage('/overview/001_Introduction.html');">What's Personium?</a></li>
+            <li><a href="javascript:p.toPage('/user_guide/001_Personium_Architecture.html');">Architecture</a></li>
+            <li><a href="javascript:p.toPage('/user_guide/008_Glossary.html');">Glossary</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >User Guide</a>
+        <ul>
+            <li><a href="javascript:p.toPage('/app-developer/');">for App Developer</a></li>
+            <li><a href="javascript:p.toPage('/cell-gui-developer/');">for Cell GUI Developer</a></li>
+            <li><a href="javascript:p.toPage('/unit-administrator/');">for Unit Administrator</a></li>
+            <li><a href="javascript:p.toPage('/server-operator/');">for Server Software Operator</a></li>
+            <li><a href="javascript:p.toPage('/document-writer/');">for Documentation Contributor</a></li>
+            <li><a href="javascript:p.toPage('/plugin-developer/');">for Server Plugin Developer</a></li>
+            <li><a href="javascript:p.toPage('/software-developer/');">for Server Developer</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >API Reference</a>
+        <ul id="api-ref-list">
+            <li><a href="javascript:p.toPage('/user_guide/990_Old_Version_API_Ref.html');">older versions</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >Languages</a>
+        <ul>
+            <li><a href="javascript:p.setLang('en');">English</a></li>
+            <li><a href="javascript:p.setLang('ja');">Japanese</a></li>
+        </ul>
+      </li>
+    </ul>
+    </nav>
+  </header>
 
-              coll[i].addEventListener('click', function() {
-                var arrow = this.childNodes[1];
-                arrow.classList.toggle('rotate');
-                var content = this.nextElementSibling;
-                content.classList.toggle('hide');
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
-              createToggler('#tocToggler', 'body', 'tocActive');
-
-              var headings = document.querySelector('.toc-headings');
-              headings && headings.addEventListener('click', function(event) {
-                var el = event.target;
-                while(el !== headings){
-                  if (el.tagName === 'A') {
-                    document.body.classList.remove('tocActive');
-                    break;
-                  } else{
-                    el = el.parentNode;
-                  }
-                }
-              }, false);
-
-              function createToggler(togglerSelector, targetSelector, className) {
-                var toggler = document.querySelector(togglerSelector);
-                var target = document.querySelector(targetSelector);
-
-                if (!toggler) {
-                  return;
-                }
-
-                toggler.onclick = function(event) {
-                  event.preventDefault();
-
-                  target.classList.toggle(className);
-                };
-              }
-            });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Personium認証Plugin開発ガイド</h1></header><article><div><span><p>この文書はPersonium認証Pluginの開発マニュアルです。</p>
-<h2><a class="anchor" aria-hidden="true" id="この文書について"></a><a href="#この文書について" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>この文書について</h2>
-<p>Personiumの認証Pluginを開発する上で必要となる情報を記述しています。<br>
-認証Pluginの詳細は<a href="/docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a>をご参照ください。<br>
+<div id="container">
+<h1>Personium認証Plugin開発ガイド</h1>
+<p>この文書はPersonium認証Pluginの開発マニュアルです。</p>
+<h2>この文書について</h2>
+<p>Personiumの認証Pluginを開発する上で必要となる情報を記述しています。<br />
+認証Pluginの詳細は<a href="../server-operator/setup_authentication_plugins.html">認証Pluginのセットアップ</a>をご参照ください。<br />
 このドキュメントでは、認証Pluginの作成手順を説明します。</p>
-<h2><a class="anchor" aria-hidden="true" id="開発の方法"></a><a href="#開発の方法" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>開発の方法</h2>
+<h2>開発の方法</h2>
 <p>具体的にはPluginでは以下の3点を定義します。</p>
 <ol>
 <li>どのようなアカウントType値に対応すべきなのか</li>
 <li>どのようなgrant_type値に対応すべきなのか</li>
 <li>トークンエンドポイントのgrant_type以外の入力パラメタ値をどのように評価して、結果としてどのような主体として認識すべきなのか</li>
 </ol>
-<p>即ちPlugin作者は、上記3点の情報を具体的なJavaコードとして実装します。
-Personiumでは認証Pluginが上記3の応答として返却した認証済み識別主体情報(AuthenticatedIdentityオブジェクト）を以下の観点でさらに評価して、
-トークン発行の可否判断や、発行トークンの内容決定、トークン発行処理を行います。</p>
+<p>即ちPlugin作者は、上記3点の情報を具体的なJavaコードとして実装します。 Personiumでは認証Pluginが上記3の応答として返却した認証済み識別主体情報(AuthenticatedIdentityオブジェクト）を以下の観点でさらに評価して、 トークン発行の可否判断や、発行トークンの内容決定、トークン発行処理を行います。</p>
 <ul>
 <li>getAccountName() で取得できる文字列をName属性にもつAccountが存在するか</li>
 <li>存在する場合、ヒットしたAccountのtype値に上記1の文字列が含まれているか</li>
 </ul>
-<h2><a class="anchor" aria-hidden="true" id="セキュリティ上の配慮"></a><a href="#セキュリティ上の配慮" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>セキュリティ上の配慮</h2>
-<p>当然のことながら、Plugin作者は上記2の「パラメタ値評価」においては一般的にアクセス主体が適切な認証プロセスを経るように実装を行う必要があります。
-例えば、入力値を一切チェックせずに本来保護されるべき特定の主体（ゲスト等でない実在の人物など）
-として認識してしまうようなPluginを作成し、これをユニットに配置してしまうことは重大なセキュリティ問題を引き起こします。
-従ってPlugin作者はセキュアな実装を行うこと、Plugin利用者（ユニット管理者）はセキュアであると信じられるPluginのみを用いることが必要です。</p>
-<hr>
+<h2>セキュリティ上の配慮</h2>
+<p>当然のことながら、Plugin作者は上記2の「パラメタ値評価」においては一般的にアクセス主体が適切な認証プロセスを経るように実装を行う必要があります。 例えば、入力値を一切チェックせずに本来保護されるべき特定の主体（ゲスト等でない実在の人物など） として認識してしまうようなPluginを作成し、これをユニットに配置してしまうことは重大なセキュリティ問題を引き起こします。 従ってPlugin作者はセキュアな実装を行うこと、Plugin利用者（ユニット管理者）はセキュアであると信じられるPluginのみを用いることが必要です。</p>
+<hr />
 <p>以下、google版の認証Pluginを例に説明します。</p>
-<h2><a class="anchor" aria-hidden="true" id="pluginのクラス構造"></a><a href="#pluginのクラス構造" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pluginのクラス構造</h2>
+<h2>Pluginのクラス構造</h2>
 <p>作成Pluginの枠線部分が作成の対象です。</p>
-<p>認証Pluginのクラス構造図を以下に示します。
-<img src="/docs/assets/plugin_02.png" alt="クラス構造図" title="Pluginクラス構造図"></p>
+<p>認証Pluginのクラス構造図を以下に示します。 <img src="./images/plugin_02.png" title="Pluginクラス構造図" alt="クラス構造図" /></p>
 <blockquote>
-<p><strong>注意:</strong>  認証処理の戻り値</p>
+<p><strong>注意:</strong> 認証処理の戻り値</p>
 <ul>
 <li>認証に成功した場合は、AuthenticatedIdentityが返却されます。</li>
 <li>認証に失敗した場合は、PluginExceptionまたはnullが返却されます。</li>
 </ul>
 </blockquote>
-<h2><a class="anchor" aria-hidden="true" id="pluginの動作"></a><a href="#pluginの動作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pluginの動作</h2>
+<h2>Pluginの動作</h2>
 <p>認証Pluginの動作を以下に示します。</p>
-<p><img src="/docs/assets/plugin_01.png" alt="Pluginの動作" title="pluginの動作"></p>
-<p>1. Plugin初期化処理
-　    PersoniumCoreApplicationクラスでPluginManagerが呼出され、すべてのPluginを読み込みます。</p>
-<p>2. 認証プロセスの呼び出し
-　   TokenEndPointResourceクラスで対象のGrantTypeのPluginを選択します。
-　   選択したPluginのauthenticateメソッドを実行します。</p>
+<p><img src="./images/plugin_01.png" title="pluginの動作" alt="Pluginの動作" /></p>
+<p>　1. Plugin初期化処理 　 PersoniumCoreApplicationクラスでPluginManagerが呼出され、すべてのPluginを読み込みます。</p>
+<p>　2. 認証プロセスの呼び出し 　 TokenEndPointResourceクラスで対象のGrantTypeのPluginを選択します。 　 選択したPluginのauthenticateメソッドを実行します。</p>
 <blockquote>
 <p><strong>注意:</strong></p>
 <ul>
@@ -118,15 +118,15 @@ Personiumでは認証Pluginが上記3の応答として返却した認証済み�
 <li>認証Pluginは、Typeに”auth”とGrantTypeに各プロバイダを指定し、authenticateメソッドを記述することで、対象のpluginが選択されauthenticateメソッドが実行されます。</li>
 </ul>
 </blockquote>
-<h3><a class="anchor" aria-hidden="true" id="1plugin初期化処理"></a><a href="#1plugin初期化処理" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.Plugin初期化処理</h3>
-<h4><a class="anchor" aria-hidden="true" id="i-classicon-filei-personiumcoreapplicationjavahttpsgithubcompersoniumpersonium-coreblobmastersrcmainjavaiopersoniumcorerspersoniumcoreapplicationjava"></a><a href="#i-classicon-filei-personiumcoreapplicationjavahttpsgithubcompersoniumpersonium-coreblobmastersrcmainjavaiopersoniumcorerspersoniumcoreapplicationjava" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><i class="icon-file"></i> <a href="https://github.com/personium/personium-core/blob/master/src/main/java/io/personium/core/rs/PersoniumCoreApplication.java">PersoniumCoreApplication.java</a></h4>
-<p>pm = new PluginManager();<br>
+<h3>1.Plugin初期化処理</h3>
+<h4><i class="icon-file"></i> <a href="https://github.com/personium/personium-core/blob/master/src/main/java/io/personium/core/rs/PersoniumCoreApplication.java">PersoniumCoreApplication.java</a></h4>
+<p>pm = new PluginManager();<br />
 PluginManagerクラスを生成します。</p>
-<h3><a class="anchor" aria-hidden="true" id="2認証プロセスの呼び出し"></a><a href="#2認証プロセスの呼び出し" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.認証プロセスの呼び出し</h3>
-<h4><a class="anchor" aria-hidden="true" id="i-classicon-filei-tokenendpointresourcejavahttpsgithubcompersoniumpersonium-coreblobmastersrcmainjavaiopersoniumcorerscelltokenendpointresourcejava"></a><a href="#i-classicon-filei-tokenendpointresourcejavahttpsgithubcompersoniumpersonium-coreblobmastersrcmainjavaiopersoniumcorerscelltokenendpointresourcejava" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><i class="icon-file"></i> <a href="https://github.com/personium/personium-core/blob/master/src/main/java/io/personium/core/rs/cell/TokenEndPointResource.java">TokenEndPointResource.java</a></h4>
+<h3>2.認証プロセスの呼び出し</h3>
+<h4><i class="icon-file"></i> <a href="https://github.com/personium/personium-core/blob/master/src/main/java/io/personium/core/rs/cell/TokenEndPointResource.java">TokenEndPointResource.java</a></h4>
 <p>callAuthPlugins()メソッドで認証プロセスを呼び出しています。</p>
-<hr>
-<h2><a class="anchor" aria-hidden="true" id="サンプル実装"></a><a href="#サンプル実装" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル実装</h2>
+<hr />
+<h2>サンプル実装</h2>
 <ul>
 <li><a href="https://github.com/personium/personium-plugin-sample">personium-plugin-sample</a></li>
 </ul>
@@ -149,6 +149,10 @@ PluginManagerクラスを生成します。</p>
 <li>認証処理。</li>
 </ul></li>
 </ul>
-<h2><a class="anchor" aria-hidden="true" id="pluginの作成手順"></a><a href="#pluginの作成手順" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pluginの作成手順</h2>
-<p><a href="/docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a>をご参照ください。</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/plugin-developer/Extension_Send_Mail"><span class="arrow-prev">← </span><span>Extension: メール送信機能</span></a><a class="docs-next button" href="/docs/ja/server-operator/README"><span>サーバソフトウェア運用者向けガイド</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#この文書について">この文書について</a></li><li><a href="#開発の方法">開発の方法</a></li><li><a href="#セキュリティ上の配慮">セキュリティ上の配慮</a></li><li><a href="#pluginのクラス構造">Pluginのクラス構造</a></li><li><a href="#pluginの動作">Pluginの動作</a><ul class="toc-headings"><li><a href="#1plugin初期化処理">1.Plugin初期化処理</a></li><li><a href="#2認証プロセスの呼び出し">2.認証プロセスの呼び出し</a></li></ul></li><li><a href="#サンプル実装">サンプル実装</a></li><li><a href="#pluginの作成手順">Pluginの作成手順</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
+<h2>Pluginの作成手順</h2>
+<p><a href="../server-operator/setup_authentication_plugins.html">認証Pluginのセットアップ</a>をご参照ください。</p>
+</div>
+  <footer><nav>The Personium project is provided under the Apache 2.0 license. </nav></footer>
+</body>
+</html>
+

@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>barファイル · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="barファイルはBoxインストールAPIのリクエストボディとして指定するファイル形式である。  "/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="barファイル · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="barファイルはBoxインストールAPIのリクエストボディとして指定するファイル形式である。  "/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/new-docs/en/apiref/301_Bar_File">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">barファイル</h1></header><article><div><span><p>barファイルはBoxインストールAPIのリクエストボディとして指定するファイル形式である。<br>
+barファイルは、Box配下に定義するOdata/WebDAV/Serviceの各データを格納しており、ZIPファイル形式でアーカイブされる。<br>
+通常は、<a href="/new-docs/ja/apiref/385_Box_Export">BoxエクスポートAPI</a>にて、PersoniumからアーカイブされたBox配下のデータ定義がエクスポートされる。</p>
+<h3><a class="anchor" aria-hidden="true" id="specifications"></a><a href="#specifications" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specifications</h3>
+<p>ファイルフォーマットはZIP形式とし、ZIP64形式も許容する。<br>
+また、ZIPファイルの暗号化は対応しない。</p>
+<h4><a class="anchor" aria-hidden="true" id="directory-structure"></a><a href="#directory-structure" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Directory Structure</h4>
+<p>barファイル内のディレクトリ構成を以下に示す。<br>
+Boxインストール時に「★必須」となっているディレクトリ、及びファイルが存在しない場合は、必須のディレクトリ/ファイルがない旨のエラー（400 Bad Request）を返却する。</p>
+<pre><code class="hljs">/
+ |<span class="hljs-string">
+ +-- 00_meta/  ★ 必須
+ </span>|<span class="hljs-string">    </span>|
+ |<span class="hljs-string">    +-- 00_manifest.json  ★ 必須
+ </span>|<span class="hljs-string">    +-- 10_relations.json
+ </span>|<span class="hljs-string">    +-- 20_roles.json
+ </span>|<span class="hljs-string">    +-- 30_extroles.json
+ </span>|<span class="hljs-string">    +-- 50_rules.json
+ </span>|<span class="hljs-string">    +-- 70_$links.json
+ </span>|<span class="hljs-string">    +-- 90_rootprops.xml  ★ 必須
+ </span>|
+ +-- 90_contents/     ★ 配下のディレクトリ名はコレクション名と同じ
+      |<span class="hljs-string">
+      +-- {OData}/    ★ rootprops.xmlでODataコレクションの場合、必須
+      </span>|<span class="hljs-string">    </span>|
+      |<span class="hljs-string">    +-- 00_$metadata.xml    ★ 必須
+      </span>|<span class="hljs-string">    +-- 10_odatarelations.json
+      </span>|<span class="hljs-string">    </span>|
+      |<span class="hljs-string">    +-- 90_data/
+      </span>|<span class="hljs-string">         </span>|
+      |<span class="hljs-string">         +-- {EntityType}/
+      </span>|<span class="hljs-string">              </span>|
+      |<span class="hljs-string">              +-- {1.json}
+      </span>|
+      +-- {Service}/
+      |<span class="hljs-string">    </span>|
+      |<span class="hljs-string">    +-- {src.js}
+      </span>|
+      +-- {dir1}/
+           |<span class="hljs-string">
+           +-- {dir1-1}/
+                </span>|
+                +-- {userdata1-2.jpg}
+                |<span class="hljs-string">
+                +-- {dir2}/
+                     </span>|
+                     +-- [userdata1-2.jpg}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="bar-file-version-control"></a><a href="#bar-file-version-control" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar File Version Control</h4>
+<p>エンハンス等によってデータ構造が変更となり、後方互換が確保できなくなった場合にbarファイルのバージョンアップを行う。</p>
+<ul>
+<li>ファイルの追加レベルではバージョンアップしない</li>
+<li>ファイルのフォーマットやファイル名などを変更・削除した場合にバージョンアップする</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="file-list"></a><a href="#file-list" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>File List</h3>
+<h4><a class="anchor" aria-hidden="true" id="00_manifestjson"></a><a href="#00_manifestjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>00_manifest.json</h4>
+<p>インストールする対象となるBoxの情報を記述したファイル</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">bar_version</td><td style="text-align:left">barファイルのバージョン</td><td style="text-align:left">有効なバージョン<br>barファイル形式の変更ごとにバージョンが変わる</td><td style="text-align:left">○</td><td style="text-align:left">現状は&quot;2&quot;</td></tr>
+<tr><td style="text-align:left">box_version</td><td style="text-align:left">Boxのバージョン</td><td style="text-align:left">有効なバージョン<br>Box形式の変更ごとにバージョンが変わる</td><td style="text-align:left">○</td><td style="text-align:left">任意の文字列で良いが&quot;1&quot;を推奨（Box改版機能提供に向けて）</td></tr>
+<tr><td style="text-align:left">default_path</td><td style="text-align:left">barファイル内でのBox名</td><td style="text-align:left">桁数：1～128<br>文字種:半角英数字と-(半角ハイフン)と<em>(半角アンダーバー)<br>ただし、先頭文字に-(半角ハイフン)と</em>(半角アンダーバー)は指定不可<br>nullは不可</td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">schema</td><td style="text-align:left">Schema名</td><td style="text-align:left">桁数：1～1024<br>URIの形式に従う（scheme：http / https / urn）</td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="サンプル"></a><a href="#サンプル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"bar_version"</span>: <span class="hljs-string">"2"</span>,
+  <span class="hljs-attr">"box_version"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-attr">"default_path"</span>: <span class="hljs-string">"box1"</span>,
+  <span class="hljs-attr">"schema"</span>: <span class="hljs-string">"http://app-cell1.unit1.example"</span>
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="10_relationsjson"></a><a href="#10_relationsjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>10_relations.json</h4>
+<p>インストール対象とするRelationの情報を記述したファイル<br>
+※「有効値」欄が『－』となっている項目項目は、Relationのリクエストボディを参照</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Relations</td><td style="text-align:left">Relationのリスト</td><td style="text-align:left"></td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Relations/Name</td><td style="text-align:left">Relation名</td><td style="text-align:left">-</td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-1"></a><a href="#サンプル-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Relations"</span>: [
+    {
+      <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"relation1"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="20_rolesjson"></a><a href="#20_rolesjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>20_roles.json</h4>
+<p>インストール対象とするRoleの情報を記述したファイル<br>
+※「有効値」欄が『－』となっている項目は、、Roleのリクエストボディを参照</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Roles</td><td style="text-align:left">Roleのリスト</td><td style="text-align:left"></td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Roles/Name</td><td style="text-align:left">Role名</td><td style="text-align:left">-</td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-2"></a><a href="#サンプル-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Roles"</span>: [
+    {
+      <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="30_extrolesjson"></a><a href="#30_extrolesjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>30_extroles.json</h4>
+<p>インストール対象とするExtRoleの情報を記述したファイル<br>
+※「有効値」欄が『－』となっている項目は、ExtRoleのリクエストボディを参照</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">ExtRoles</td><td style="text-align:left">ExtRoleのリスト</td><td style="text-align:left"></td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">ExtRoles/ExtRole</td><td style="text-align:left">参照先RoleのURI</td><td style="text-align:left">－</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可 ※1</td></tr>
+<tr><td style="text-align:left">ExtRoles/_Relation.Name</td><td style="text-align:left">Relation名</td><td style="text-align:left">－</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可</td></tr>
+</tbody>
+</table>
+<p>(※ 1) エクスポート時にロールクラスURLへ変換<br>
+<a href="https://cell1.unit1.example/__role/box/staff">https://cell1.unit1.example/__role/box/staff</a> → <a href="https://cell1.unit1.example/__role/__/staff">https://cell1.unit1.example/__role/__/staff</a></p>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-3"></a><a href="#サンプル-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"ExtRoles"</span>: [
+    {
+      <span class="hljs-attr">"ExtRole"</span>: <span class="hljs-string">"https://cell1.unit1.example/__role/__/role2"</span>,
+      <span class="hljs-attr">"_Relation.Name"</span>: <span class="hljs-string">"Relation1"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="50_rulesjson"></a><a href="#50_rulesjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>50_rules.json</h4>
+<p>インストール対象とするRuleの情報を記述したファイル<br>
+※「有効値」欄が『－』となっている項目は、、Ruleのリクエストボディを参照</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Rules</td><td style="text-align:left">Ruleのリスト</td><td style="text-align:left"></td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventExternal</td><td style="text-align:left">マッチするイベントの外部イベントフラグ</td><td style="text-align:left">-</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventSubject</td><td style="text-align:left">マッチするイベントのSubject</td><td style="text-align:left">-</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventType</td><td style="text-align:left">マッチするイベントの型</td><td style="text-align:left">-</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventObject</td><td style="text-align:left">マッチするイベントのObject</td><td style="text-align:left">-</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/EventInfo</td><td style="text-align:left">マッチするイベントの情報</td><td style="text-align:left">-</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/Action</td><td style="text-align:left">イベントマッチ時のアクション</td><td style="text-align:left">-</td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Rules/TargetUrl</td><td style="text-align:left">アクションの処理対象となるUrl</td><td style="text-align:left">-</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-4"></a><a href="#サンプル-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Rules"</span>: [
+    {
+      <span class="hljs-attr">"Action"</span>: <span class="hljs-string">"exec"</span>,
+      <span class="hljs-attr">"TargetUrl"</span>: <span class="hljs-string">"personium-localbox:/col/srv"</span>
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="70_linksjson"></a><a href="#70_linksjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>70_$links.json</h4>
+<p>インストール対象とする$linksのデータ関連情報を記述したファイル</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Links</td><td style="text-align:left">$linksのリスト</td><td style="text-align:left"></td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Links/FromType</td><td style="text-align:left">参照元データの種類</td><td style="text-align:left">&quot;Relation&quot;<br>&quot;Role&quot;<br>&quot;ExtRole&quot;</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可</td></tr>
+<tr><td style="text-align:left">Links/FromName</td><td style="text-align:left">参照元データの名前</td><td style="text-align:left">－(配列形式 ※1)</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可<br> （例:{&quot;Name&quot;:&quot;relation1&quot;}]）</td></tr>
+<tr><td style="text-align:left">Links/ToType</td><td style="text-align:left">参照先データの種類</td><td style="text-align:left">&quot;Relation&quot;<br>&quot;Role&quot;<br>&quot;ExtRole&quot;</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可</td></tr>
+<tr><td style="text-align:left">Links/ToName</td><td style="text-align:left">参照先データの名前</td><td style="text-align:left">－(配列形式 ※1)</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可<br>（例:{&quot;Name&quot;:&quot;role&quot;}]）</td></tr>
+</tbody>
+</table>
+<p>※1 ExtRoleではRelation情報も必要のため、リスト形式とする。ただし、指定するJSONデータのキー名は、&quot;Name&quot; 固定とする。（制限）</p>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-5"></a><a href="#サンプル-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Links"</span>: [
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Relation"</span>,
+      <span class="hljs-attr">"FromName"</span>:
+        {
+          <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"relation1"</span>
+        },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"Role"</span>,
+      <span class="hljs-attr">"ToName"</span>:
+        {
+          <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>
+        }
+    },
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Role"</span>,
+      <span class="hljs-attr">"FromName"</span>:
+        {
+          <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"role1"</span>
+        },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"ExtRole"</span>,
+      <span class="hljs-attr">"ToName"</span>: {
+          <span class="hljs-attr">"ExtRole"</span>: <span class="hljs-string">"https://cell1.unit1.example/__role/__/role2"</span>,
+          <span class="hljs-attr">"_Relation.Name"</span>: <span class="hljs-string">"Relation1"</span>
+        }
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="90_rootpropsxml"></a><a href="#90_rootpropsxml" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>90_rootprops.xml</h4>
+<p>barファイルにエクスポートする対象のBox配下の全階層に対して、PROPFINDメソッドで取得したXMLデータを示す。<br>
+XMLデータの詳細は、<a href="/new-docs/ja/apiref/307_Get_Property">ファイル設定取得（PROPFIND）</a>を参照。<br>
+インストール対象BoxのURLは、「personium-localbox:/」と記述する。<br>
+barファイルのインストール時には、下記サンプルの<prop>配下にある creationdate及び、getlastmodifiedを除いた全てのデータをインストール対象とする。</p>
+<ul>
+<li>resourcetype: コレクションの種類を設定</li>
+<li>acl: 権限を設定</li>
+<li>Other: PROPPATCHで設定</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-6"></a><a href="#サンプル-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>admin<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">all</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/odata<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">write</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read-properties</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/dav<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">write</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read-properties</span>/&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/dav/testdavfile.txt<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/plain<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">language</span>=<span class="hljs-string">"JavaScript"</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr.js"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr_connector"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr_connector.js"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p:service</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr_connector.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="contentsodata"></a><a href="#contentsodata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>contents/{OData}/</h4>
+<h5><a class="anchor" aria-hidden="true" id="00_metadataxml"></a><a href="#00_metadataxml" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>00_$metadata.xml</h5>
+<p>ユーザODataのスキーマ定義を示す。barファイルにエクスポートする時に、Odata用コレクションに対して$metadataにて取得したXMLデータ。<br>
+XMLデータの詳細は、<a href="/new-docs/ja/apiref/316_User_Defined_Data_Schema">スキーマ取得（$metadata）</a>を参照。<br>
+Boxインストール時には、Schemaタグの配下をインストール対象とする。<br>
+ユーザODataのスキーマ定義が存在しない場合でもファイル自体は存在する。</p>
+<p>スキーマ定義がない場合のサンプル</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Edmx:Edmx</span> <span class="hljs-attr">Version</span> = <span class="hljs-string">'1 .0'</span> <span class="hljs-attr">xmlns:edmx</span> =<span class="hljs-string">' http://schemas.microsoft.com/ado/2007/06/edmx'</span> 
+<span class="hljs-attr">xmlns:d</span> =<span class="hljs-string">' http://schemas.microsoft.com/ado/2007 / 08/dataservices'</span> 
+<span class="hljs-attr">xmlns:m</span> = <span class="hljs-string">'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'</span> 
+<span class="hljs-attr">xmlns:p</span> = <span class="hljs-string">'urn: x-personium: xmlns'</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:DataServices</span> <span class="hljs-attr">m:DataServiceVersion</span>=<span class="hljs-string">'1.0'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">Xmlns</span>=<span class="hljs-string">'http://schemas.microsoft.com/ado/2006/04/edm'</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">'UserData'</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">EntityContainer</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">'UserData'</span> <span class="hljs-attr">m:IsDefaultEntityContainer</span>=<span class="hljs-string">'true'</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Edmx:DataServices</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Edmx:Edmx</span>&gt;</span>
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="10_odatarelationsjson"></a><a href="#10_odatarelationsjson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>10_odatarelations.json</h5>
+<p>インストール対象ユーザデータの$linksのデータ関連情報を記述したファイル
+ユーザODataのスキーマレベルでは、00_$metadata.xml にてAssociationEndの関連を定義しているが、本ファイルではユーザデータの実体に対する関連を定義する。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Links</td><td style="text-align:left">$linksのリスト</td><td style="text-align:left"></td><td style="text-align:left">○</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">Links/FromType</td><td style="text-align:left">参照元データの種類</td><td style="text-align:left">－</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可</td></tr>
+<tr><td style="text-align:left">Links/FromId</td><td style="text-align:left">参照元ユーザデータのID</td><td style="text-align:left">－(配列形式 ※1)</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可<br> （例:{&quot;FromId&quot;:&quot;tanaka_taro&quot;} ）</td></tr>
+<tr><td style="text-align:left">Links/ToType</td><td style="text-align:left">参照先データの種類</td><td style="text-align:left">－</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可</td></tr>
+<tr><td style="text-align:left">Links/ToId</td><td style="text-align:left">参照先ユーザデータのID</td><td style="text-align:left">－(配列形式 ※1)</td><td style="text-align:left">○</td><td style="text-align:left">nullは不可<br>（例:{&quot;ToId&quot;:&quot;tanaka_hanako&quot;} ）</td></tr>
+</tbody>
+</table>
+<p>※1 将来的に複合主キーへ対応した場合の対応を考慮して配列形式とする。</p>
+<h5><a class="anchor" aria-hidden="true" id="サンプル-7"></a><a href="#サンプル-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプル</h5>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"Links"</span>: [
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Keeper"</span>,
+      <span class="hljs-attr">"FromId"</span>: {
+        <span class="hljs-attr">"usercode"</span>: <span class="hljs-string">"001"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"Peru_Taro"</span>
+      },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"Animal"</span>,
+      <span class="hljs-attr">"ToId"</span>: {
+        <span class="hljs-attr">"shopcode"</span>: <span class="hljs-string">"001"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"pochi"</span>
+      }
+    },
+    {
+      <span class="hljs-attr">"FromType"</span>: <span class="hljs-string">"Keeper"</span>,
+      <span class="hljs-attr">"FromId"</span>: {
+        <span class="hljs-attr">"usercode"</span>: <span class="hljs-string">"002"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"Peru_Hanako"</span>
+      },
+      <span class="hljs-attr">"ToType"</span>: <span class="hljs-string">"Animal"</span>,
+      <span class="hljs-attr">"ToId"</span>: {
+        <span class="hljs-attr">"shopcode"</span>: <span class="hljs-string">"002"</span>,
+        <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"tama"</span>
+      }
+    }
+  ]
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="90_data--entitytype--1json"></a><a href="#90_data--entitytype--1json" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>90_data / {EntityType} / {1.json}</h4>
+<p>ユーザデータを1件ずつJSON形式で格納する。</p>
+<pre><code class="hljs css language-JSON">{
+  <span class="hljs-attr">"__id"</span>: <span class="hljs-string">"entity1"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"pochi"</span>,
+  <span class="hljs-attr">"address"</span>: {
+    <span class="hljs-attr">"country"</span>: <span class="hljs-string">"japan"</span>,
+    <span class="hljs-attr">"city"</span>: <span class="hljs-string">"tokyo"</span>
+  }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="contentsservicesrcjs"></a><a href="#contentsservicesrcjs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>contents/Service/{src.js}</h4>
+<p>bar/90_contents/{Service}/{src.js}に格納されたソースファイルを、インストール先Box配下の{Service}/__src/{src.js}に登録する。</p>
+<ul>
+<li>bar/00_meta/90_rootprops.xmlにコレクション{Service}の定義（PROPPATCH）が無い場合は、サービスとして実行できない</li>
+<li>bar/00_meta/90_rootprops.xmlに{Service}/__srcの定義が無い場合は、{src.js}は登録できない</li>
+<li>bar/00_meta/90_rootprops.xmlの{Service}/__src/{src.js}の定義に従い、{src.js}のContent-Typeを設定する</li>
+</ul>
+<p>サービス登録用90_rootprops.xmlのサンプル</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p:service</span> <span class="hljs-attr">language</span>=<span class="hljs-string">"JavaScript"</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr.js"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p:path</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ehr_connector"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"ehr_connector.js"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p:service</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">collection</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">resourcetype</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/__/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>personium-localbox:/service/__src/ehr_connector.js<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>text/javascript<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

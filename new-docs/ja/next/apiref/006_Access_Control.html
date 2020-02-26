@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>アクセス制御モデル · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## ACL"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="アクセス制御モデル · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## ACL"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/new-docs/en/next/apiref/006_Access_Control">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">アクセス制御モデル</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="acl"></a><a href="#acl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ACL</h2>
+<p>ACLによるアクセス主体へアクセス制御は、<a href="https://www.ietf.org/rfc/rfc3744">WebDAV ACL</a>をロールベースアクセスコントロールに応用したもので行なっている。<br>
+CellやBox・コレクション等にACLメソッドでACL設定をすることで、そのリソースへのアクセス権限を設定出来る。<br>
+基本的にはWebDAV ACLの仕様に準じるが、このページではPersonium独自の仕様について説明を行う。</p>
+<p>ACL設定内容はXMLで定義する。</p>
+<h3><a class="anchor" aria-hidden="true" id="personiumにおけるacl構成要素"></a><a href="#personiumにおけるacl構成要素" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PersoniumにおけるACL構成要素</h3>
+<p>PersoniumのACLは、以下の要素で構成される。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">要素名</th><th style="text-align:left">内容</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">ace</td><td style="text-align:left">ACL設定を行うアクセス主体とその権限付与のセットを表す</td></tr>
+<tr><td style="text-align:left">pricipal</td><td style="text-align:left">設定されるACLのアクセス主体を定義する</td></tr>
+<tr><td style="text-align:left">grant</td><td style="text-align:left">principalに付与すべきprivilegeを単数または複数定義する</td></tr>
+<tr><td style="text-align:left">privilege</td><td style="text-align:left">権限設定を定義する</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="制限事項"></a><a href="#制限事項" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>制限事項</h3>
+<p>PersoniumV1系では、以下のような制限事項がある。</p>
+<ul>
+<li>ACLは既存設定を上書きする形で更新される</li>
+<li>deny要素による権限の剥奪設定</li>
+<li>付与出来る権限の一覧取得</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="対象"></a><a href="#対象" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>対象</h3>
+<p>PersoniumのACL設定の対象はリソースであり、各リソースのURLへのACLメソッドで設定を行う。<br>
+セルのパスの場合 セルレベルACL となり、ボックス配下のパスの場合 ボックスレベルACL となる。<br>
+この２つは設定出来るPrivilege（権限）が異なり、互いに影響することは無い。</p>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">内容</th><th style="text-align:left">対象のリソース</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">セルレベルACL</td><td style="text-align:left">セルへの設定や、セル制御オブジェクトのCRUDを制御する</td><td style="text-align:left">セル</td></tr>
+<tr><td style="text-align:left">ボックスレベルACL</td><td style="text-align:left">Box配下のリソースへのCRUDを制御する</td><td style="text-align:left">Box、WebDAVコレクション、ODataコレクション、Serviceコレクション、Streamコレクション<br>WebDAVコレクション配下のディレクトリ・ファイル</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="ace"></a><a href="#ace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ace</h2>
+<p>対象となるアクセス主体はPrincipal要素、権限付与はgrant要素で定義する。ace要素は複数設定が出来る。</p>
+<h3><a class="anchor" aria-hidden="true" id="principal"></a><a href="#principal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Principal</h3>
+<p>Principalは、WebDAV ACLには「human or computational actor」とあるが、Personiumではロールであると定義する。<br>
+PersoniumのロールはWebDAV ACLにおける「Group」に近い概念となる。</p>
+<h4><a class="anchor" aria-hidden="true" id="all"></a><a href="#all" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>all</h4>
+<p>WebDAV ACLに定義されている通り、pricipalにall要素を設定すると権限付与設定を、
+全てのロールや認証されていないアクセス主体（Authorizationヘッダーなし）にも定義することができる。<br>
+リソースへの全てのアクセス主体に対する権限となるため、利用する場合には注意が必要。</p>
+<pre><code class="hljs">principal:<span class="hljs-keyword">all</span>
+privilege:<span class="hljs-keyword">all</span>
+</code></pre>
+<p>上記の設定で、アクセスしてきた全てのアクセスに全ての操作を開放する事になる。<br>
+<strong>ただし、スキーマ認証レベル設定が行われている場合は、そちらのチェックが有効になる</strong></p>
+<h5><a class="anchor" aria-hidden="true" id="設定例"></a><a href="#設定例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定例</h5>
+<p>全てのアクセス主体にread権限を付与する。</p>
+<pre><code class="hljs"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/box1/"</span>
+    <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>
+    <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">D:all</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="ロール"></a><a href="#ロール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ロール</h4>
+<p>対象となるアクセス主体にロールを定義する場合は、href要素で囲んだ上で、ロールリソースURLを設定する。<br>
+ロールリソースについての仕様は ロール発行を参照。</p>
+<p>なお、設定出来るロールリソースURLはACL設定対象のセルURLと異なるロールリソースURLを指定することは出来ない。</p>
+<h5><a class="anchor" aria-hidden="true" id="設定例-1"></a><a href="#設定例-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定例</h5>
+<p>Principalに設定するロールリソースURLを全て記述する<br>
+（box1に紐付くdoctorにreadとwriteの権限を与え、box2に紐付くguestにはreadのみを与える場合の例）</p>
+<pre><code class="hljs"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span>
+    <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>
+    <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>https://cell1.unit1.example/__role/box1/doctor<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:write</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>https://cell1.uni1.example/__role/box2/guest<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<p>xml:baseによる記述の省略<br>
+acl要素のxml:base属性にボックスまでのロールリソースURLを記述することで、Principalに設定するロールリソースURLの記述を省略することができる。<br>
+（box1に紐付くdoctorにreadとwriteの権限を与え、box2に紐付くguestにはreadのみを与える場合の例）</p>
+<pre><code class="hljs"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/box1/"</span>
+    <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>
+    <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>doctor<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:write</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>../box2/guest<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<p>※guestの様に、xml:baseのボックスと異なるボックスに紐付くロールを設定する場合、上記の様に相対パスを使った記述を行う事が出来る。</p>
+<h4><a class="anchor" aria-hidden="true" id="propfindでの出力"></a><a href="#propfindでの出力" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PROPFINDでの出力</h4>
+<p>ACL設定をPROPFINDで出力した際、xml:base属性は以下の様に出力される。</p>
+<ul>
+<li>セルへのPROPFINDの場合、メインボックスのURL</li>
+<li>Box配下へのPROPFINDの場合、そのBoxまでのURL</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="grantprivilege"></a><a href="#grantprivilege" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>grant/Privilege</h3>
+<p>権限はPersoniumが定義した要素で設定し、grant要素内のPrivilege要素に囲んで設定する。<br>
+また、grant要素の中にはPrivilege要素を複数指定することが出来る。</p>
+<h4><a class="anchor" aria-hidden="true" id="セルレベルacl-privilege"></a><a href="#セルレベルacl-privilege" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>セルレベルACL Privilege</h4>
+<p>設定したセルに対して、セル制御オブジェクトの実行権限やメソッドの実行権限を指定する。<br>
+上位に位置する権限が設定されている場合、下位に属する権限を有する。(例:messageは、message-readの権限も有する)</p>
+<table>
+<thead>
+<tr><th style="text-align:left">権限名</th><th style="text-align:left">対象セル制御オブジェクト</th><th style="text-align:left">上位の権限名</th><th style="text-align:left">実行できるメソッド</th><th style="text-align:left">備考</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">root</td><td style="text-align:left">以下の全ての権限を有する</td><td style="text-align:left">-</td><td style="text-align:left">全て</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">auth</td><td style="text-align:left">Account,Role,ExtRole</td><td style="text-align:left">root</td><td style="text-align:left">PUT,POST,DELETE,GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">auth-read</td><td style="text-align:left">Account,Role,ExtRole</td><td style="text-align:left">auth</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">message</td><td style="text-align:left">RecievedMessage,SentMessage</td><td style="text-align:left">root</td><td style="text-align:left">POST,DELETE,GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">message-read</td><td style="text-align:left">RecievedMessage,SentMessage</td><td style="text-align:left">message</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">event</td><td style="text-align:left">event</td><td style="text-align:left">root</td><td style="text-align:left">PUT,POST,DELETE,GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">event-read</td><td style="text-align:left">event</td><td style="text-align:left">event</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">log</td><td style="text-align:left">log</td><td style="text-align:left">root</td><td style="text-align:left">PUT,POST,DELETE,GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">log-read</td><td style="text-align:left">log</td><td style="text-align:left">log</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">social</td><td style="text-align:left">Relation,ExtCell</td><td style="text-align:left">root</td><td style="text-align:left">PUT,POST,DELETE,GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">social-read</td><td style="text-align:left">Relation,ExtCell</td><td style="text-align:left">social</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">box</td><td style="text-align:left">Box</td><td style="text-align:left">root</td><td style="text-align:left">PUT,POST,DELETE,GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">box-read</td><td style="text-align:left">Box</td><td style="text-align:left">box</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">box-install</td><td style="text-align:left">Box</td><td style="text-align:left">box</td><td style="text-align:left">MKCOL（Barファイルインストール）</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">box-export</td><td style="text-align:left">Box</td><td style="text-align:left">root</td><td style="text-align:left">GET（Barファイルエクスポート）※未サポート</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">acl</td><td style="text-align:left">Cell</td><td style="text-align:left">root</td><td style="text-align:left">ACL</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">acl-read</td><td style="text-align:left">Cell</td><td style="text-align:left">acl</td><td style="text-align:left">PROPFINDのACL設定表示</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">propfind</td><td style="text-align:left">Cell</td><td style="text-align:left">root</td><td style="text-align:left">PROPFIND</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">rule</td><td style="text-align:left">Rule</td><td style="text-align:left">root</td><td style="text-align:left">POST,DELETE,GET,OPTIONS</td><td style="text-align:left">v1.6.0以降</td></tr>
+<tr><td style="text-align:left">rule-read</td><td style="text-align:left">Rule</td><td style="text-align:left">rule</td><td style="text-align:left">GET,OPTIONS</td><td style="text-align:left">v1.6.0以降</td></tr>
+</tbody>
+</table>
+<h5><a class="anchor" aria-hidden="true" id="設定例-2"></a><a href="#設定例-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定例</h5>
+<pre><code class="hljs"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>
+    <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/box1/"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>role10<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p:root</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>../box2/role13<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p:social</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>role15<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">p:acl</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="ボックスレベルacl-privilege"></a><a href="#ボックスレベルacl-privilege" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ボックスレベルACL Privilege</h4>
+<p>設定したボックス以下のリソースに対して、メソッドの実行権限を指定する。<br>
+ボックスレベルPrivilegeは基本的にWebDAV ACLに沿って定義されている。<br>
+上位に位置する権限が設定されている場合、下位に属する権限を有する。(例：readは、read-propertiesの権限も有する)</p>
+<table>
+<thead>
+<tr><th style="text-align:left">権限名</th><th style="text-align:left">対象セル制御オブジェクト</th><th style="text-align:left">上位の権限名</th><th style="text-align:left">実行できるメソッド</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">all</td><td style="text-align:left">以下の全ての権限を有する</td><td style="text-align:left">p:root</td><td style="text-align:left">全て</td></tr>
+<tr><td style="text-align:left">read</td><td style="text-align:left">読み出し権限を有する。read-aclは含まない。</td><td style="text-align:left">all</td><td style="text-align:left">GET,OPTIONS</td></tr>
+<tr><td style="text-align:left">write</td><td style="text-align:left">書き出し権限を有する。write-aclは含まない。</td><td style="text-align:left">all</td><td style="text-align:left">PUT,POST,DELETE,MKCOL</td></tr>
+<tr><td style="text-align:left">read-properties</td><td style="text-align:left">プロパティの読み出し権限を有する。</td><td style="text-align:left">read</td><td style="text-align:left">PROPFIND</td></tr>
+<tr><td style="text-align:left">write-properties</td><td style="text-align:left">プロパティの書き出し権限を有する。</td><td style="text-align:left">write</td><td style="text-align:left">PROPPATCH</td></tr>
+<tr><td style="text-align:left">read-acl</td><td style="text-align:left">ACLの読み出し権限を有する。</td><td style="text-align:left">all</td><td style="text-align:left">PROPFINDのACL設定表示</td></tr>
+<tr><td style="text-align:left">write-acl</td><td style="text-align:left">ACLの書き出し権限を有する。</td><td style="text-align:left">all</td><td style="text-align:left">ACL</td></tr>
+<tr><td style="text-align:left">write-content</td><td style="text-align:left">コンテンツの書き出し権限を有する。bindとunbindは含まない。</td><td style="text-align:left">write</td><td style="text-align:left">PUT（対象が存在する）</td></tr>
+<tr><td style="text-align:left">bind</td><td style="text-align:left">コンテンツの追加権限を有する。write-contentは含まない。</td><td style="text-align:left">write</td><td style="text-align:left">PUT（対象が存在しない）,MKCOL</td></tr>
+<tr><td style="text-align:left">unbind</td><td style="text-align:left">配下リソースの削除権限を有する。write-contentは含まない。</td><td style="text-align:left">write</td><td style="text-align:left">DELETE</td></tr>
+<tr><td style="text-align:left">exec</td><td style="text-align:left">サービス実行権限を有する。※Personium独自実装</td><td style="text-align:left">all</td><td style="text-align:left">-</td></tr>
+<tr><td style="text-align:left">stream-send</td><td style="text-align:left">Streamへの送信権限を有する。※Personium独自実装</td><td style="text-align:left">all</td><td style="text-align:left">PUT,POST,OPTIONS</td></tr>
+<tr><td style="text-align:left">stream-receive</td><td style="text-align:left">Streamからの受信権限を有する。※Personium独自実装</td><td style="text-align:left">all</td><td style="text-align:left">GET,OPTIONS</td></tr>
+</tbody>
+</table>
+<p>MOVEは、移動元コレクションのunbind権限と移動先コレクションのbind権限が必要。<br>
+移動先に対象リソースが存在する場合は、加えて移動先コレクションのunbind権限が必要。</p>
+<h5><a class="anchor" aria-hidden="true" id="設定例-3"></a><a href="#設定例-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定例</h5>
+<pre><code class="hljs"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"http://cell1.unit1.example/__role/box1/"</span>
+    <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>
+    <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>doctor<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:write</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>../box2/guest<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="aclの継承"></a><a href="#aclの継承" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ACLの継承</h2>
+<p>ボックスレベルACLの設定は、アクセスしたリソースの親（上位のディレクトリ）の設定をセルまで遡って適用される。<br>
+アクセス主体に対するACL設定は、親の設定が追加される形で継承される。<br>
+よって、ACLの設定時には以下の点に注意が必要となる。</p>
+<ul>
+<li>親にall等の強い権限を設定している場合、子に制限をかけても無効となる</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="aclの継承と適応される権限の例"></a><a href="#aclの継承と適応される権限の例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ACLの継承と適応される権限の例</h3>
+<p>リソース例</p>
+<table>
+<thead>
+<tr><th style="text-align:left">リソースのタイプ</th><th style="text-align:left">リソース名</th><th style="text-align:left">リソースURL</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">セル</td><td style="text-align:left">cell</td><td style="text-align:left"><a href="https://cell.unit1.example/">https://cell.unit1.example/</a></td></tr>
+<tr><td style="text-align:left">ボックス</td><td style="text-align:left">box</td><td style="text-align:left"><a href="https://cell.unit1.example/box">https://cell.unit1.example/box</a></td></tr>
+<tr><td style="text-align:left">WebDAVコレクション</td><td style="text-align:left">webdav</td><td style="text-align:left"><a href="https://cell.unit1.example/box/webdav">https://cell.unit1.example/box/webdav</a></td></tr>
+<tr><td style="text-align:left">ディレクトリ</td><td style="text-align:left">directory</td><td style="text-align:left"><a href="https://cell.unit1.example/box/webdav/directory">https://cell.unit1.example/box/webdav/directory</a></td></tr>
+<tr><td style="text-align:left">ファイル</td><td style="text-align:left">file</td><td style="text-align:left"><a href="https://cell.unit1.example/box/webdav/directory/file">https://cell.unit1.example/box/webdav/directory/file</a></td></tr>
+</tbody>
+</table>
+<p>上記のリソースに下記のACL設定を行った上で、各リソースへのアクセス時に適用される権限は以下のとおり。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">アクセスするリソース</th><th style="text-align:left">設定された権限</th><th style="text-align:left">適用される権限</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">セル</td><td style="text-align:left">auth-read</td><td style="text-align:left">auth-read</td></tr>
+<tr><td style="text-align:left">ボックス</td><td style="text-align:left">read-acl</td><td style="text-align:left">auth-read,read-acl</td></tr>
+<tr><td style="text-align:left">WebDAVコレクション</td><td style="text-align:left">read</td><td style="text-align:left">auth-read,read-acl,read</td></tr>
+<tr><td style="text-align:left">ディレクトリ</td><td style="text-align:left">設定なし</td><td style="text-align:left">auth-read,read-acl,read</td></tr>
+<tr><td style="text-align:left">ファイル</td><td style="text-align:left">read-propaties</td><td style="text-align:left">auth-read,read-acl,read-properties,read</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="スキーマ権限要求レベル"></a><a href="#スキーマ権限要求レベル" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>スキーマ権限要求レベル</h2>
+<p>スキーマ権限要求レベルによるアプリケーションへのアクセス制御 は、ACL設定時にACL要素の RequireSchemaAuthz 属性で要求レベルの設定を行う。<br>
+スキーマ認証の仕様については、認証モデルの「スキーマ認証（アプリ認証）」を参照。</p>
+<h3><a class="anchor" aria-hidden="true" id="設定値"></a><a href="#設定値" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定値</h3>
+<p>スキーマ権限要求レベル値</p>
+<table>
+<thead>
+<tr><th style="text-align:left">レベル値</th><th style="text-align:left">内容</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">none（デフォルト）</td><td style="text-align:left">スキーマ認証無しでアクセス可能</td></tr>
+<tr><td style="text-align:left">public</td><td style="text-align:left">スキーマ認証結果がOKであればアクセス可能</td></tr>
+<tr><td style="text-align:left">confidential</td><td style="text-align:left">スキーマ認証結果がOKで、かつ特殊ロールconfidentialClientがあればアクセス可能</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="設定例-4"></a><a href="#設定例-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>設定例</h4>
+<p>スキーマ権限要求レベル設定ACLのサンプル</p>
+<pre><code class="hljs"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://cell1.unit1.example/__role/box1/"</span>
+    <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>
+    <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:all</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">D:write</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="スキーマ権限要求レベルの設定の継承"></a><a href="#スキーマ権限要求レベルの設定の継承" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>スキーマ権限要求レベルの設定の継承</h3>
+<p>スキーマ権限要求レベル設定は、アクセスしたリソースに設定がされていない場合のみ、アクセスしたリソースの親（上位のディレクトリ）の設定をボックスまで遡って適用される。<br>
+スキーマ権限要求レベルが未設定の場合、 none として扱われるが、明示的に none が設定されている場合、継承は行われない。<br>
+継承はBoxまで遡って確認されるが、途中のリソースにスキーマレベル設定が行われていた時点で、その設定値が有効となる。</p>
+<h4><a class="anchor" aria-hidden="true" id="スキーマ権限要求レベルの継承と適応される権限の例"></a><a href="#スキーマ権限要求レベルの継承と適応される権限の例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>スキーマ権限要求レベルの継承と適応される権限の例</h4>
+<p>上記のリソースに下記のスキーマ権限要求レベル設定を行った上で、各リソースへのアクセス時に適用される<br>
+スキーマ権限要求レベルは以下のとおり。</p>
+<p>リソース例</p>
+<table>
+<thead>
+<tr><th style="text-align:left">リソースのタイプ</th><th style="text-align:left">リソース名</th><th style="text-align:left">リソースURL</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">セル</td><td style="text-align:left">cell</td><td style="text-align:left"><a href="https://cell.unit1.example/">https://cell.unit1.example/</a></td></tr>
+<tr><td style="text-align:left">ボックス</td><td style="text-align:left">box</td><td style="text-align:left"><a href="https://cell.unit1.example/box">https://cell.unit1.example/box</a></td></tr>
+<tr><td style="text-align:left">WebDAVコレクション</td><td style="text-align:left">webdav</td><td style="text-align:left"><a href="https://cell.unit1.example/box/webdav">https://cell.unit1.example/box/webdav</a></td></tr>
+<tr><td style="text-align:left">ディレクトリ</td><td style="text-align:left">directory</td><td style="text-align:left"><a href="https://cell.unit1.example/box/webdav/directory">https://cell.unit1.example/box/webdav/directory</a></td></tr>
+<tr><td style="text-align:left">ファイル</td><td style="text-align:left">file</td><td style="text-align:left"><a href="https://cell.unit1.example/box/webdav/directory/file">https://cell.unit1.example/box/webdav/directory/file</a></td></tr>
+</tbody>
+</table>
+<p>上記のリソースに下記のACL設定を行った上で、各リソースへのアクセス時に適用される権限は以下のとおり。</p>
+<table>
+<thead>
+<tr><th style="text-align:left">アクセスするリソース</th><th style="text-align:left">設定されたレベル</th><th style="text-align:left">適用されるレベル</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">ボックス</td><td style="text-align:left">confidential</td><td style="text-align:left">confidential</td></tr>
+<tr><td style="text-align:left">WebDAVコレクション</td><td style="text-align:left">public</td><td style="text-align:left">public</td></tr>
+<tr><td style="text-align:left">ディレクトリ</td><td style="text-align:left">設定なし</td><td style="text-align:left">public</td></tr>
+<tr><td style="text-align:left">ファイル</td><td style="text-align:left">none</td><td style="text-align:left">none</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#acl">ACL</a><ul class="toc-headings"><li><a href="#personiumにおけるacl構成要素">PersoniumにおけるACL構成要素</a></li><li><a href="#制限事項">制限事項</a></li><li><a href="#対象">対象</a></li></ul></li><li><a href="#ace">ace</a><ul class="toc-headings"><li><a href="#principal">Principal</a></li><li><a href="#grantprivilege">grant/Privilege</a></li></ul></li><li><a href="#aclの継承">ACLの継承</a><ul class="toc-headings"><li><a href="#aclの継承と適応される権限の例">ACLの継承と適応される権限の例</a></li></ul></li><li><a href="#スキーマ権限要求レベル">スキーマ権限要求レベル</a><ul class="toc-headings"><li><a href="#設定値">設定値</a></li><li><a href="#スキーマ権限要求レベルの設定の継承">スキーマ権限要求レベルの設定の継承</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

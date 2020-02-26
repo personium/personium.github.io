@@ -1,139 +1,147 @@
-<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>仮想イメージを使ってPersoniumを始めよう · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="概要"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="仮想イメージを使ってPersoniumを始めよう · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="概要"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/server-operator/setup_virtual_image">English</a></li></ul></div></li><script>
-        const languagesMenuItem = document.getElementById("languages-menu");
-        const languagesDropDown = document.getElementById("languages-dropdown");
-        languagesMenuItem.addEventListener("click", function(event) {
-          event.preventDefault();
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <!-- default template -->
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <title>setup_virtual_image</title>
+  <script type="text/javascript">
+      var path = location.pathname.split('/');
+      var pathRoot = [ path[0], path[1], '' ].join('/');
+      var pathLang = [ path[0], path[1], path[2] , ''].join('/');
 
-          if (languagesDropDown.className == "hide") {
-            languagesDropDown.className = "visible";
-          } else {
-            languagesDropDown.className = "hide";
-          }
-        });
-      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>server-operator</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">README<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">app-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/README">アプリ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/671_Engine_Script_Samples">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/app_authn">アプリ認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/launch_from_homeapp">Homeアプリからのアプリ起動</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium-Engine">Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium_Apps">Personiumアプリ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Roles">Personiumにおけるロール</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/using_odata">OData</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">cell-gui-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/cell-gui-developer/README">Cell</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">document-writer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/document-writer/README">Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">installation_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/001_Readme_before_installation">インストール前の注意事項</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/002_Build_from_Source">ソースからのビルド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/003_Install_To_LocalMachine">ローカルマシンへのインストール</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/overview/001_Introduction">Personiumとは何ですか？</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">plugin-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/README">サーバプラグイン開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Extension_Send_Mail">Extension:</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium認証Plugin開発ガイド</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">server-operator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/README">サーバソフトウェア運用者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/Confirm_environment_settings">Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/proxy_exclusion_setting">プロキシ除外設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup">Ansibleを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_engine_extensions">Engine</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/server-operator/setup_virtual_image">仮想イメージを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_config_list">Unitの設定一覧</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_coordination">Unit間連携の設定方法</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_operation_design">Unitの運用設計と設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_security">Unit</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">software-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/README">サーバ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/build_development_environment">開発用環境の構築手順</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/personium_tests">Personiumのテスト</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">unit-administrator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/README">ユニット管理者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Data_Management">データの管理</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/tutorial">Personiumユニット管理</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Unit-User">ユニットユーザ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">user_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/001_Personium_Architecture">Personiumのアーキテクチャ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/003_Auth">認証モデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/004_Client_auth">クライアント登録&amp;認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/007_WebDAV_model">WebDAV</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/008_Glossary">用語集</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/990_Old_Version_API_Ref">古いバージョンのAPIリファレンス</a></li></ul></div></div></section></div><script>
-            var coll = document.getElementsByClassName('collapsible');
-            var checkActiveCategory = true;
-            for (var i = 0; i < coll.length; i++) {
-              var links = coll[i].nextElementSibling.getElementsByTagName('*');
-              if (checkActiveCategory){
-                for (var j = 0; j < links.length; j++) {
-                  if (links[j].classList.contains('navListItemActive')){
-                    coll[i].nextElementSibling.classList.toggle('hide');
-                    coll[i].childNodes[1].classList.toggle('rotate');
-                    checkActiveCategory = false;
-                    break;
-                  }
-                }
-              }
+      document.write('<link rel="stylesheet" href="' + pathRoot + 'personium.css" type="text/css" />');
+      document.write('<link rel="stylesheet" href="' + pathLang + 'locale.css" type="text/css" />');
+      var ps = document.createElement('script');
+      ps.src = pathRoot + 'personium_docs.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ps, s);
+    
+      ps2 = document.createElement('script');
+      ps2.src = pathRoot + 'apiref_versions.js';
+      s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ps2, s);
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <header>
+    <nav>
+    <div id="logo"><a href="/"><img src="https://personium.io/images/logo-quantify-dark.png"></a></div>
+    <ul>
+      <li class="submenu">
+        <a href="#" >Introduction</a>
+        <ul>
+            <li><a href="javascript:p.toPage('/overview/001_Introduction.html');">What's Personium?</a></li>
+            <li><a href="javascript:p.toPage('/user_guide/001_Personium_Architecture.html');">Architecture</a></li>
+            <li><a href="javascript:p.toPage('/user_guide/008_Glossary.html');">Glossary</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >User Guide</a>
+        <ul>
+            <li><a href="javascript:p.toPage('/app-developer/');">for App Developer</a></li>
+            <li><a href="javascript:p.toPage('/cell-gui-developer/');">for Cell GUI Developer</a></li>
+            <li><a href="javascript:p.toPage('/unit-administrator/');">for Unit Administrator</a></li>
+            <li><a href="javascript:p.toPage('/server-operator/');">for Server Software Operator</a></li>
+            <li><a href="javascript:p.toPage('/document-writer/');">for Documentation Contributor</a></li>
+            <li><a href="javascript:p.toPage('/plugin-developer/');">for Server Plugin Developer</a></li>
+            <li><a href="javascript:p.toPage('/software-developer/');">for Server Developer</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >API Reference</a>
+        <ul id="api-ref-list">
+            <li><a href="javascript:p.toPage('/user_guide/990_Old_Version_API_Ref.html');">older versions</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >Languages</a>
+        <ul>
+            <li><a href="javascript:p.setLang('en');">English</a></li>
+            <li><a href="javascript:p.setLang('ja');">Japanese</a></li>
+        </ul>
+      </li>
+    </ul>
+    </nav>
+  </header>
 
-              coll[i].addEventListener('click', function() {
-                var arrow = this.childNodes[1];
-                arrow.classList.toggle('rotate');
-                var content = this.nextElementSibling;
-                content.classList.toggle('hide');
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
-              createToggler('#tocToggler', 'body', 'tocActive');
-
-              var headings = document.querySelector('.toc-headings');
-              headings && headings.addEventListener('click', function(event) {
-                var el = event.target;
-                while(el !== headings){
-                  if (el.tagName === 'A') {
-                    document.body.classList.remove('tocActive');
-                    break;
-                  } else{
-                    el = el.parentNode;
-                  }
-                }
-              }, false);
-
-              function createToggler(togglerSelector, targetSelector, className) {
-                var toggler = document.querySelector(togglerSelector);
-                var target = document.querySelector(targetSelector);
-
-                if (!toggler) {
-                  return;
-                }
-
-                toggler.onclick = function(event) {
-                  event.preventDefault();
-
-                  target.classList.toggle(className);
-                };
-              }
-            });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">仮想イメージを使ってPersoniumを始めよう</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="概要"></a><a href="#概要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>概要</h2>
-<p>本書ではVirtualBoxの仮想イメージを使用してPersoniuｍの環境を構築する方法について説明します。<br>
+<div id="container">
+<h2>仮想イメージを使ってPersoniumを始めよう。</h2>
+<h2>概要</h2>
+<p>本書ではVirtualBoxの仮想イメージを使用してPersoniuｍの環境を構築する方法について説明します。<br />
 また、本書はVirtualBoxバージョン5.2.22以降およびWindows10で動作確認済です。</p>
-<h4><a class="anchor" aria-hidden="true" id="セットアップ手順"></a><a href="#セットアップ手順" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>セットアップ手順</h4>
+<h4>セットアップ手順</h4>
 <ol>
 <li><p><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>をインストールしてください。</p></li>
-<li><p>あなたが構築したいPersoniumユニットのバージョンのイメージファイルを
-以下のURLからダウンロードしてください。</p>
+<li><p>あなたが構築したいPersoniumユニットのバージョンのイメージファイルを 以下のURLからダウンロードしてください。</p>
 <ul>
-<li>1.6.15<br>
-<a href="https://personium.io/mvnrepo/image/personium-unit-image-1.6.15.ova">https://personium.io/mvnrepo/image/personium-unit-image-1.6.15.ova</a></li>
+<li>1.6.15<br />
+<a href="https://personium.io/mvnrepo/image/personium-unit-image-1.6.15.ova" class="uri">https://personium.io/mvnrepo/image/personium-unit-image-1.6.15.ova</a></li>
 </ul></li>
 <li><p>仮想イメージをVirtualBoxにインポートしてください。</p>
 <ol>
 <li><p>「ファイル」ー「仮想アプライアンスのインポート」をクリックしてください。</p></li>
-<li><p>ダウンロードした仮想イメージを選択して、「次へ」ボタンをクリックしてください。<br>
+<li><p>ダウンロードした仮想イメージを選択して、「次へ」ボタンをクリックしてください。<br />
 <strong>スペックの変更を行いたい場合は各自変更を行ってください。</strong></p></li>
 <li><p>「インポート」ボタンをクリックしてください。</p></li>
 </ol></li>
 <li><p>ローカルマシンのhostsファイルの末尾に以下を追加してください。(例：C:\Windows\System32\drivers\etc\hosts)</p>
-<pre><code class="hljs"><span class="hljs-number">127.0.0.1</span>  personium.example.com
-</code></pre>
+<pre><code>127.0.0.1  personium.example.com</code></pre>
 <ul>
-<li>プロキシ環境を使用している場合は<a href="/docs/ja/server-operator/proxy_exclusion_setting">プロキシ除外設定の手順</a>を参照してください。</li>
+<li>プロキシ環境を使用している場合は<a href="proxy_exclusion_setting.html">プロキシ除外設定の手順</a>を参照してください。<br />
+</li>
 <li>ネットワークの設定(任意)
 <ul>
-<li>デフォルトはVirtualBox専用の仮想ネットワーク(10.0.2.0)になっています。</li>
+<li>デフォルトはVirtualBox専用の仮想ネットワーク(10.0.2.0)になっています。<br />
+</li>
 <li>仮想ネットワーク経由での利用のみならNAT設定は不要です。</li>
 </ul></li>
 </ul></li>
 <li><p>インポートした仮想イメージを選択して起動してください。</p></li>
 </ol>
-<h4><a class="anchor" aria-hidden="true" id="personiumの動作確認"></a><a href="#personiumの動作確認" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Personiumの動作確認</h4>
+<h4>Personiumの動作確認</h4>
 <p>仮想サーバアカウント情報</p>
-<pre><code class="hljs">ID  <span class="hljs-built_in">：root</span>  
-PASS<span class="hljs-built_in">：root</span>
-</code></pre>
+<pre><code>ID  ：root  
+PASS：root</code></pre>
 <p><strong>初回ログイン時に必ず変更してください。</strong></p>
 <ol>
 <li><p>Teraterm等のsshクライアントから仮想サーバーにログインしてください。</p>
 <ol>
 <li><p>以下の情報を入力して「OK」ボタンをクリックしてください。</p>
-<pre><code class="hljs">ホスト   ：localhost  
-TCPポート：<span class="hljs-number">2221</span>
-</code></pre></li>
+<pre><code>ホスト   ：localhost  
+TCPポート：2221</code></pre></li>
 <li><p>ssh確認画面が表示されるため上記アカウント情報に記載されているID/PASSを入力してください。</p></li>
 </ol></li>
 <li><p>unitadminの情報を確認してください。</p>
-<pre><code class="hljs"><span class="hljs-comment"># cat /personium/unitadmin_account</span>
-<span class="hljs-attr">unitadmin_account</span>=unitadmin
-<span class="hljs-attr">unitudmin_password</span>={password}
-<span class="hljs-attr">Personium_FQDN</span>=personium.example.com
-</code></pre></li>
+<pre><code># cat /personium/unitadmin_account
+unitadmin_account=unitadmin
+unitudmin_password={password}
+Personium_FQDN=personium.example.com</code></pre></li>
 <li><p>あなたのPersonium Unit-Managerが正常に動作していることを確認してください。</p>
 <ol>
-<li><p>ブラウザから次のURLにアクセスしてください。<br>
-<a href="https://personium.example.com/app-uc-unit-manager/__/html/login.html">https://personium.example.com/app-uc-unit-manager/__/html/login.html</a></p>
+<li>ブラウザから次のURLにアクセスしてください。<br />
+<a href="https://personium.example.com/app-uc-unit-manager/__/html/login.html" class="uri">https://personium.example.com/app-uc-unit-manager/__/html/login.html</a>
 <ul>
 <li><a href="https://github.com/personium/app-uc-unit-manager">Unit-Manager</a>のリンクを参照してください。</li>
 </ul></li>
-<li><p>ログインページに以下の情報を入力して「サインイン」ボタンをクリックしてください。</p>
+<li>ログインページに以下の情報を入力して「サインイン」ボタンをクリックしてください。
 <ul>
-<li>Login URL      : <a href="https://personium.example.com/unitadmin/">https://personium.example.com/unitadmin/</a></li>
-<li>Username       : unitadmin</li>
-<li>Password       : {password}<br>
+<li>Login URL : <a href="https://personium.example.com/unitadmin/" class="uri">https://personium.example.com/unitadmin/</a><br />
+</li>
+<li>Username : unitadmin<br />
+</li>
+<li>Password : {password}<br />
 <strong>{password}には、上記の手順2.で確認していただいたunitadmin_passwordを入力してください。</strong></li>
 </ul></li>
-<li><p>ログイン成功後、画面左の「Cell List」に以下のCellが存在することを確認してください。</p>
+<li>ログイン成功後、画面左の「Cell List」に以下のCellが存在することを確認してください。
 <ul>
 <li>app-uc-unit-manager</li>
 <li>unitadmin</li>
@@ -143,53 +151,103 @@ TCPポート：<span class="hljs-number">2221</span>
 <ol>
 <li><p>localhostでcurlコマンドが実行できる環境を準備してください。</p></li>
 <li><p>Unit User Tokenを取得します。 以下のコマンドを実行してください。</p>
-<pre><code class="hljs">$ curl <span class="hljs-string">"https://personium.example.com/unitadmin/__token"</span> -<span class="hljs-keyword">X</span> POST \
--d <span class="hljs-comment">"grant_type=password&amp;username=unitadmin&amp;password={password}\</span>
-&amp;p_target=http<span class="hljs-variable">s:</span>//personium.example.<span class="hljs-keyword">com</span>/<span class="hljs-comment">" -k  </span>
-</code></pre></li>
+<pre><code>$ curl &quot;https://personium.example.com/unitadmin/__token&quot; -X POST \
+-d &quot;grant_type=password&amp;username=unitadmin&amp;password={password}\
+&amp;p_target=https://personium.example.com/&quot; -k  </code></pre></li>
 <li><p>Cellを作成します。以下のコマンドを実行してください。</p>
-<pre><code class="hljs">$ curl -X POST <span class="hljs-string">"https://personium.example.com/__ctl/Cell"</span> -d <span class="hljs-string">"{<span class="hljs-subst">\"</span>Name<span class="hljs-subst">\"</span>:<span class="hljs-subst">\"</span>sample<span class="hljs-subst">\"</span>}"</span> \
--H <span class="hljs-string">"Authorization:Bearer {Token}"</span> -H <span class="hljs-string">"Accept:application/json"</span> -i -sS -k
-</code></pre></li>
+<pre><code>$ curl -X POST &quot;https://personium.example.com/__ctl/Cell&quot; -d &quot;{\&quot;Name\&quot;:\&quot;sample\&quot;}&quot; \
+-H &quot;Authorization:Bearer {Token}&quot; -H &quot;Accept:application/json&quot; -i -sS -k</code></pre></li>
 <li><p>Personiumが正常に動作している場合、以下のようなレスポンスが返ります。</p>
-<pre><code class="hljs">HTTP/1.1 <span class="hljs-number">201</span>
-<span class="hljs-attribute">Date</span>: Mon, 28 Jan 2019 01:03:39 GMT
-<span class="hljs-attribute">Content-Type</span>: application/json
-<span class="hljs-attribute">Content-Length</span>: 245
-<span class="hljs-attribute">Connection</span>: keep-alive
-<span class="hljs-attribute">Location</span>: https://personium.example.com/__ctl/Cell('sample')
-<span class="hljs-attribute">DataServiceVersion</span>: 2.0
-<span class="hljs-attribute">ETag</span>: W/"1-1548637419191"
-<span class="hljs-attribute">X-Personium-Version</span>: 1.6.15
-<span class="hljs-attribute">Server</span>: Personium
+<pre><code>HTTP/1.1 201
+Date: Mon, 28 Jan 2019 01:03:39 GMT
+Content-Type: application/json
+Content-Length: 245
+Connection: keep-alive
+Location: https://personium.example.com/__ctl/Cell(&#39;sample&#39;)
+DataServiceVersion: 2.0
+ETag: W/&quot;1-1548637419191&quot;
+X-Personium-Version: 1.6.15
+Server: Personium
 
-<span class="json">{<span class="hljs-attr">"d"</span>:{<span class="hljs-attr">"results"</span>:{<span class="hljs-attr">"__metadata"</span>:{<span class="hljs-attr">"uri"</span>:<span class="hljs-string">"https:\/\/personium.example.com\/__ctl\/Cell('sample')"</span>,
-<span class="hljs-attr">"etag"</span>:<span class="hljs-string">"W\/\"1-1548637419191\""</span>,<span class="hljs-attr">"type"</span>:<span class="hljs-string">"UnitCtl.Cell"</span>},<span class="hljs-attr">"Name"</span>:<span class="hljs-string">"sample"</span>,
-<span class="hljs-attr">"__published"</span>:<span class="hljs-string">"\/Date  (1548637419191)\/"</span>,<span class="hljs-attr">"__updated"</span>:<span class="hljs-string">"\/Date(1548637419191)\/"</span>}}}
-</span></code></pre></li>
+{&quot;d&quot;:{&quot;results&quot;:{&quot;__metadata&quot;:{&quot;uri&quot;:&quot;https:\/\/personium.example.com\/__ctl\/Cell(&#39;sample&#39;)&quot;,
+&quot;etag&quot;:&quot;W\/\&quot;1-1548637419191\&quot;&quot;,&quot;type&quot;:&quot;UnitCtl.Cell&quot;},&quot;Name&quot;:&quot;sample&quot;,
+&quot;__published&quot;:&quot;\/Date  (1548637419191)\/&quot;,&quot;__updated&quot;:&quot;\/Date(1548637419191)\/&quot;}}}</code></pre></li>
 </ol></li>
 </ol>
-<h5><a class="anchor" aria-hidden="true" id="os-and-middleware-on-vm"></a><a href="#os-and-middleware-on-vm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OS and Middleware on VM</h5>
+<h5>OS and Middleware on VM</h5>
 <ul>
-<li><p>OS<br>
+<li><p>OS<br />
 CentOS 7.2 x86_64</p></li>
 <li><p>Middleware</p>
 <table>
 <thead>
-<tr><th style="text-align:left">Category</th><th style="text-align:left">Name</th><th style="text-align:right">Version</th><th style="text-align:left"></th></tr>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: right;">Version</th>
+<th style="text-align: left;"></th>
+</tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left">java</td><td style="text-align:left">AdoptOpenJDK</td><td style="text-align:right">8u192</td><td style="text-align:left">--</td></tr>
-<tr><td style="text-align:left">tomcat</td><td style="text-align:left">tomcat</td><td style="text-align:right">9.0.10</td><td style="text-align:left">web</td></tr>
-<tr><td style="text-align:left"></td><td style="text-align:left">commons-daemon</td><td style="text-align:right">1.1.0</td><td style="text-align:left">--</td></tr>
-<tr><td style="text-align:left">nginx</td><td style="text-align:left">nginx</td><td style="text-align:right">1.14.0</td><td style="text-align:left">proxy</td></tr>
-<tr><td style="text-align:left"></td><td style="text-align:left">Headers More</td><td style="text-align:right">0.32</td><td style="text-align:left">--</td></tr>
-<tr><td style="text-align:left">logback</td><td style="text-align:left">logback</td><td style="text-align:right">1.0.3</td><td style="text-align:left">--</td></tr>
-<tr><td style="text-align:left"></td><td style="text-align:left">slf4j</td><td style="text-align:right">1.6.4</td><td style="text-align:left">--</td></tr>
-<tr><td style="text-align:left">memcached</td><td style="text-align:left">memcached</td><td style="text-align:right">1.4.21</td><td style="text-align:left">cache</td></tr>
-<tr><td style="text-align:left">elasticsearch</td><td style="text-align:left">elasticsearch</td><td style="text-align:right">2.4.1</td><td style="text-align:left">db &amp; search engine</td></tr>
+<tr class="odd">
+<td style="text-align: left;">java</td>
+<td style="text-align: left;">AdoptOpenJDK</td>
+<td style="text-align: right;">8u192</td>
+<td style="text-align: left;">--</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tomcat</td>
+<td style="text-align: left;">tomcat</td>
+<td style="text-align: right;">9.0.10</td>
+<td style="text-align: left;">web</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">commons-daemon</td>
+<td style="text-align: right;">1.1.0</td>
+<td style="text-align: left;">--</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nginx</td>
+<td style="text-align: left;">nginx</td>
+<td style="text-align: right;">1.14.0</td>
+<td style="text-align: left;">proxy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Headers More</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: left;">--</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">logback</td>
+<td style="text-align: left;">logback</td>
+<td style="text-align: right;">1.0.3</td>
+<td style="text-align: left;">--</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">slf4j</td>
+<td style="text-align: right;">1.6.4</td>
+<td style="text-align: left;">--</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">memcached</td>
+<td style="text-align: left;">memcached</td>
+<td style="text-align: right;">1.4.21</td>
+<td style="text-align: left;">cache</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">elasticsearch</td>
+<td style="text-align: left;">elasticsearch</td>
+<td style="text-align: right;">2.4.1</td>
+<td style="text-align: left;">db &amp; search engine</td>
+</tr>
 </tbody>
-</table>
-</li>
+</table></li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/server-operator/setup_engine_extensions"><span class="arrow-prev">← </span><span>Engine Extensionのセットアップ</span></a><a class="docs-next button" href="/docs/ja/server-operator/unit_config_list"><span>Unitの設定一覧</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#概要">概要</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
+</div>
+  <footer><nav>The Personium project is provided under the Apache 2.0 license. </nav></footer>
+</body>
+</html>
+

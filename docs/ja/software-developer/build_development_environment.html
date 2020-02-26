@@ -1,245 +1,289 @@
-<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>開発用環境の構築手順 · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 対象OS"/><meta name="docsearch:version" content="1.7.18"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="開発用環境の構築手順 · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="## 対象OS"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/ja/versions"><h3>1.7.18</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/software-developer/build_development_environment">English</a></li></ul></div></li><script>
-        const languagesMenuItem = document.getElementById("languages-menu");
-        const languagesDropDown = document.getElementById("languages-dropdown");
-        languagesMenuItem.addEventListener("click", function(event) {
-          event.preventDefault();
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <!-- default template -->
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <title>build_development_environment</title>
+  <script type="text/javascript">
+      var path = location.pathname.split('/');
+      var pathRoot = [ path[0], path[1], '' ].join('/');
+      var pathLang = [ path[0], path[1], path[2] , ''].join('/');
 
-          if (languagesDropDown.className == "hide") {
-            languagesDropDown.className = "visible";
-          } else {
-            languagesDropDown.className = "hide";
-          }
-        });
-      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>software-developer</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">README<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/README">Documentation for Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">app-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/README">アプリ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/671_Engine_Script_Samples">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/app_authn">アプリ認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/launch_from_homeapp">Homeアプリからのアプリ起動</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium-Engine">Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium_Apps">Personiumアプリ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Roles">Personiumにおけるロール</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/using_odata">OData</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">cell-gui-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/cell-gui-developer/README">Cell</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">document-writer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/document-writer/README">Personium</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">installation_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/001_Readme_before_installation">インストール前の注意事項</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/002_Build_from_Source">ソースからのビルド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/installation_guide/003_Install_To_LocalMachine">ローカルマシンへのインストール</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">overview<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/overview/001_Introduction">Personiumとは何ですか？</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">plugin-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/README">サーバプラグイン開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Extension_Send_Mail">Extension:</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium認証Plugin開発ガイド</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">server-operator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/README">サーバソフトウェア運用者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/Confirm_environment_settings">Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/proxy_exclusion_setting">プロキシ除外設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup">Ansibleを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_engine_extensions">Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_virtual_image">仮想イメージを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_config_list">Unitの設定一覧</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_coordination">Unit間連携の設定方法</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_operation_design">Unitの運用設計と設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_security">Unit</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">software-developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/README">サーバ開発者向けガイド</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/software-developer/build_development_environment">開発用環境の構築手順</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/personium_tests">Personiumのテスト</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">unit-administrator<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/README">ユニット管理者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Data_Management">データの管理</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/tutorial">Personiumユニット管理</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Unit-User">ユニットユーザ</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">user_guide<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/001_Personium_Architecture">Personiumのアーキテクチャ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/003_Auth">認証モデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/004_Client_auth">クライアント登録&amp;認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/007_WebDAV_model">WebDAV</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/008_Glossary">用語集</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/user_guide/990_Old_Version_API_Ref">古いバージョンのAPIリファレンス</a></li></ul></div></div></section></div><script>
-            var coll = document.getElementsByClassName('collapsible');
-            var checkActiveCategory = true;
-            for (var i = 0; i < coll.length; i++) {
-              var links = coll[i].nextElementSibling.getElementsByTagName('*');
-              if (checkActiveCategory){
-                for (var j = 0; j < links.length; j++) {
-                  if (links[j].classList.contains('navListItemActive')){
-                    coll[i].nextElementSibling.classList.toggle('hide');
-                    coll[i].childNodes[1].classList.toggle('rotate');
-                    checkActiveCategory = false;
-                    break;
-                  }
-                }
-              }
+      document.write('<link rel="stylesheet" href="' + pathRoot + 'personium.css" type="text/css" />');
+      document.write('<link rel="stylesheet" href="' + pathLang + 'locale.css" type="text/css" />');
+      var ps = document.createElement('script');
+      ps.src = pathRoot + 'personium_docs.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ps, s);
+    
+      ps2 = document.createElement('script');
+      ps2.src = pathRoot + 'apiref_versions.js';
+      s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ps2, s);
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <header>
+    <nav>
+    <div id="logo"><a href="/"><img src="https://personium.io/images/logo-quantify-dark.png"></a></div>
+    <ul>
+      <li class="submenu">
+        <a href="#" >Introduction</a>
+        <ul>
+            <li><a href="javascript:p.toPage('/overview/001_Introduction.html');">What's Personium?</a></li>
+            <li><a href="javascript:p.toPage('/user_guide/001_Personium_Architecture.html');">Architecture</a></li>
+            <li><a href="javascript:p.toPage('/user_guide/008_Glossary.html');">Glossary</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >User Guide</a>
+        <ul>
+            <li><a href="javascript:p.toPage('/app-developer/');">for App Developer</a></li>
+            <li><a href="javascript:p.toPage('/cell-gui-developer/');">for Cell GUI Developer</a></li>
+            <li><a href="javascript:p.toPage('/unit-administrator/');">for Unit Administrator</a></li>
+            <li><a href="javascript:p.toPage('/server-operator/');">for Server Software Operator</a></li>
+            <li><a href="javascript:p.toPage('/document-writer/');">for Documentation Contributor</a></li>
+            <li><a href="javascript:p.toPage('/plugin-developer/');">for Server Plugin Developer</a></li>
+            <li><a href="javascript:p.toPage('/software-developer/');">for Server Developer</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >API Reference</a>
+        <ul id="api-ref-list">
+            <li><a href="javascript:p.toPage('/user_guide/990_Old_Version_API_Ref.html');">older versions</a></li>
+        </ul>
+      </li>
+      <li class="submenu">
+        <a href="#" >Languages</a>
+        <ul>
+            <li><a href="javascript:p.setLang('en');">English</a></li>
+            <li><a href="javascript:p.setLang('ja');">Japanese</a></li>
+        </ul>
+      </li>
+    </ul>
+    </nav>
+  </header>
 
-              coll[i].addEventListener('click', function() {
-                var arrow = this.childNodes[1];
-                arrow.classList.toggle('rotate');
-                var content = this.nextElementSibling;
-                content.classList.toggle('hide');
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
-              createToggler('#tocToggler', 'body', 'tocActive');
-
-              var headings = document.querySelector('.toc-headings');
-              headings && headings.addEventListener('click', function(event) {
-                var el = event.target;
-                while(el !== headings){
-                  if (el.tagName === 'A') {
-                    document.body.classList.remove('tocActive');
-                    break;
-                  } else{
-                    el = el.parentNode;
-                  }
-                }
-              }, false);
-
-              function createToggler(togglerSelector, targetSelector, className) {
-                var toggler = document.querySelector(togglerSelector);
-                var target = document.querySelector(targetSelector);
-
-                if (!toggler) {
-                  return;
-                }
-
-                toggler.onclick = function(event) {
-                  event.preventDefault();
-
-                  target.classList.toggle(className);
-                };
-              }
-            });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">開発用環境の構築手順</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="対象os"></a><a href="#対象os" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>対象OS</h2>
+<div id="container">
+<h1>開発用環境の構築手順</h1>
+<h2>対象OS</h2>
 <p>Windows</p>
-<h2><a class="anchor" aria-hidden="true" id="開発に必要なツール一覧"></a><a href="#開発に必要なツール一覧" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>開発に必要なツール一覧</h2>
+<h2>開発に必要なツール一覧</h2>
 <p>開発に必要なツールをダウンロードしてください。</p>
 <table>
 <thead>
-<tr><th style="text-align:left">ツール名</th><th style="text-align:left">バージョン</th><th style="text-align:left">ダウンロードURL</th></tr>
+<tr class="header">
+<th style="text-align: left;">ツール名</th>
+<th style="text-align: left;">バージョン</th>
+<th style="text-align: left;">ダウンロードURL</th>
+</tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left">Eclipse (Pleiades)</td><td style="text-align:left">2018-09 Full Edition 以降</td><td style="text-align:left"><a href="http://mergedoc.osdn.jp/">http://mergedoc.osdn.jp/</a></td></tr>
-<tr><td style="text-align:left">AdoptOpenJDK</td><td style="text-align:left">8系 / HotSpot</td><td style="text-align:left"><a href="https://adoptopenjdk.net/">https://adoptopenjdk.net/</a></td></tr>
-<tr><td style="text-align:left">Git</td><td style="text-align:left">最新</td><td style="text-align:left"><a href="https://git-scm.com/">https://git-scm.com/</a></td></tr>
-<tr><td style="text-align:left">Maven</td><td style="text-align:left">3系</td><td style="text-align:left"><a href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a></td></tr>
+<tr class="odd">
+<td style="text-align: left;">Eclipse (Pleiades)</td>
+<td style="text-align: left;">2018-09 Full Edition 以降</td>
+<td style="text-align: left;"><a href="http://mergedoc.osdn.jp/" class="uri">http://mergedoc.osdn.jp/</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AdoptOpenJDK</td>
+<td style="text-align: left;">8系 / HotSpot</td>
+<td style="text-align: left;"><a href="https://adoptopenjdk.net/" class="uri">https://adoptopenjdk.net/</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Git</td>
+<td style="text-align: left;">最新</td>
+<td style="text-align: left;"><a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maven</td>
+<td style="text-align: left;">3系</td>
+<td style="text-align: left;"><a href="https://maven.apache.org/download.cgi" class="uri">https://maven.apache.org/download.cgi</a></td>
+</tr>
 </tbody>
 </table>
-<h2><a class="anchor" aria-hidden="true" id="動作確認に必要なツール一覧"></a><a href="#動作確認に必要なツール一覧" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>動作確認に必要なツール一覧</h2>
+<h2>動作確認に必要なツール一覧</h2>
 <p>動作確認に必要なツールをダウンロードしてください。</p>
-<table>
+<table style="width:17%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
 <thead>
-<tr><th style="text-align:left">ツール名</th><th style="text-align:left">バージョン</th><th style="text-align:left">ダウンロードURL</th></tr>
+<tr class="header">
+<th style="text-align: left;">ツール名</th>
+<th style="text-align: left;">バージョン</th>
+<th style="text-align: left;">ダウンロードURL</th>
+</tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left">Tomcat</td><td style="text-align:left">9.0系</td><td style="text-align:left">Pleiades同梱のものを使用するため個別の導入は行わない</td></tr>
-<tr><td style="text-align:left">Elasticsearch</td><td style="text-align:left">6.6.1</td><td style="text-align:left"><a href="https://www.elastic.co/jp/downloads/past-releases/elasticsearch-6-6-1">https://www.elastic.co/jp/downloads/past-releases/elasticsearch-6-6-1</a></td></tr>
-<tr><td style="text-align:left">ActiveMQ</td><td style="text-align:left">5.15系</td><td style="text-align:left"><a href="http://activemq.apache.org/download-archives.html">http://activemq.apache.org/download-archives.html</a></td></tr>
-<tr><td style="text-align:left">Nginx</td><td style="text-align:left">1.14系</td><td style="text-align:left"><a href="http://nginx.org/download/nginx-1.14.0.zip">http://nginx.org/download/nginx-1.14.0.zip</a></td></tr>
+<tr class="odd">
+<td style="text-align: left;">Tomcat</td>
+<td style="text-align: left;">9.0系</td>
+<td style="text-align: left;">Pleiades同梱のものを使用するため個別の導入は行わない</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Elasticsearch</td>
+<td style="text-align: left;">6.6.1</td>
+<td style="text-align: left;"><a href="https://www.elastic.co/jp/downloads/past-releases/elasticsearch-6-6-1" class="uri">https://www.elastic.co/jp/downloads/past-releases/elasticsearch-6-6-1</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ActiveMQ</td>
+<td style="text-align: left;">5.15系</td>
+<td style="text-align: left;"><a href="http://activemq.apache.org/download-archives.html" class="uri">http://activemq.apache.org/download-archives.html</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nginx</td>
+<td style="text-align: left;">1.14系</td>
+<td style="text-align: left;"><a href="http://nginx.org/download/nginx-1.14.0.zip" class="uri">http://nginx.org/download/nginx-1.14.0.zip</a></td>
+</tr>
 </tbody>
 </table>
-<h2><a class="anchor" aria-hidden="true" id="各種ツールの初期設定"></a><a href="#各種ツールの初期設定" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>各種ツールの初期設定</h2>
-<h3><a class="anchor" aria-hidden="true" id="eclipse"></a><a href="#eclipse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Eclipse</h3>
+<h2>各種ツールの初期設定</h2>
+<h3>Eclipse</h3>
 <ol>
-<li><p>[Window]-&gt;[設定]からインストール済のJREにAdoptOpenJDKを追加します。<br>
+<li><p>[Window]-&gt;[設定]からインストール済のJREにAdoptOpenJDKを追加します。<br />
 追加したAdoptOpenJDKをデフォルトに設定します。</p></li>
-<li><p>[Window]-&gt;[設定]からサーバー・ランタイム環境にTomcat9のサーバを追加します。<br>
+<li><p>[Window]-&gt;[設定]からサーバー・ランタイム環境にTomcat9のサーバを追加します。<br />
 サーバのJREにはAdoptOpenJDKを設定します。</p></li>
 </ol>
-<h3><a class="anchor" aria-hidden="true" id="jdk"></a><a href="#jdk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JDK</h3>
+<h3>JDK</h3>
 <p>環境変数(JAVA_HOME)を設定します。</p>
-<pre><code class="hljs">変数：JAVA_HOME
-値：javaのインストールディレクトリパス(例：C:\Program Files\Java\openjdk<span class="hljs-number">-1.8</span><span class="hljs-number">.0</span><span class="hljs-number">.191</span>)
-</code></pre>
+<pre><code>変数：JAVA_HOME
+値：javaのインストールディレクトリパス(例：C:\Program Files\Java\openjdk-1.8.0.191)</code></pre>
 <p>システム環境変数Pathに以下を追加します。</p>
-<pre><code class="hljs"><span class="hljs-tag">%<span class="hljs-selector-tag">JAVA_HOME</span></span>%\bin
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="git"></a><a href="#git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Git</h3>
+<pre><code>%JAVA_HOME%\bin</code></pre>
+<h3>Git</h3>
 <p>C:¥Users¥[user]¥.gitconfigに、以下の記述を追加します。</p>
-<pre><code class="hljs">[core]
-    <span class="hljs-attr">autocrlf</span> = <span class="hljs-literal">false</span>
-    <span class="hljs-attr">ignorecase</span> = <span class="hljs-literal">false</span>
-</code></pre>
+<pre><code>[core]
+    autocrlf = false
+    ignorecase = false</code></pre>
 <blockquote>
-<p>プロキシ環境下に開発環境を構築する場合、以下も追記します。<br>
+<p>プロキシ環境下に開発環境を構築する場合、以下も追記します。<br />
 ※{}の値はユーザ自身の情報を入力します。</p>
 </blockquote>
-<pre><code class="hljs"><span class="xml">[http]
-    proxy = </span><span class="hljs-template-variable">{protocol}</span><span class="xml">://</span><span class="hljs-template-variable">{username}</span><span class="xml">:</span><span class="hljs-template-variable">{pass}</span><span class="xml">@</span><span class="hljs-template-variable">{host}</span><span class="xml">:</span><span class="hljs-template-variable">{port}</span><span class="xml">
+<pre><code>[http]
+    proxy = {protocol}://{username}:{pass}@{host}:{port}
 [https]
-    proxy = </span><span class="hljs-template-variable">{protocol}</span><span class="xml">://</span><span class="hljs-template-variable">{username}</span><span class="xml">:</span><span class="hljs-template-variable">{pass}</span><span class="xml">@</span><span class="hljs-template-variable">{host}</span><span class="xml">:</span><span class="hljs-template-variable">{port}</span><span class="xml">
-</span></code></pre>
-<h3><a class="anchor" aria-hidden="true" id="maven"></a><a href="#maven" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Maven</h3>
+    proxy = {protocol}://{username}:{pass}@{host}:{port}</code></pre>
+<h3>Maven</h3>
 <p>環境変数(M2_HOME)を設定します。</p>
-<pre><code class="hljs">変数：M2_HOME
-値：mavenのインストールディレクトリパス（例：C:\Program Files\apache-maven<span class="hljs-number">-3.5</span><span class="hljs-number">.4</span>）
-</code></pre>
+<pre><code>変数：M2_HOME
+値：mavenのインストールディレクトリパス（例：C:\Program Files\apache-maven-3.5.4）</code></pre>
 <p>システム環境変数Pathに以下を追加します。</p>
-<pre><code class="hljs"><span class="hljs-tag">%<span class="hljs-selector-tag">M2_HOME</span></span>%\bin
-</code></pre>
+<pre><code>%M2_HOME%\bin</code></pre>
 <blockquote>
-<p>プロキシ環境下に開発環境を構築する場合、apache-maven-3.5.4\conf\settings.xmlに以下の記述を追加します。<br>
+<p>プロキシ環境下に開発環境を構築する場合、apache-maven-3.5.4\conf\settings.xmlに以下の記述を追加します。<br />
 ※{}の値はユーザ自身の情報を入力します。</p>
 </blockquote>
-<pre><code class="hljs"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">proxies</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">proxy</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>proxy00<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">active</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">active</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">protocol</span>&gt;</span>http<span class="hljs-tag">&lt;/<span class="hljs-name">protocol</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span></span><span class="hljs-template-variable">{username}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">username</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">password</span>&gt;</span></span><span class="hljs-template-variable">{pass}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">password</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">host</span>&gt;</span></span><span class="hljs-template-variable">{host}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">host</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">port</span>&gt;</span></span><span class="hljs-template-variable">{port}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">port</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nonProxyHosts</span>&gt;</span>local.net|some.host.com<span class="hljs-tag">&lt;/<span class="hljs-name">nonProxyHosts</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">proxy</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">proxy</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>proxy01<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">active</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">active</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">protocol</span>&gt;</span>https<span class="hljs-tag">&lt;/<span class="hljs-name">protocol</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span></span><span class="hljs-template-variable">{username}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">username</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">password</span>&gt;</span></span><span class="hljs-template-variable">{pass}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">password</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">host</span>&gt;</span></span><span class="hljs-template-variable">{host}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">host</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">port</span>&gt;</span></span><span class="hljs-template-variable">{port}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">port</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nonProxyHosts</span>&gt;</span>local.net|some.host.com<span class="hljs-tag">&lt;/<span class="hljs-name">nonProxyHosts</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">proxy</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">proxies</span>&gt;</span>
-</span></code></pre>
-<h3><a class="anchor" aria-hidden="true" id="elasticsearch"></a><a href="#elasticsearch" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Elasticsearch</h3>
-<h4><a class="anchor" aria-hidden="true" id="elasticsearch-661configelasticsearchymlの修正"></a><a href="#elasticsearch-661configelasticsearchymlの修正" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>elasticsearch-6.6.1\config\elasticsearch.ymlの修正</h4>
+<pre><code>&lt;proxies&gt;
+  &lt;proxy&gt;
+      &lt;id&gt;proxy00&lt;/id&gt;
+      &lt;active&gt;true&lt;/active&gt;
+      &lt;protocol&gt;http&lt;/protocol&gt;
+      &lt;username&gt;{username}&lt;/username&gt;
+      &lt;password&gt;{pass}&lt;/password&gt;
+      &lt;host&gt;{host}&lt;/host&gt;
+      &lt;port&gt;{port}&lt;/port&gt;
+      &lt;nonProxyHosts&gt;local.net|some.host.com&lt;/nonProxyHosts&gt;
+  &lt;/proxy&gt;
+  &lt;proxy&gt;
+      &lt;id&gt;proxy01&lt;/id&gt;
+      &lt;active&gt;true&lt;/active&gt;
+      &lt;protocol&gt;https&lt;/protocol&gt;
+      &lt;username&gt;{username}&lt;/username&gt;
+      &lt;password&gt;{pass}&lt;/password&gt;
+      &lt;host&gt;{host}&lt;/host&gt;
+      &lt;port&gt;{port}&lt;/port&gt;
+      &lt;nonProxyHosts&gt;local.net|some.host.com&lt;/nonProxyHosts&gt;
+  &lt;/proxy&gt;
+&lt;/proxies&gt;</code></pre>
+<h3>Elasticsearch</h3>
+<h4>elasticsearch-6.6.1\config\elasticsearch.ymlの修正</h4>
 <p>elasticsearch.ymlに以下の記述を追加します。</p>
-<pre><code class="hljs"><span class="hljs-attribute">cluster.name</span>: 【任意の名前】
+<pre><code>cluster.name: 【任意の名前】
 
-<span class="css"><span class="hljs-selector-tag">network</span><span class="hljs-selector-class">.host</span>: 0<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span>
-<span class="hljs-selector-tag">action</span><span class="hljs-selector-class">.auto_create_index</span>: "<span class="hljs-selector-class">.watches</span>,<span class="hljs-selector-class">.triggered_watches</span>,<span class="hljs-selector-class">.watcher-history-</span>*"
-<span class="hljs-selector-tag">http</span><span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.enabled</span>: <span class="hljs-selector-tag">true</span>
-<span class="hljs-selector-tag">http</span><span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.allow-origin</span>: "*"
-<span class="hljs-selector-tag">indices</span><span class="hljs-selector-class">.fielddata</span><span class="hljs-selector-class">.cache</span><span class="hljs-selector-class">.size</span>: 80%（任意:ヒープメモリの何％をデータキャッシュとして使用するか）
-</span></code></pre>
-<h3><a class="anchor" aria-hidden="true" id="activemq"></a><a href="#activemq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ActiveMQ</h3>
+network.host: 0.0.0.0
+action.auto_create_index: &quot;.watches,.triggered_watches,.watcher-history-*&quot;
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+indices.fielddata.cache.size: 80%（任意:ヒープメモリの何％をデータキャッシュとして使用するか）</code></pre>
+<h3>ActiveMQ</h3>
 <p>特になし</p>
-<h3><a class="anchor" aria-hidden="true" id="tomcat"></a><a href="#tomcat" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tomcat</h3>
+<h3>Tomcat</h3>
 <p>特になし</p>
-<h3><a class="anchor" aria-hidden="true" id="nginx"></a><a href="#nginx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nginx</h3>
+<h3>Nginx</h3>
 <p>Nginxの初期設定のため、nginx-1.14.0\conf配下のnginx.confファイルを修正します。</p>
 <ol>
 <li><p>httpの中に以下記述を追加します。</p>
-<pre><code class="hljs">    ignore_invalid_headers on;
-    proxy_set_header Host <span class="hljs-variable">$http_host</span>;
+<pre><code>    ignore_invalid_headers on;
+    proxy_set_header Host $http_host;
     proxy_http_version 1.1;
     large_client_header_buffers 4 55k;
 
-    map <span class="hljs-variable">$http_upgrade</span> <span class="hljs-variable">$connection_upgrade</span> {
-     <span class="hljs-built_in"> default upgrade;
-</span>      <span class="hljs-string">''</span> close;
-    }
-</code></pre></li>
+    map $http_upgrade $connection_upgrade {
+      default upgrade;
+      &#39;&#39; close;
+    }</code></pre></li>
 <li><p>http.server.location /の内容を以下記述に変更します。</p>
-<pre><code class="hljs">            <span class="hljs-comment">#root   html;</span>
-            <span class="hljs-comment">#index  index.html index.htm;</span>
+<pre><code>            #root   html;
+            #index  index.html index.htm;
 
-            <span class="hljs-attribute">if</span> (<span class="hljs-variable">$request_uri</span> <span class="hljs-regexp">~ [\x00-\x20\x22\x3c\x3e\x5b-\x5e\x60\x7b-\x7d\x7f])</span> {
-                <span class="hljs-attribute">return</span> <span class="hljs-number">400</span>;
+            if ($request_uri ~ [\x00-\x20\x22\x3c\x3e\x5b-\x5e\x60\x7b-\x7d\x7f]) {
+                return 400;
             }
 
-            <span class="hljs-attribute">if</span> (<span class="hljs-variable">$request_uri</span> <span class="hljs-regexp">~* ([^?]+)\?(.*))</span> {
-              <span class="hljs-attribute">set</span> <span class="hljs-variable">$personium_path</span> <span class="hljs-variable">$1</span>;
-              <span class="hljs-attribute">rewrite</span> .* /personium-core<span class="hljs-variable">$personium_path</span> <span class="hljs-literal">break</span>;
+            if ($request_uri ~* ([^?]+)\?(.*)) {
+              set $personium_path $1;
+              rewrite .* /personium-core$personium_path break;
             }
-            <span class="hljs-attribute">if</span> (<span class="hljs-variable">$is_args</span> = <span class="hljs-string">""</span>) {
-              <span class="hljs-attribute">rewrite</span> .* /personium-core<span class="hljs-variable">$request_uri</span> <span class="hljs-literal">break</span>;
+            if ($is_args = &quot;&quot;) {
+              rewrite .* /personium-core$request_uri break;
             }
 
-            <span class="hljs-attribute">proxy_pass</span> http://localhost:8080;
-            <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$remote_addr</span>;
-            <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-Proto http;
-            <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-Path <span class="hljs-variable">$request_uri</span>;
-            <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$http_host</span>;
-            <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;
-            <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-variable">$connection_upgrade</span>;
-            <span class="hljs-attribute">proxy_hide_header</span> X-Powered-By;
-            <span class="hljs-attribute">proxy_hide_header</span> X-Rack-Cache;
-            <span class="hljs-attribute">proxy_hide_header</span> X-Content-Digest;
-            <span class="hljs-attribute">proxy_hide_header</span> X-Runtime;
-</code></pre></li>
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_set_header X-Forwarded-Proto http;
+            proxy_set_header X-Forwarded-Path $request_uri;
+            proxy_set_header Host $http_host;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            proxy_hide_header X-Powered-By;
+            proxy_hide_header X-Rack-Cache;
+            proxy_hide_header X-Content-Digest;
+            proxy_hide_header X-Runtime;</code></pre></li>
 </ol>
-<h2><a class="anchor" aria-hidden="true" id="eclipseへのプロジェクトインポート"></a><a href="#eclipseへのプロジェクトインポート" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Eclipseへのプロジェクトインポート</h2>
+<h2>Eclipseへのプロジェクトインポート</h2>
 <p>personium-coreとpersonium-engineをプロジェクトとしてインポートします。</p>
 <ol>
-<li><p>GitHubのリポジトリからcloneします。<br>
-<a href="https://github.com/personium/personium-core.git">https://github.com/personium/personium-core.git</a><br>
-<a href="https://github.com/personium/personium-engine.git">https://github.com/personium/personium-engine.git</a></p></li>
+<li><p>GitHubのリポジトリからcloneします。<br />
+<a href="https://github.com/personium/personium-core.git" class="uri">https://github.com/personium/personium-core.git</a><br />
+<a href="https://github.com/personium/personium-engine.git" class="uri">https://github.com/personium/personium-engine.git</a></p></li>
 <li><p>Eclipseのmavenプロジェクトとしてそれぞれをインポートします。</p></li>
-<li><p>それぞれの/src/main/resourcesにpersonium-unit-config.propertiesを作成します。</p></li>
-</ol>
+<li><p>それぞれの/src/main/resourcesにpersonium-unit-config.propertiesを作成します。</p>
 <blockquote>
-<p>io.personium.core.es.cluster.nameの値はElasticsearchのconfigファイル（elasticsearch.yml）<br>
+<p>io.personium.core.es.cluster.nameの値はElasticsearchのconfigファイル（elasticsearch.yml）<br />
 のcluster.nameで設定した値を指定します。</p>
-</blockquote>
+</blockquote></li>
+</ol>
 <p><strong>/personium_core/src/main/resources/personium-unit-config.properties</strong></p>
-<pre><code class="hljs">#################################################
+<pre><code>#################################################
 # personium-core configurations
 #################################################
 # general configurations
 io.personium.core.masterToken=personiumio
 io.personium.core.unitScheme=http
-#io.personium.core.unitPort=<span class="hljs-number">9998</span>
-#io.personium.core.unitPort=<span class="hljs-number">8080</span>
+#io.personium.core.unitPort=9998
+#io.personium.core.unitPort=8080
 io.personium.core.unitPort=
 #io.personium.core.unitPath=/personium-core
 io.personium.core.unitPath=
@@ -248,10 +292,10 @@ io.personium.core.pathBasedCellUrl.enabled=true
 io.personium.core.unitUser.issuers=personium-localunit:/unitadmin/ personium-localunit:/unitadmincell/ personium-localunit:/unitusercell/
 
 # cell configurations
-io.personium.core.cell.relayhtmlurl.default=https:<span class="hljs-comment">//app-cc-home.demo.personium.io/__/index.html</span>
+io.personium.core.cell.relayhtmlurl.default=https://app-cc-home.demo.personium.io/__/index.html
 
 io.personium.core.es.cluster.name=【elasticsearch.ymlで設定した値】
-io.personium.core.es.retryTimes=<span class="hljs-number">10</span>
+io.personium.core.es.retryTimes=10
 
 io.personium.core.plugin.path=/personium/plugins
 io.personium.core.blobStore.root=/personium_nfs/personium-core/dav
@@ -274,14 +318,13 @@ io.personium.core.security.auth.password.salt=voAbizvF
 io.personium.core.security.dav.encrypt.enabled=false
 
 # Davlimit configurations
-io.personium.core.dav.childresource.maxnum=<span class="hljs-number">30</span>
-io.personium.core.dav.depth.maxnum=<span class="hljs-number">5</span>
+io.personium.core.dav.childresource.maxnum=30
+io.personium.core.dav.depth.maxnum=5
 
 # OData $links configurations
-io.personium.core.odata.links.NtoN.maxnum=<span class="hljs-number">40</span>
-</code></pre>
+io.personium.core.odata.links.NtoN.maxnum=40</code></pre>
 <p><strong>/personium_engine/src/main/resources/personium-unit-config.properties</strong></p>
-<pre><code class="hljs">#################################################
+<pre><code>#################################################
 # personium-engine configurations
 #################################################
 # general configurations
@@ -290,82 +333,73 @@ io.personium.core.masterToken=personiumio
 io.personium.core.blobStore.root=/personium_nfs/personium-core/dav
 
 # security configurations
-io.personium.core.security.secret16=secret167pm5m4y6
-</code></pre>
-<p>※各設定の説明は<a href="/docs/ja/server-operator/unit_config_list">Unitの設定一覧</a>を参照してください。</p>
+io.personium.core.security.secret16=secret167pm5m4y6</code></pre>
+<p>※各設定の説明は<a href="../server-operator/unit_config_list.html">Unitの設定一覧</a>を参照してください。</p>
 <blockquote>
-<p>※Eclipse上でmavenやpom.xml関連のビルドエラーが出ている場合、<br>
+<p>※Eclipse上でmavenやpom.xml関連のビルドエラーが出ている場合、<br />
 以下に記載した手順を実施してください。</p>
 </blockquote>
 <ol>
 <li><p>コマンドプロンプト等でpom.xmlが存在するディレクトリに移動します。</p></li>
 <li><p>以下のコマンドを実行します。</p>
-<pre><code class="hljs">mvn clean <span class="hljs-keyword">package</span> <span class="hljs-title">-DskipTests</span>
-</code></pre>
+<pre><code>mvn clean package -DskipTests</code></pre>
 <p>コマンドがSUCCESSで終了しなかった場合は原因を取り除いて再度実施します。</p></li>
 <li><p>Eclipse上で対象プロジェクトを右クリック→[Maven]→[プロジェクトの更新]→[OK]を選択します。</p></li>
 </ol>
-<h2><a class="anchor" aria-hidden="true" id="起動確認方法"></a><a href="#起動確認方法" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>起動確認方法</h2>
+<h2>起動確認方法</h2>
 <p>コマンドは管理者権限を持つユーザで実行してください。</p>
-<h3><a class="anchor" aria-hidden="true" id="1-elasticsearch起動確認"></a><a href="#1-elasticsearch起動確認" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Elasticsearch起動確認</h3>
+<h3>1. Elasticsearch起動確認</h3>
 <p>コマンドプロンプト等でElasticsearchのインストールディレクトリに移動します。</p>
-<pre><code class="hljs"><span class="hljs-meta">&gt;</span><span class="bash"> <span class="hljs-built_in">cd</span> Elasticsearchインストールディレクトリ</span>
-</code></pre>
+<pre><code>&gt; cd Elasticsearchインストールディレクトリ</code></pre>
 <p>以下コマンドを実行します。</p>
-<pre><code class="hljs">&gt; <span class="hljs-keyword">bin\elasticsearch-service </span><span class="hljs-keyword">install </span>(初回のみ)
-&gt; <span class="hljs-keyword">bin\elasticsearch-service </span>start
-</code></pre>
-<p>ブラウザで<a href="http://localhost:9200">http://localhost:9200</a>にアクセスします。</p>
+<pre><code>&gt; bin\elasticsearch-service install (初回のみ)
+&gt; bin\elasticsearch-service start</code></pre>
+<p>ブラウザでhttp://localhost:9200にアクセスします。</p>
 <p>以下のように出力されると起動成功となります。</p>
-<pre><code class="hljs">{
-  <span class="hljs-attr">"name"</span> : <span class="hljs-string">"MODAM"</span>,
-  <span class="hljs-attr">"cluster_name"</span> : <span class="hljs-string">"【elasticsearch.ymlで設定した値】"</span>,
-  <span class="hljs-attr">"cluster_uuid"</span> : <span class="hljs-string">"VM2fJ2hXQRSI4PsYhJBtLA"</span>,
-  <span class="hljs-attr">"version"</span> : {
-    <span class="hljs-attr">"number"</span> : <span class="hljs-string">"6.6.1"</span>,
-    <span class="hljs-attr">"build_flavor"</span> : <span class="hljs-string">"default"</span>,
-    <span class="hljs-attr">"build_type"</span> : <span class="hljs-string">"zip"</span>,
-    <span class="hljs-attr">"build_hash"</span> : <span class="hljs-string">"1fd8f69"</span>,
-    <span class="hljs-attr">"build_date"</span> : <span class="hljs-string">"2019-02-13T17:10:04.160291Z"</span>,
-    <span class="hljs-attr">"build_snapshot"</span> : <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">"lucene_version"</span> : <span class="hljs-string">"7.6.0"</span>,
-    <span class="hljs-attr">"minimum_wire_compatibility_version"</span> : <span class="hljs-string">"5.6.0"</span>,
-    <span class="hljs-attr">"minimum_index_compatibility_version"</span> : <span class="hljs-string">"5.0.0"</span>
+<pre><code>{
+  &quot;name&quot; : &quot;MODAM&quot;,
+  &quot;cluster_name&quot; : &quot;【elasticsearch.ymlで設定した値】&quot;,
+  &quot;cluster_uuid&quot; : &quot;VM2fJ2hXQRSI4PsYhJBtLA&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;6.6.1&quot;,
+    &quot;build_flavor&quot; : &quot;default&quot;,
+    &quot;build_type&quot; : &quot;zip&quot;,
+    &quot;build_hash&quot; : &quot;1fd8f69&quot;,
+    &quot;build_date&quot; : &quot;2019-02-13T17:10:04.160291Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;7.6.0&quot;,
+    &quot;minimum_wire_compatibility_version&quot; : &quot;5.6.0&quot;,
+    &quot;minimum_index_compatibility_version&quot; : &quot;5.0.0&quot;
   },
-  <span class="hljs-attr">"tagline"</span> : <span class="hljs-string">"You Know, for Search"</span>
-}
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="2-activemq起動確認"></a><a href="#2-activemq起動確認" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. ActiveMQ起動確認</h3>
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}</code></pre>
+<h3>2. ActiveMQ起動確認</h3>
 <p>コマンドプロンプト等でActivemqのインストールディレクトリに移動します。</p>
-<pre><code class="hljs"><span class="hljs-meta">&gt;</span><span class="bash"> <span class="hljs-built_in">cd</span> Activemqインストールディレクトリ</span>
-</code></pre>
+<pre><code>&gt; cd Activemqインストールディレクトリ</code></pre>
 <p>以下コマンドを実行します。</p>
-<pre><code class="hljs">&gt; <span class="hljs-keyword">bin\activemq </span>start
-</code></pre>
-<p>ブラウザで<a href="http://localhost:8161">http://localhost:8161</a>にアクセスします。<br>
+<pre><code>&gt; bin\activemq start</code></pre>
+<p>ブラウザでhttp://localhost:8161にアクセスします。<br />
 管理画面が表示されると起動成功となります。</p>
-<p>bin/win64/InstallService.bat を走行させることでサービス化することもできます。
-参考: <a href="https://activemq.apache.org/java-service-wrapper">https://activemq.apache.org/java-service-wrapper</a>,</p>
-<h3><a class="anchor" aria-hidden="true" id="3-開発用サーバ起動確認"></a><a href="#3-開発用サーバ起動確認" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 開発用サーバ起動確認</h3>
+<h3>3. 開発用サーバ起動確認</h3>
 <p>Eclipse上で[personium-core]プロジェクトを右クリック→[実行]→[サーバで実行]を選択します。</p>
 <p>サーバは初期設定で追加したTomcat9のサーバを選択して実行します。</p>
 <blockquote>
-<p>※Tomcat9の起動でタイムアウト時間を超えて起動エラーになることがあります。<br>
+<p>※Tomcat9の起動でタイムアウト時間を超えて起動エラーになることがあります。<br />
 EclipseでTomcat起動時のタイムアウト時間を変更してください。</p>
 </blockquote>
-<p>ブラウザで<a href="http://localhost:8080/personium-core/にアクセスします">http://localhost:8080/personium-core/にアクセスします</a>。<br>
+<p>ブラウザでhttp://localhost:8080/personium-core/にアクセスします。<br />
 以下のように出力されると起動成功となります。</p>
-<pre><code class="hljs">{<span class="hljs-attr">"unit"</span>:{<span class="hljs-attr">"path_based_cellurl_enabled"</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">"url"</span>:<span class="hljs-string">"http:\/\/localhost\/"</span>}}
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="4-nginx起動確認"></a><a href="#4-nginx起動確認" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Nginx起動確認</h3>
+<pre><code>{&quot;unit&quot;:{&quot;path_based_cellurl_enabled&quot;:true,&quot;url&quot;:&quot;http:\/\/localhost\/&quot;}}</code></pre>
+<h3>4. Nginx起動確認</h3>
 <p>コマンドプロンプト等でNginxインストールディレクトリに移動します。</p>
-<pre><code class="hljs"><span class="hljs-meta">&gt;</span><span class="bash"> <span class="hljs-built_in">cd</span> Nginxインストールディレクトリ</span>
-</code></pre>
+<pre><code>&gt; cd Nginxインストールディレクトリ</code></pre>
 <p>以下のコマンドを実行します。</p>
-<pre><code class="hljs">&gt; <span class="hljs-literal">start</span> nginx
-</code></pre>
-<p>ブラウザで<a href="http://localhostにアクセスします">http://localhostにアクセスします</a>。<br>
+<pre><code>&gt; start nginx</code></pre>
+<p>ブラウザでhttp://localhostにアクセスします。<br />
 以下のように出力されると起動成功となります。</p>
-<pre><code class="hljs">{<span class="hljs-attr">"unit"</span>:{<span class="hljs-attr">"path_based_cellurl_enabled"</span>:<span class="hljs-literal">true</span>,<span class="hljs-attr">"url"</span>:<span class="hljs-string">"http:\/\/localhost\/"</span>}}
-</code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/software-developer/README"><span class="arrow-prev">← </span><span>サーバ開発者向けガイド</span></a><a class="docs-next button" href="/docs/ja/software-developer/personium_tests"><span>Personiumのテスト</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#対象os">対象OS</a></li><li><a href="#開発に必要なツール一覧">開発に必要なツール一覧</a></li><li><a href="#動作確認に必要なツール一覧">動作確認に必要なツール一覧</a></li><li><a href="#各種ツールの初期設定">各種ツールの初期設定</a><ul class="toc-headings"><li><a href="#eclipse">Eclipse</a></li><li><a href="#jdk">JDK</a></li><li><a href="#git">Git</a></li><li><a href="#maven">Maven</a></li><li><a href="#elasticsearch">Elasticsearch</a></li><li><a href="#activemq">ActiveMQ</a></li><li><a href="#tomcat">Tomcat</a></li><li><a href="#nginx">Nginx</a></li></ul></li><li><a href="#eclipseへのプロジェクトインポート">Eclipseへのプロジェクトインポート</a></li><li><a href="#起動確認方法">起動確認方法</a><ul class="toc-headings"><li><a href="#1-elasticsearch起動確認">1. Elasticsearch起動確認</a></li><li><a href="#2-activemq起動確認">2. ActiveMQ起動確認</a></li><li><a href="#3-開発用サーバ起動確認">3. 開発用サーバ起動確認</a></li><li><a href="#4-nginx起動確認">4. Nginx起動確認</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
+<pre><code>{&quot;unit&quot;:{&quot;path_based_cellurl_enabled&quot;:true,&quot;url&quot;:&quot;http:\/\/localhost\/&quot;}}</code></pre>
+</div>
+  <footer><nav>The Personium project is provided under the Apache 2.0 license. </nav></footer>
+</body>
+</html>
+
