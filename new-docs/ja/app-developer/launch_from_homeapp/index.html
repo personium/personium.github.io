@@ -118,7 +118,7 @@ https://some.svr.example/my-app/index.html#cell=https://pds.personium.example/jo
 アプリCell上にEngineスクリプトを置いて、これを実現するのもよいアイディアです。難読化して埋め込みを行った場合は、
 攻撃者のリバースエンジニアリングによってアプリID, アプリパスワードが漏洩することは難読化による一定の抑止力はあるものの、完全には防ぐことができません。</p>
 <p>いずれにせよ、このリクエストに対する認証成功応答JSONの&quot;access_token&quot;項目が「アプリ認証トークン」となります。JSONをパースして取得してください。</p>
-<p>参考： <a href="http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html</a></p>
+<p>参考： <a href="http://personium.io/docs/ja/apiref/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/ja/apiref/293_OAuth2_Token_Endpoint.html</a></p>
 <h3><a class="anchor" aria-hidden="true" id="アクセストークンを受け取る"></a><a href="#アクセストークンを受け取る" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アクセストークンを受け取る</h3>
 <p>ユーザCellに対するあなたのAppとしてのアクセストークンを受け取ります。</p>
 <ol>
@@ -129,10 +129,10 @@ https://some.svr.example/my-app/index.html#cell=https://pds.personium.example/jo
 </code></pre>
 <p>ここで返ってくるレスポンスJSONの中の&quot;access_token&quot;項目が、対象ユーザCellに対するあなたのアプリのためのアクセストークンです。
 この処理はアプリセル上のengineスクリプトで実装することをお勧めします。</p>
-<p>参考： <a href="http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/ja/apiref/current/293_OAuth2_Token_Endpoint.html</a></p>
+<p>参考： <a href="http://personium.io/docs/ja/apiref/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/ja/apiref/293_OAuth2_Token_Endpoint.html</a></p>
 <h3><a class="anchor" aria-hidden="true" id="boxのurlを取得する"></a><a href="#boxのurlを取得する" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BoxのURLを取得する</h3>
 <p>以下のAPIを使って、対象ユーザCell上のあなたのアプリのための領域であるBoxのURLを取得します。</p>
-<p>参考: <a href="http://personium.io/docs/ja/apiref/current/304_Get_Box_URL.html">http://personium.io/docs/ja/apiref/current/304_Get_Box_URL.html</a></p>
+<p>参考: <a href="http://personium.io/docs/ja/apiref/304_Get_Box_URL.html">http://personium.io/docs/ja/apiref/304_Get_Box_URL.html</a></p>
 <p>この際、Authorizationヘッダで取得したアクセストークンを指定するようにしてください。</p>
 <pre><code class="hljs">Authorization: Bearer {access_token}
 </code></pre>
