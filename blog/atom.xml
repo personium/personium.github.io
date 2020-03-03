@@ -2,18 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2020-02-20T06:00:00.000Z</updated>
+    <updated>2020-03-03T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2020 Personium Project</rights>
     <entry>
-        <title type="html"><![CDATA[MyData Global & Personium in Fujitsu 100 Nin Kaigi]]></title>
-        <id>https://personium.github.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html</id>
-        <link href="https://personium.github.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html"/>
-        <updated>2020-02-20T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Personium Project gave a brief presentation on &quot;MyData Global &amp; Personium&quot; (<a href="http://bit.ly/MyDataGlobal-Personium">Slide deck</a>) at an in-house event, Fujitsu <a href="https://t.co/ITaoHN00BG?amp=1">100 Nin Kaigi</a>.</p> <p><img src="https://dixonsiu.demo-jp.personium.io/Events/Fujitsu_100_Persons_Meeting/集合社員2_20200220.jpg" width="350px"></p> ]]></summary>
+        <title type="html"><![CDATA[MyData Operator Workshop in Amsterdam on 18th March 2020]]></title>
+        <id>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</id>
+        <link href="https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html"/>
+        <updated>2020-03-03T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>MyData Operator Workshop will be held at the Spring Community Meeting in Amsterdam (18th March 2020). At the workshop, all participants will consider the most contentious issues and agree on the terms that help pushing the official release of the <a href="https://mydata-global.org/operator-white-paper">MyD...</a></p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
@@ -21,11 +21,39 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[(Cancelled) Presenting at OSC2020 Tokyo/Spring]]></title>
-        <id>https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html</id>
-        <link href="https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html"/>
-        <updated>2020-01-30T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>Updated on Feb. 19, 2020. The conference is cancelled.</strong> See it's website for details.</p> <p>Personium project will be presenting at Open Source Conference 2020 Tokyo/Spring, held on Feb. 21-22, 2020.<br> (Japanese) <a href="https://www.ospn.jp/osc2020-spring/">https://www.ospn.jp/osc2020-spring/</a></p> <p>Previous p...</p>]]></summary>
+        <title type="html"><![CDATA[Co-authoring EMWA paper on health-data related topic]]></title>
+        <id>https://personium.github.io/blog/2020/03/03/EMWA-Paper.html</id>
+        <link href="https://personium.github.io/blog/2020/03/03/EMWA-Paper.html"/>
+        <updated>2020-03-03T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium is honoured to be one of the co-authors for European Medical Writers Association (<a href="https://www.emwa.org/">EMWA</a>) journal submission.</p> <p>More details will be available when we get admitted. If you are a MyData Global Slack user, you can check updates in the <a href="https://mydataglobal.slack.com/archives/CDG4S69S6">#health-dat...</a></p>]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PDS Interoperability Workshop in Amsterdam on 20th March 2020]]></title>
+        <id>https://personium.github.io/blog/2020/03/02/CEPS-Workshop-Announcement.html</id>
+        <link href="https://personium.github.io/blog/2020/03/02/CEPS-Workshop-Announcement.html"/>
+        <updated>2020-03-02T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium is going to host a PDS interoperability workshop with <a href="https://www.ownyourdata.eu/">OwnYourData</a> and <a href="http://www.freezr.info/">Freezr</a> at the Spring Community Meeting of MyData Global in Amsterdam.</p>
+<p>A Common Endpoint for Personal data Stores (<a href="https://mydata-global.org/common-endpoints">CEPS</a>) allows sharing apps and exchanging data. With CEPS, applications can be written once and be used with any CEPS-compliant personal data store. In this community meeting we will present the current status of this new initiative and invite others to join for creating a truly open and transparent group in fostering data exchange between Personal Data Stores.</p>
+<h2><a class="anchor" aria-hidden="true" id="preliminary-agenda-of-the-spring-community-meetinghttpsmydataorgamsterdam-meeting-19-20-march-2020"></a><a href="#preliminary-agenda-of-the-spring-community-meetinghttpsmydataorgamsterdam-meeting-19-20-march-2020" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Preliminary agenda of the <a href="https://mydata.org/amsterdam-meeting-19-20-march-2020/">Spring Community Meeting</a></h2>
+<p>Detail agenda <a href="https://mydata-global.org/MeetingAMS-Agenda">here</a></p>
+]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MyData Global & Personium in Fujitsu 100 Nin Kaigi]]></title>
+        <id>https://personium.github.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html</id>
+        <link href="https://personium.github.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html"/>
+        <updated>2020-02-20T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium Project gave a brief presentation on &quot;MyData Global &amp; Personium&quot; (<a href="http://bit.ly/MyDataGlobal-Personium">Slide deck</a>) at an in-house event, Fujitsu <a href="https://t.co/ITaoHN00BG?amp=1">100 Nin Kaigi</a>.</p> <p><img src="https://dixonsiu.demo-jp.personium.io/Events/Fujitsu_100_Persons_Meeting/集合社員2_20200220.jpg" width="350px"></p> ]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
@@ -54,6 +82,18 @@
 <p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/ownyourdata.png" width="150px" >  <br>
 Original news here: <a href="https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot/">https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot/</a></p>
 ]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[(Cancelled) Presenting at OSC2020 Tokyo/Spring]]></title>
+        <id>https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html</id>
+        <link href="https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html"/>
+        <updated>2020-01-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>Updated on Feb. 19, 2020. The conference is cancelled.</strong> See it's website for details.</p> <p>Personium project will be presenting at Open Source Conference 2020 Tokyo/Spring, held on Feb. 21-22, 2020.<br> (Japanese) <a href="https://www.ospn.jp/osc2020-spring/">https://www.ospn.jp/osc2020-spring/</a></p> <p>Previous p...</p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
