@@ -61,6 +61,18 @@
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[MyData Case Library - First Japanese Case]]></title>
+        <id>https://personium.github.io/blog/2020/02/12/MyData-Case-Library.html</id>
+        <link href="https://personium.github.io/blog/2020/02/12/MyData-Case-Library.html"/>
+        <updated>2020-02-12T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Another global achievement! Personium is proud to be the first Japanese case published in the MyData <a href="https://mydata.org/cases/">Case Library</a>.</p> ]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Update #1 - Pilot project (Tally Zoo) with OwnYourData]]></title>
         <id>https://personium.github.io/blog/2020/01/30/Own-Your-Data-Pilot.html</id>
         <link href="https://personium.github.io/blog/2020/01/30/Own-Your-Data-Pilot.html"/>
