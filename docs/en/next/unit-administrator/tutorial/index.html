@@ -1,0 +1,582 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Personium Unit management tutorial · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**\* This document is intended for those who use Personium Version 1.6.15 or later.**"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Personium Unit management tutorial · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.github.io/"/><meta property="og:description" content="**\* This document is intended for those who use Personium Version 1.6.15 or later.**"/><meta property="og:image" content="https://personium.github.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.github.io/blog/atom.xml" title=" Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.github.io/blog/feed.xml" title=" Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><a href="/en/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/en/README" target="_self">Documentation</a></li><li class=""><a href="/docs/en/apiref/000_Rest_API_Reference" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/ja/next/unit-administrator/tutorial">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>For Unit Administrator</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/next/README">Documentation for Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/overview/001_Introduction">What is Personium?</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/005_Model_construction">user_guide/005_Model_construction</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/003_Auth">Authentication model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/008_Glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Personium Operators<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Server Operator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/setup">Getting Started with Personium using Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Unit Administrator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/next/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/unit-administrator/Unit-User">Unit User</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/next/unit-administrator/tutorial">Personium Unit management tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/unit-administrator/Data_Management">Data management</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For App Developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/README">Application Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/user_guide/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/launch_from_homeapp">Launch application from Home application</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Contributor Guides<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Document Contribution</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/next/document-writer/README">Personium How to participate in document maintenance / improvement</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Code Contribution</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/next/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/software-developer/personium_tests">Personium Tests</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/docs/en/next/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Personium Unit management tutorial</h1></header><article><div><span><p><strong>* This document is intended for those who use Personium Version 1.6.15 or later.</strong></p>
+<h5><a class="anchor" aria-hidden="true" id="1-about-this-documentsect1"></a><a href="#1-about-this-documentsect1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect1">1. About this document</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="2-who-should-read-this-documentsect2"></a><a href="#2-who-should-read-this-documentsect2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect2">2. Who should read this document?</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="3-overview-of-unit-cell-and-boxsect3"></a><a href="#3-overview-of-unit-cell-and-boxsect3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect3">3. Overview of Unit, Cell, and Box</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="4-about-tokensect4"></a><a href="#4-about-tokensect4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect4">4. About token</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-issue-pds-to-userssect5"></a><a href="#5-issue-pds-to-userssect5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5">5. Issue PDS to Users</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-1-create-a-cellsect51"></a><a href="#5-1-create-a-cellsect51" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.1">5-1. Create a Cell</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-create-an-administrator-account-for-a-cellsect52"></a><a href="#5-2-create-an-administrator-account-for-a-cellsect52" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2">5-2. Create an Administrator Account for a Cell</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-1-create-an-accountsect521"></a><a href="#5-2-1-create-an-accountsect521" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.1">5-2-1. Create an Account</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-2-create-a-rolesect522"></a><a href="#5-2-2-create-a-rolesect522" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.2">5-2-2. Create a Role</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-3-link-an-account-and-a-rolesect523"></a><a href="#5-2-3-link-an-account-and-a-rolesect523" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.3">5-2-3. Link an Account and a Role</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-2-4-configure-the-aclsect524"></a><a href="#5-2-4-configure-the-aclsect524" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.2.4">5-2-4. Configure the ACL</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-3-store-the-first-data-in-the-main-boxsect53"></a><a href="#5-3-store-the-first-data-in-the-main-boxsect53" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.3">5-3. Store the First Data in the Main Box</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-3-1-store-profilejsonsect531"></a><a href="#5-3-1-store-profilejsonsect531" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.3.1">5-3-1. Store profile.json</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-4-assign-a-default-operating-screen-for-usersect54"></a><a href="#5-4-assign-a-default-operating-screen-for-usersect54" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.4">5-4. Assign a default operating screen for user</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="5-5-using-the-guisect55"></a><a href="#5-5-using-the-guisect55" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect5.5">5-5. Using the GUI</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="6-delete-the-issued-pdssect6"></a><a href="#6-delete-the-issued-pdssect6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect6">6. Delete the Issued PDS</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="7-try-a-demo-video-of-gui-operationsect7"></a><a href="#7-try-a-demo-video-of-gui-operationsect7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect7">7. Try a demo video of GUI operation</a></h5>
+<h5><a class="anchor" aria-hidden="true" id="8-automated-pds-creationsect8"></a><a href="#8-automated-pds-creationsect8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="#sect8">8. Automated PDS Creation</a></h5>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect11-about-this-documenta"></a><a href="#a-namesect11-about-this-documenta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect1">1. About this document</a></h2>
+<p>This document will explains the detailed procedures so that even a first-time user can quickly manage the Personium Unit.</p>
+<p>Since all the functions of Personium Service are provided as REST API, it is OS and programming language independent.<br>
+A sample source using javascript is released, please feel free to use them.</p>
+<ul>
+<li><a href="https://github.com/personium/template-app-cell">MinimalApp</a> … Personium's &quot;Hello, World!&quot; app.</li>
+<li><a href="https://github.com/personium/app-myboard">MyBoard</a> … Personium app that demonstrates ACL management and data enquiry/approval.</li>
+</ul>
+<p><a href="https://curl.haxx.se/">cURL</a> is used for all samples that call API in this tutorial.</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect22-who-should-read-this-documenta"></a><a href="#a-namesect22-who-should-read-this-documenta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect2">2. Who should read this document?</a></h2>
+<p>The intended audience of this document is a first-time user of Personium Service.
+Prerequisite Knowledge:</p>
+<ul>
+<li>Basic knowledge of the Internet</li>
+<li>Basic knowledge of Representational State Transfer (REST)</li>
+<li>Basic knowledge of the operating system to be used</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect33-overview-of-unit-cell-and-boxa"></a><a href="#a-namesect33-overview-of-unit-cell-and-boxa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect3">3. Overview of Unit, Cell, and Box</a></h2>
+<p>I extracted keywords that should be kept at the minimum in using &quot;Personium&quot;.
+It will be a keyword that will appear many times even in this tutorial.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Keyword<br></th><th style="text-align:left">Overview<br></th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">Unit<br></td><td style="text-align:left">The data area composed of Multiple Cells on the personium server.<br>It has a fully qualified domain name (UnitFQDN) that is referred to as the absolute domain name.<br></td></tr>
+<tr><td style="text-align:left">Cell<br></td><td style="text-align:left">Data Strore for each data subject. PDS (Personal Data Store) is used for personal use.<br>In &quot;Personium&quot;, since we are modeling the notion of data subjects not only for people but also organizations and objects,<br>we can also use it as a data store for organizations and goods.<br>(Eg My Cell, Your Cell, Cell of xx Company, Cell of xx Department, Cell of My Car)<br></td></tr>
+<tr><td style="text-align:left">Box<br></td><td style="text-align:left">The area that stores the data used for the application. The Box itself is also a WebDAV collection. <br>It has a unique name and schema URL.<br>Cell has one Box (main Box) in its initial state and can not be deleted.<br></td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect44-about-tokena"></a><a href="#a-namesect44-about-tokena" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect4">4. About token</a></h2>
+<p>In this document, we use unit master token or unit user token for operation of Personium unit.
+For details of unit master token and unit user token, please refer to <a href="/docs/en/next/unit-administrator/Unit-User">here</a>.</p>
+<p>Refer to <a href="/docs/en/next/server-operator/Confirm_environment_settings">here</a> for how to check the unit master token of the environment constructed using Ansible and the account name / password of the unit user.
+Please check with your server software administrator if you have created your own environment.</p>
+<blockquote>
+<p><strong>[Note]</strong>
+<strong>Since the information acquired here is the initial value, if you change it, please manage by yourself.</strong></p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect55-issue-pds-to-usersa"></a><a href="#a-namesect55-issue-pds-to-usersa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5">5. Issue PDS to Users</a></h2>
+<p>This series of API operations will be automated by a program in the actual Personium Service operation, but these tutorials show how to manually perform these operations step by step.</p>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect515-1-create-a-cella"></a><a href="#a-namesect515-1-create-a-cella" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.1">5-1. Create a Cell</a></h3>
+<p>Create an empty Cell (PDS).</p>
+<p>Before creating a new additional Cell, confirm the status using the Cell_List_Acquisition_API in advance.<br>
+In the Personium Unit immediately after construction, only cells for Unit management are registered.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>One cell information for Unit management returns to the response.<br>
+This state is the initial state of the Personium Unit.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https:\/\/jp-west-1-dev-2034289.k5personium.cloud\/__ctl\/Cell('unitadmin')"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1537265056908\""</span>,
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"unitadmin"</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<p>Now, actually create a Cell.
+When calling the Cell_Create_API, specify the desired Cell name.<br>
+In this example, &quot;usercell&quot; will be the Cell name.</p>
+<blockquote>
+<p><strong>[Note]</strong>  <br>
+<strong>The root URL of the Cell is released.</strong>  <br>
+<strong>Note that if your email address, etc. is used in the Cell name as-is, the presence will be determined by the response, so caution is necessary.</strong></p>
+</blockquote>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"Name\":\"usercell\"}"</span> \
+-H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>If successful, the information of the Cell created at this point is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: {
+            <span class="hljs-attr">"__metadata"</span>: {
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/__ctl/Cell('usercell')"</span>,
+                <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1539241336221\""</span>,
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+            },
+            <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"usercell"</span>,
+            <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>,
+            <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>
+        }
+    }
+}
+</code></pre>
+<p>If you call the Cell List Retrieval API again, the state that &quot;usercell&quot; is added is returned to the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https:\/\/jp-west-1-dev-2034289.k5personium.cloud\/__ctl\/Cell('unitadmin')"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1537265056908\""</span>,
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"unitadmin"</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1537265056908)\/"</span>
+            },
+            {
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https:\/\/jp-west-1-dev-2034289.k5personium.cloud\/__ctl\/Cell('usercell')"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W\/\"1-1539241336221\""</span>,
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"UnitCtl.Cell"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"usercell"</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"\/Date(1539241336221)\/"</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect525-2-create-an-administrator-account-for-a-cella"></a><a href="#a-namesect525-2-create-an-administrator-account-for-a-cella" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2">5-2. Create an Administrator Account for a Cell</a></h3>
+<p>Accounts refer to the users belonging to a particular Cell and are retained using the account name and password information.<br>
+Multiple accounts can be registered for one Cell.</p>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5215-2-1-create-an-accounta"></a><a href="#a-namesect5215-2-1-create-an-accounta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.1">5-2-1. Create an Account</a></h4>
+<p>Create an Account in the Cell created in the previous section.</p>
+<p>Before creating additional accounts, confirm the status using the Account_Acquire_List_API in advance.<br>
+The Cell immediately after creation has no accounts registered.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>The state where there is no account information is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: []
+    }
+}
+</code></pre>
+<p>Now, create an account.<br>
+When calling the Account_Create_API, specify the desired account name.<br>
+In this example, &quot;me&quot; will be the account name, and &quot;password&quot; will be the account password.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"Name\":\"me\"}"</span> \
+-H <span class="hljs-string">"X-Personium-Credential:password"</span> -H <span class="hljs-string">"Content-Type: application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>If successful, the information of the account created this time is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: {
+            <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+            <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+            <span class="hljs-attr">"Cell"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"basic"</span>,
+            <span class="hljs-attr">"LastAuthenticated"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"me"</span>,
+            <span class="hljs-attr">"__metadata"</span>: {
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Account"</span>,
+                <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484724933394\""</span>,
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')"</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>Call the Account_Acquire_List_API again, and the state where &quot;me&quot; exists is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"_ReceivedMessageRead"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')/_ReceivedMessageRead"</span>
+                    }
+                },
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Account"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484724933394\""</span>,
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"me"</span>,
+                <span class="hljs-attr">"LastAuthenticated"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"basic"</span>,
+                <span class="hljs-attr">"Cell"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484724933394)/"</span>,
+                <span class="hljs-attr">"_Role"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')/_Role"</span>
+                    }
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5225-2-2-create-a-rolea"></a><a href="#a-namesect5225-2-2-create-a-rolea" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.2">5-2-2. Create a Role</a></h4>
+<p>Create a role for the Cell for which an account was created in the previous section.<br>
+Roles set and retain the Cell access privileges based on functions such as administrator, teacher, and student.</p>
+<p>Before creating an additional role, confirm the status using the Role_Acquire_List_API in advance.<br>
+The Cell immediately after creation has no role registered.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>The state where there is no role information is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: []
+    }
+}
+</code></pre>
+<p>Now, create a role.<br>
+When calling the Role_Create_API, specify the desired role name.<br>
+In this example, &quot;adminrole&quot; will be the role name.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"Name\":\"adminrole\"}"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>If successful, the information of the role created this time is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: {
+            <span class="hljs-attr">"_Box.Name"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+            <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+            <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"adminrole"</span>,
+            <span class="hljs-attr">"__metadata"</span>: {
+                <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Role"</span>,
+                <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484728984079\""</span>,
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)"</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p>Call the Account_Acquire_List_API again, and the state where &quot;adminrole&quot; exists is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"_Relation"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_Relation"</span>
+                    }
+                },
+                <span class="hljs-attr">"_ExtRole"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_ExtRole"</span>
+                    }
+                },
+                <span class="hljs-attr">"__metadata"</span>: {
+                    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"CellCtl.Role"</span>,
+                    <span class="hljs-attr">"etag"</span>: <span class="hljs-string">"W/\"1-1484728984079\""</span>,
+                    <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)"</span>
+                },
+                <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"adminrole"</span>,
+                <span class="hljs-attr">"_Box.Name"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"__published"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+                <span class="hljs-attr">"__updated"</span>: <span class="hljs-string">"/Date(1484728984079)/"</span>,
+                <span class="hljs-attr">"_Box"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_Box"</span>
+                    }
+                },
+                <span class="hljs-attr">"_Account"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_Account"</span>
+                    }
+                },
+                <span class="hljs-attr">"_ExtCell"</span>: {
+                    <span class="hljs-attr">"__deferred"</span>: {
+                        <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role(Name='adminrole',_Box.Name=null)/_ExtCell"</span>
+                    }
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5235-2-3-link-an-account-and-a-rolea"></a><a href="#a-namesect5235-2-3-link-an-account-and-a-rolea" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.3">5-2-3. Link an Account and a Role</a></h4>
+<p>Associate the created account and role.<br>
+The account and role created above belong to the same Cell, but are independent of each other, having no direct relationship.</p>
+<p>Before starting operations, confirm the status using the Role_$links_Acquire_List_API in advance.<br>
+The role is in the state immediately after creation and has no exclusive links with the account.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role('adminrole')/\$links/_Account"</span> \
+-X GET -i -k \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>The state where the role has no relationship information is returned in the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: []
+    }
+}
+</code></pre>
+<p>Now, call the Role_$links_Register_API and create a link with the account.<br>
+(Calling the Account_$links_Register_API for the role as the operation in the opposite direction yields the same result)</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Role('adminrole')/\$links/_Account"</span> \
+-X POST -i -k \
+-d <span class="hljs-string">"{\"uri\":\"https://{Personium_FQDN}/usercell/__ctl/Account('me')\"}"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>This API does not return a json format response (body).<br>
+If the status code 204 is returned, processing was successful.</p>
+<pre><code class="hljs"><span class="hljs-string">HTTP/1.1</span> <span class="hljs-number">204</span> <span class="hljs-literal">No</span> <span class="hljs-string">Content</span>
+</code></pre>
+<p>When you call the Role $links list retrieval API again, the information of the account associated with (to role) is returned to the response.</p>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"d"</span>: {
+        <span class="hljs-attr">"results"</span>: [
+            {
+                <span class="hljs-attr">"uri"</span>: <span class="hljs-string">"https://{Personium_FQDN}/usercell/__ctl/Account('me')"</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5245-2-4-configure-the-acla"></a><a href="#a-namesect5245-2-4-configure-the-acla" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.2.4">5-2-4. Configure the ACL</a></h4>
+<p>Set the access rights for the created Cell.<br>
+The access rights can be set for all roles (by specifying 'root') or can be set individually for each role.<br>
+The access privileges of the account (user) are determined based on the link between the role and account in the previous section.</p>
+<p>Use the Cell_Level_Access_Control_Configure_API.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell"</span> \
+-X ACL -i -k \
+-d <span class="hljs-string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\
+&lt;D:acl xmlns:D=\"DAV:\" xmlns:p=\"urn:x-personium:xmlns\" xml:base=\"https://{Personium_FQDN}/usercell/__role/__/\"&gt;\
+&lt;D:ace&gt;&lt;D:principal&gt;&lt;D:href&gt;adminrole&lt;/D:href&gt;&lt;/D:principal&gt;&lt;D:grant&gt;&lt;D:privilege&gt;\
+&lt;p:root/&gt;&lt;/D:privilege&gt;&lt;/D:grant&gt;&lt;/D:ace&gt;&lt;/D:acl&gt;"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {master_token}"</span>
+</code></pre>
+<p>(Expanded display of the request body section)</p>
+<pre><code class="hljs css language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://{Personium_FQDN}/usercell/__role/__/"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:href</span>&gt;</span>adminrole<span class="hljs-tag">&lt;/<span class="hljs-name">D:href</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p:root</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<p>This API does not return a json format response (body).<br>
+If the status code 200 is returned, processing was successful.</p>
+<pre><code class="hljs">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect535-3-store-the-first-data-in-the-main-boxa"></a><a href="#a-namesect535-3-store-the-first-data-in-the-main-boxa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.3">5-3. Store the First Data in the Main Box</a></h3>
+<p>The main Box is a special Box named &quot;__&quot; (two underscores) which is created by default when Cell is created.<br>
+This special Box is similar to a normal Box except that it can not be deleted.<br>
+It is used for storing application data and storing unique information (using json format) of that Cell.</p>
+<h4><a class="anchor" aria-hidden="true" id="a-namesect5315-3-1-store-profilejsona"></a><a href="#a-namesect5315-3-1-store-profilejsona" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.3.1">5-3-1. Store profile.json</a></h4>
+<p>The profile.json file is a json format file needed to place PDS public profile information.<br>
+For interoperability between PDS operators of Personium Service, we recommend placing the profile.json file directly under the main Box.<br>
+For profile.json sample, see <a href="https://demo.personium.io/app-uc-cell-creator-wizard/__/defaultProfile.json">here</a></p>
+<blockquote>
+<ul>
+<li>You can also operate PDS without placing this file.<br>
+Although this file is not handled specially as API behavior, it is assumed that this file existence and possibility of anonymous access (access with no authorization header) also when operating the sample GUI described later.</li>
+</ul>
+</blockquote>
+<p>actually place profile.json.<br>
+Use the file registration update API to place.<br>
+In this example, &quot;John Doe&quot; will be the display name, and &quot;Senior Director, Personium Project&quot; will be the description.<br>
+Also, specify the URL of the profile image as the value of Image. In the following example, the data URI scheme of image data is specified.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__/profile.json"</span> \
+-X PUT -i -k \
+-d <span class="hljs-string">"{\"DisplayName\":\"John Doe\",\"Description\": \"Senior Director, Personium Project\",\
+\"Image\": \"{Image data encoded with Base64}\"}"</span> \
+-H <span class="hljs-string">"Authorization:Bearer {master_token}"</span>
+</code></pre>
+<p>This API does not return a json format response (body).<br>
+If the status code 201 is returned, processing was successful.</p>
+<pre><code class="hljs">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">201</span> Created
+</code></pre>
+<p>After storing  profile.json, set the access right to profile.json.<br>
+Use the Access_Control_Configure_API.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/__/profile.json"</span> \
+-X ACL -i -k \
+-d <span class="hljs-string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\
+&lt;D:acl xmlns:D=\"DAV:\" xmlns:p=\"urn:x-personium:xmlns\"  p:requireSchemaAuthz=\"none\" \
+xml:base=\"https://{Personium_FQDN}/usercell/__role/__/\"&gt;\
+&lt;D:ace&gt;&lt;D:principal&gt;&lt;D:all&gt;&lt;/D:all&gt;&lt;/D:principal&gt;&lt;D:grant&gt;&lt;D:privilege&gt;&lt;D:read/&gt;&lt;/D:privilege&gt;&lt;/D:grant&gt;&lt;/D:ace&gt;&lt;/D:acl&gt;"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {master_token}"</span>
+</code></pre>
+<p>(Expanded display of the request body section)</p>
+<pre><code class="hljs css language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:acl</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span> <span class="hljs-attr">p:requireSchemaAuthz</span>=<span class="hljs-string">"none"</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://{Personium_FQDN}/usercell/__role/__/"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:ace</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:principal</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">D:all</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">D:all</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">D:principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">D:grant</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">D:privilege</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">D:read</span>/&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">D:privilege</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">D:grant</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:acl</span>&gt;</span>
+</code></pre>
+<p>This API does not return a json format response (body).<br>
+If the status code 200 is returned, processing was successful.</p>
+<pre><code class="hljs">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect545-4-assign-a-default-operating-screen-for-usera"></a><a href="#a-namesect545-4-assign-a-default-operating-screen-for-usera" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.4">5-4. Assign a default operating screen for user</a></h3>
+<p>When accessing a Cell URL from a browser, an operating screen (HomeApp screen) can be displayed.<br>
+Let's set the sample GUI (HomeApp screen) from the open source project as the default operating screen.</p>
+<p>In order to assign a default operating screen (HomeApp screen), the Cell property must be modified.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/"</span> \
+-X PROPPATCH -i -k \
+-d <span class="hljs-string">"&lt;?xml version=\"1.0\" encoding=\"utf-8\" ?&gt;\
+&lt;D:propertyupdate xmlns:D=\"DAV:\" xmlns:p=\"urn:x-personium:xmlns\"&gt;&lt;D:set&gt;&lt;D:prop&gt;\
+&lt;p:relayhtmlurl&gt;https://demo.personium.io/app-cc-home/__/index.html&lt;/p:relayhtmlurl&gt;&lt;/D:prop&gt;&lt;/D:set&gt;&lt;/D:propertyupdate&gt;"</span> \
+-H <span class="hljs-string">"Accept: application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {master_token}"</span>
+</code></pre>
+<p>(Request body)</p>
+<pre><code class="hljs css language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">D:propertyupdate</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">D:set</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">D:prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p:relayhtmlurl</span>&gt;</span>https://demo.personium.io/app-cc-home/__/index.html<span class="hljs-tag">&lt;/<span class="hljs-name">p:relayhtmlurl</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">D:prop</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">D:set</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">D:propertyupdate</span>&gt;</span>
+</code></pre>
+<p>If the request succeeded, modified property will be in the response.</p>
+<pre><code class="hljs css language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>https://{Personium_FQDN}/usercell/<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p:relayhtmlurl</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+                https://demo.personium.io/app-cc-home/__/index.html<span class="hljs-tag">&lt;/<span class="hljs-name">p:relayhtmlurl</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>HTTP/1.1 200 OK<span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+<p>Besides configuring individual Cell, it is also possible to configure the default values for the entire Unit.<br>
+The following values of the Unit configuration file are modifiable.</p>
+<pre><code class="hljs"><span class="hljs-selector-tag">io</span><span class="hljs-selector-class">.personium</span><span class="hljs-selector-class">.core</span><span class="hljs-selector-class">.cell</span><span class="hljs-selector-class">.relayhtmlurl</span><span class="hljs-selector-class">.default</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="a-namesect555-5-using-the-guia"></a><a href="#a-namesect555-5-using-the-guia" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect5.5">5-5. Using the GUI</a></h3>
+<p>Now the Cell is ready for use.</p>
+<ul>
+<li>Administrator account name : me</li>
+<li>Administrator account password : password</li>
+</ul>
+<p>Let's check the operation with GUI using the above information.</p>
+<pre><code class="hljs"><span class="hljs-symbol">https:</span><span class="hljs-comment">//{Personium_FQDN}/usercell</span>
+</code></pre>
+<p>The registered profile.json information is displayed on the login screen and you should be able to confirm the login with the administrator account.<br>
+If you want to install it yourself without using the sample GUI published in the open source project, please click <a href="https://github.com/personium/app-cc-home">here</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect66-delete-the-issued-pdsa"></a><a href="#a-namesect66-delete-the-issued-pdsa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect6">6. Delete the Issued PDS</a></h2>
+<p>Delete the issued Cell.</p>
+<p>Delete the Cell created in these tutorials using the Recursive_Cell_Deletion_API.<br>
+This API deletes everything, including the data included in the Cell.</p>
+<pre><code class="hljs css language-sh">curl <span class="hljs-string">"https://{Personium_FQDN}/usercell/"</span> \
+-X DELETE -i -k \
+-H <span class="hljs-string">"X-Personium-Recursive: true"</span> -H <span class="hljs-string">"If-Match: *"</span> \
+-H <span class="hljs-string">"Accept:application/json"</span> -H <span class="hljs-string">"Authorization: Bearer {master_token}"</span>
+</code></pre>
+<p>This API does not return a json format response (body).<br>
+If the status code 204 is returned, processing was successful.</p>
+<pre><code class="hljs"><span class="hljs-string">HTTP/1.1</span> <span class="hljs-number">204</span> <span class="hljs-literal">No</span> <span class="hljs-string">Content</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect77-try-a-demo-video-of-gui-operationa"></a><a href="#a-namesect77-try-a-demo-video-of-gui-operationa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect7">7. Try a demo video of GUI operation</a></h2>
+<p>Furthermore, the complicated operations of <a href="#sect5">5. Issue PDS to Users</a> and <a href="#sect6">6. Delete the Issued PDS</a> can be simplified using the graphical user interface (&quot;Cell Creator Wizard&quot;,&quot;Unit Manager&quot;).
+<br></p>
+<p>For details see <a href="https://github.com/personium/app-uc-cell-creator-wizard">Cell Creator Wizard</a>.
+<br></p>
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M4cYLFYRyEk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<p>For details see <a href="https://github.com/personium/app-uc-unit-manager/blob/master/README.%6D%64">Unit Manager</a>.
+<br></p>
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d1_pET0M-YA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<p>Please use the Unit management account information acquired in &quot;4. Acquire the information used in this document&quot; for login information required when using &quot;Unit Manager&quot;.</p>
+<h2><a class="anchor" aria-hidden="true" id="a-namesect88-automated-pds-creationa"></a><a href="#a-namesect88-automated-pds-creationa" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="sect8">8. Automated PDS Creation</a></h2>
+<p>Manual procedures were posted so that the flow of PDS creation can be understood,<br>
+but we will introduce a sample program that automates the series of API calls from 5.1 to 5.3.<br>
+For details see <a href="https://github.com/personium/org-admin">here</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/next/unit-administrator/Unit-User"><span class="arrow-prev">← </span><span>Unit User</span></a><a class="docs-next button" href="/docs/en/next/unit-administrator/Data_Management"><span>Data management</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#a-namesect11-about-this-documenta"><a name="sect1">1. About this document</a></a></li><li><a href="#a-namesect22-who-should-read-this-documenta"><a name="sect2">2. Who should read this document?</a></a></li><li><a href="#a-namesect33-overview-of-unit-cell-and-boxa"><a name="sect3">3. Overview of Unit, Cell, and Box</a></a></li><li><a href="#a-namesect44-about-tokena"><a name="sect4">4. About token</a></a></li><li><a href="#a-namesect55-issue-pds-to-usersa"><a name="sect5">5. Issue PDS to Users</a></a><ul class="toc-headings"><li><a href="#a-namesect515-1-create-a-cella"><a name="sect5.1">5-1. Create a Cell</a></a></li><li><a href="#a-namesect525-2-create-an-administrator-account-for-a-cella"><a name="sect5.2">5-2. Create an Administrator Account for a Cell</a></a></li><li><a href="#a-namesect535-3-store-the-first-data-in-the-main-boxa"><a name="sect5.3">5-3. Store the First Data in the Main Box</a></a></li><li><a href="#a-namesect545-4-assign-a-default-operating-screen-for-usera"><a name="sect5.4">5-4. Assign a default operating screen for user</a></a></li><li><a href="#a-namesect555-5-using-the-guia"><a name="sect5.5">5-5. Using the GUI</a></a></li></ul></li><li><a href="#a-namesect66-delete-the-issued-pdsa"><a name="sect6">6. Delete the Issued PDS</a></a></li><li><a href="#a-namesect77-try-a-demo-video-of-gui-operationa"><a name="sect7">7. Try a demo video of GUI operation</a></a></li><li><a href="#a-namesect88-automated-pds-creationa"><a name="sect8">8. Automated PDS Creation</a></a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="" width="66" height="58"/></a><div><h5>Documentation</h5><a href="https://personium.io/docs/en/overview/001_Introduction.html">Introduction</a><a href="https://personium.io/docs/en/server-operator/">Server Software Operator&#x27;s Guide</a><a href="https://personium.io/docs/en/app-developer/">Application Developer&#x27;s Guide</a><a href="https://personium.io/docs/en/apiref/current/000_Rest_API_Reference.html">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
