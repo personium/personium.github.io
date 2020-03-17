@@ -176,7 +176,7 @@
 <h2><a class="anchor" aria-hidden="true" id="rbac-role-based-access-control"></a><a href="#rbac-role-based-access-control" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RBAC (Role Based Access Control)</h2>
 <p>前項では認証したセル内のAccountやセル同士の関係によってRoleが決定されることを述べました。PersoniumはこのRoleによってデータアクセスをどこまで許可するかを制御するRBAC (Role Based Access Control)の仕組みを備えています。</p>
 <p>TODO: 図を書く</p>
-<p>詳細は<a href="../apiref/006_Access_Control.html">アクセス制御モデル</a>の項を参照してください。</p>
+<p>詳細は<a href="/docs/ja/next/apiref/006_Access_Control">アクセス制御モデル</a>の項を参照してください。</p>
 <hr>
 <h2><a class="anchor" aria-hidden="true" id="アプリ認証認可"></a><a href="#アプリ認証認可" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アプリ認証/認可</h2>
 <p>これまで単純化のためにアプリを通さないデータアクセス方法について記述しました。しかし、実際にデータアクセサーがデータにアクセスする場合、直接セルにアクセスすることは基本的になく、アプリにデータアクセスを移譲して行います。</p>
@@ -186,7 +186,6 @@
 <li>データを利用するアプリ</li>
 </ul>
 <p>そのためには、1事業者だけでなく他の事業者がアプリを開発・提供できるようなオープンAPIの活用が必要になります。本項ではこのような想定の元でのアプリの認証/認可の概略について記述します。</p>
-<p><a href="../app-developer/app_authn.html">アプリ認証</a>の項においても詳細を記述しています。</p>
 <h3><a class="anchor" aria-hidden="true" id="pdsにおけるoauth"></a><a href="#pdsにおけるoauth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PDSにおけるOAuth</h3>
 <p>様々な提供形態を取るアプリに安全にデータアクセスを行わせるためには適切な権限移譲を行う必要があります。
 Personiumではアプリの認可・権限移譲のフレームワークであるOAuthを採用してこれらを実現しています。</p>
@@ -194,19 +193,19 @@ Personiumではアプリの認可・権限移譲のフレームワークであ�
 <p><img src="/docs/assets/auth/pds_oauth.png" alt="OAuth in PDS"></p>
 <p>具体的な認可のフローはgrant_typeによって異なり、Personiumでは以下のgrant_typeに対応しております。</p>
 <ul>
-<li>ROPC (Resource Owner Password Credential) フロー</li>
-<li>認可コードフロー</li>
-<li>インプリシットフロー</li>
+<li>ROPC (Resource Owner Password Credential)</li>
+<li>認可コード</li>
+<li>インプリシット</li>
 </ul>
 <p>grant_typeはアプリの形態(信用できるアプリかどうか、サーバーサイドWebアプリかネイティブアプリかなど)によって選択します。選択の基準として以下を推奨します。</p>
 <table>
 <thead>
-<tr><th>grant_type</th><th>採用基準</th></tr>
+<tr><th>grant_type</th><th>選択基準</th></tr>
 </thead>
 <tbody>
-<tr><td>ROPCフロー</td><td>PDS事業者とアプリ提供者が同じである場合など、アプリの信頼性が高い場合に使用できる場合に採用。</td></tr>
-<tr><td>認可コードフロー</td><td>PDS事業者と異なるアプリ提供者が利用する場合に採用。ネイティブアプリの場合、今後機能追加予定のPKCE併用を推奨。</td></tr>
-<tr><td>インプリシットフロー</td><td>基本非推奨。</td></tr>
+<tr><td>ROPC</td><td>PDS事業者とアプリ提供者が同じである場合など、アプリおよびアプリ提供者の信頼性が高い場合に採用。</td></tr>
+<tr><td>認可コード</td><td>PDS事業者とアプリ提供者が異なる場合などで採用。ネイティブアプリの場合、今後機能追加予定のPKCE併用を推奨。</td></tr>
+<tr><td>インプリシット</td><td>基本非推奨。</td></tr>
 </tbody>
 </table>
 <p>次に主に使用するROPCと認可コードフローを説明します。</p>
@@ -217,7 +216,7 @@ Personiumではアプリの認可・権限移譲のフレームワークであ�
 <h3><a class="anchor" aria-hidden="true" id="認可コードフロー"></a><a href="#認可コードフロー" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可コードフロー</h3>
 <p>認可コードフローでは、PDS上の画面でデータアクセス同意・username/passwordを入力した後、短命な認可コードをアプリ側で一旦受け取り、アプリからPDSに認可コードを送ってアクセストークンを取得するフローです。</p>
 <p><img src="/docs/assets/auth/personium-authz-code-flow/personium-authz-code-flow.png" alt="Authorization Code Flow"></p>
-<p><a href="../app-developer/app_authn.html">アプリ認証</a>の項で詳細を記述しています。</p>
+<p><a href="/docs/ja/next/app-developer/app_authn">アプリ認証</a>の項で詳細を記述しています。</p>
 <h3><a class="anchor" aria-hidden="true" id="boxの保護"></a><a href="#boxの保護" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Boxの保護</h3>
 <p>準備中</p>
 <hr class="footnotes-sep">

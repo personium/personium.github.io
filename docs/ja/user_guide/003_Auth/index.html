@@ -176,14 +176,14 @@
 <h2><a class="anchor" aria-hidden="true" id="rbac-role-based-access-control"></a><a href="#rbac-role-based-access-control" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RBAC (Role Based Access Control)</h2>
 <p>前項では認証したセル内のAccountやセル同士の関係によってRoleが決定されることを述べました。PersoniumはこのRoleによってデータアクセスをどこまで許可するかを制御するRBAC (Role Based Access Control)の仕組みを備えています。</p>
 <p>TODO: 図を書く</p>
-<p>詳細は<a href="../apiref/006_Access_Control.html">アクセス制御モデル</a>の項を参照してください。</p>
+<p>詳細は<a href="/docs/ja/apiref/006_Access_Control">アクセス制御モデル</a>の項を参照してください。</p>
 <hr>
 <h2><a class="anchor" aria-hidden="true" id="アプリ認証認可"></a><a href="#アプリ認証認可" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アプリ認証/認可</h2>
 <p>これまで単純化のためにアプリを通さないデータアクセス方法について記述しました。しかし、実際はデータアクセサーが直接セルにアクセスすることは基本的になく、アプリに移譲して行います。</p>
 <p>しかし、無尽蔵にアプリのデータアクセスを許可すると、ユーザー利益に反した不正操作を起こすアプリを許す可能性があります。</p>
 <p>そのため、Personiumではアプリを安全に利用するためにOAuth2を使ったアプリへの権限移譲に対応し、許可されたアプリが許可された権限でのみデータアクセスをできるようにする仕組みを備えています。</p>
 <p>本項ではこの仕組みで何を行うか、どうやって使うのかについて記述します。</p>
-<p><a href="../app-developer/app_authn.html">アプリ認証</a>の項で詳細を記述しています。</p>
+<p><a href="/docs/ja/app-developer/app_authn">アプリ認証</a>の項で詳細を記述しています。</p>
 <h3><a class="anchor" aria-hidden="true" id="pdsにおけるoauth"></a><a href="#pdsにおけるoauth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PDSにおけるOAuth</h3>
 <p>先に記述した通り、PDSであるPersoniumは各データ主体のセルで認可サーバの機能を備えております。この場合のOAuthの登場人物に当てはめると以下の図の通りとなります。</p>
 <p>TODO: 図を書く</p>

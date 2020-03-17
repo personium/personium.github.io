@@ -109,7 +109,7 @@ https://some.svr.example/my-app/index.html#cell=https://pds.personium.example/jo
 </code></pre>
 <p>Only your application knows the application ID and application password. To set these as an endpoint of the application Cell from your application, you can obfuscate and embed it in the code, and you may ask the server to issue the above request from some server. It is a good idea to put Engine script on the application Cell and realize this. In the case of obfuscating and embedding, it is impossible to completely prevent leakage of application ID and application password due to reverse engineering by an attacker, although there is a certain deterrent by obfuscation.</p>
 <p>In any case, the &quot;authentication_token&quot; item of the authentication success response JSON for this request is &quot;application authentication token&quot;. Please parse JSON and get it.</p>
-<p>Reference: <a href="http://personium.io/docs/en/apiref/293_OAuth2_Token_Endpoint.html">http://personium.io/docs/en/apiref/293_OAuth2_Token_Endpoint.html</a></p>
+<p><a href="/docs/en/apiref/293_OAuth2_Token_Endpoint">Reference</a></p>
 <h3><a class="anchor" aria-hidden="true" id="receive-access-token"></a><a href="#receive-access-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Receive access token</h3>
 <p>You will receive an access token as your App for the User Cell.</p>
 <ol>
@@ -122,7 +122,7 @@ https://some.svr.example/my-app/index.html#cell=https://pds.personium.example/jo
 <p>The &quot;access_token&quot; item in the response JSON returned here is the access token for your application to the target user Cell.</p>
 <h3><a class="anchor" aria-hidden="true" id="get-the-url-of-box"></a><a href="#get-the-url-of-box" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Get the URL of Box</h3>
 <p>Use the following API to get the URL of Box which is the area for your application on target user Cell.</p>
-<p>Reference: <a href="http://personium.io/docs/en/apiref/304_Get_Box_URL.html">http://personium.io/docs/en/apiref/304_Get_Box_URL.html</a></p>
+<p><a href="/docs/en/apiref/304_Get_Box_URL">Reference</a></p>
 <p>At this time, please specify the access token acquired in the Authorization header.</p>
 <pre><code class="hljs">Authorization: Bearer {access_token}
 </code></pre>
