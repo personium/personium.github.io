@@ -228,7 +228,7 @@ Describe how to describe the change set below</li>
 Content-Type: application/http
 Content-Transfer-Encoding:binary
 
-GET https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/collection1/entity-type1('<span class="hljs-number">0000</span>')
+GET entity-type1('<span class="hljs-number">0000</span>')
 Accept-Encoding: gzip
 Accept: application/json
 Content-Length: <span class="hljs-number">0</span>
@@ -240,7 +240,7 @@ Content-Length: <span class="hljs-number">608</span>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-POST https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/odata-collection1/entity-type1
+POST entity-type1
 Content-Type: application/json
 Content-Length: <span class="hljs-number">41</span>
 
@@ -250,7 +250,7 @@ Content-Length: <span class="hljs-number">41</span>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-PUT https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/odata-collection1/entity-type1('<span class="hljs-number">0000</span>')
+PUT entity-type1('<span class="hljs-number">0000</span>')
 Content-Type: application/json
 Content-Length: <span class="hljs-number">87</span>
 If-Match: *
@@ -262,7 +262,7 @@ If-Match: *
 Content-Type: application/http
 Content-Transfer-Encoding:binary
 
-GET https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/odata-collection1/entity-type1('<span class="hljs-number">0000</span>')
+GET entity-type1('<span class="hljs-number">0000</span>')
 Accept-Encoding: gzip
 Accept: application/json
 Content-Length: <span class="hljs-number">0</span>
@@ -274,7 +274,7 @@ Content-Length: <span class="hljs-number">686</span>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-POST https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/odata-collection1/entity-type1('<span class="hljs-number">0001</span>')/_log
+POST entity-type1('<span class="hljs-number">0001</span>')/_log
 Content-Type: application/json
 Content-Length: <span class="hljs-number">37</span>
 
@@ -284,14 +284,14 @@ Content-Length: <span class="hljs-number">37</span>
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-DELETE https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/odata-collection1/entity-type1('<span class="hljs-number">0001</span>')/_log
+DELETE entity-type1('<span class="hljs-number">0001</span>')/_log
 Content-Length: <span class="hljs-number">0</span>
 If-Match: *
 --changeset_d4883767-a06e-<span class="hljs-number">4632</span>-<span class="hljs-number">9608</span>-ae952b443dfc
 Content-Type: application/http
 Content-Transfer-Encoding: binary
 
-DELETE https://cell1.unit1.<span class="hljs-built_in">example</span>/box1/odata-collection1/entity-type1('<span class="hljs-number">0000</span>')
+DELETE entity-type1('<span class="hljs-number">0000</span>')
 Content-Length: <span class="hljs-number">0</span>
 If-Match: *
 --changeset_d4883767-a06e-<span class="hljs-number">4632</span>-<span class="hljs-number">9608</span>-ae952b443dfc--
@@ -453,8 +453,8 @@ batch_XAmu9BiJJLBa20sRWIq74jp2UlNAVueztqu'</span> --data-binary @sample.txt
 </span><span class="hljs-symbol">Content</span>-Type: application/http
 <span class="hljs-symbol">Content</span>-Transfer-Encoding:<span class="hljs-keyword">binary
 </span>
-<span class="hljs-symbol">GET</span> https://cell1.unit1.example/<span class="hljs-keyword">box1/odata-collection1/entity-type1('{100-1_20101108-111352093}')
-</span><span class="hljs-symbol">Authorization</span>: <span class="hljs-keyword">Bearer </span>AA~PBDc...(snip)...FrTjA
+<span class="hljs-symbol">GET</span> entity-type1(<span class="hljs-string">'{100-1_20101108-111352093}'</span>)
+<span class="hljs-symbol">Authorization</span>: <span class="hljs-keyword">Bearer </span>AA~PBDc...(snip)...FrTjA
 --<span class="hljs-keyword">batch_XAmu9BiJJLBa20sRWIq74jp2UlNAVueztqu
 </span><span class="hljs-symbol">Content</span>-Type: <span class="hljs-keyword">multipart/mixed; </span><span class="hljs-keyword">boundary=changeset_76c10b01-3eaf-49c2-bdd7-9fe90df24159
 </span><span class="hljs-symbol">Content</span>-Length: <span class="hljs-number">608</span>
@@ -463,8 +463,8 @@ batch_XAmu9BiJJLBa20sRWIq74jp2UlNAVueztqu'</span> --data-binary @sample.txt
 </span><span class="hljs-symbol">Content</span>-Type: application/http
 <span class="hljs-symbol">Content</span>-Transfer-Encoding: <span class="hljs-keyword">binary
 </span>
-<span class="hljs-symbol">POST</span> https://cell1.unit1.example/<span class="hljs-keyword">box1/odata-collection1/entity-type1
-</span><span class="hljs-symbol">Content</span>-Type: application/json
+<span class="hljs-symbol">POST</span> entity-type1
+<span class="hljs-symbol">Content</span>-Type: application/json
 <span class="hljs-symbol">Content</span>-Length: <span class="hljs-number">41</span>
 
 {<span class="hljs-string">"__id"</span>:<span class="hljs-string">"100"</span>,<span class="hljs-string">"Name"</span>:<span class="hljs-string">"John Smith"</span>}
