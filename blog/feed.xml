@@ -4,7 +4,7 @@
         <title> Blog</title>
         <link>https://personium.github.io/blog</link>
         <description>The best place to stay up-to-date with the latest  news and events.</description>
-        <lastBuildDate>Tue, 03 Mar 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Mar 2020 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -14,11 +14,11 @@
         </image>
         <copyright>Copyright © 2020 Personium Project</copyright>
         <item>
-            <title><![CDATA[MyData Operator Workshop in Amsterdam on 18th March 2020]]></title>
-            <link>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</link>
-            <guid>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</guid>
-            <pubDate>Tue, 03 Mar 2020 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>MyData Operator Workshop will be held at the Spring Community Meeting in Amsterdam (18th March 2020). At the workshop, all participants will consider the most contentious issues and agree on the terms that help pushing the official release of the <a href="https://mydata-global.org/operator-white-paper">MyD...</a></p>]]></description>
+            <title><![CDATA[MyData Spring Community Meeting Online 19-20 March 2020]]></title>
+            <link>https://personium.github.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</link>
+            <guid>https://personium.github.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</guid>
+            <pubDate>Mon, 23 Mar 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<h2><a class="anchor" aria-hidden="true" id="make-it-happen-make-it-right"></a><a href="#make-it-happen-make-it-right" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Make it happen, make it right!!!</h2> <p>MyData <a href="https://mydata.org/online-community-meeting-19-20-march/">Spring Community Meeting Online</a> was a great success. Around 90 people on the first day and over 50 peoople on the second day participate in workshops, webinars and open space sessions. Our discussions varied fr...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[Co-authoring EMWA paper on health-data related topic]]></title>
@@ -26,6 +26,13 @@
             <guid>https://personium.github.io/blog/2020/03/03/EMWA-Paper.html</guid>
             <pubDate>Tue, 03 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium is honoured to be one of the co-authors for European Medical Writers Association (<a href="https://www.emwa.org/">EMWA</a>) journal submission.</p> <p>More details will be available when we get admitted. If you are a MyData Global Slack user, you can check updates in the <a href="https://mydataglobal.slack.com/archives/CDG4S69S6">#health-dat...</a></p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MyData Operator Workshop in Amsterdam on 18th March 2020]]></title>
+            <link>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</link>
+            <guid>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</guid>
+            <pubDate>Tue, 03 Mar 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>MyData Operator Workshop will be held at the Spring Community Meeting in Amsterdam (18th March 2020). At the workshop, all participants will consider the most contentious issues and agree on the terms that help pushing the official release of the <a href="https://mydata-global.org/operator-white-paper">MyD...</a></p>]]></description>
         </item>
         <item>
             <title><![CDATA[PDS Interoperability Workshop in Amsterdam on 20th March 2020]]></title>
