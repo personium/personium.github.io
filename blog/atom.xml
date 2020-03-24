@@ -2,12 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.github.io/blog</id>
     <title> Blog</title>
-    <updated>2020-03-23T06:00:00.000Z</updated>
+    <updated>2020-03-24T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.github.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest  news and events.</subtitle>
     <logo>https://personium.github.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2020 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[PDS Interoperability Meeting 1st April 2020]]></title>
+        <id>https://personium.github.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</id>
+        <link href="https://personium.github.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html"/>
+        <updated>2020-03-24T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>A bi-weekly meeting hosted by <a href="http://www.freezr.info/">Freezr</a>/<a href="https://www.ownyourdata.eu/">OwnYourData</a>/<a href="https://personium.io/">Personium</a>   will start on April 1st. We will discuss PDS interoperability issues and try to implement the agreed solutions.</p>
+<p>A Common Endpoint for Personal data Stores (<a href="https://mydata-global.org/common-endpoints">CEPS</a>) allows sharing apps and exchanging data. With CEPS, applications can be written once and be used with any CEPS-compliant personal data store. In this community meeting we will present the current status of this new initiative and invite others to join for creating a truly open and transparent group in fostering data exchange between Personal Data Stores.</p>
+<p><img src="https://ceps.demo-eu.personium.io/meeting/images/PDS-Interoperability.png" width="550px" ></p>
+]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MyData Spring Community Meeting Online 19-20 March 2020]]></title>
         <id>https://personium.github.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</id>
@@ -21,11 +36,11 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Co-authoring EMWA paper on health-data related topic]]></title>
-        <id>https://personium.github.io/blog/2020/03/03/EMWA-Paper.html</id>
-        <link href="https://personium.github.io/blog/2020/03/03/EMWA-Paper.html"/>
+        <title type="html"><![CDATA[MyData Operator Workshop in Amsterdam on 18th March 2020]]></title>
+        <id>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</id>
+        <link href="https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html"/>
         <updated>2020-03-03T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>Personium is honoured to be one of the co-authors for European Medical Writers Association (<a href="https://www.emwa.org/">EMWA</a>) journal submission.</p> <p>More details will be available when we get admitted. If you are a MyData Global Slack user, you can check updates in the <a href="https://mydataglobal.slack.com/archives/CDG4S69S6">#health-dat...</a></p>]]></summary>
+        <summary type="html"><![CDATA[<p>MyData Operator Workshop will be held at the Spring Community Meeting in Amsterdam (18th March 2020). At the workshop, all participants will consider the most contentious issues and agree on the terms that help pushing the official release of the <a href="https://mydata-global.org/operator-white-paper">MyD...</a></p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
@@ -33,11 +48,11 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MyData Operator Workshop in Amsterdam on 18th March 2020]]></title>
-        <id>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</id>
-        <link href="https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html"/>
+        <title type="html"><![CDATA[Co-authoring EMWA paper on health-data related topic]]></title>
+        <id>https://personium.github.io/blog/2020/03/03/EMWA-Paper.html</id>
+        <link href="https://personium.github.io/blog/2020/03/03/EMWA-Paper.html"/>
         <updated>2020-03-03T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>MyData Operator Workshop will be held at the Spring Community Meeting in Amsterdam (18th March 2020). At the workshop, all participants will consider the most contentious issues and agree on the terms that help pushing the official release of the <a href="https://mydata-global.org/operator-white-paper">MyD...</a></p>]]></summary>
+        <summary type="html"><![CDATA[<p>Personium is honoured to be one of the co-authors for European Medical Writers Association (<a href="https://www.emwa.org/">EMWA</a>) journal submission.</p> <p>More details will be available when we get admitted. If you are a MyData Global Slack user, you can check updates in the <a href="https://mydataglobal.slack.com/archives/CDG4S69S6">#health-dat...</a></p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
