@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title> Blog</title>
-        <link>https://personium.github.io/blog</link>
-        <description>The best place to stay up-to-date with the latest  news and events.</description>
+        <title>Personium Blog</title>
+        <link>https://personium.io/blog</link>
+        <description>The best place to stay up-to-date with the latest Personium news and events.</description>
         <lastBuildDate>Fri, 27 Mar 2020 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
-            <title> Blog</title>
-            <url>https://personium.github.io/img/logo-quantify-light.png</url>
-            <link>https://personium.github.io/blog</link>
+            <title>Personium Blog</title>
+            <url>https://personium.io/img/logo-quantify-light.png</url>
+            <link>https://personium.io/blog</link>
         </image>
         <copyright>Copyright © 2020 Personium Project</copyright>
         <item>
             <title><![CDATA[1.7.21 released]]></title>
-            <link>https://personium.github.io/blog/2020/03/27/Release-v1.7.21.html</link>
-            <guid>https://personium.github.io/blog/2020/03/27/Release-v1.7.21.html</guid>
+            <link>https://personium.io/blog/2020/03/27/Release-v1.7.21.html</link>
+            <guid>https://personium.io/blog/2020/03/27/Release-v1.7.21.html</guid>
             <pubDate>Fri, 27 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium core 1.7.21 and depending modules, engine 1.5.27 and lib-common 1.5.3 were released.</p> <h3><a class="anchor" aria-hidden="true" id="core-1721"></a><a href="#core-1721" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>core 1.7.21</h3> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.21">https://github.com/personium/personium-core/releases/tag/v1.7.21</a></p> <p>Download Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.21/personium-core-1.7.21.war">https://personium.io/mvnrepo/io/personium/personi...</a></p>]]></description>
         </item>
         <item>
             <title><![CDATA[PDS Interoperability Meeting 1st April 2020]]></title>
-            <link>https://personium.github.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</link>
-            <guid>https://personium.github.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</guid>
+            <link>https://personium.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</link>
+            <guid>https://personium.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</guid>
             <pubDate>Tue, 24 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>A bi-weekly meeting hosted by <a href="http://www.freezr.info/">Freezr</a>/<a href="https://www.ownyourdata.eu/">OwnYourData</a>/<a href="https://personium.io/">Personium</a>   will start on April 1st. We will discuss PDS interoperability issues and try to implement the agreed solutions.</p>
 <p>A Common Endpoint for Personal data Stores (<a href="https://mydata-global.org/common-endpoints">CEPS</a>) allows sharing apps and exchanging data. With CEPS, applications can be written once and be used with any CEPS-compliant personal data store. In this community meeting we will present the current status of this new initiative and invite others to join for creating a truly open and transparent group in fostering data exchange between Personal Data Stores.</p>
@@ -32,29 +32,29 @@
         </item>
         <item>
             <title><![CDATA[MyData Spring Community Meeting Online 19-20 March 2020]]></title>
-            <link>https://personium.github.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</link>
-            <guid>https://personium.github.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</guid>
+            <link>https://personium.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</link>
+            <guid>https://personium.io/blog/2020/03/23/AmsterdamCommunityMeeting.html</guid>
             <pubDate>Mon, 23 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<h2><a class="anchor" aria-hidden="true" id="make-it-happen-make-it-right"></a><a href="#make-it-happen-make-it-right" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Make it happen, make it right!!!</h2> <p>MyData <a href="https://mydata.org/online-community-meeting-19-20-march/">Spring Community Meeting Online</a> was a great success. Around 90 people on the first day and over 50 peoople on the second day participate in workshops, webinars and open space sessions. Our discussions varied fr...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[MyData Operator Workshop in Amsterdam on 18th March 2020]]></title>
-            <link>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</link>
-            <guid>https://personium.github.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</guid>
+            <link>https://personium.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</link>
+            <guid>https://personium.io/blog/2020/03/03/MyData-Operator-Whitepaper.html</guid>
             <pubDate>Tue, 03 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>MyData Operator Workshop will be held at the Spring Community Meeting in Amsterdam (18th March 2020). At the workshop, all participants will consider the most contentious issues and agree on the terms that help pushing the official release of the <a href="https://mydata-global.org/operator-white-paper">MyD...</a></p>]]></description>
         </item>
         <item>
             <title><![CDATA[Co-authoring EMWA paper on health-data related topic]]></title>
-            <link>https://personium.github.io/blog/2020/03/03/EMWA-Paper.html</link>
-            <guid>https://personium.github.io/blog/2020/03/03/EMWA-Paper.html</guid>
+            <link>https://personium.io/blog/2020/03/03/EMWA-Paper.html</link>
+            <guid>https://personium.io/blog/2020/03/03/EMWA-Paper.html</guid>
             <pubDate>Tue, 03 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium is honoured to be one of the co-authors for European Medical Writers Association (<a href="https://www.emwa.org/">EMWA</a>) journal submission.</p> <p>More details will be available when we get admitted. If you are a MyData Global Slack user, you can check updates in the <a href="https://mydataglobal.slack.com/archives/CDG4S69S6">#health-dat...</a></p>]]></description>
         </item>
         <item>
             <title><![CDATA[PDS Interoperability Workshop in Amsterdam on 20th March 2020]]></title>
-            <link>https://personium.github.io/blog/2020/03/02/CEPS-Workshop-Announcement.html</link>
-            <guid>https://personium.github.io/blog/2020/03/02/CEPS-Workshop-Announcement.html</guid>
+            <link>https://personium.io/blog/2020/03/02/CEPS-Workshop-Announcement.html</link>
+            <guid>https://personium.io/blog/2020/03/02/CEPS-Workshop-Announcement.html</guid>
             <pubDate>Mon, 02 Mar 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium is going to host a PDS interoperability workshop with <a href="https://www.ownyourdata.eu/">OwnYourData</a> and <a href="http://www.freezr.info/">Freezr</a> at the Spring Community Meeting of MyData Global in Amsterdam.</p>
 <p>A Common Endpoint for Personal data Stores (<a href="https://mydata-global.org/common-endpoints">CEPS</a>) allows sharing apps and exchanging data. With CEPS, applications can be written once and be used with any CEPS-compliant personal data store. In this community meeting we will present the current status of this new initiative and invite others to join for creating a truly open and transparent group in fostering data exchange between Personal Data Stores.</p>
@@ -64,22 +64,22 @@
         </item>
         <item>
             <title><![CDATA[MyData Global & Personium in Fujitsu 100 Nin Kaigi]]></title>
-            <link>https://personium.github.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html</link>
-            <guid>https://personium.github.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html</guid>
+            <link>https://personium.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html</link>
+            <guid>https://personium.io/blog/2020/02/20/Fujitsu-100-Persons-Kaigi.html</guid>
             <pubDate>Thu, 20 Feb 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium Project gave a brief presentation on &quot;MyData Global &amp; Personium&quot; (<a href="http://bit.ly/MyDataGlobal-Personium">Slide deck</a>) at an in-house event, Fujitsu <a href="https://t.co/ITaoHN00BG?amp=1">100 Nin Kaigi</a>.</p> <p><img src="https://dixonsiu.demo-jp.personium.io/Events/Fujitsu_100_Persons_Meeting/集合社員2_20200220.jpg" width="350px"></p> ]]></description>
         </item>
         <item>
             <title><![CDATA[MyData Case Library - First Japanese Case]]></title>
-            <link>https://personium.github.io/blog/2020/02/12/MyData-Case-Library.html</link>
-            <guid>https://personium.github.io/blog/2020/02/12/MyData-Case-Library.html</guid>
+            <link>https://personium.io/blog/2020/02/12/MyData-Case-Library.html</link>
+            <guid>https://personium.io/blog/2020/02/12/MyData-Case-Library.html</guid>
             <pubDate>Wed, 12 Feb 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Another global achievement! Personium is proud to be the first Japanese case published in the MyData <a href="https://mydata.org/cases/">Case Library</a>.</p> ]]></description>
         </item>
         <item>
             <title><![CDATA[Update #1 - Pilot project (Tally Zoo) with OwnYourData]]></title>
-            <link>https://personium.github.io/blog/2020/01/30/Own-Your-Data-Pilot.html</link>
-            <guid>https://personium.github.io/blog/2020/01/30/Own-Your-Data-Pilot.html</guid>
+            <link>https://personium.io/blog/2020/01/30/Own-Your-Data-Pilot.html</link>
+            <guid>https://personium.io/blog/2020/01/30/Own-Your-Data-Pilot.html</guid>
             <pubDate>Thu, 30 Jan 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>During the winter vacation, <a href="https://www.ownyourdata.eu/">OwnYourData</a>'s chief engineer had been working hard understanding Personium APIs and finally Tally Zoo <a href="http://bit.ly/TallyZoo_with_CEPS">Documentation</a> can access Personium user's data store (Box). We achieved the followings in current implementation:</p>
 <ol>
@@ -101,22 +101,22 @@ Original news here: <a href="https://personium.io/blog/2019/12/09/Own-Your-Data-
         </item>
         <item>
             <title><![CDATA[(Cancelled) Presenting at OSC2020 Tokyo/Spring]]></title>
-            <link>https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html</link>
-            <guid>https://personium.github.io/blog/2020/01/30/OSC2020-Tokyo.html</guid>
+            <link>https://personium.io/blog/2020/01/30/OSC2020-Tokyo.html</link>
+            <guid>https://personium.io/blog/2020/01/30/OSC2020-Tokyo.html</guid>
             <pubDate>Thu, 30 Jan 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p><strong>Updated on Feb. 19, 2020. The conference is cancelled.</strong> See it's website for details.</p> <p>Personium project will be presenting at Open Source Conference 2020 Tokyo/Spring, held on Feb. 21-22, 2020.<br> (Japanese) <a href="https://www.ospn.jp/osc2020-spring/">https://www.ospn.jp/osc2020-spring/</a></p> <p>Previous p...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[Integration of Datafund Consent Receipt Suite into MyData Korea's PDS]]></title>
-            <link>https://personium.github.io/blog/2019/12/23/Datafund-MyData-Korea.html</link>
-            <guid>https://personium.github.io/blog/2019/12/23/Datafund-MyData-Korea.html</guid>
+            <link>https://personium.io/blog/2019/12/23/Datafund-MyData-Korea.html</link>
+            <guid>https://personium.io/blog/2019/12/23/Datafund-MyData-Korea.html</guid>
             <pubDate>Mon, 23 Dec 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>A workgroup for integrating <a href="https://github.datafund.io/">Datafund Consent Receipt Suite</a> (Datafund CR Suite) into MyData Korea's PDS has establised. And the first meeting was held on December 23rd, 2019. Implementation will starts in early January 2020. <a href="https://dixonsiu.demo-jp.personium.io/MyData/doc/CRS-and-Fairdrive-self-sovereign-storage.pdf">Brief explanation of CR Su...</a></p>]]></description>
         </item>
         <item>
             <title><![CDATA[Personium Year-end Meetup 2019 held in Tokyo]]></title>
-            <link>https://personium.github.io/blog/2019/12/19/Year-end-Meetup.html</link>
-            <guid>https://personium.github.io/blog/2019/12/19/Year-end-Meetup.html</guid>
+            <link>https://personium.io/blog/2019/12/19/Year-end-Meetup.html</link>
+            <guid>https://personium.io/blog/2019/12/19/Year-end-Meetup.html</guid>
             <pubDate>Thu, 19 Dec 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium Year-end Meetup 2019 was held in PLY Tokyo on Dec. 18, 2019.</p>
 <p><img
@@ -129,22 +129,22 @@ Original news here: <a href="https://personium.io/blog/2019/12/09/Own-Your-Data-
         </item>
         <item>
             <title><![CDATA[Article on making of new Documentation published]]></title>
-            <link>https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</link>
-            <guid>https://personium.github.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</guid>
+            <link>https://personium.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</link>
+            <guid>https://personium.io/blog/2019/12/18/Qiita-Use-Docusaurus.html</guid>
             <pubDate>Wed, 18 Dec 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>We are preparing renewal of Personium documentation pages using <a href="https://docusaurus.io/">Docusaurus</a>, a static site generator for Open Source documentation websites. With this renewal, they will get more easy-to-read, easy-to-navigate, easy-to-maintain and above all, beautifu...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[Personium Docker released]]></title>
-            <link>https://personium.github.io/blog/2019/12/17/Release-personium-docker copy.html</link>
-            <guid>https://personium.github.io/blog/2019/12/17/Release-personium-docker copy.html</guid>
+            <link>https://personium.io/blog/2019/12/17/Release-personium-docker copy.html</link>
+            <guid>https://personium.io/blog/2019/12/17/Release-personium-docker copy.html</guid>
             <pubDate>Tue, 17 Dec 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium Docker was released.</p> <p>Repository<br> <a href="https://github.com/personium/personium-docker">https://github.com/personium/personium-docker</a></p> ]]></description>
         </item>
         <item>
             <title><![CDATA[Pilot project (Tally Zoo) with OwnYourData]]></title>
-            <link>https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html</link>
-            <guid>https://personium.github.io/blog/2019/12/09/Own-Your-Data-Pilot.html</guid>
+            <link>https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot.html</link>
+            <guid>https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot.html</guid>
             <pubDate>Mon, 09 Dec 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium and <a href="https://www.ownyourdata.eu/">OwnYourData</a> are proud to announce their partnership in this initiative and look forward to collaborate actively. We expect to showcase results in the upcoming MyData 2020 events.</p>
 <p>As of December 2019, Personium Team had started implementing the endpoint (Personium app) for Tally Zoo <a href="http://bit.ly/TallyZoo_with_CEPS">Documentation</a>.</p>
@@ -154,29 +154,29 @@ Original news here: <a href="https://personium.io/blog/2019/12/09/Own-Your-Data-
         </item>
         <item>
             <title><![CDATA[MyData Korea installed Personium Unit successfully]]></title>
-            <link>https://personium.github.io/blog/2019/11/27/MyData-Korea.html</link>
-            <guid>https://personium.github.io/blog/2019/11/27/MyData-Korea.html</guid>
+            <link>https://personium.io/blog/2019/11/27/MyData-Korea.html</link>
+            <guid>https://personium.io/blog/2019/11/27/MyData-Korea.html</guid>
             <pubDate>Wed, 27 Nov 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium Unit was successfully installed and configured by MyData Korea on Nov. 27, 2019.<br> Currently in planning stage to provide PDS services to hub members via Personium.</p> <p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/Shimono_2eConsulting.jpg" width="250px"> <img src="https://dixonsiu.demo-jp.personium.io/MyData/images/MyDataKorea.jpg" width="250px"></p> ]]></description>
         </item>
         <item>
             <title><![CDATA[Presenting at OSC2019 Tokyo/Fall]]></title>
-            <link>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</link>
-            <guid>https://personium.github.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</guid>
+            <link>https://personium.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</link>
+            <guid>https://personium.io/blog/2019/11/15/OSC2019-Tokyo-Fall.html</guid>
             <pubDate>Fri, 15 Nov 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium project will be presenting at Open Source Conference 2019 Tokyo/Fall, held on Nov. 23-24, 2019.<br> (Japanese) <a href="https://www.ospn.jp/osc2019-fall/">https://www.ospn.jp/osc2019-fall/</a></p> <p>Updated on Nov. 28, 2019. We published the presentation slides. (Only Japanese)</p> <iframe src="//www.slideshare.net/slideshow/embed_code/key/20lSt7viBD5QMI" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/yasufumitochiori/pdspersonium-196961652" title="パーソナルデータのあり方を変える！オープンソース分散型PDS「Personium」を使ってみよう！" target="_blank">パーソナルデータのあり方を変え...</a></strong></div>]]></description>
         </item>
         <item>
             <title><![CDATA[Presenting at MyData Korea Hub Founding Event]]></title>
-            <link>https://personium.github.io/blog/2019/11/15/MyData-Korea.html</link>
-            <guid>https://personium.github.io/blog/2019/11/15/MyData-Korea.html</guid>
+            <link>https://personium.io/blog/2019/11/15/MyData-Korea.html</link>
+            <guid>https://personium.io/blog/2019/11/15/MyData-Korea.html</guid>
             <pubDate>Fri, 15 Nov 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium project will be presenting at MyData Korea Hub Founding Event, held in Seoul on Nov. 21, 2019.<br> <a href="http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=">http://www.2e.co.kr/hp/pages/share/ShareView.php?modsrl=1318&amp;docsrl=209313&amp;datatype=</a></p> <p>Updated on Nov. 28, 2019. We published the presentat...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[1.7.20 released]]></title>
-            <link>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</link>
-            <guid>https://personium.github.io/blog/2019/11/08/Release-v1.7.20.html</guid>
+            <link>https://personium.io/blog/2019/11/08/Release-v1.7.20.html</link>
+            <guid>https://personium.io/blog/2019/11/08/Release-v1.7.20.html</guid>
             <pubDate>Fri, 08 Nov 2019 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Personium core 1.7.20 was released.</p> <p>Release Note<br> <a href="https://github.com/personium/personium-core/releases/tag/v1.7.20">https://github.com/personium/personium-core/releases/tag/v1.7.20</a></p> <p>Download Binary<br> <a href="https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war">https://personium.io/mvnrepo/io/personium/personium-core/1.7.20/personium-core-1.7.20.war</a></p> ]]></description>
         </item>
