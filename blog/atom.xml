@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.io/blog</id>
     <title>Personium Blog</title>
-    <updated>2020-03-27T06:00:00.000Z</updated>
+    <updated>2020-04-01T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Personium news and events.</subtitle>
     <logo>https://personium.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2020 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Personium Meetup #2 (Online)]]></title>
+        <id>https://personium.io/blog/2020/04/01/Personium-Meetup-2.html</id>
+        <link href="https://personium.io/blog/2020/04/01/Personium-Meetup-2.html"/>
+        <updated>2020-04-01T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Personium Meetup #2 (Online) will be held on Apr. 17, 2020.</p> <p><img src="/images/news/meetup-online-logo.png" width="70%" title="Personium Meetup #2 (Online)"></p> <p>Please join us.</p> <p>Connpass (Japanese)<br> <a href="https://personium.connpass.com/event/168426/">https://personium.connpass.com/event/168426/</a></p> ]]></summary>
+        <author>
+            <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[1.7.21 released]]></title>
         <id>https://personium.io/blog/2020/03/27/Release-v1.7.21.html</id>
