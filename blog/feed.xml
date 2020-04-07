@@ -4,7 +4,7 @@
         <title>Personium Blog</title>
         <link>https://personium.io/blog</link>
         <description>The best place to stay up-to-date with the latest Personium news and events.</description>
-        <lastBuildDate>Wed, 01 Apr 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Apr 2020 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,27 @@
             <link>https://personium.io/blog</link>
         </image>
         <copyright>Copyright © 2020 Personium Project</copyright>
+        <item>
+            <title><![CDATA[Personium Trails vs COVID-19]]></title>
+            <link>https://personium.io/blog/2020/04/06/PersoniumTrails-vs-COVID19.html</link>
+            <guid>https://personium.io/blog/2020/04/06/PersoniumTrails-vs-COVID19.html</guid>
+            <pubDate>Mon, 06 Apr 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>On April 1st, &quot;Personium Trails - Stop Pandemic using Personal Data Store (PDS)&quot; was proposed to the MyData vs COVID-19 call. Check our master slide deck (<a href="https://bit.ly/Personium-vs-COVID19">https://bit.ly/Personium-vs-COVID19</a>) for latest news. Watch video <a href="https://twitter.com/mydataorg/status/1245357228774866945?s=20">here</a> (Personium Tra...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Fevermap]]></title>
+            <link>https://personium.io/blog/2020/04/06/Fevermap.html</link>
+            <guid>https://personium.io/blog/2020/04/06/Fevermap.html</guid>
+            <pubDate>Mon, 06 Apr 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><a href="https://fevermap.net/">Fevermap</a> is a Finnish open-source app that allows user to report temperature through the internet. In order to cross-pollinate ideas, Personium registered two UI/UX issues and helped translating the app to Japanese.</p> <p>You can help out by contribute you...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[PDS Interoperability Meeting 15th April 2020]]></title>
+            <link>https://personium.io/blog/2020/04/06/CEPS-Bi-weekly-Meeting-Announcement.html</link>
+            <guid>https://personium.io/blog/2020/04/06/CEPS-Bi-weekly-Meeting-Announcement.html</guid>
+            <pubDate>Mon, 06 Apr 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>The bi-weekly meeting hosted by <a href="http://www.freezr.info/">Freezr</a>/<a href="https://www.ownyourdata.eu/">OwnYourData</a>/<a href="https://personium.io/">Personium</a> has started. In the coming meeting, we would like to discuss the following agendas. Come join us!</p> <h2><a class="anchor" aria-hidden="true" id="preliminary-agenda-wednesday-april-15th-830am-930am-cest"></a><a href="#preliminary-agenda-wednesday-april-15th-830am-930am-cest" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Preliminary Agenda (Wednesday, April 15th, 8.30am-9.30am CEST)</h2> <p><a href="https://bit.ly/CEPS-Bi-weekly-Meeting-Memo">https://bit.ly/CEPS-Bi-weekl...</a></p>]]></description>
+        </item>
         <item>
             <title><![CDATA[Personium Meetup #2 (Online)]]></title>
             <link>https://personium.io/blog/2020/04/01/Personium-Meetup-2.html</link>
@@ -32,9 +53,7 @@
             <link>https://personium.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</link>
             <guid>https://personium.io/blog/2020/03/24/CEPS-Bi-weekly-Meeting-Announcement.html</guid>
             <pubDate>Tue, 24 Mar 2020 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>A bi-weekly meeting hosted by <a href="http://www.freezr.info/">Freezr</a>/<a href="https://www.ownyourdata.eu/">OwnYourData</a>/<a href="https://personium.io/">Personium</a>   will start on April 1st. We will discuss PDS interoperability issues and try to implement the agreed solutions.</p>
-<p>A Common Endpoint for Personal data Stores (<a href="https://mydata-global.org/common-endpoints">CEPS</a>) allows sharing apps and exchanging data. With CEPS, applications can be written once and be used with any CEPS-compliant personal data store. In this community meeting we will present the current status of this new initiative and invite others to join for creating a truly open and transparent group in fostering data exchange between Personal Data Stores.</p>
-<p><img src="https://ceps.demo-eu.personium.io/meeting/images/PDS-Interoperability.png" width="550px" ></p>
+            <description><![CDATA[<p>Updates (April 6th): Meeting memo of April 1st is available <a href="https://bit.ly/CEPS-Bi-weekly-Meeting-Memo">here</a>. Next meeting is April 15th, 8.30am-9.30am CEST (Vienna).</p>
 ]]></description>
         </item>
         <item>
