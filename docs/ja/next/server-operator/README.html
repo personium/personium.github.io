@@ -69,12 +69,20 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">サーバソフトウェア運用者向けガイド</h1></header><article><div><span><p>Personiumのサーバソフトウェアを使ってPersonium Unitを構築する方や、Personiumサーバプログラムをビルド・デプロイ・設定する方、
 Personiumを使用したPDSサービス環境を提供・運用したい方向けのドキュメントです。</p>
 <p>構築・設定済のPersonium Unitに対して、Cellの作成・払出しや、払出したCellの管理等を実施する方は、<a href="../unit-administrator/">Unit管理者向けガイド</a>をご覧ください。</p>
-<h2><a class="anchor" aria-hidden="true" id="personiumのunit構成"></a><a href="#personiumのunit構成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PersoniumのUnit構成</h2>
-<p>PersoniumのUnitは評価、開発、確認、運用等々の様々な異なる目的に応じて構成することが可能です。Personiumは必要に応じて簡単に、環境を自動構築できるセットアップツールを提供しています。<br>
-PersoniumのUnitはセットアップツールを使用せずに構築することも可能ですが、PersoniumのUnitを簡単に構築するためにセットアップツールの使用をお勧めいたします。</p>
-<h2><a class="anchor" aria-hidden="true" id="personiumセットアップツール"></a><a href="#personiumセットアップツール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Personiumセットアップツール</h2>
-<p>本セットアップツールはPersoniumをインストールする前に、あなたのサーバー（linuxのサーバーまたはWindowsやMac上の仮想マシン）へのミドルウェアの導入やOSやネットワークの設定を行います。<br>
-セットアップツールにはPersoniumとのUnitの構成に応じて複数の形式がありますので、あなたの目的に応じたセットアップツールをご使用ください。</p>
+<h2><a class="anchor" aria-hidden="true" id="システム構成とセットアップツール"></a><a href="#システム構成とセットアップツール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>システム構成とセットアップツール</h2>
+<p>PersoniumのUnitは評価、開発、確認、運用等々の様々な目的に応じてサーバ台数を増やしてシステムを構成することが可能です。また、構成に応じたVM作成やミドルウェア導入等を行うセットアップツールを一部提供しています。本ページで提供するシステム構成とセットアップツールの組み合わせは以下の表の通りとなります。</p>
+<table>
+<thead>
+<tr><th style="text-align:left"></th><th style="text-align:left">サーバ</th><th style="text-align:left">サーバ構築</th><th style="text-align:left">Personiumセットアップ</th><th style="text-align:left">Personiumバージョン</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">小規模環境</td><td style="text-align:left"></td><td style="text-align:left">ユーザ側でLinuxサーバを準備</td><td style="text-align:left">Ansible</td><td style="text-align:left">任意<br>デフォルトは最新</td></tr>
+<tr><td style="text-align:left"></td><td style="text-align:left">Linuxサーバ1台</td><td style="text-align:left">Vagrant</td><td style="text-align:left">Ansible</td><td style="text-align:left">デフォルトは最新</td></tr>
+<tr><td style="text-align:left">中規模環境</td><td style="text-align:left">Linuxサーバ3台</td><td style="text-align:left">HeatTemplate</td><td style="text-align:left">Ansible</td><td style="text-align:left">任意<br>デフォルトは最新</td></tr>
+<tr><td style="text-align:left"></td><td style="text-align:left"></td><td style="text-align:left">ユーザ側でLinuxサーバを準備</td><td style="text-align:left">Ansible</td><td style="text-align:left">任意<br>デフォルトは最新</td></tr>
+</tbody>
+</table>
+<p>※1 サンプルアプリをインストールしたい場合は、<a href="/docs/ja/next/getting-started/setup-sample-apps">こちら</a>の手順をご確認ください。</p>
 <h2><a class="anchor" aria-hidden="true" id="personiumにおける各サーバーの役割"></a><a href="#personiumにおける各サーバーの役割" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Personiumにおける各サーバーの役割</h2>
 <p>PersoniumのUnitは以下の役割を持ったサーバーから構成されます。これらの役割は相互に接続された単独または複数のサーバーに割り当てることが可能です。</p>
 <table>
@@ -90,13 +98,10 @@ PersoniumのUnitはセットアップツールを使用せずに構築するこ�
 <tr><td style="text-align:left">Bastion</td><td style="text-align:left">オプション</td><td style="text-align:left">踏み台サーバ。各サーバへのsshでのアクセスを中継させるためにのサーバです。</td></tr>
 </tbody>
 </table>
-<h2><a class="anchor" aria-hidden="true" id="unit構成設計"></a><a href="#unit構成設計" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unit構成設計</h2>
-<p>Personiumはスケーラブルなアーキテクチャを採用しています。評価用や個人利用であれば1台のマシンにすべてを詰め込んだPersonium Unitを構築することも可能です。一方で数百人、数千人が使うUnitを構築するには、セキュリティや性能といった非機能が必要となるため、Web層-AP層-DB層といった層構成をとるのが推奨されますので、最低2-3台の構成をとるべきでしょう。さらに数万人～数十万人以上が日々使う大規模なUnit構成するためには各層をスケールアウトさせ、10台-20台といった構成をとることとなります。</p>
-<p>まずは、どのような構成のUnitを作るべきかを決め、必要なインフラ設計をしましょう。</p>
-<p>以下の図はPersoniumセットアップツールのAnsibleで想定するWeb層-AP層-DB層3台の場合の構成図です。インフラ設計の参考にしてください。</p>
+<p>以下の図はPersoniumセットアップツールのAnsibleで想定するWeb層-AP層-DB層3台の場合の構成図です。</p>
 <p><img src="/docs/assets/server-operator/3-server_unit.jpg" alt="3-server_unit.jpg"></p>
-<h2><a class="anchor" aria-hidden="true" id="unitの構築時の注意点"></a><a href="#unitの構築時の注意点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unitの構築時の注意点</h2>
-<p>Personium Unitは<code>https://user1.personium.example</code>や<code>https://user2.personium.example</code>といったユーザによって異なるサブドメインでのHTTPSアクセスを行うことを前提にしているため、以下が基本必要となります。</p>
+<h2><a class="anchor" aria-hidden="true" id="unit構築時の注意点"></a><a href="#unit構築時の注意点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unit構築時の注意点</h2>
+<p>Personium Unitは<code>https://alice.personium.example</code>や<code>https://bob.personium.example</code>といったデータ主体によって異なるサブドメインでのHTTPSアクセスを行うことを前提にしているため、以下が基本必要となります。</p>
 <ul>
 <li>WebサーバにアクセスするIPアドレスに対しての<code>*.personium.example</code>といったワイルドカードドメイン名でのDNSレコード設定</li>
 <li><code>*.personium.example</code>といったワイルドカードドメイン名に対応したSSL証明書の取得と設定</li>
@@ -105,41 +110,34 @@ PersoniumのUnitはセットアップツールを使用せずに構築するこ�
 <p>詳細な手順は後述の[<a href="https://github.com/personium/ansible/tree/master">Personium Ansible Playbook上の実行手順</a>の中で記載しています。</p>
 <h2><a class="anchor" aria-hidden="true" id="unitの構築"></a><a href="#unitの構築" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unitの構築</h2>
 <p>Unit構築にはVagrant、Ansibleを利用することができます。またOpen Stack ベースのクラウド環境に構築する場合は Heat Template を使えば、ほぼ自動でUnit構築が可能です。もちろん、これら自動構築ツールを使わないで任意のクラウドや物理/仮想マシンを使ってUnit構築を行うこともできます。しかし、本ドキュメントでは現状その構築手順を用意していないため、Open StackのHeatを使ったサーバインフラ構築手順やAnsibleを使ったUnit自動構築手順を参考に構築を行ってください。</p>
-<table>
-<thead>
-<tr><th style="text-align:left"></th><th style="text-align:left">サーバ</th><th style="text-align:left">サーバ構築</th><th style="text-align:left">Personiumセットアップ</th><th style="text-align:left">Personiumバージョン</th><th style="text-align:left">デフォルトFQDN</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left">小規模環境</td><td style="text-align:left">Linuxサーバ1台</td><td style="text-align:left">Vagrant</td><td style="text-align:left">Ansibleを自動実行</td><td style="text-align:left">最新</td><td style="text-align:left">personium.example.com</td></tr>
-<tr><td style="text-align:left"></td><td style="text-align:left"></td><td style="text-align:left">ユーザ側でLinuxサーバを準備</td><td style="text-align:left">Ansible</td><td style="text-align:left">任意<br>デフォルトは最新</td><td style="text-align:left">なし</td></tr>
-<tr><td style="text-align:left">中・大規模環境</td><td style="text-align:left">Linuxサーバ3台</td><td style="text-align:left">HeatTemplate</td><td style="text-align:left">Ansible</td><td style="text-align:left">任意<br>デフォルトは最新</td><td style="text-align:left">なし</td></tr>
-<tr><td style="text-align:left"></td><td style="text-align:left"></td><td style="text-align:left">ユーザ側でLinuxサーバを準備</td><td style="text-align:left">Ansible</td><td style="text-align:left">任意<br>デフォルトは最新</td><td style="text-align:left">なし</td></tr>
-</tbody>
-</table>
-<p>※1 サンプルアプリをインストールしたい場合は、<a href="/docs/ja/next/getting-started/setup-sample-apps">こちら</a>の手順をご確認ください。</p>
 <h3><a class="anchor" aria-hidden="true" id="小規模環境サーバ1台で動作するpersonium環境を構築する"></a><a href="#小規模環境サーバ1台で動作するpersonium環境を構築する" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>小規模環境(サーバ1台で動作するPersonium環境)を構築する</h3>
 <p><strong>もしもあなたが、Personiumにより一層興味を持ち、アプリケーションの開発やテストを実施してみたいと思ったならば、1台のサーバからUnitが構成される、本構成をお勧めします。</strong></p>
 <ul>
-<li><p>Vagrant</p>
-<p>Vagrantを利用してローカル環境のVM上にUnitを構築するためのガイドを公開しています。</p>
+<li><p>サーバ1台手動構築 + Ansible(1-Server)</p>
+<p>Ansible(1-Server)を利用してLinuxサーバ1台構成のUnitを構築するためのガイドを公開しています。</p>
+<ul>
+<li><a href="/docs/ja/next/getting-started/appdev-appcell-and-box">Getting Started: Unitの構築</a></li>
+<li><a href="https://github.com/personium/ansible/tree/master/1-server_unit">Ansible(1-server)</a></li>
+</ul></li>
+<li><p>Vagrant (+ Ansible)</p>
+<p>Vagrantを利用してローカル環境のVM上にUnitを構築するためのガイドを公開しています。Vagrant実行時にVM作成とともにAnsibleが実行されます</p>
 <ul>
 <li><a href="https://github.com/personium/setup-vagrant">Vagrantを利用したUnit構築ガイド</a></li>
 </ul></li>
-<li><p>Ansible(1-Server)</p>
-<p>Ansible(1-Server)を利用してLinuxサーバ1台構成のUnitを構築するためのガイドを公開しています。</p>
-<ul>
-<li><a href="https://github.com/personium/ansible/tree/master/1-server_unit">Ansible(1-server)を利用したUnit構築ガイド</a></li>
-</ul></li>
 </ul>
-<h3><a class="anchor" aria-hidden="true" id="中・大規模環境サーバ3台で動作するpersonium環境を構築する"></a><a href="#中・大規模環境サーバ3台で動作するpersonium環境を構築する" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>中・大規模環境(サーバ3台で動作するPersonium環境)を構築する</h3>
-<p><strong>もしもあなたがPersoniumプロジェクトにご参加いただき、アプリケーションをリリースしようとするならば、3台のサーバからUnitが構成される、本構成をお勧めします。</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="中規模環境サーバ3台で動作するpersonium環境を構築する"></a><a href="#中規模環境サーバ3台で動作するpersonium環境を構築する" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>中規模環境(サーバ3台で動作するPersonium環境)を構築する</h3>
+<p><strong>もしもあなたがPersoniumプロジェクトにご参加いただき、アプリケーションをリリースしようとするならば、3層構成の3台サーバからUnitが構成される、本構成をお勧めします。</strong></p>
 <ul>
-<li><p>Open Stack Heat</p>
+<li><p>Open Stack Heat(サーバ3台構築) + Ansible(3-Server)</p>
 <p>HeatTemplateを利用して、OpenStackでPersonium 3ServerUnit用のネットワークおよびサーバ構成を自動構築するためのガイドを公開してしています。</p>
 <ul>
 <li><a href="https://github.com/personium/openstack-heat">Open Stack Heatを利用したサーバインフラの自動構築</a></li>
+</ul>
+<p>Ansible(3-Server)を利用してLinuxサーバ3台構成のUnitを構築するためのガイドを公開しています。</p>
+<ul>
+<li><a href="https://github.com/personium/ansible/tree/master/3-server_unit" title="3-server_unit">Ansible(3-server)を利用したUnit構築ガイド</a></li>
 </ul></li>
-<li><p>Ansible(3-Server)</p>
+<li><p>サーバ3台手動構築 + Ansible(3-Server)</p>
 <p>Ansible(3-Server)を利用してLinuxサーバ3台構成のUnitを構築するためのガイドを公開しています。</p>
 <ul>
 <li><a href="https://github.com/personium/ansible/tree/master/3-server_unit" title="3-server_unit">Ansible(3-server)を利用したUnit構築ガイド</a></li>
@@ -193,7 +191,7 @@ PersoniumのUnitはセットアップツールを使用せずに構築するこ�
 <li><a href="https://github.com/personium/ansible">ansible</a></li>
 <li><a href="https://github.com/personium/openstack-heat">openstack-heat</a></li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/next/getting-started/appdev-impl"><span class="arrow-prev">← </span><span>アプリの実装</span></a><a class="docs-next button" href="/docs/ja/next/server-operator/setup"><span>Ansibleを使ってPersoniumを始めよう</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#personiumのunit構成">PersoniumのUnit構成</a></li><li><a href="#personiumセットアップツール">Personiumセットアップツール</a></li><li><a href="#personiumにおける各サーバーの役割">Personiumにおける各サーバーの役割</a></li><li><a href="#unit構成設計">Unit構成設計</a></li><li><a href="#unitの構築時の注意点">Unitの構築時の注意点</a></li><li><a href="#unitの構築">Unitの構築</a><ul class="toc-headings"><li><a href="#小規模環境サーバ1台で動作するpersonium環境を構築する">小規模環境(サーバ1台で動作するPersonium環境)を構築する</a></li><li><a href="#中・大規模環境サーバ3台で動作するpersonium環境を構築する">中・大規模環境(サーバ3台で動作するPersonium環境)を構築する</a></li><li><a href="#構築したunitの環境情報">構築したUnitの環境情報</a></li><li><a href="#pluginの導入">Pluginの導入</a></li></ul></li><li><a href="#unitの設定">Unitの設定</a></li><li><a href="#unitの起動・停止">Unitの起動・停止</a></li><li><a href="#unitの運用">Unitの運用</a><ul class="toc-headings"><li><a href="#関連するリポジトリ">関連するリポジトリ</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="Personium" width="66" height="58"/></a><div><h5>Documentation</h5><a href="/docs/en/overview/001_Introduction">Introduction</a><a href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a><a href="/docs/en/app-developer/README">Application Developer&#x27;s Guide</a><a href="/docs/en/apiref/000_Rest_API_Reference">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/next/getting-started/appdev-impl"><span class="arrow-prev">← </span><span>アプリの実装</span></a><a class="docs-next button" href="/docs/ja/next/server-operator/setup"><span>Ansibleを使ってPersoniumを始めよう</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#システム構成とセットアップツール">システム構成とセットアップツール</a></li><li><a href="#personiumにおける各サーバーの役割">Personiumにおける各サーバーの役割</a></li><li><a href="#unit構築時の注意点">Unit構築時の注意点</a></li><li><a href="#unitの構築">Unitの構築</a><ul class="toc-headings"><li><a href="#小規模環境サーバ1台で動作するpersonium環境を構築する">小規模環境(サーバ1台で動作するPersonium環境)を構築する</a></li><li><a href="#中規模環境サーバ3台で動作するpersonium環境を構築する">中規模環境(サーバ3台で動作するPersonium環境)を構築する</a></li><li><a href="#構築したunitの環境情報">構築したUnitの環境情報</a></li><li><a href="#pluginの導入">Pluginの導入</a></li></ul></li><li><a href="#unitの設定">Unitの設定</a></li><li><a href="#unitの起動・停止">Unitの起動・停止</a></li><li><a href="#unitの運用">Unitの運用</a><ul class="toc-headings"><li><a href="#関連するリポジトリ">関連するリポジトリ</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="Personium" width="66" height="58"/></a><div><h5>Documentation</h5><a href="/docs/en/overview/001_Introduction">Introduction</a><a href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a><a href="/docs/en/app-developer/README">Application Developer&#x27;s Guide</a><a href="/docs/en/apiref/000_Rest_API_Reference">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
