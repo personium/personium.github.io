@@ -67,7 +67,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">ローカルマシンへのインストール</h1></header><article><div><span><p>###概要</p>
-<p>この手順では、Vagrant + Ansibleを使用して1VM上にPersoniumユニットを設定できます。
+<p>この手順では、Vagrant + Ansibleを使用して1VM上にPersonium Unitを設定できます。
 あなたのマシンに簡単にセットアップして、Personium APIを探索することができます。</p>
 <p>* この手順は、VirtualBox 4.3.20およびVagrant 1.7.2でテストされています。</p>
 <p>* [申し訳ありません、この文書は古くなっています。 アップデートを準備中です。]</p>
@@ -86,10 +86,10 @@
 <pre><code class="hljs css language-bash">$ <span class="hljs-built_in">cd</span> ./io-vagrant-ansible
 $ vagrant up
 </code></pre></li>
-<li><p>Personiumユニットが起動して動作していることを確認します。</p>
+<li><p>Personium Unitが起動して動作していることを確認します。</p>
 <pre><code class="hljs css language-bash">$ curl -X POST <span class="hljs-string">"http://localhost:1210/__ctl/Cell"</span> -d <span class="hljs-string">"{\"Name\":\"sample\"}"</span> -H <span class="hljs-string">"Authorization:Bearer personiumio"</span> -H <span class="hljs-string">"Accept:application/json"</span> -i -s
 </code></pre>
-<p>Personiumユニットが正常にセットアップされた場合、以下のように201レスポンスが返され、Cellが作成されます！</p>
+<p>Personium Unitが正常にセットアップされた場合、以下のように201レスポンスが返され、Cellが作成されます！</p>
 <pre><code class="hljs css language-bash">HTTP/1.1 201 Created
 Date: Mon, 26 Jan 2015 12:32:13 GMT
 Content-Type: application/json

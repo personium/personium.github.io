@@ -87,8 +87,8 @@
 </thead>
 <tbody>
 <tr><td style="text-align:left">response_type</td><td style="text-align:left">応答タイプ</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">token, code, id_token(scope=openid必須)</td></tr>
-<tr><td style="text-align:left">client_id</td><td style="text-align:left">アプリセル URL</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">スキーマ認証元のアプリセルURL</td></tr>
-<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">クライアントのリダイレクトエンドポイントURL</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">アプリセルのデフォルトBOX配下に登録されたリダイレクトスクリプトのURL<br>application/x-www-form-urlencodedでフォーマットされたクエリパラメータを含める事ができる<br>フラグメントを含める事はできない<br>有効桁長:512byte</td></tr>
+<tr><td style="text-align:left">client_id</td><td style="text-align:left">アプリCell URL</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">スキーマ認証元のアプリCellURL</td></tr>
+<tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">クライアントのリダイレクトエンドポイントURL</td><td style="text-align:left">String</td><td style="text-align:left">○</td><td style="text-align:left">アプリCellのデフォルトBOX配下に登録されたリダイレクトスクリプトのURL<br>application/x-www-form-urlencodedでフォーマットされたクエリパラメータを含める事ができる<br>フラグメントを含める事はできない<br>有効桁長:512byte</td></tr>
 <tr><td style="text-align:left">state</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">ランダムな値<br>有効桁長:512byte</td></tr>
 <tr><td style="text-align:left">scope</td><td style="text-align:left">要求するアクセス範囲</td><td style="text-align:left">String</td><td style="text-align:left">×</td><td style="text-align:left">Personiumでは&quot;openid&quot;等の値をスペース区切りで指定</td></tr>
 <tr><td style="text-align:left">expires_in</td><td style="text-align:left">アクセストークンの有効期限（秒）</td><td style="text-align:left">Int<br>1～3600</td><td style="text-align:left">×</td><td style="text-align:left">発行されるアクセストークンの有効期限を指定<br>デフォルトは3600（1時間）<br>※response_typeがtoken以外の場合は、本パラメタの指定は無視する</td></tr>
@@ -100,7 +100,7 @@
 <p>認証フォームまたはパスワード変更フォーム表示のためのHTMLを返却します。<br>
 ただし、リクエストパラメータが不正な場合や、送信Cookieの値によってはリダイレクトエンドポイントにリダイレクトします。</p>
 <h3><a class="anchor" aria-hidden="true" id="htmlレスポンス"></a><a href="#htmlレスポンス" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTMLレスポンス</h3>
-<p>セルやユニットに設定された認証フォームまたはパスワード変更フォーム表示のためのHTMLを返却します。 設定がない場合はデフォルトhtmlが返ります。</p>
+<p>CellやUnitに設定された認証フォームまたはパスワード変更フォーム表示のためのHTMLを返却します。 設定がない場合はデフォルトhtmlが返ります。</p>
 <h4><a class="anchor" aria-hidden="true" id="html設定方法"></a><a href="#html設定方法" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTML設定方法</h4>
 <p><a href="/docs/ja/next/server-operator/unit_config_list">Unitの設定</a>または<a href="/docs/ja/next/apiref/291_Cell_Change_Property">対象Cellのプロパティ設定</a>が必要。2つを同時に設定した場合、対象Cellのプロパティ設定が優先される。</p>
 <p>Unitの設定</p>
@@ -130,7 +130,7 @@ io<span class="hljs-selector-class">.personium</span><span class="hljs-selector-
 リクエスト時に設定したpassword_change_requiredがtrueの場合、パスワード変更フォームを返却する。<br>
 それ以外の場合、認証フォームを返却する。</p>
 <h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（client_id、redirect_uri）"></a><a href="#パラメータチェックエラー（client_id、redirect_uri）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（client_id、redirect_uri）</h3>
-<p>「client_id、redirect_uriが未指定」「client_id、redirect_uriがURL形式ではない」「client_idとredirect_uriのセルが異なる」の場合</p>
+<p>「client_id、redirect_uriが未指定」「client_id、redirect_uriがURL形式ではない」「client_idとredirect_uriのCellが異なる」の場合</p>
 <h4><a class="anchor" aria-hidden="true" id="ステータスコード-1"></a><a href="#ステータスコード-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
 <p>303<br>
 ブラウザはシステムのエラーページにリダイレクトされる。</p>
@@ -142,7 +142,7 @@ io<span class="hljs-selector-class">.personium</span><span class="hljs-selector-
 <tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left">error_page_uri</td><td style="text-align:left">Redirect URL</td><td style="text-align:left">システムのエラーページ「セルのURL + __html/error」</td></tr>
+<tr><td style="text-align:left">error_page_uri</td><td style="text-align:left">Redirect URL</td><td style="text-align:left">システムのエラーページ「CellのURL + __html/error」</td></tr>
 <tr><td style="text-align:left">code</td><td style="text-align:left"><a href="/docs/ja/next/apiref/004_Error_Messages">Personiumのメッセージコード</a></td><td style="text-align:left"></td></tr>
 </tbody>
 </table>
@@ -217,7 +217,7 @@ redirect_uriに、「URLパラメータ」で示すフラグメントが格納�
 <tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td></tr>
 <tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※パスワード認証の場合のみ返却する</td></tr>
 <tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※パスワード認証の場合のみ返却する</td></tr>
-<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリセルURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
+<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリCellURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="認可処理成功（認可コード）"></a><a href="#認可処理成功（認可コード）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可処理成功（認可コード）</h3>
@@ -239,7 +239,7 @@ redirect_uriに、「URLパラメータ」で示すクエリが格納される�
 <tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td></tr>
 <tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※パスワード認証の場合のみ返却する</td></tr>
 <tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※パスワード認証の場合のみ返却する</td></tr>
-<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリセルURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
+<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリCellURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="認可処理成功（idトークン発行）"></a><a href="#認可処理成功（idトークン発行）" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認可処理成功（IDトークン発行）</h3>
@@ -261,14 +261,14 @@ redirect_uriに、「URLパラメータ」で示すフラグメントが格納�
 <tr><td style="text-align:left">state</td><td style="text-align:left">リクエスト時に設定したstateの値</td><td style="text-align:left">リクエストとコールバックの間で状態を維持するために使用するランダムな値</td></tr>
 <tr><td style="text-align:left">last_authenticated</td><td style="text-align:left">前回認証日時</td><td style="text-align:left">前回の認証日時（long型のUNIX時間）<br>初回認証時はnull<br>※パスワード認証の場合のみ返却する</td></tr>
 <tr><td style="text-align:left">failed_count</td><td style="text-align:left">認証失敗回数</td><td style="text-align:left">前回認証時からのパスワード認証に連続で失敗した回数<br>※パスワード認証の場合のみ返却する</td></tr>
-<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリセルURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
+<tr><td style="text-align:left">box_not_installed</td><td style="text-align:left">Box未インストールフラグ</td><td style="text-align:left">アプリCellURLをスキーマに持つBoxが作成されていない場合のみtrueを返却する</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="認証失敗"></a><a href="#認証失敗" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>認証失敗</h3>
 <p>認証に失敗した場合（パスワード不一致、アカウントロック中など）</p>
 <h4><a class="anchor" aria-hidden="true" id="ステータスコード-6"></a><a href="#ステータスコード-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ステータスコード</h4>
 <p>303<br>
-ブラウザは認可エンドポイント（セルのURL + __authz）に再度リダイレクトされる。<br>
+ブラウザは認可エンドポイント（CellのURL + __authz）に再度リダイレクトされる。<br>
 認可エンドポイントに、「URLパラメータ」で示すクエリが格納される。</p>
 <pre><code class="hljs"><span class="hljs-template-variable">{authorization_endpoint_url}</span><span class="xml">?response_type=</span><span class="hljs-template-variable">{response_type}</span><span class="xml">&amp;redirect_uri=</span><span class="hljs-template-variable">{redirect_uri}</span><span class="xml">&amp;client_id=</span><span class="hljs-template-variable">{client_id}</span><span class="xml">&amp;state=</span><span class="hljs-template-variable">{state}</span><span class="xml">&amp;scope=</span><span class="hljs-template-variable">{scope}</span><span class="xml">
 &amp;expires_in=</span><span class="hljs-template-variable">{expires_in}</span><span class="xml">&amp;error=</span><span class="hljs-template-variable">{error}</span><span class="xml">&amp;error_description=</span><span class="hljs-template-variable">{error_description}</span><span class="xml">&amp;error_uri=</span><span class="hljs-template-variable">{error_uri}</span><span class="xml">&amp;code=</span><span class="hljs-template-variable">{code}</span><span class="xml">
@@ -281,7 +281,7 @@ redirect_uriに、「URLパラメータ」で示すフラグメントが格納�
 <tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">備考</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left">authorization_endpoint_url</td><td style="text-align:left">認可エンドポイントのURL（セルのURL + __authz）</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">authorization_endpoint_url</td><td style="text-align:left">認可エンドポイントのURL（CellのURL + __authz）</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left">response_type</td><td style="text-align:left">リクエスト時に設定したresponse_typeの値</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left">client_id</td><td style="text-align:left">リクエスト時に設定したclient_idの値</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left">redirect_uri</td><td style="text-align:left">リクエスト時に設定したredirect_uriの値</td><td style="text-align:left"></td></tr>
@@ -309,7 +309,7 @@ redirect_uriに、「URLパラメータ」で示すフラグメントが格納�
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（client_id、redirect_uri）-1"></a><a href="#パラメータチェックエラー（client_id、redirect_uri）-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（client_id、redirect_uri）</h3>
-<p>「client_id、redirect_uriが未指定」「client_id、redirect_uriがURL形式ではない」「client_idとredirect_uriのセルが異なる」の場合<br>
+<p>「client_id、redirect_uriが未指定」「client_id、redirect_uriがURL形式ではない」「client_idとredirect_uriのCellが異なる」の場合<br>
 「レスポンス（認証フォームリクエスト）」の「パラメータチェックエラー（client_id、redirect_uri）」と同様。</p>
 <h3><a class="anchor" aria-hidden="true" id="パラメータチェックエラー（上記以外）-1"></a><a href="#パラメータチェックエラー（上記以外）-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パラメータチェックエラー（上記以外）</h3>
 <p>client_id、redirect_uri、username、password以外のリクエストパラメータで、必須項目が未設定もしくは設定値が不正な形式の場合<br>

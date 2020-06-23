@@ -123,7 +123,7 @@ _Relation.Name='{RelationName}')
 <tr><th style="text-align:left">項目名</th><th style="text-align:left">概要</th><th style="text-align:left">有効値</th><th style="text-align:left">必須</th><th style="text-align:left">備考</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left">ExtRole</td><td style="text-align:left">外部ロール名(URL)</td><td style="text-align:left">桁数：1～1024<br>URIの形式に従う<br>scheme：http / https / urn<br>Boxに紐付いている場合:/{アプリセル名}/__role/__/{Role名}<br>※ただし、BoxにSchema情報が登録されていない場合、Boxに紐付いていないとみなされる<br>Boxに紐付いていない場合:/{Cell名]/__role/__/{Role名}</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
+<tr><td style="text-align:left">ExtRole</td><td style="text-align:left">外部ロール名(URL)</td><td style="text-align:left">桁数：1～1024<br>URIの形式に従う<br>scheme：http / https / urn<br>Boxに紐付いている場合:/{アプリCell名}/__role/__/{Role名}<br>※ただし、BoxにSchema情報が登録されていない場合、Boxに紐付いていないとみなされる<br>Boxに紐付いていない場合:/{Cell名]/__role/__/{Role名}</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left">_Relation.Name</td><td style="text-align:left">関係対象のRelation名</td><td style="text-align:left">桁数：1～128<br>文字種:半角英数字と-(半角ハイフン)と<em>(半角アンダーバー)<br>と+(プラス)と:(コロン)<br>ただし、先頭文字に</em>(半角アンダーバー):(コロン)は指定不可<br>Relation登録APIにて登録済みのRelation</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
 <tr><td style="text-align:left">_Relation._Box.Name</td><td style="text-align:left">関係対象のRelationが紐づくBox名</td><td style="text-align:left">桁数：1～128<br>文字種:半角英数字と-(半角ハイフン)と_(半角アンダーバー)<br>Relation登録APIにて登録済みのRelationが紐づくBox名<br>null</td><td style="text-align:left">×</td><td style="text-align:left"></td></tr>
 </tbody>
