@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://personium.io/blog</id>
     <title>Personium Blog</title>
-    <updated>2020-06-06T06:00:00.000Z</updated>
+    <updated>2020-06-15T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://personium.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Personium news and events.</subtitle>
     <logo>https://personium.io/img/logo-quantify-light.png</logo>
     <rights>Copyright © 2020 Personium Project</rights>
+    <entry>
+        <title type="html"><![CDATA[Release of Personium Trails]]></title>
+        <id>https://personium.io/blog/2020/06/15/Personium-Trails.html</id>
+        <link href="https://personium.io/blog/2020/06/15/Personium-Trails.html"/>
+        <updated>2020-06-15T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>We have released a demo app called &quot;Personium Trails&quot; that allow user to import location history data on Google into Personium and share selected data to others.</p> <p><img src="/images/news/personium-trails.png" width="70%" title="Personium Trails"></p> <ul> <li><a href="https://drive.google.com/file/d/1WBPYvlUhji66qzvYDC7IubUyDm2Qmgo6/view?usp=sharing">Explanation Material (Japanese)</a></li> <li><a href="https://github.com/personium/app-personium-trails">Repository</a></li> </ul> ]]></summary>
+        <author>
+            <name>Yasufumi Tochiori</name>
+            <email/>
+            <uri/>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MyData4COVID19 Thematic Group Workshop June 12th]]></title>
         <id>https://personium.io/blog/2020/06/06/MyData4COVID19-Thematic-Group-Workshop01.html</id>
@@ -63,11 +75,11 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[PDS Interoperability Meeting 15th April 2020]]></title>
-        <id>https://personium.io/blog/2020/04/06/CEPS-Bi-weekly-Meeting-Announcement.html</id>
-        <link href="https://personium.io/blog/2020/04/06/CEPS-Bi-weekly-Meeting-Announcement.html"/>
+        <title type="html"><![CDATA[Fevermap]]></title>
+        <id>https://personium.io/blog/2020/04/06/Fevermap.html</id>
+        <link href="https://personium.io/blog/2020/04/06/Fevermap.html"/>
         <updated>2020-04-06T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>The bi-weekly meeting hosted by <a href="http://www.freezr.info/">Freezr</a>/<a href="https://www.ownyourdata.eu/">OwnYourData</a>/<a href="https://personium.io/">Personium</a> has started. In the coming meeting, we would like to discuss the following agendas. Come join us!</p> <h2><a class="anchor" aria-hidden="true" id="preliminary-agenda-wednesday-april-15th-830am-930am-cest"></a><a href="#preliminary-agenda-wednesday-april-15th-830am-930am-cest" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Preliminary Agenda (Wednesday, April 15th, 8.30am-9.30am CEST)</h2> <p><a href="https://bit.ly/CEPS-Bi-weekly-Meeting-Memo">https://bit.ly/CEPS-Bi-weekl...</a></p>]]></summary>
+        <summary type="html"><![CDATA[<p><a href="https://fevermap.net/">Fevermap</a> is a Finnish open-source app that allows user to report temperature through the internet. In order to cross-pollinate ideas, Personium registered two UI/UX issues and helped translating the app to Japanese.</p> <p>You can help out by contribute you...</p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
@@ -75,11 +87,11 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Fevermap]]></title>
-        <id>https://personium.io/blog/2020/04/06/Fevermap.html</id>
-        <link href="https://personium.io/blog/2020/04/06/Fevermap.html"/>
+        <title type="html"><![CDATA[PDS Interoperability Meeting 15th April 2020]]></title>
+        <id>https://personium.io/blog/2020/04/06/CEPS-Bi-weekly-Meeting-Announcement.html</id>
+        <link href="https://personium.io/blog/2020/04/06/CEPS-Bi-weekly-Meeting-Announcement.html"/>
         <updated>2020-04-06T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p><a href="https://fevermap.net/">Fevermap</a> is a Finnish open-source app that allows user to report temperature through the internet. In order to cross-pollinate ideas, Personium registered two UI/UX issues and helped translating the app to Japanese.</p> <p>You can help out by contribute you...</p>]]></summary>
+        <summary type="html"><![CDATA[<p>The bi-weekly meeting hosted by <a href="http://www.freezr.info/">Freezr</a>/<a href="https://www.ownyourdata.eu/">OwnYourData</a>/<a href="https://personium.io/">Personium</a> has started. In the coming meeting, we would like to discuss the following agendas. Come join us!</p> <h2><a class="anchor" aria-hidden="true" id="preliminary-agenda-wednesday-april-15th-830am-930am-cest"></a><a href="#preliminary-agenda-wednesday-april-15th-830am-930am-cest" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Preliminary Agenda (Wednesday, April 15th, 8.30am-9.30am CEST)</h2> <p><a href="https://bit.ly/CEPS-Bi-weekly-Meeting-Memo">https://bit.ly/CEPS-Bi-weekl...</a></p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
@@ -200,18 +212,6 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[(Cancelled) Presenting at OSC2020 Tokyo/Spring]]></title>
-        <id>https://personium.io/blog/2020/01/30/OSC2020-Tokyo.html</id>
-        <link href="https://personium.io/blog/2020/01/30/OSC2020-Tokyo.html"/>
-        <updated>2020-01-30T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>Updated on Feb. 19, 2020. The conference is cancelled.</strong> See it's website for details.</p> <p>Personium project will be presenting at Open Source Conference 2020 Tokyo/Spring, held on Feb. 21-22, 2020.<br> (Japanese) <a href="https://www.ospn.jp/osc2020-spring/">https://www.ospn.jp/osc2020-spring/</a></p> <p>Previous p...</p>]]></summary>
-        <author>
-            <name>Dixon Siu</name>
-            <email/>
-            <uri>https://twitter.com/dixon_siu</uri>
-        </author>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Update #1 - Pilot project (Tally Zoo) with OwnYourData]]></title>
         <id>https://personium.io/blog/2020/01/30/Own-Your-Data-Pilot.html</id>
         <link href="https://personium.io/blog/2020/01/30/Own-Your-Data-Pilot.html"/>
@@ -233,6 +233,18 @@
 <p><img src="https://dixonsiu.demo-jp.personium.io/MyData/images/ownyourdata.png" width="150px" >  <br>
 Original news here: <a href="https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot/">https://personium.io/blog/2019/12/09/Own-Your-Data-Pilot/</a></p>
 ]]></summary>
+        <author>
+            <name>Dixon Siu</name>
+            <email/>
+            <uri>https://twitter.com/dixon_siu</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[(Cancelled) Presenting at OSC2020 Tokyo/Spring]]></title>
+        <id>https://personium.io/blog/2020/01/30/OSC2020-Tokyo.html</id>
+        <link href="https://personium.io/blog/2020/01/30/OSC2020-Tokyo.html"/>
+        <updated>2020-01-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>Updated on Feb. 19, 2020. The conference is cancelled.</strong> See it's website for details.</p> <p>Personium project will be presenting at Open Source Conference 2020 Tokyo/Spring, held on Feb. 21-22, 2020.<br> (Japanese) <a href="https://www.ospn.jp/osc2020-spring/">https://www.ospn.jp/osc2020-spring/</a></p> <p>Previous p...</p>]]></summary>
         <author>
             <name>Dixon Siu</name>
             <email/>
