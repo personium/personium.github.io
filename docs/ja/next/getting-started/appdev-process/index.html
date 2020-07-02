@@ -73,11 +73,20 @@
 <p>認可コードフローについての詳細は<a href="/docs/ja/next/user_guide/003_Auth#アプリ認可">認可モデル</a>を参照してください。</p>
 <h2><a class="anchor" aria-hidden="true" id="データ主体cellとアプリcell"></a><a href="#データ主体cellとアプリcell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>データ主体CellとアプリCell</h2>
 <p>認可コードフローで実装する場合、データ主体CellとアプリCellという2種類のCellを使用します。この2種類のCellは以下のように使われます。</p>
+<table>
+<thead>
+<tr><th>Cell種類</th><th>役割</th></tr>
+</thead>
+<tbody>
+<tr><td>データ主体Cell</td><td>データ主体のデータ管理と認可</td></tr>
+<tr><td>アプリCell</td><td>OAuth 2.0に従ったアプリの認可とアプリ資産の格納・公開</td></tr>
+</tbody>
+</table>
+<p>アプリCellは認可コードフローで以下のように使われます。</p>
 <ul>
-<li>認可コードフローにおけるクライアント登録はアプリCell作成によって行う</li>
-<li>client_idはアプリCellのURLを使用する</li>
-<li>アプリCell上のアカウントを使用してアプリの認証を行い、client_secretを取得する</li>
-<li>データ主体の認証・認可をデータ主体Cellで行う</li>
+<li>クライアント登録: アプリCell作成によって行う</li>
+<li>client_id: アプリCellのURLを使用する</li>
+<li>client_secret: アプリCell上のアカウントを使用してアプリの認証を行い、取得する</li>
 </ul>
 <p>また、必須ではありませんがアプリCell上にHTML, JavaScript, CSSといったファイルを格納し、アクセス設定を誰でも参照できるようにすることで、静的Websiteのホスティングを行えます。本節のJavaScriptによるサンプルアプリはアプリCell上でホスティングすることを想定しています。</p>
 <p>サンプルアプリでのデータ主体CellとアプリCellの関係を表すと次の図の通りとなります。</p>
@@ -148,9 +157,9 @@
 <tr><td>OData</td><td>✅ クエリで検索可能</td><td>❌ コレクション単位で設定</td></tr>
 </tbody>
 </table>
-<p>そのため検索させたいデータをODataで扱い、ACL設定を行いたい単位でWebDAVで扱うことを推奨します。</p>
+<p>そのため検索させるためのデータをODataで扱い、ACL設定を行う単位の詳細情報データをWebDAVで扱うことを推奨します。</p>
 <h2><a class="anchor" aria-hidden="true" id="サンプルアプリでのboxデータ構造"></a><a href="#サンプルアプリでのboxデータ構造" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプルアプリでのBoxデータ構造</h2>
-<p>参考までにサンプルアプリではBoxデータ構を記載します。</p>
+<p>参考までにサンプルアプリではBoxデータ構造を記載します。</p>
 <h3><a class="anchor" aria-hidden="true" id="コレクション全体"></a><a href="#コレクション全体" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>コレクション全体</h3>
 <table>
 <thead>
@@ -163,8 +172,7 @@
 <tr><td>/index/Move</td><td>OData</td><td>検索用移動情報</td></tr>
 </tbody>
 </table>
-<p>元の移動履歴データを移動・滞在先単位で分割し、分割したファイルをWebDAVで格納します。データの他者への共有もWebDAVの1つ1つのファイルに対して行います。</p>
-<p>移動履歴データの中で検索に使う項目をODataにも格納しています。</p>
+<p>元のGoogle Takeoutで取得した移動履歴データを移動・滞在先単位で分割し、分割したファイルをWebDAVで格納します。データの他者への共有するときはWebDAVの1つ1つのファイルに対して行います。また、検索を行わせるためのデータをODataに格納しています。</p>
 <h3><a class="anchor" aria-hidden="true" id="odata-entity-type-stay"></a><a href="#odata-entity-type-stay" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Entity Type (Stay)</h3>
 <table>
 <thead>
