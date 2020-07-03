@@ -93,12 +93,12 @@
 </ul></li>
 <li>Personium Cell Level API
 <ul>
-<li><a href="https://personium.io/docs/ja/apiref/292_OAuth2_Authorization_Endpoint/">GET {CellURL}/__authz</a></li>
-<li><a href="https://personium.io/docs/ja/apiref/292p_OAuth2_Authorization_Endpoint/">POST {CellURL}/__authz</a></li>
-<li><a href="https://personium.io/docs/ja/apiref/293_OAuth2_Token_Endpoint/">POST {CellURL}/__token</a></li>
+<li><a href="/docs/ja/next/apiref/292_OAuth2_Authorization_Endpoint">OAuth 2.0 認可エンドポイント</a></li>
+<li><a href="/docs/ja/next/apiref/292p_OAuth2_Authorization_Endpoint">OAuth2.0 認可エンドポイントにおける POST の受け入れ</a></li>
+<li><a href="/docs/ja/next/apiref/293_OAuth2_Token_Endpoint">OAuth 2.0 トークンエンドポイント</a></li>
 </ul></li>
 </ul>
-<p>詳細のシーケンス図は<a href="../app-developer/003_Auth.md#認可コードフロー">こちら</a>を参照してください。</p>
+<p>詳細のシーケンス図は<a href="/docs/ja/next/user_guide/003_Auth#認可コードフロー">こちら</a>を参照してください。</p>
 <p>サンプルアプリを起動するとき、HTMLを返すエンジンスクリプト<code>https://app-personium-trails.example/__/front/app</code>にWebブラウザでアクセスします。すると以下の画面が表示され、データ操作連携を行うユーザ自身のCell URLの入力が求められます。</p>
 <p><img src="/docs/assets/getting-started/cell_url_input.png" alt="Cell URLの入力"></p>
 <p>ユーザ自身のCell URL<code>https://alice.example/</code>を入力するとFetchによる非同期通信で以下のエンジンスクリプトのstart_oauth2にアクセスします。</p>
@@ -113,17 +113,17 @@ Location: https://alice.example/__authz
 ?response_type=code
 &client_id=https://app-personium-trails.example/
 &redirect_uri=https://app-personium-trails.example/__/front/app?cellUrl=https://alice.example/
-&state=1593274289986-per
+&state=15933********-per
 </code></pre>
 <p>このスクリプトはCSRF対策で使用するstateパラメータをサーバサイド上で生成し、認可エンドポイントにリダイレクトします。パラメータのredirect_uriには認可コードを受け取り、アクセストークン取得を行うアプリのURLを指定します。サンプルアプリではエンジンスクリプト<code>https://app-personium-trails.example/__/front/app</code>が最初に受け取るので、このURLを指定します。</p>
-<p>リダイレクトするときのHTTP通信は以下のようになります。</p>
+<p>リダイレクトするときの<a href="/docs/ja/next/apiref/292_OAuth2_Authorization_Endpoint">OAuth 2.0 認可エンドポイント</a>へのHTTP通信は以下のようになります。</p>
 <pre><code class="hljs css language-text"># リクエスト
 GET https://alice.example/__authz
 
 response_type=code
 client_id=https://app-personium-trails.example/
 redirect_uri=https://app-personium-trails.example/__/front/app?cellUrl=https://alice.example/
-state=1593274289986-per
+state=15933********-per
 
 # レスポンス
 Status Code: 200
@@ -133,14 +133,14 @@ Content-Type: text/html;charset=UTF-8
 </code></pre>
 <p>上記のレスポンスが返ってくるため、認証フォームが表示されます。</p>
 <p><img src="/docs/assets/getting-started/oauth_form.png" alt="認証フォーム"></p>
-<p>上記の認証フォーム上でUserID, Passwordを入力し、ログインボタンを押すと以下のHTTP通信が行われます。</p>
+<p>上記の認証フォーム上でUserID, Passwordを入力し、ログインボタンを押すと<a href="/docs/ja/next/apiref/292p_OAuth2_Authorization_Endpoint">OAuth2.0 認可エンドポイントにおける POST の受け入れ</a>へのHTTP通信は以下のように行われます。</p>
 <pre><code class="hljs css language-text"># リクエスト
 POST https://alice.example/__authz
 
 response_type=code
 client_id=https://app-personium-trails.example/
 redirect_uri=https://app-personium-trails.example/__/auth/receive_redirect?cellUrl=https://alice.example/
-state=1593274289986-per
+state=15933********-per
 username=me
 password=mypassword
 
@@ -149,18 +149,18 @@ Status Code: 303
 Location: https://app-personium-trails.example/__/front/app
 ?cellUrl=https://alice.example/
 &last_authenticated=1592968464695
-&code=GC~EPETSBHQOtlZ-0EfKNGJ7NzlRDND1nz8OPS-thzQIfLxhvE93wL_b5jHT_6esGKEQ3qZ6T-b1MfGN6J1MQjoCF-mibnrtUiXwFCNp7wdBjN7OZoiECEqWx0SYekt24kId2LVUWPWwJoieAfUWkcNyxy_kifOxR5_xvq00kL-9ws
+&code=GC~EPET********-9ws
 &failed_count=0
-&state=1593348659632-per
+&state=15933********-per
 </code></pre>
 <p>code(認可コード)とstateのパラメータを加えた状態で、元のサンプルアプリを起動するエンジンスクリプト<code>https://app-personium-trails.example/__/front/app</code>にリダイレクトします。</p>
 <pre><code class="hljs css language-text"># リクエスト
 GET https://app-personium-trails.example/__/front/app
 ?cellUrl=https://alice.example/
 &last_authenticated=1592968464695
-&code=GC~EPETSBHQOtlZ-0EfKNGJ7NzlRDND1nz8OPS-thzQIfLxhvE93wL_b5jHT_6esGKEQ3qZ6T-b1MfGN6J1MQjoCF-mibnrtUiXwFCNp7wdBjN7OZoiECEqWx0SYekt24kId2LVUWPWwJoieAfUWkcNyxy_kifOxR5_xvq00kL-9ws
+&code=GC~EPET********-9ws
 &failed_count=0
-&state=1593348659632-per
+&state=15933********-per
 
 # レスポンス
 Status Code: 200
@@ -173,24 +173,24 @@ Content-Type: text/html;charset=UTF-8
 POST https://app-personium-trails.example/__/auth/receive_redirect
 
 cellUrl=https://alice.example/
-code=GC~EPETSBHQOtlZ-0EfKNGJ7NzlRDND1nz8OPS-thzQIfLxhvE93wL_b5jHT_6esGKEQ3qZ6T-b1MfGN6J1MQjoCF-mibnrtUiXwFCNp7wdBjN7OZoiECEqWx0SYekt24kId2LVUWPWwJoieAfUWkcNyxy_kifOxR5_xvq00kL-9ws
+code=GC~EPET********-9ws
 failed_count=0
-state=1593348659632-per
+state=15933********-per
 </code></pre>
-<p>エンジンスクリプトのreceive_redirect上の処理で、stateの検証を行った後、Personiumのトークンエンドポイントにアクセスします。</p>
+<p>エンジンスクリプトのreceive_redirect上の処理で、stateの検証を行った後、Personiumの<a href="/docs/ja/next/apiref/293_OAuth2_Token_Endpoint">OAuth 2.0 トークンエンドポイント</a>にアクセスします。HTTP通信は以下のように行われます。</p>
 <pre><code class="hljs css language-text"># リクエスト
 POST https://alice.example/__token
 
 grant_type=authorization_code
-code=GC~EPETSBHQOtlZ-0EfKNGJ7NzlRDND1nz8OPS-thzQIfLxhvE93wL_b5jHT_6esGKEQ3qZ6T-b1MfGN6J1MQjoCF-mibnrtUiXwFCNp7wdBjN7OZoiECEqWx0SYekt24kId2LVUWPWwJoieAfUWkcNyxy_kifOxR5_xvq00kL-9ws
+code=GC~EPET********-9ws
 client_id=https://app-personium-trails.example/
 client_secret=<アプリCell上で認証したデータ主体Cellへのトランスセルトークン>
 
 # レスポンス
 {
-  "access_token": "AR~omWDOwFP90oqOP_hCC17UQHKxpCViGmdsdLxp_AZ_PvL2qGdnHTk-wqvUaZljkXBU9LvffKQH7odo6nln3pQfO5gHcurESaMUB2q_HHx-4P61HDRFx7sPwP0bhI3pql7UxwEkzFVascbbVW7vQ7cFnuyu2rmjyUc7G8zuoB8IPo",
+  "access_token": "AR~omWD********IPo",
   "refresh_token_expires_in": 86400,
-  "refresh_token": "RR~KR9CRapqHKBc-_JqMnRhootcxaSAq_vSXIluk4ct2c-3lp_pHqtk1-TrzPhsHf6eP7_PUc7wdw5ipgCMYUXp_WuqCvA2tQWZbOY-3jPdWikiTO8o4GqihYRq2tHYEAym6c0MpuvdvzKY_Vw7YE5vLUt6qmmxOseYSN2gYxUlhbs",
+  "refresh_token": "RR~KR9********hbs",
   "p_target": "https://alice.example/",
   "scope": "root",
   "token_type": "Bearer",
@@ -278,10 +278,10 @@ Status Code: 200
         "__published": "/Date(1593356562389)/",
         "__updated": "/Date(1593356562389)/",
         "endTime": "/Date(1589596800521)/",
-        "latitudeE7": 375278530,
-        "longitudeE7": 1396176872,
+        "latitudeE7": 3752*****,
+        "longitudeE7": 13961*****,
         "name": "Wakaba Store",
-        "placeId": "ChIJjy_Hz-XrGGARbIZ4iP39hBI",
+        "placeId": "ChI********hBI",
         "startTime": "/Date(1589594150000)/"
       },
 </code></pre>
@@ -304,7 +304,7 @@ Status Code: 200
 <p><img src="/docs/assets/getting-started/trails_locations_public.png" alt="移動履歴データ一覧"></p>
 <p>この時、<a href="/docs/ja/next/apiref/315_Configure_Access_Control">Box Level アクセス制御設定</a>APIを使っています。HTTP通信は以下のように行っています。</p>
 <pre><code class="hljs css language-xml"># リクエスト
-ACL https://alice.example/app-personium-trails/locations/2020/0516/s_1589594150000.json
+ACL https://alice.example/app-personium-trails/locations/2020/0516/s_1589592400000.json
 
 <span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
@@ -325,7 +325,7 @@ Status Code: 200
 </code></pre>
 <p>ACL設定は<a href="/docs/ja/next/apiref/307_Get_Property">ファイル設定取得</a>APIによって確認できます。</p>
 <pre><code class="hljs css language-xml"># リクエスト
-PROPFIND https://alice.example/app-personium-trails/locations/2020/0516/s_1589594150000.json
+PROPFIND https://alice.example/app-personium-trails/locations/2020/0516/s_1589592400000.json
 
 # レスポンス
 Status Code: 207
