@@ -4,7 +4,7 @@
         <title>Personium Blog</title>
         <link>https://personium.io/blog</link>
         <description>The best place to stay up-to-date with the latest Personium news and events.</description>
-        <lastBuildDate>Mon, 15 Jun 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 02 Jul 2020 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -14,6 +14,13 @@
         </image>
         <copyright>Copyright © 2020 Personium Project</copyright>
         <item>
+            <title><![CDATA[DID Alliance Korea Presentation July 2nd]]></title>
+            <link>https://personium.io/blog/2020/07/02/DID-Alliance-Korea-Personium.html</link>
+            <guid>https://personium.io/blog/2020/07/02/DID-Alliance-Korea-Personium.html</guid>
+            <pubDate>Thu, 02 Jul 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>I'm honoured to give a forty (40) minutes presentation on Personium overview and why PDS (personal data store) needs DID (decentralized identifier). Around thirty (30) audiences from fourteen (14) organizations had attended and we had some fruitful d...</p>]]></description>
+        </item>
+        <item>
             <title><![CDATA[Release of Personium Trails]]></title>
             <link>https://personium.io/blog/2020/06/15/Personium-Trails.html</link>
             <guid>https://personium.io/blog/2020/06/15/Personium-Trails.html</guid>
@@ -21,18 +28,18 @@
             <description><![CDATA[<p>We have released a demo app called &quot;Personium Trails&quot; that allow user to import location history data on Google into Personium and share selected data to others.</p> <p><img src="/images/news/personium-trails.png" width="70%" title="Personium Trails"></p> <ul> <li><a href="https://drive.google.com/file/d/1WBPYvlUhji66qzvYDC7IubUyDm2Qmgo6/view?usp=sharing">Explanation Material (Japanese)</a></li> <li><a href="https://github.com/personium/app-personium-trails">Repository</a></li> </ul> ]]></description>
         </item>
         <item>
-            <title><![CDATA[MyData4COVID19 Thematic Group Workshop June 12th]]></title>
-            <link>https://personium.io/blog/2020/06/06/MyData4COVID19-Thematic-Group-Workshop01.html</link>
-            <guid>https://personium.io/blog/2020/06/06/MyData4COVID19-Thematic-Group-Workshop01.html</guid>
-            <pubDate>Sat, 06 Jun 2020 06:00:00 GMT</pubDate>
-            <description><![CDATA[<h2><a class="anchor" aria-hidden="true" id="for-better-human-centric-data-based-response-to-the-crisis"></a><a href="#for-better-human-centric-data-based-response-to-the-crisis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>For better human-centric data-based response to the crisis!</h2> <h3><a class="anchor" aria-hidden="true" id="fri-june-12th-2020"></a><a href="#fri-june-12th-2020" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Fri June 12th 2020</h3> <p>An online workshop will be held on Fri June 12th 2020 2pm - 5pm CEST. <a href="https://mydata.org/covid-19">Sign up now!</a></p> <p>Personium is going to share our ideas on how PDS (personal data store) can help to cope ...</p>]]></description>
-        </item>
-        <item>
             <title><![CDATA[MyData Operators Criteria Workshop June 10th]]></title>
             <link>https://personium.io/blog/2020/06/06/MyData-Operators-Criteria-Workshop.html</link>
             <guid>https://personium.io/blog/2020/06/06/MyData-Operators-Criteria-Workshop.html</guid>
             <pubDate>Sat, 06 Jun 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<h3><a class="anchor" aria-hidden="true" id="wed-june-10th-2020"></a><a href="#wed-june-10th-2020" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Wed June 10th 2020</h3> <p>An online workshop will be held on Wed June 10th 2020 11am - 5pm CEST. <a href="https://airtable.com/shr3xZ22P9GPFVKKU">Sign up now!</a></p> <p>Check out the slide deck: <a href="https://mydata-global.org/operator-self-description">https://mydata-global.org/operator-self-description</a> before you attend the workshop. In order to discuss frutifully, it wi...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MyData4COVID19 Thematic Group Workshop June 12th]]></title>
+            <link>https://personium.io/blog/2020/06/06/MyData4COVID19-Thematic-Group-Workshop01.html</link>
+            <guid>https://personium.io/blog/2020/06/06/MyData4COVID19-Thematic-Group-Workshop01.html</guid>
+            <pubDate>Sat, 06 Jun 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<h2><a class="anchor" aria-hidden="true" id="for-better-human-centric-data-based-response-to-the-crisis"></a><a href="#for-better-human-centric-data-based-response-to-the-crisis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>For better human-centric data-based response to the crisis!</h2> <h3><a class="anchor" aria-hidden="true" id="fri-june-12th-2020"></a><a href="#fri-june-12th-2020" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>Fri June 12th 2020</h3> <p>An online workshop will be held on Fri June 12th 2020 2pm - 5pm CEST. <a href="https://mydata.org/covid-19">Sign up now!</a></p> <p>Personium is going to share our ideas on how PDS (personal data store) can help to cope ...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[Personium takes important step towards open personal data ecosystems with MyData]]></title>
