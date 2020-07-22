@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>アプリ開発の流れ · Personium</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="本節ではアプリ開発の流れについて説明します。"/><meta name="docsearch:version" content="1.7.21"/><meta name="docsearch:language" content="ja"/><meta property="og:title" content="アプリ開発の流れ · Personium"/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.io/"/><meta property="og:description" content="本節ではアプリ開発の流れについて説明します。"/><meta property="og:image" content="https://personium.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.io/blog/atom.xml" title="Personium Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.io/blog/feed.xml" title="Personium Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/ja"><img class="logo" src="/img/logo-quantify-light.png" alt="Personium"/><h2 class="headerTitleWithLogo">Personium</h2></a><a href="/ja/versions"><h3>1.7.21</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs.html" target="_self">Documentation</a></li><li class=""><a href="/apiref.html" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>日本語</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/getting-started/appdev-process">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>アプリの開発</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">はじめに<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/README">Personium ドキュメント</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/introduction/001_Personium_Architecture">Personiumのアーキテクチャ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/introduction/008_Glossary">用語集</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/getting-started/README">Getting Started</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Personiumの準備</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/getting-started/setup-unit">Personium Unitの構築</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/tutorial">Cellの払い出し チュートリアル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/getting-started/setup-sample-apps">サンプルアプリの構築</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">アプリの開発</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/getting-started/appdev-introduction">アプリを開発する</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/getting-started/appdev-management-tool">管理ツール（Unit Manager）</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/ja/getting-started/appdev-process">アプリ開発の流れ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/getting-started/appdev-impl">アプリの実装</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Personium運用者向け<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">サーバ運用</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/README">サーバソフトウェア運用者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/Confirm_environment_settings">Ansible で構築したUnitの環境情報</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_authentication_plugins">認証Pluginのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_engine_extensions">Engine Extensionのセットアップ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_operation_design">Unitの運用設計と設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_config_list">Unitの設定一覧</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_coordination">Unit間連携の設定方法</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/unit_security">Unitのセキュリティ（デフォルトからの変更を推奨する設定）</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Unit管理</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/README">Unit管理者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Unit-User">Unitユーザ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/unit-administrator/Data_Management">データの管理</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">旧ドキュメント</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup_virtual_image">仮想イメージを使ってPersoniumを始めよう</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/proxy_exclusion_setting">プロキシ除外設定</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/server-operator/setup">Ansibleを使ってPersoniumを始めよう</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">アプリ開発者向け<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/README">アプリ開発者向けガイド</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">認可</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/003_Auth">認可モデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Roles">Personiumにおけるロール</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/apiref/006_Access_Control">アクセス制御モデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/app_authn">アプリ認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/launch_from_homeapp">Single Sign On</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Box/Barファイル</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/apiref/007_Box_install">Boxインストール</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/apiref/301_Bar_File">barファイル</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">コレクション</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/007_WebDAV_model">WebDAV モデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/using_odata">OData Service Collection (OSC)の使い方</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/671_Engine_Script_Samples">Engine Script のサンプル</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/ja/cell-gui-developer/README">Cell GUI開発者向けガイド</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">旧ドキュメント</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/005_Model_construction">Cellのモデル</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/004_Client_auth">クライアント登録&amp;認証</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/app-developer/Personium_Apps">Personiumアプリ</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/apiref/990_Old_Version_API_Ref">古いバージョンのAPIリファレンス</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">コントリビューター向け<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/ja/contributor/README">コントリビューターガイド</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">ドキュメント作成</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/document-writer/README">Personium ドキュメント整備・改善への参加方法</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">サーバ開発</h4><ul><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/README">サーバ開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/build_development_environment">開発用環境の構築手順</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/software-developer/personium_tests">Personiumのテスト</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/README">サーバプラグイン開発者向けガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium認証Plugin開発ガイド</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extensionの実装及び配備仕様</a></li><li class="navListItem"><a class="navItem" href="/docs/ja/plugin-developer/Extension_Send_Mail">Extension: メール送信機能</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">アプリ開発の流れ</h1></header><article><div><span><p>本節ではアプリ開発の流れについて説明します。</p>
+<p>まず、アプリ開発の流れの説明の前にいくつか知っておいた方がよいことを説明します。</p>
+<h2><a class="anchor" aria-hidden="true" id="oauth-20-認可コードフロー"></a><a href="#oauth-20-認可コードフロー" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OAuth 2.0 認可コードフロー</h2>
+<p>Personiumを使用したアプリの場合、アプリからのパーソナルデータへのアクセスはデータ主体Cell内のBoxに対してREST APIを通じて行います。この時、データアクセスの認可方法はOAuth 2.0の仕様に従います。OAuth 2.0のフローは種類がありますが、サンプルアプリではPDS事業者とアプリ事業者が異なる場合に採用する認可コードフローを使用します。</p>
+<p>認可コードフローについての詳細は<a href="/docs/ja/app-developer/003_Auth#アプリ認可">認可モデル</a>を参照してください。</p>
+<h2><a class="anchor" aria-hidden="true" id="データ主体cellとアプリcell"></a><a href="#データ主体cellとアプリcell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>データ主体CellとアプリCell</h2>
+<p>認可コードフローで実装する場合、データ主体CellとアプリCellという2種類のCellを使用します。この2種類のCellは以下のように使われます。</p>
+<table>
+<thead>
+<tr><th>Cell種類</th><th>説明</th></tr>
+</thead>
+<tbody>
+<tr><td>データ主体Cell</td><td>データ主体のデータ管理と認可</td></tr>
+<tr><td>アプリCell</td><td>OAuth 2.0に従ったアプリの認可とアプリ資産の格納・公開</td></tr>
+</tbody>
+</table>
+<p>アプリCellは認可コードフローで以下のように使われます。</p>
+<ul>
+<li>クライアント登録: アプリCell作成によって行う</li>
+<li>client_id: アプリCellのURLを使用する</li>
+<li>client_secret: アプリCell上のアカウントを使用してアプリの認証を行い、取得する</li>
+</ul>
+<p>また、アプリCell上にHTML, JavaScript, CSSといったファイルを格納し、アクセス設定を誰でも参照できるようにすることで、静的Websiteのホスティングも行えます。本節のJavaScriptによるサンプルアプリはアプリCell上でホスティングすることを想定しています。</p>
+<p>サンプルアプリでのデータ主体CellとアプリCellの関係を表すと次の図の通りとなります。</p>
+<p><img src="/docs/assets/getting-started/cell_relation.png" alt="Cell Relation"></p>
+<p>アプリの開発はデータ主体Cell部分とアプリCell部分に対して行います。</p>
+<h2><a class="anchor" aria-hidden="true" id="boxとbarファイルインストール"></a><a href="#boxとbarファイルインストール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Boxとbarファイルインストール</h2>
+<p>アプリはどのデータ主体Cellを使っても意図した挙動を行うために、Box上で同じデータ構造を取る必要があります。Personiumではアプリのユーザがアプリを使用する前に、データ主体Cellのデータ構造を定義するbarファイルを使ってBoxインストールを行い、アプリ固有のデータ構造をBox上に構築します。詳しくは以下ドキュメントを参照してください。</p>
+<ul>
+<li><a href="/docs/ja/apiref/007_Box_install">Boxインストール</a></li>
+<li><a href="/docs/ja/apiref/301_Bar_File">barファイル</a></li>
+</ul>
+<p>データ主体Cell部分の開発はBox上のデータ構造の構築とbarファイルの出力となります。</p>
+<h2><a class="anchor" aria-hidden="true" id="テンプレートアプリ"></a><a href="#テンプレートアプリ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>テンプレートアプリ</h2>
+<p>Personiumコミュニティでは<a href="https://reactjs.org/">React</a>ベースのJavaScriptアプリのテンプレート及びデプロイメントツールを提供しています。</p>
+<p><a href="https://github.com/personium/personium-blank-app">personium-blank-app</a></p>
+<p>本ツールを使うことで、最小限のデータ主体CellとアプリCellからカスタマイズしてオリジナルのアプリを開発することができます。また、barファイルのビルドやアプリCellへのアップロードといった開発作業を簡単にします。</p>
+<h3><a class="anchor" aria-hidden="true" id="初期構築の流れ"></a><a href="#初期構築の流れ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>初期構築の流れ</h3>
+<p>テンプレートアプリの初期構築の流れは以下の通りとなります。</p>
+<ol>
+<li>ローカル開発環境へのpersonium-blank-appのclone</li>
+<li>アプリCellの構築
+<ol>
+<li>設定ファイルの編集</li>
+<li>アプリCellへのデプロイ (<code>npm run deploy</code>の実行)</li>
+<li>アプリCell上ファイルのACL設定</li>
+</ol></li>
+<li>データ主体Cellの構築
+<ol>
+<li>barファイルのビルド (<code>npm build-bar</code>の実行)</li>
+<li>開発用データ主体CellへのBoxインストール</li>
+</ol></li>
+</ol>
+<p>具体的な手順は<a href="https://github.com/personium/personium-blank-app">personium-blank-app</a>を参照してください。</p>
+<blockquote>
+<p>ACL設定やBoxインストールといったCell上の操作を行うのに<a href="/docs/ja/getting-started/appdev-management-tool">前節で説明したUnit Manager</a>が活用できます。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="アプリ開発の流れ"></a><a href="#アプリ開発の流れ" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>アプリ開発の流れ</h2>
+<p>テンプレートアプリ構築後、以下を繰り返すことで開発を行えます。</p>
+<ul>
+<li>開発用データ主体Cell上の開発
+<ol>
+<li>Unit ManagerによるBox上データ構造の作成</li>
+<li>アプリの動作確認</li>
+<li>Unit Managerによるbarファイルの出力</li>
+<li>barファイルのコードリポジトリへのコミット</li>
+</ol></li>
+<li>アプリCell上の開発
+<ol>
+<li>ローカル開発環境でのファイル編集(HTML/JavaScript/CSSなど)</li>
+<li>アプリCellへのデプロイ (<code>npm run deploy</code>の実行)</li>
+<li>アプリCell上ファイルのACL設定</li>
+<li>アプリの動作確認</li>
+<li>アプリCell上ファイルのコードリポジトリへのコミット</li>
+</ol></li>
+</ul>
+<blockquote>
+<p>アプリCellへのデプロイの代わりにローカル開発環境上で開発用Webサーバを起動して動作確認することもできます。その場合、<code>npm run debug</code>を実行します。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="boxデータ構造の作成"></a><a href="#boxデータ構造の作成" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Boxデータ構造の作成</h2>
+<p>前項の「Unit ManagerによるBox上データ構造の作成」について補足します。</p>
+<p>Personiumではファイルデータ(WebDAV)とリレーショナルデータ(OData)の両方が使用できます。この両者では以下の違いがあります。</p>
+<table>
+<thead>
+<tr><th>データ種類</th><th>検索性</th><th>ACL設定の単位</th></tr>
+</thead>
+<tbody>
+<tr><td>WebDAV</td><td>❌ 検索不可</td><td>✅ ファイル/コレクション単位で設定</td></tr>
+<tr><td>OData</td><td>✅ クエリで検索可能</td><td>❌ コレクション単位で設定</td></tr>
+</tbody>
+</table>
+<p>そのため検索させるためのデータをODataで扱い、ACL設定を行う単位の詳細情報データをWebDAVで扱うことを推奨します。</p>
+<h2><a class="anchor" aria-hidden="true" id="サンプルアプリでのboxデータ構造"></a><a href="#サンプルアプリでのboxデータ構造" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>サンプルアプリでのBoxデータ構造</h2>
+<p>参考までにサンプルアプリではBoxデータ構造を記載します。</p>
+<h3><a class="anchor" aria-hidden="true" id="コレクション全体"></a><a href="#コレクション全体" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>コレクション全体</h3>
+<table>
+<thead>
+<tr><th>パス</th><th>種類</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>/locations/{YYYY}/{MMdd}/s_{start_time}.json</td><td>WebDAV</td><td>滞在先詳細情報</td></tr>
+<tr><td>/locations/{YYYY}/{MMdd}/m_{start_time}.json</td><td>WebDAV</td><td>移動詳細情報</td></tr>
+<tr><td>/index/Stay</td><td>OData</td><td>検索用滞在先情報</td></tr>
+<tr><td>/index/Move</td><td>OData</td><td>検索用移動情報</td></tr>
+</tbody>
+</table>
+<p>元のGoogle Takeoutで取得した移動履歴データを移動・滞在先単位で分割し、分割したファイルをWebDAVで格納します。データの他者への共有するときはWebDAVの1つ1つのファイルに対して行います。また、検索を行わせるためのデータをODataに格納しています。</p>
+<h3><a class="anchor" aria-hidden="true" id="odata-entity-type-stay"></a><a href="#odata-entity-type-stay" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Entity Type (Stay)</h3>
+<table>
+<thead>
+<tr><th>名前</th><th>型</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>name</td><td>Edm.Int32</td><td>名前</td></tr>
+<tr><td>startTime</td><td>Edm.DateTime</td><td>開始時間</td></tr>
+<tr><td>endTime</td><td>Edm.DateTime</td><td>終了時間</td></tr>
+<tr><td>latitudeE7</td><td>Edm.Int32</td><td>緯度*10^7</td></tr>
+<tr><td>longitudeE7</td><td>Edm.Int32</td><td>経度*10^7</td></tr>
+<tr><td>placeId</td><td>Edm.String</td><td>場所Id</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="odata-entity-type-move"></a><a href="#odata-entity-type-move" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OData Entity Type (Move)</h3>
+<table>
+<thead>
+<tr><th>名前</th><th>型</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>name</td><td>Edm.Int32</td><td>名前</td></tr>
+<tr><td>startTime</td><td>Edm.DateTime</td><td>開始時間</td></tr>
+<tr><td>endTime</td><td>Edm.DateTime</td><td>終了時間</td></tr>
+<tr><td>sLatitudeE7</td><td>Edm.Int32</td><td>移動開始緯度*10^7</td></tr>
+<tr><td>sLongitudeE7</td><td>Edm.Int32</td><td>移動開始経度*10^7</td></tr>
+<tr><td>eLatitudeE7</td><td>Edm.Int32</td><td>移動終了緯度*10^7</td></tr>
+<tr><td>eLongitudeE7</td><td>Edm.Int32</td><td>移動終了経度*10^7</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/ja/getting-started/appdev-management-tool"><span class="arrow-prev">← </span><span>管理ツール（Unit Manager）</span></a><a class="docs-next button" href="/docs/ja/getting-started/appdev-impl"><span>アプリの実装</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#oauth-20-認可コードフロー">OAuth 2.0 認可コードフロー</a></li><li><a href="#データ主体cellとアプリcell">データ主体CellとアプリCell</a></li><li><a href="#boxとbarファイルインストール">Boxとbarファイルインストール</a></li><li><a href="#テンプレートアプリ">テンプレートアプリ</a><ul class="toc-headings"><li><a href="#初期構築の流れ">初期構築の流れ</a></li></ul></li><li><a href="#アプリ開発の流れ">アプリ開発の流れ</a></li><li><a href="#boxデータ構造の作成">Boxデータ構造の作成</a></li><li><a href="#サンプルアプリでのboxデータ構造">サンプルアプリでのBoxデータ構造</a><ul class="toc-headings"><li><a href="#コレクション全体">コレクション全体</a></li><li><a href="#odata-entity-type-stay">OData Entity Type (Stay)</a></li><li><a href="#odata-entity-type-move">OData Entity Type (Move)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="Personium" width="66" height="58"/></a><div><h5>Documentation</h5><a href="/docs/en/introduction/001_introduction">Introduction</a><a href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a><a href="/docs/en/app-developer/README">Application Developer&#x27;s Guide</a><a href="/docs/en/apiref/000_Rest_API_Reference">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '4ca37a28dcf8f84caf27cbfd300cb701',
+                indexName: 'personium',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:ja","version:1.7.21"]}
+              });
+            </script></body></html>

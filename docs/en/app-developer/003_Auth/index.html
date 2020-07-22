@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Authorization Model · Personium</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Introduction"/><meta name="docsearch:version" content="1.7.21"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Authorization Model · Personium"/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.io/"/><meta property="og:description" content="## Introduction"/><meta property="og:image" content="https://personium.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.io/blog/atom.xml" title="Personium Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.io/blog/feed.xml" title="Personium Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt="Personium"/><h2 class="headerTitleWithLogo">Personium</h2></a><a href="/en/versions"><h3>1.7.21</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs.html" target="_self">Documentation</a></li><li class=""><a href="/apiref.html" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/ja/app-developer/003_Auth">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Authorization</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/README">Documentation for Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/en/introduction/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/docs/en/introduction/008_Glossary">Glossary</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/README">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Prepare Personium</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/setup-unit">Setup Personium Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/tutorial">Create Cell</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/setup-sample-apps">Building a sample app</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Develop App</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-management-tool">Management tool (Unit Manager)</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-process">Flow of app development</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-impl">App implementation</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Personium Operators<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Server Operator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Unit Administrator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/Unit-User">Unit User</a></li><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/Data_Management">Data management</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Old Docs</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup">Getting Started with Personium using Ansible</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For App Developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/README">Guide for app developers</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Authorization</h4><ul><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/app-developer/003_Auth">Authorization model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/en/apiref/006_Access_Control">Access control model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/launch_from_homeapp">Single Sign On</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Box/Bar File</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/apiref/007_Box_install">Box installation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/apiref/301_Bar_File">bar File</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Collection</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/en/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Old Docs</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/005_Model_construction">Cell model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/docs/en/apiref/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Contributor Guides<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/contributor/README">Contributor Guide</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Document Contribution</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/document-writer/README">How to participate in Personium document maintenance and improvement</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Code Contribution</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/docs/en/software-developer/personium_tests">Personium Tests</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Authorization Model</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="introduction"></a><a href="#introduction" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Introduction</h2>
+<p>This section describes the authorization model that is important when using Personium. The following three key concepts are the basics of Personium's authorization model.</p>
+<ol>
+<li>Cell-centric authorization</li>
+<li>RBAC (Role Based Access Control)</li>
+<li>App authorization</li>
+</ol>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="cell-centric-authorization"></a><a href="#cell-centric-authorization" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cell-centric authorization</h2>
+<h3><a class="anchor" aria-hidden="true" id="assuming-data-access"></a><a href="#assuming-data-access" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Assuming data access</h3>
+<p>To explain cell-centric authorization, assume a situation in which personal data is accessed. The following figure shows a comparison of data access before and after PDS.</p>
+<p><img src="/docs/assets/auth/before-after.png" alt="before-after"></p>
+<p>The following roles appear when accessing data with PDS.</p>
+<table>
+<thead>
+<tr><th>Role name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Data subject</td><td>Data owner. In the above figure, it indicates Alice, Bob, Carol.</td></tr>
+<tr><td>Data Accessor</td><td>Person who accesses data. This includes cases where not only the data subject but also those other than the data subject.</td></tr>
+<tr><td>Apps</td><td>Applications that data accessors use to access data on their behalf.</td></tr>
+<tr><td>Authorization server</td><td>A server that authorizes data access.</td></tr>
+<tr><td>PDS</td><td>A server that stores data in units of data.</td></tr>
+</tbody>
+</table>
+<p>As shown in the figure above, the data accessor normally accesses the PDS through the application, and the access is controlled by the authorization server in the PDS.</p>
+<p>Personium adopts an authorization model centered on data subjects (mainly individuals) as shown on the right, instead of the service-centered authorization model shown on the left.</p>
+<p>Therefore, in Personium, the data subject is expressed in units of cells, each cell has an independent URL, and has an authorization mechanism. Specifically, each cell holds two endpoints (Authz and Token) of OAuth2, which is the authorization framework. The following table shows examples of specific URLs for each data subject.</p>
+<table>
+<thead>
+<tr><th>Data Subject</th><th>Cell URL</th><th>OAuth2 Authorization Endpoint</th><th>OAuth2 Token Endpoint</th></tr>
+</thead>
+<tbody>
+<tr><td>Alice</td><td><a href="https://alice.example/">https://alice.example/</a></td><td><a href="https://alice.example/__authz">https://alice.example/__authz</a></td><td><a href="https://alice.example/__token">https://alice.example/__token</a></td></tr>
+<tr><td>Bob</td><td><a href="https://bob.example/">https://bob.example/</a></td><td><a href="https://bob.example/__authz">https://bob.example/__authz</a></td><td><a href="https://bob.example/__token">https://bob.example/__token</a></td></tr>
+<tr><td>Carol</td><td><a href="https://carol.example/">https://carol.example/</a></td><td><a href="https://carol.example/__authz">https://carol.example/__authz</a></td><td><a href="https://carol.example/__token">https://carol.example/__token</a></td></tr>
+</tbody>
+</table>
+<p>When accessing data, authorization is performed using these endpoints and it is controlled so that only appropriate data accessors can access.</p>
+<h3><a class="anchor" aria-hidden="true" id="data-access-to-own-cell"></a><a href="#data-access-to-own-cell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data access to own cell</h3>
+<p>When thinking about data access, first consider the case of simply accessing the cell directly without going through the application.</p>
+<p>When Alice, the data subject, accesses her own data in the cell, she does it in the following order.</p>
+<ol>
+<li>Authenticate to the token endpoint of the Alice cell and obtain an access token</li>
+<li>Access data in Alice cell with access token</li>
+</ol>
+<p><img src="/docs/assets/auth/access_owner_data.png" alt="Access owner's data"></p>
+<p>When performing authentication at the token endpoint, use the Account (for example, me) that represents the data subject created in advance and the password. <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> Also, at this time, the data is accessed by the Role linked to the preset Account.</p>
+<p>Roles are used for data access control and are described in detail in the RBAC section.</p>
+<p>The access scope of the access token obtained by this method is within Alice's own cell.</p>
+<h3><a class="anchor" aria-hidden="true" id="data-access-to-other-cell"></a><a href="#data-access-to-other-cell" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data access to other cell</h3>
+<p>Next, consider data access to another cell where Alice accesses Bob's data. Please perform the following in advance:</p>
+<ul>
+<li>Add Alice cell to Bob cell's ExtCell and link Alice's Role as seen by Bob</li>
+</ul>
+<p>Follow the steps below to access the data.</p>
+<ol>
+<li>Set the issue target parameter (p_target) to Bob cell for the token endpoint of Alice cell, authenticate and obtain the trans cell token</li>
+<li>Access data in Bob cell with transcell token</li>
+</ol>
+<p><img src="/docs/assets/auth/access_other_data.png" alt="Access other owner's data"></p>
+<p>Personium controls data access based on the trust relationship between cells. By setting Alice cell as Bob's ExtCell and linking the Role, Bob's data is accessed by Alice using that Role. In the above figure, the ExtCell (Alice) and Role called Secretary are linked, so Bob's data is accessed as Secretary.</p>
+<p>The access scope of the transcell token obtained by this method is within Bob's cell.</p>
+<h3><a class="anchor" aria-hidden="true" id="accessing-other-cells-data-by-token-exchange"></a><a href="#accessing-other-cells-data-by-token-exchange" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Accessing other cell's data by token exchange</h3>
+<p>Other cell's data can also be accessed by the token exchange method.</p>
+<p>The transcell token described above is verified according to SAML2 Assertion, so the token is long. Therefore, performance tends to deteriorate due to client-server communication and server-side verification processing. Performance can be improved by exchanging a shorter tokens.</p>
+<p>The token exchange method has similar procedure for obtaining transcell tokens, only with an additional step.</p>
+<p>Please perform the following in advance.</p>
+<p>-Add Alice cell to Bob cell's ExtCell and link Alice's Role as seen by Bob</p>
+<p>Token exchange will be performed in the following order.</p>
+<ol>
+<li>Set the issue target parameter (p_target) to Bob cell for the token endpoint of Alice cell, authenticate, and obtain the trans cell token</li>
+<li>Authenticate with the transcell token against the token endpoint of Bob cell, and obtain the access token from Bob cell</li>
+<li>Access data in Bob cell with access token</li>
+</ol>
+<p><img src="/docs/assets/auth/access_other_data_by_exchange.png" alt="Access other owner's data by token exchange"></p>
+<p>The access Role and access scope are the same as the transcell token.</p>
+<h3><a class="anchor" aria-hidden="true" id="token-renewal"></a><a href="#token-renewal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>token renewal</h3>
+<p>When you get the access token or transcell token, a refresh token is issued for renewing the token's expiration date.</p>
+<p>To renew the access token using the refresh token, perform the following procedures.</p>
+<ol>
+<li>Authenticate to the token endpoint of Alice cell, get access token and refresh token</li>
+<li>Send the grant_type=refresh_token parameter and refresh token to the token endpoint in the Alice cell</li>
+</ol>
+<p><img src="/docs/assets/auth/refresh.png" alt="Refresh Access token"></p>
+<h3><a class="anchor" aria-hidden="true" id="administrative-token"></a><a href="#administrative-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Administrative token</h3>
+<p>So far, the data access method described assumes that an existing cell with data and an account to access the cell are available. However, no cell exist immediately after building the Personium unit. It is necessary to create it. In addition, an operator who is not the data subject must operate on the cell.</p>
+<p><code>Unit master token</code> and <code>unit user token</code> are prepared as administrative tokens for performing the above operations.</p>
+<p>Please refer to <a href="../unit-administrator/Unit-User">Unit User</a> for details.</p>
+<h3><a class="anchor" aria-hidden="true" id="token-type"></a><a href="#token-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Token type</h3>
+<p>Many tokens have been introduced to access data and they are summarized in the table below.</p>
+<table>
+<thead>
+<tr><th>Token type</th><th>Description</th><th>Expiration date</th></tr>
+</thead>
+<tbody>
+<tr><td>Cell Local Token</td><td>Access token valid in the cell that issued the token</td><td>1 hour</td></tr>
+<tr><td>Trans-cell token</td><td>Access token valid in the target cell specified by the issued cell</td><td>1 hour</td></tr>
+<tr><td>Refresh Token</td><td>Token used to refresh an already issued token</td><td>24 hours</td></tr>
+<tr><td>Unit Master Token</td><td>Administrative token used for initial settings such as cell creation immediately after unit construction, development and testing</td><td>-</td></tr>
+<tr><td>Unit user token</td><td>Administrative token used for operations such as cell creation</td><td>-</td></tr>
+</tbody>
+</table>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="rbac-role-based-access-control"></a><a href="#rbac-role-based-access-control" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RBAC (Role Based Access Control)</h2>
+<p>In the previous section, it was stated that Role is determined by Account in the authenticated cell and the relationship between cells. Personium has a mechanism of RBAC (Role Based Access Control) that controls how much data access is allowed by this Role.</p>
+<p>A user controls access by setting which Role can perform what operation (ACL) for each resource.</p>
+<p><img src="/docs/assets/auth/acl-role.png" alt="ACL"></p>
+<p>Please refer to <a href="/docs/en/apiref/006_Access_Control">Access Control Model</a> for details.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="app-authorization"></a><a href="#app-authorization" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App authorization</h2>
+<p>So far, for simplicity we have described a data access method that does not pass through the application. However, when the data accessor actually accesses the data, it basically does not directly access the cell and transfers the data access to the application.</p>
+<p>Also, in order to utilize the data on PDS, it is necessary to have abundant applications.</p>
+<p>-App that provides data
+-App that uses data</p>
+<p>To do so, it is necessary to utilize open APIs that allow not only one business operator to develop and provide applications but also other business operators. This section describes the outline of application authorization under such assumptions.</p>
+<h3><a class="anchor" aria-hidden="true" id="oauth-in-pds"></a><a href="#oauth-in-pds" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OAuth in PDS</h3>
+<p>Appropriate delegation of authority is required to allow apps that take various forms of provision to access data securely.
+Personium uses OAuth, which is a framework for app authorization and delegation, to achieve these.</p>
+<p>As described above, Personium has the function of the authorization server in each cell. If you apply to OAuth characters in this case, it will be as shown in the following figure.</p>
+<p><img src="/docs/assets/auth/pds_oauth.png" alt="OAuth in PDS"></p>
+<p>The specific authorization flow differs depending on the grant_type, and Personium supports the following grant_type.</p>
+<ul>
+<li>ROPC (Resource Owner Password Credential)</li>
+<li>Authorization code</li>
+<li>Implicit</li>
+</ul>
+<p>grant_type is selected according to the form of the application (whether it is a trusted application, server side web application or native application, etc.). We recommend the following as selection criteria:</p>
+<table>
+<thead>
+<tr><th>grant_type</th><th>Selection Criteria</th></tr>
+</thead>
+<tbody>
+<tr><td>ROPC</td><td>Adopted when the app and the app provider are highly reliable, such as when the operator and the app provider are the same.</td></tr>
+<tr><td>Authorization code</td><td>Adopted when the PDS provider and the application provider are different. For native apps, we recommend using PKCE together, which will be added in the future.</td></tr>
+<tr><td>Implicit</td><td>Basic deprecation.</td></tr>
+</tbody>
+</table>
+<p>Next, the ROPC and authorization code flow will be explained.</p>
+<h3><a class="anchor" aria-hidden="true" id="ropc-resource-owner-password-credential-flow"></a><a href="#ropc-resource-owner-password-credential-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ROPC (Resource Owner Password Credential) flow</h3>
+<p><img src="/docs/assets/auth/ROPC.png" alt="ROPC Flow"></p>
+<p>This is a simple flow of providing username/password to the application and receiving an access token.</p>
+<p>This flow can be used when the reliability of the application is high. Such as when the PDS provider and the application provider are the same. If not, use the authorization code flow explained below.</p>
+<h3><a class="anchor" aria-hidden="true" id="authorization-code-flow"></a><a href="#authorization-code-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authorization code flow</h3>
+<p>In the authorization code flow, after entering the data access agreement/username/password on the screen on the PDS, the application receives the short-lived authorization code once, and sends the authorization code from the application to the PDS to obtain the access token.</p>
+<p><img src="/docs/assets/auth/personium-authz-code-flow/personium-authz-code-flow.png" alt="Authorization Code Flow"></p>
+<p>Details are described in the section <a href="/docs/en/app-developer/app_authn">App authentication</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="box-protection"></a><a href="#box-protection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box protection</h3>
+<p>in preparation</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p>Authentication service outside Personium is also available. We plan to support authentication methods other than passwords in the future. <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/app-developer/README"><span class="arrow-prev">← </span><span>Guide for app developers</span></a><a class="docs-next button" href="/docs/en/app-developer/Roles"><span>Role in Personium</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#introduction">Introduction</a></li><li><a href="#cell-centric-authorization">Cell-centric authorization</a><ul class="toc-headings"><li><a href="#assuming-data-access">Assuming data access</a></li><li><a href="#data-access-to-own-cell">Data access to own cell</a></li><li><a href="#data-access-to-other-cell">Data access to other cell</a></li><li><a href="#accessing-other-cells-data-by-token-exchange">Accessing other cell's data by token exchange</a></li><li><a href="#token-renewal">token renewal</a></li><li><a href="#administrative-token">Administrative token</a></li><li><a href="#token-type">Token type</a></li></ul></li><li><a href="#rbac-role-based-access-control">RBAC (Role Based Access Control)</a></li><li><a href="#app-authorization">App authorization</a><ul class="toc-headings"><li><a href="#oauth-in-pds">OAuth in PDS</a></li><li><a href="#ropc-resource-owner-password-credential-flow">ROPC (Resource Owner Password Credential) flow</a></li><li><a href="#authorization-code-flow">Authorization code flow</a></li><li><a href="#box-protection">Box protection</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="Personium" width="66" height="58"/></a><div><h5>Documentation</h5><a href="/docs/en/introduction/001_introduction">Introduction</a><a href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a><a href="/docs/en/app-developer/README">Application Developer&#x27;s Guide</a><a href="/docs/en/apiref/000_Rest_API_Reference">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '4ca37a28dcf8f84caf27cbfd300cb701',
+                indexName: 'personium',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:1.7.21"]}
+              });
+            </script></body></html>

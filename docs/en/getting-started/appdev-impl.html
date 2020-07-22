@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>App implementation · Personium</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="We will explain some basic Personium APIs while going through the implementation of the following sample app."/><meta name="docsearch:version" content="1.7.21"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="App implementation · Personium"/><meta property="og:type" content="website"/><meta property="og:url" content="https://personium.io/"/><meta property="og:description" content="We will explain some basic Personium APIs while going through the implementation of the following sample app."/><meta property="og:image" content="https://personium.io/images/header-icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://personium.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://personium.io/blog/atom.xml" title="Personium Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://personium.io/blog/feed.xml" title="Personium Blog RSS Feed"/><link rel="stylesheet" href="/docusaurus_css/custom.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/logo-quantify-light.png" alt="Personium"/><h2 class="headerTitleWithLogo">Personium</h2></a><a href="/en/versions"><h3>1.7.21</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs.html" target="_self">Documentation</a></li><li class=""><a href="/apiref.html" target="_self">API Reference</a></li><li class=""><a href="/blog/" target="_self">News</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/ja/getting-started/appdev-impl">日本語</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Develop App</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/README">Documentation for Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/en/introduction/001_Personium_Architecture">Personium Architecture</a></li><li class="navListItem"><a class="navItem" href="/docs/en/introduction/008_Glossary">Glossary</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Getting Started<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/README">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Prepare Personium</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/setup-unit">Setup Personium Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/tutorial">Create Cell</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/setup-sample-apps">Building a sample app</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Develop App</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-introduction">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-management-tool">Management tool (Unit Manager)</a></li><li class="navListItem"><a class="navItem" href="/docs/en/getting-started/appdev-process">Flow of app development</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/getting-started/appdev-impl">App implementation</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For Personium Operators<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Server Operator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/Confirm_environment_settings">Environment information on units constructed by Ansible</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup_authentication_plugins">Setup Authentication Plugins</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup_engine_extensions">Setup Engine Extensions</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_operation_design">Operation design and setting of Unit</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_config_list">Unit configurations</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_coordination">How to set coordination between units</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/unit_security">Security of Unit (setting that recommends change from default)</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Unit Administrator</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/README">Unit Administrator&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/Unit-User">Unit User</a></li><li class="navListItem"><a class="navItem" href="/docs/en/unit-administrator/Data_Management">Data management</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Old Docs</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup_virtual_image">Getting Started with Personium using Virtual image</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/proxy_exclusion_setting">Proxy exclusion setting</a></li><li class="navListItem"><a class="navItem" href="/docs/en/server-operator/setup">Getting Started with Personium using Ansible</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">For App Developer<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/README">Guide for app developers</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Authorization</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/003_Auth">Authorization model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/Roles">Role in Personium</a></li><li class="navListItem"><a class="navItem" href="/docs/en/apiref/006_Access_Control">Access control model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/app_authn">App authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/launch_from_homeapp">Single Sign On</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Box/Bar File</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/apiref/007_Box_install">Box installation</a></li><li class="navListItem"><a class="navItem" href="/docs/en/apiref/301_Bar_File">bar File</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Collection</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/007_WebDAV_model">WebDAV Model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/using_odata">How to use OData Service Collection (OSC)</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/Personium-Engine">Personium Engine</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/671_Engine_Script_Samples">Engine Script Samples</a></li></ul></div><li class="navListItem"><a class="navItem" href="/docs/en/cell-gui-developer/README">Cell GUI developer&#x27;s Guide</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Old Docs</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/005_Model_construction">Cell model</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/004_Client_auth">Client registration &amp; authentication</a></li><li class="navListItem"><a class="navItem" href="/docs/en/app-developer/Personium_Apps">Personium App</a></li><li class="navListItem"><a class="navItem" href="/docs/en/apiref/990_Old_Version_API_Ref">Old Version API References</a></li></ul></div></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Contributor Guides<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/en/contributor/README">Contributor Guide</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Document Contribution</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/document-writer/README">How to participate in Personium document maintenance and improvement</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">For Code Contribution</h4><ul><li class="navListItem"><a class="navItem" href="/docs/en/software-developer/README">Server Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/software-developer/build_development_environment">Build development environment</a></li><li class="navListItem"><a class="navItem" href="/docs/en/software-developer/personium_tests">Personium Tests</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/README">Server Plugin Developer&#x27;s Guide</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/Personium_AuthenticationPluginDeveloperManual">Personium Authentication Plugin Developer Manual</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/EngineExtension_Imple_and_Deploy">Engine Extension implementation and deployment specification</a></li><li class="navListItem"><a class="navItem" href="/docs/en/plugin-developer/Extension_Send_Mail">Extension: Email sending function</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">App implementation</h1></header><article><div><span><p>We will explain some basic Personium APIs while going through the implementation of the following sample app.</p>
+<p><a href="https://github.com/personium/app-personium-trails">app-personium-trails</a></p>
+<p>The dummy Cell URLs used in this sample app are listed below.</p>
+<table>
+<thead>
+<tr><th>Cell type</th><th>URL</th></tr>
+</thead>
+<tbody>
+<tr><td>Data Subject Cell</td><td><a href="https://alice.example/">https://alice.example/</a></td></tr>
+<tr><td>App Cell</td><td><a href="https://app-personium-trails.example/">https://app-personium-trails.example/</a></td></tr>
+</tbody>
+</table>
+<blockquote>
+<p>Simplified relevant information of the HTTP communications are described for easy understanding.</p>
+</blockquote>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="oauth-20-authorization-code-flow"></a><a href="#oauth-20-authorization-code-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OAuth 2.0 authorization code flow</h2>
+<p>If you want to use OAuth 2.0 authorization code flow with Personium, use the following engine script <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> and Personium API.</p>
+<ul>
+<li>Engine script
+<ul>
+<li><a href="https://github.com/personium/app-personium-trails/blob/master/src/app/engine/front/launchSPA.js">app</a></li>
+<li><a href="https://github.com/personium/app-personium-trails/blob/master/src/app/engine/auth/start_oauth2.js">start_oauth2</a></li>
+<li><a href="https://github.com/personium/app-personium-trails/blob/master/src/app/engine/auth/receive_redirect.js">recieve_redirect</a></li>
+</ul></li>
+<li>Personium Cell Level API
+<ul>
+<li><a href="/docs/en/apiref/292_OAuth2_Authorization_Endpoint">OAuth 2.0 authorization endpoint</a></li>
+<li><a href="/docs/en/apiref/292p_OAuth2_Authorization_Endpoint">POST acceptance in OAuth2.0 authorization endpoint</a></li>
+<li><a href="/docs/en/apiref/293_OAuth2_Token_Endpoint">OAuth 2.0 token endpoint</a></li>
+</ul></li>
+</ul>
+<p>Detailed sequence diagram available <a href="/docs/en/app-developer/003_Auth#authorization-code-flow">here</a>.</p>
+<p>In order to start the sample app, access the engine script endpoint (<code>https://app-personium-trails.example/__/front/app</code>) from the web browser. Then, the following screen will prompt you to enter the data subject Cell URL.</p>
+<p><img src="/docs/assets/getting-started/cell_url_input.png" alt="Data Subject Cell URL"></p>
+<p>Enter the data subject Cell URL <code>https://alice.example/</code> to start the asynchronous communication that executes the engine script endpoint (start_oauth2).</p>
+<pre><code class="hljs css language-text"># request
+POST https://app-personium-trails.example/__/auth/start_oauth2
+
+cellUrl=https://alice.example/
+
+# Response
+Status Code: 303
+Location: https://alice.example/__authz
+?response_type=code
+&client_id=https://app-personium-trails.example/
+&redirect_uri=https://app-personium-trails.example/__/front/app?cellUrl=https://alice.example/
+&state=15933********-per
+</code></pre>
+<p>On the server side, this endpoint generates the state parameter used for CSRF (Cross-Site Request Forgery) prevention and then redirects the request to the authorization endpoint. In the parameter redirect_uri, the URL of the application that receives the authorization code is specified. In the sample app, the engine script endpoint (<code>https://app-personium-trails.example/__/front/app</code>) is specified.</p>
+<p>The HTTP communication to <a href="/docs/en/apiref/292_OAuth2_Authorization_Endpoint">OAuth 2.0 authorization endpoint</a> is as shown below.</p>
+<pre><code class="hljs css language-text"># request
+GET https://alice.example/__authz
+
+response_type=code
+client_id=https://app-personium-trails.example/
+redirect_uri=https://app-personium-trails.example/__/front/app?cellUrl=https://alice.example/
+state=15933********-per
+
+# Response
+Status Code: 200
+Content-Type: text/html;charset=UTF-8
+
+<HTML of authentication form>
+</code></pre>
+<p>The above response is rendered as an authentication form.</p>
+<p><img src="/docs/assets/getting-started/oauth_form.png" alt="Authentication Form"></p>
+<p>Enter UserID and Password and click the login button. The following HTTP communication to <a href="/docs/en/apiref/292p_OAuth2_Authorization_Endpoint">Accept POST at OAuth2.0 authorization endpoint</a> is performed.</p>
+<pre><code class="hljs css language-text"># request
+POST https://alice.example/__authz
+
+response_type=code
+client_id=https://app-personium-trails.example/
+redirect_uri=https://app-personium-trails.example/__/front/app?cellUrl=https://alice.example/
+state=15933********-per
+username=me
+password=mypassword
+
+# Response
+Status Code: 303
+Location: https://app-personium-trails.example/__/front/app
+?cellUrl=https://alice.example/
+&last_authenticated=1592968464695
+&code=GC~EPET********-9ws
+&failed_count=0
+&state=15933********-per
+</code></pre>
+<p>The authorization code (code) and state parameters are included and further redirected to the engine script endpoint (<code>https://app-personium-trails.example/__/front/app</code>) that launches the sample app with necessary information.</p>
+<pre><code class="hljs css language-text"># request
+GET https://app-personium-trails.example/__/front/app
+?cellUrl=https://alice.example/
+&last_authenticated=1592968464695
+&code=GC~EPET********-9ws
+&failed_count=0
+&state=15933********-per
+
+# Response
+Status Code: 200
+Content-Type: text/html;charset=UTF-8
+
+<HTML of sample application>
+</code></pre>
+<p>HTTP communication is performed after adding code (authorization code) and state to receive_redirect of engine script by asynchronous communication by Fetch from HTML of sample application.</p>
+<pre><code class="hljs css language-text"># request
+POST https://app-personium-trails.example/__/auth/receive_redirect
+
+cellUrl=https://alice.example/
+code=GC~EPET********-9ws
+failed_count=0
+state=15933********-per
+</code></pre>
+<p>After verifying the state with the process on receive_redirect of the engine script, access <a href="/docs/en/apiref/293_OAuth2_Token_Endpoint">OAuth 2.0 token endpoint</a> of Personium. HTTP communication is performed as follows.</p>
+<pre><code class="hljs css language-text"># request
+POST https://alice.example/__token
+
+grant_type=authorization_code
+code=GC~EPET********-9ws
+client_id=https://app-personium-trails.example/
+client_secret=<trans cell token to the data subject Cell authenticated on the application Cell>
+
+# Response
+{
+  "access_token": "AR~omWD********IPo",
+  "refresh_token_expires_in": 86400,
+  "refresh_token": "RR~KR9********hbs",
+  "p_target": "https://alice.example/",
+  "scope": "root",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+</code></pre>
+<p>The response of the token endpoint is returned as it is as the response of receive_redirect. After that, API operations that require authorization are executed by giving the value of <code>access_token</code> obtained here as HTTP header <code>Authorization: Bearer &lt;access_token&gt;</code>.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="box-installation"></a><a href="#box-installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Box installation</h2>
+<p>If the authorization is successful, the Box installation screen will be displayed.</p>
+<p><img src="/docs/assets/getting-started/box_install.png" alt="Box installation"></p>
+<p>Click the &quot;Start Install&quot; button to execute the <a href="/docs/en/apiref/302_Box_Installation">Box Installation</a> API.</p>
+<pre><code class="hljs css language-text"># request
+MKCOL https://alice.example/app-personium-trails
+
+(bar file of app-personium-trails)
+
+# Response
+Status Code: 202
+</code></pre>
+<p>Check the progress of Box installation by accessing <a href="/docs/en/apiref/303_Progress_of_Bar_File_Installation">Get Box Metadata</a> API.</p>
+<pre><code class="hljs css language-text"># request
+GET https://alice.example/app-personium-trails
+
+# Response
+Status Code: 200
+
+{
+  "cell": {
+    "name": "alice",
+    "url": "https://alice.example/"
+  },
+  "box": {
+    "schema": "https://app-personium-trails.example/",
+    "name": "app-personium-trails",
+    "started_at": "2020-06-28T14:30:41.119Z",
+    "progress": "25%",
+    "url": "https://alice.example/app-personium-trails/",
+    "status": "installation in progress"
+  },
+  "unit": {
+    "path_based_cellurl_enabled": false,
+    "url": "https://example/"
+  }
+}
+</code></pre>
+<p>When the status value is <code>ready</code>, Box installation is complete.</p>
+<p>Access the <a href="/docs/en/apiref/304_Get_Box_URL">Box URL acquisition</a> API when getting the Box URL from the access token with Box installed.</p>
+<pre><code class="hljs css language-text"># request
+GET https://alice.example/__box
+
+
+# Response
+Status Code: 200
+
+{
+  "Url": "https://alice.example/app-personium-trails/"
+}
+</code></pre>
+<p>The following screen will be displayed when Box installation is completed.</p>
+<p><img src="/docs/assets/getting-started/personium_trails_top.png" alt="Personium Trails Top Page"></p>
+<p>From this screen, you can select the location history data (eg 2020_MAY.json) which you have to obtain from Google Takeout and upload to Personium in advance. Please follow the instructions in <a href="https://github.com/personium/app-personium-trails">Personium Trails</a>.</p>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="relational-data-odata"></a><a href="#relational-data-odata" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relational data (OData)</h2>
+<p>In the following screen, a list of location histories from a specific period is retrieved and displayed.</p>
+<p><img src="/docs/assets/getting-started/trails_locations.png" alt="Movement history data list"></p>
+<p>OData is suitable for searching through location histories. The following is an example of using <a href="/docs/en/apiref/365_List_Entity">Entity list acquisition</a> API of OData collection to get a list of locations for a specific period.</p>
+<pre><code class="hljs css language-text"># request
+GET https://alice.example/app-personium-trails/index/Stay
+?$filter=startTime ge 1589554800000 and startTime lt 1589641199999
+&format=json
+
+# Response
+Status Code: 200
+{
+  "d": {
+    "results": [
+      {
+        "__metadata": {
+          "uri": "https://alice.example/app-personium-trails/index/Stay(15fa4db6e57f43a5a39b3e61eff767c0)",
+          "etag": "W/\"1-1593356562389\"",
+          "type": "UserData.Stay"
+        },
+        "__id": "15fa4db6e57f43a5a39b3e61eff767c0",
+        "__published": "/Date(1593356562389)/",
+        "__updated": "/Date(1593356562389)/",
+        "endTime": "/Date(1589596800521)/",
+        "latitudeE7": 3752*****,
+        "longitudeE7": 13961*****,
+        "name": "Wakaba Store",
+        "placeId": "ChI********hBI",
+        "startTime": "/Date(1589594150000)/"
+      },
+</code></pre>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="file-webdav"></a><a href="#file-webdav" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>file (WebDAV)</h2>
+<p>Each location or movement information is saved as JSON format file. The detail screen uses the <a href="../apiref/311_Get_WebDav">Get File</a> API of the WebDAV collection to retrieve and display the file content.</p>
+<p><img src="/docs/assets/getting-started/trails_detail.png" alt="Details page"></p>
+<p>HTTP communication is as follows.</p>
+<pre><code class="hljs css language-text"># request
+GET https://alice.example/app-personium-trails/locations/2020/0516/s_1589592400000.json
+
+# Response
+Status Code: 200
+
+(Contents of JSON file)
+</code></pre>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="data-sharing"></a><a href="#data-sharing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data sharing</h2>
+<p>In Personium, you can share data with others by setting the ACL (access control list) of resources. In the sample app, by clicking the toggle button to &quot;pubic&quot;, anyone can view it without authentication.</p>
+<p><img src="/docs/assets/getting-started/trails_locations_public.png" alt="Movement history data list"></p>
+<p>An example of <a href="/docs/en/apiref/315_Configure_Access_Control">Box Level Access Control Settings</a> API is as shown below.</p>
+<pre><code class="hljs css language-xml"># request
+ACL https://alice.example/app-personium-trails/locations/2020/0516/s_1589592400000.json
+
+<span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ace</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">all</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">read</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+
+# Response
+Status Code: 200
+</code></pre>
+<p>ACL settings can be confirmed by <a href="/docs/en/apiref/307_Get_Property">Get file settings</a> API.</p>
+<pre><code class="hljs css language-xml"># request
+PROPFIND https://alice.example/app-personium-trails/locations/2020/0516/s_1589592400000.json
+
+# Response
+Status Code: 207
+
+<span class="hljs-tag">&lt;<span class="hljs-name">multistatus</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"DAV:"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">response</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">href</span>&gt;</span>https://alice.example/app-personium-trails/locations/2020/0516/s_1589592400000.json<span class="hljs-tag">&lt;/<span class="hljs-name">href</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">propstat</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">creationdate</span>&gt;</span>2020-06-29T00:02:41.816+0900<span class="hljs-tag">&lt;/<span class="hljs-name">creationdate</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">getcontentlength</span>&gt;</span>2623<span class="hljs-tag">&lt;/<span class="hljs-name">getcontentlength</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">getcontenttype</span>&gt;</span>application/json<span class="hljs-tag">&lt;/<span class="hljs-name">getcontenttype</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">getlastmodified</span>&gt;</span>Sun, 28 Jun 2020 15:02:41 GMT<span class="hljs-tag">&lt;/<span class="hljs-name">getlastmodified</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">resourcetype</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">acl</span> <span class="hljs-attr">xml:base</span>=<span class="hljs-string">"https://alice.example/__role/app-personium-trails/"</span> <span class="hljs-attr">xmlns:p</span>=<span class="hljs-string">"urn:x-personium:xmlns"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">ace</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">principal</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">all</span>/&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">principal</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">grant</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">privilege</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">D:read</span> <span class="hljs-attr">xmlns:D</span>=<span class="hljs-string">"DAV:"</span>/&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">privilege</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">grant</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">ace</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">acl</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>HTTP/1.1 200 OK<span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">propstat</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">response</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">multistatus</span>&gt;</span>
+</code></pre>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p>The engine script executes simple server-side logic on Personium. See <a href="/docs/en/app-developer/Personium-Engine">Personium Engine</a> for details. The template app (personium-blank-app) allows you to use two engine scripts, start_oauth2.js and receive_redirect.js, for use in the OAuth 2.0 authorization code flow. <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/getting-started/appdev-process"><span class="arrow-prev">← </span><span>Flow of app development</span></a><a class="docs-next button" href="/docs/en/server-operator/README"><span>Server Software Operator&#x27;s Guide</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#oauth-20-authorization-code-flow">OAuth 2.0 authorization code flow</a></li><li><a href="#box-installation">Box installation</a></li><li><a href="#relational-data-odata">Relational data (OData)</a></li><li><a href="#file-webdav">file (WebDAV)</a></li><li><a href="#data-sharing">Data sharing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/images/favicon.ico" alt="Personium" width="66" height="58"/></a><div><h5>Documentation</h5><a href="/docs/en/introduction/001_introduction">Introduction</a><a href="/docs/en/server-operator/README">Server Software Operator&#x27;s Guide</a><a href="/docs/en/app-developer/README">Application Developer&#x27;s Guide</a><a href="/docs/en/apiref/000_Rest_API_Reference">API Reference</a></div><div><h5>Community</h5><a href="https://personium-io.slack.com/">Slack</a><a href="https://github.com/personium">GitHub</a><a href="https://twitter.com/personium" target="_blank" rel="noreferrer noopener">Twitter</a><div class="social"><a href="https://twitter.com/personium" class="twitter-follow-button">Follow @personium</a></div></div><div><h5>More</h5><a href="/blog">News</a><a href="https://drive.google.com/drive/u/1/folders/1VWGpfCbPOLY2TCa7Lh2jbcsZ5Bp0WV4q">Draft Docs</a></div></section><a href="https://personium.io/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/logo-quantify-light.png" alt="Personium Project" width="170" height="45"/></a><section class="copyright">Copyright © 2020 Personium Project</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '4ca37a28dcf8f84caf27cbfd300cb701',
+                indexName: 'personium',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {"facetFilters":["language:en","version:1.7.21"]}
+              });
+            </script></body></html>
