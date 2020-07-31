@@ -4,7 +4,7 @@
         <title>Personium Blog</title>
         <link>https://personium.io/blog</link>
         <description>The best place to stay up-to-date with the latest Personium news and events.</description>
-        <lastBuildDate>Thu, 02 Jul 2020 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 31 Jul 2020 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,20 @@
             <link>https://personium.io/blog</link>
         </image>
         <copyright>Copyright © 2020 Personium Project</copyright>
+        <item>
+            <title><![CDATA[COSCUP 2020 - August 2nd]]></title>
+            <link>https://personium.io/blog/2020/07/31/COSCUP-2020.html</link>
+            <guid>https://personium.io/blog/2020/07/31/COSCUP-2020.html</guid>
+            <pubDate>Fri, 31 Jul 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>This coming weekend (August 2nd), Personium will participate remotely at COSCUP (Conference for Open Source Coders, Users &amp; Promoters) 2020 hosted in Taiwan. We will give an overview of Personium and how we can help citizens adopting to the Post-...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MyData Operator 2020 Award]]></title>
+            <link>https://personium.io/blog/2020/07/28/MyDataOperatorAward.html</link>
+            <guid>https://personium.io/blog/2020/07/28/MyDataOperatorAward.html</guid>
+            <pubDate>Tue, 28 Jul 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>On July 28th, Personium was honoured to receive the MyData Operator 2020 Award. The award was given to 16 world-leading organisations from 12 countries, all working for humans-centric approaches to personal data.</p> <p>The MyData Operator 2020 Award was cr...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[DID Alliance Korea Presentation July 2nd]]></title>
             <link>https://personium.io/blog/2020/07/02/DID-Alliance-Korea-Personium.html</link>
@@ -55,18 +69,18 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA[Personium Trails vs COVID-19]]></title>
-            <link>https://personium.io/blog/2020/04/06/PersoniumTrails-vs-COVID19.html</link>
-            <guid>https://personium.io/blog/2020/04/06/PersoniumTrails-vs-COVID19.html</guid>
-            <pubDate>Mon, 06 Apr 2020 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>On April 1st, &quot;Personium Trails - Stop Pandemic using Personal Data Store (PDS)&quot; was proposed to the MyData vs COVID-19 call. Check our master slide deck (<a href="https://bit.ly/Personium-vs-COVID19">https://bit.ly/Personium-vs-COVID19</a>) for latest news. Watch video <a href="https://twitter.com/mydataorg/status/1245357228774866945?s=20">here</a> (Personium Tra...</p>]]></description>
-        </item>
-        <item>
             <title><![CDATA[Fevermap]]></title>
             <link>https://personium.io/blog/2020/04/06/Fevermap.html</link>
             <guid>https://personium.io/blog/2020/04/06/Fevermap.html</guid>
             <pubDate>Mon, 06 Apr 2020 06:00:00 GMT</pubDate>
             <description><![CDATA[<p><a href="https://fevermap.net/">Fevermap</a> is a Finnish open-source app that allows user to report temperature through the internet. In order to cross-pollinate ideas, Personium registered two UI/UX issues and helped translating the app to Japanese.</p> <p>You can help out by contribute you...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Personium Trails vs COVID-19]]></title>
+            <link>https://personium.io/blog/2020/04/06/PersoniumTrails-vs-COVID19.html</link>
+            <guid>https://personium.io/blog/2020/04/06/PersoniumTrails-vs-COVID19.html</guid>
+            <pubDate>Mon, 06 Apr 2020 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>On April 1st, &quot;Personium Trails - Stop Pandemic using Personal Data Store (PDS)&quot; was proposed to the MyData vs COVID-19 call. Check our master slide deck (<a href="https://bit.ly/Personium-vs-COVID19">https://bit.ly/Personium-vs-COVID19</a>) for latest news. Watch video <a href="https://twitter.com/mydataorg/status/1245357228774866945?s=20">here</a> (Personium Tra...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[PDS Interoperability Meeting 15th April 2020]]></title>
