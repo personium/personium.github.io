@@ -95,13 +95,16 @@
 <p>Personium自体はCentOS7以外のOSにおいても動作しますが、後述で使用するAnsible PlaybookがCentOS7前提のため、CentOS7系をご使用ください。</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="セキュリティグループファイアウォールの設定"></a><a href="#セキュリティグループファイアウォールの設定" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>セキュリティグループ/ファイアウォールの設定</h3>
-<p>Personium Unitにアクセスするために、作成したVMのパブリックIPアドレスに対して以下ポートのアクセスを許可するようにセキュリティグループ/ファイアウォールを設定します。</p>
+<p>Personium Unitの作成・アクセスするために、作成したVMのに対して以下ポートのアクセスを許可するようにセキュリティグループ/ファイアウォールを設定します。</p>
 <table>
 <thead>
-<tr><th>ポート</th><th>用途</th></tr>
+<tr><th>方向</th><th>ポート</th><th>ソース</th><th>宛作</th><th>用途</th></tr>
 </thead>
 <tbody>
-<tr><td>443</td><td>HTTPSアクセス</td></tr>
+<tr><td>受信</td><td>443</td><td>任意</td><td>任意</td><td>HTTPSによるPersonium APIへのアクセス</td></tr>
+<tr><td>受信</td><td>22</td><td>作業マシン</td><td>任意</td><td>SSHによる作成したVMへのアクセス</td></tr>
+<tr><td>発信</td><td>443</td><td>任意</td><td>任意</td><td>HTTPSによる外部リポジトリへのアクセス</td></tr>
+<tr><td>発信</td><td>80</td><td>任意</td><td>任意</td><td>HTTPによる外部リポジトリへのアクセス</td></tr>
 </tbody>
 </table>
 <h3><a class="anchor" aria-hidden="true" id="ansibleを使ったpersoniumインストール"></a><a href="#ansibleを使ったpersoniumインストール" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ansibleを使ったPersoniumインストール</h3>
